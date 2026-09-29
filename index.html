@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>食材料理簿｜新手家常菜指南</title>
+<meta name="description" content="輸入手邊的食材，找到由簡單到困難的家常菜，附實拍照片、準備清單、白話做法和防失敗重點，還有 14 道主菜的新手闖關菜單。">
+<meta property="og:title" content="食材料理簿｜新手家常菜指南">
+<meta property="og:description" content="冰箱裡有什麼，就煮什麼。從最簡單的開始學做菜。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/tomato-egg.webp">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232e5b45'/%3E%3Cpath d='M7 15h18a9 9 0 0 1-18 0Z' fill='none' stroke='white' stroke-width='2.4'/%3E%3C/svg%3E">
+<script>try{var s=localStorage.getItem("shicai-theme");if(s==="dark"||s==="light")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: 雜誌式首頁（大標＋實拍照片拼貼＋搜尋）→ 推薦第一道的大卡 → 依難度分組的照片卡 → 深色「基本功」帶；食譜頁為大圖封面＋左側準備清單、右側步驟的雙欄 */
+:root{
+  --bg:#f5f3ee; --surface:#ffffff; --surface-2:#efece5; --ink:#1c1b18; --muted:#6b675f; --line:#e2ddd3;
+  --accent:#2e5b45; --accent-ink:#ffffff; --accent-soft:#e3ece5;
+  --yolk:#e3a126; --yolk-soft:#fbf0d6; --chili:#b3432c; --chili-soft:#f7e7e1;
+  --band:#1f2420; --band-ink:#eeebe3; --band-muted:#a9aea6;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --radius:18px; --shadow:0 1px 2px rgba(28,27,24,.06),0 10px 30px rgba(28,27,24,.08);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121311; --surface:#1b1c19; --surface-2:#23241f; --ink:#edeae3; --muted:#a39e93; --line:#33342e;
+  --accent:#8cc3a2; --accent-ink:#0f1a13; --accent-soft:#1f2e25;
+  --yolk:#f0b846; --yolk-soft:#3a301a; --chili:#ee8a6e; --chili-soft:#3a221b;
+  --band:#0b0c0a; --band-ink:#edeae3; --band-muted:#9a9f97;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121311; --surface:#1b1c19; --surface-2:#23241f; --ink:#edeae3; --muted:#a39e93; --line:#33342e;
+  --accent:#8cc3a2; --accent-ink:#0f1a13; --accent-soft:#1f2e25;
+  --yolk:#f0b846; --yolk-soft:#3a301a; --chili:#ee8a6e; --chili-soft:#3a221b;
+  --band:#0b0c0a; --band-ink:#edeae3; --band-muted:#9a9f97;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;margin:0;line-height:1.25;text-wrap:balance;letter-spacing:.01em}
+p{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yolk);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.18em;color:var(--accent);text-transform:uppercase}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:900;font-size:21px;letter-spacing:.06em;text-decoration:none;color:var(--ink)}
+.logo-mark{width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.logo-mark svg{width:17px;height:17px}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-links{display:flex;gap:22px;font-size:14px}
+.theme-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--ink)}
+.theme-btn:hover{border-color:var(--accent)}
+.theme-btn svg{width:16px;height:16px}
+.theme-btn .i-sun{display:none}
+.is-dark .theme-btn .i-sun{display:block}
+.is-dark .theme-btn .i-moon{display:none}
+.nav-links a{color:var(--muted);text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(28px,6vw,72px) clamp(24px,5vw,56px)}
+.hero-copy{display:grid;gap:20px;min-width:0}
+.hero h1{font-size:clamp(34px,5.4vw,64px);font-weight:900;line-height:1.14;letter-spacing:.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{color:var(--muted);font-size:16.5px;max-width:34em}
+.search{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 7px 7px 20px;box-shadow:var(--shadow);max-width:560px}
+.search svg{width:20px;height:20px;flex:none;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;color:var(--ink);outline:none;padding-block:8px}
+.search input::placeholder{color:var(--muted)}
+.btn{border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);padding:11px 22px;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:scale(.98)}
+.btn.line{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn:disabled{opacity:.55;cursor:default}
+.chips-label{font-size:13px;color:var(--muted);margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,background .15s}
+.chip small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.7}
+.mosaic{position:relative;display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:1.08/1;min-width:0}
+.mosaic figure{margin:0;border-radius:22px;overflow:hidden;background:var(--surface-2);position:relative}
+.mosaic figure:first-child{grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block}
+.mosaic figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:#1c1b18;font-size:12.5px;font-weight:500;padding:4px 10px;border-radius:999px}
+.stamp{position:absolute;left:-18px;top:22px;background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:12px 16px;display:flex;gap:18px}
+.stamp div{display:grid;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:24px;font-variant-numeric:tabular-nums}
+.stamp span{font-size:12px;color:var(--muted)}
+
+/* results */
+.results{padding-block:16px 40px;scroll-margin-top:12px}
+.res-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;padding-block:24px 18px;border-top:1px solid var(--line)}
+.res-head h2{font-size:clamp(30px,4vw,44px);font-weight:900}
+.res-head .count{color:var(--muted);margin-top:4px}
+.switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;font-size:14px;color:var(--muted)}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .track{width:42px;height:24px;border-radius:999px;background:var(--line);position:relative;transition:background .2s;flex:none}
+.switch .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.switch input:checked + .track{background:var(--accent)}
+.switch input:checked + .track::after{transform:translateX(18px)}
+.switch input:focus-visible + .track{outline:3px solid var(--yolk);outline-offset:2px}
+.hidden-note{font-size:14px;color:var(--muted);margin-top:-4px;margin-bottom:8px}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:inherit}
+
+.feature{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);background:var(--surface);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;text-align:left;border:0;padding:0;width:100%;margin-block:10px 34px}
+.feature .media{position:relative;min-height:320px;overflow:hidden}
+.feature .media img,.feature .media canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.feature:hover .media img{transform:scale(1.03)}
+.feature .body{padding:clamp(22px,3.5vw,44px);display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:0}
+.feature h3{font-size:clamp(26px,3vw,36px);font-weight:900}
+.feature p{color:var(--muted)}
+.feature .cta{margin-top:6px;display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--accent)}
+
+.tier{margin-top:34px}
+.tier-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.tier-head h3{font-size:24px}
+.tier-head .lv{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 10px}
+.tier-head small{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px 20px}
+.card{display:flex;flex-direction:column;gap:12px;background:none;border:0;padding:0;text-align:left;cursor:pointer;min-width:0}
+.card .media{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:var(--surface-2)}
+.card .media img,.card .media canvas{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
+.card:hover .media img,.card:hover .media canvas{transform:scale(1.045)}
+.badge{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);color:#1c1b18;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px}
+.badge i{width:7px;height:7px;border-radius:50%;background:#2e5b45;display:block}
+.badge.l3 i{background:#e3a126}.badge.l4 i,.badge.l5 i{background:#b3432c}
+.ai-tag{position:absolute;top:10px;right:10px;background:var(--yolk);color:#1c1b18;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.card h4{font-size:19px;line-height:1.35}
+.card p{color:var(--muted);font-size:14px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meta span{display:inline-flex;align-items:center;gap:5px}
+.meta svg{width:15px;height:15px}
+.dots{display:inline-flex;gap:3px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--yolk)}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:28px;color:var(--muted);text-align:center}
+
+.ai-box{margin-top:44px;border-radius:24px;background:var(--accent-soft);padding:clamp(20px,3vw,32px);display:grid;gap:12px}
+.ai-box h3{font-size:22px}
+.ai-box p{color:var(--muted);font-size:14.5px;max-width:52em}
+.ai-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.status{font-size:14px;color:var(--muted)}
+.status.err{color:var(--chili)}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* basics band */
+.band{background:var(--band);color:var(--band-ink);margin-top:56px;padding-block:clamp(40px,6vw,72px);scroll-margin-top:0}
+.band-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px 48px;align-items:end;margin-bottom:34px}
+.band h2{font-size:clamp(28px,3.6vw,42px);font-weight:900}
+.band .eyebrow{color:var(--yolk)}
+.band-head p{color:var(--band-muted)}
+.basics{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0;border-top:1px solid rgba(255,255,255,.12)}
+.basics div{padding:22px 22px 24px 0;border-bottom:1px solid rgba(255,255,255,.12);min-width:0}
+.basics b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:6px;color:var(--band-ink)}
+.basics span{color:var(--band-muted);font-size:14px;line-height:1.7}
+footer{padding-block:28px 40px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* 主菜新手之路 */
+.path{padding-block:clamp(36px,5vw,64px);border-top:1px solid var(--line);scroll-margin-top:0}
+.path-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:28px}
+.path-head h2{font-size:clamp(30px,4vw,46px);font-weight:900;margin-top:6px}
+.path-head p{color:var(--muted);margin-top:10px;max-width:36em}
+.status-card{background:var(--band);color:var(--band-ink);border-radius:24px;padding:22px 24px;display:grid;gap:12px;min-width:0}
+.status-card .t{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.status-card small{opacity:.7;font-size:13px}
+.status-card .title{font-family:var(--serif);font-size:26px;font-weight:900;color:var(--yolk)}
+.status-card .count{font-variant-numeric:tabular-nums;font-size:14px;opacity:.85}
+.pbar{height:8px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--yolk);border-radius:999px;transition:width .5s}
+.next{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border-radius:14px;padding:8px 10px 8px 8px;cursor:pointer;border:0;color:inherit;text-align:left;width:100%}
+.next img{width:52px;height:52px;border-radius:10px;object-fit:cover;flex:none}
+.next span{display:grid;line-height:1.35;min-width:0}
+.next b{font-family:var(--serif);font-size:17px}
+.next em{font-style:normal;font-size:12.5px;opacity:.7}
+.next::after{content:"→";margin-left:auto;font-weight:700;color:var(--yolk)}
+.stages{display:grid;gap:18px}
+.stage{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:18px 28px;background:var(--surface);border-radius:24px;padding:clamp(18px,2.6vw,28px);box-shadow:var(--shadow)}
+.stage-info{display:grid;gap:8px;align-content:start}
+.stage-no{font-family:var(--serif);font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--accent)}
+.stage-info h3{font-size:24px;font-weight:900}
+.stage-info p{color:var(--muted);font-size:14px}
+.learn{font-size:13.5px;display:flex;gap:6px;align-items:baseline}
+.learn b{color:var(--accent);white-space:nowrap}
+.medal{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;border-radius:999px;padding:5px 12px 5px 6px;background:var(--surface-2);color:var(--muted);justify-self:start}
+.medal svg{width:22px;height:22px}
+.medal.on{background:var(--yolk-soft);color:var(--ink)}
+.medal.on svg{color:var(--yolk)}
+.dishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.dish{position:relative;display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg);min-width:0}
+.dish.done{border-color:var(--accent)}
+.dish .ph{position:relative;aspect-ratio:16/10;cursor:pointer;overflow:hidden;border:0;padding:0;background:var(--surface-2);display:block;width:100%}
+.dish .ph img,.dish .ph canvas{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.dish .ph:hover img{transform:scale(1.05)}
+.dish .num{position:absolute;left:10px;top:10px;background:rgba(255,255,255,.94);color:#1c1b18;font-family:var(--serif);font-weight:900;font-size:13px;border-radius:999px;padding:2px 10px}
+.dish.done .ph::after{content:"";position:absolute;inset:0;background:rgba(46,91,69,.35)}
+.dish .dbody{padding:12px 14px 14px;display:grid;gap:6px;align-content:start}
+.dish h4{font-size:17px}
+.dish .why{font-size:13.5px;color:var(--muted);line-height:1.55}
+.dish .goal{font-size:13px;line-height:1.55;background:var(--accent-soft);border-radius:10px;padding:7px 10px}
+.dish .goal b{color:var(--accent)}
+.dish .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.dish .row small{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+.donebtn{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.donebtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.path-note{color:var(--muted);font-size:13px;margin-top:14px}
+.r-path{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--accent-soft);padding:14px clamp(18px,3.5vw,40px)}
+.r-path span{font-size:14.5px}
+.r-path b{color:var(--accent)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--bg);border-radius:18px;padding:14px 20px;box-shadow:0 12px 40px rgba(0,0,0,.3);display:flex;gap:12px;align-items:center;max-width:calc(100vw - 32px);animation:pop .35s ease-out}
+.toast b{font-family:var(--serif);color:var(--yolk);font-size:17px}
+.toast span{font-size:14px}
+@keyframes pop{from{transform:translate(-50%,20px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:39}
+@media (max-width:900px){.path-head{grid-template-columns:minmax(0,1fr)}.stage{grid-template-columns:minmax(0,1fr)}}
+
+/* recipe sheet */
+.sheet{position:fixed;inset:0;background:rgba(12,13,11,.6);backdrop-filter:blur(4px);overflow-y:auto;z-index:20;padding:clamp(0px,2.5vw,32px) clamp(0px,2.5vw,32px) calc(32px + env(safe-area-inset-bottom,0px))}
+.recipe{background:var(--bg);max-width:1100px;margin:0 auto;border-radius:clamp(0px,2vw,26px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.r-hero{position:relative;aspect-ratio:21/9;min-height:300px;background:#222;color:#fff}
+.r-hero img,.r-hero canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.72))}
+.r-hero-text{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:clamp(18px,3.5vw,40px);display:grid;gap:8px;max-width:760px}
+.r-hero-text .eyebrow{color:#ffd88a}
+.r-hero h2{font-size:clamp(30px,4.6vw,54px);font-weight:900;color:#fff}
+.r-hero p{color:rgba(255,255,255,.88);font-size:16px}
+.credit{position:absolute;right:14px;bottom:10px;z-index:1;font-size:11.5px;color:rgba(255,255,255,.8);max-width:45%;text-align:right}
+.credit a{color:inherit}
+.close{position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:#1c1b18;cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.close svg{width:20px;height:20px}
+.r-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line);background:var(--surface)}
+.r-facts div{padding:16px clamp(14px,2.5vw,28px);border-right:1px solid var(--line);display:grid;gap:2px;min-width:0}
+.r-facts div:last-child{border-right:0}
+.r-facts span{font-size:12px;color:var(--muted);letter-spacing:.08em}
+.r-facts b{font-family:var(--serif);font-size:18px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.r-body{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(20px,4vw,48px);padding:clamp(18px,3.5vw,40px)}
+.r-prep{align-self:start;position:sticky;top:16px;background:var(--surface);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.r-prep-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.r-prep h3{font-size:22px}
+.progress{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:5px;border-radius:999px;background:var(--surface-2);overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.r-prep h4{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.14em;color:var(--accent);margin:16px 0 4px}
+.checklist{list-style:none;margin:0;padding:0}
+.checklist label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.checklist li:last-child label{border-bottom:0}
+.checklist input{margin-top:5px;width:17px;height:17px;accent-color:var(--accent);flex:none}
+.checklist .q{margin-left:auto;color:var(--muted);font-size:14px;text-align:right;font-variant-numeric:tabular-nums;padding-left:10px}
+.checklist input:checked ~ span{text-decoration:line-through;opacity:.5}
+.r-main{display:grid;gap:34px;min-width:0;align-content:start}
+.sec-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.sec-title h3{font-size:26px}
+.sec-title small{color:var(--muted);font-size:14px}
+.tips{background:var(--yolk-soft);border-radius:20px;padding:20px 22px}
+.tips h3{font-size:20px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tips h3 svg{width:22px;height:22px;color:var(--yolk)}
+.tips ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:4px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;cursor:pointer;padding:16px 8px 16px 0;border-bottom:1px solid var(--line);transition:opacity .2s}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--serif);font-weight:900;font-size:30px;line-height:1;color:var(--accent);padding-top:2px}
+.steps li.done{opacity:.4}
+.steps li.done::before{content:"✓";color:var(--muted)}
+.steps li span{font-size:16.5px;line-height:1.8}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skill{background:var(--accent-soft);color:var(--ink);border-radius:999px;padding:5px 14px;font-size:14px}
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.ref{display:grid;gap:3px;padding:14px 16px;border:1px solid var(--line);border-radius:16px;text-decoration:none;color:var(--ink);background:var(--surface);transition:border-color .15s,transform .15s}
+.ref:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ref b{font-size:15px;display:flex;justify-content:space-between;gap:8px}
+.ref b::after{content:"↗";color:var(--accent)}
+.ref span{color:var(--muted);font-size:13px;line-height:1.5}
+.note{color:var(--muted);font-size:13px}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .mosaic{aspect-ratio:1.4/1}
+  .stamp{left:12px;top:12px}
+  .feature{grid-template-columns:minmax(0,1fr)}
+  .feature .media{min-height:0;aspect-ratio:16/10}
+  .band-head{grid-template-columns:minmax(0,1fr)}
+  .r-body{grid-template-columns:minmax(0,1fr)}
+  .r-prep{position:static}
+  .r-hero{aspect-ratio:4/3;min-height:0}
+  .r-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r-facts div:nth-child(2){border-right:0}
+  .r-facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .nav-links{display:none}
+  .search{padding-left:14px}
+  .btn{padding:10px 16px}
+  .credit{display:none}
+}
+@media (max-width:640px){
+  .dishes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * clamp(18px,2.6vw,28px));padding:2px clamp(18px,2.6vw,28px) 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .dishes::-webkit-scrollbar{display:none}
+  .dish{flex:0 0 80%;scroll-snap-align:center}
+  .stage-info h3{font-size:22px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}
+  .card{gap:8px}
+  .card p{display:none}
+  .card h4{font-size:16px}
+  .card .media{border-radius:14px}
+  .badge{font-size:11.5px;padding:3px 8px;top:8px;left:8px}
+  .meta{font-size:12.5px;gap:4px 10px}
+  .feature{border-radius:20px}
+  .tier-head h3{font-size:21px}
+  .status-card{padding:18px}
+  .r-hero h2{font-size:30px}
+  .steps li{grid-template-columns:40px minmax(0,1fr);gap:10px}
+  .steps li::before{font-size:24px}
+  .steps li span{font-size:16px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+  <nav class="nav">
+    <a class="logo" href="#top" id="top">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5M16 7c0-1.5 1-2 1-3.5"/></svg></span>
+      食材料理簿
+    </a>
+    <div class="nav-right"><div class="nav-links"><a href="#path">新手主菜菜單</a><a href="#results">找料理</a><a href="#basics">新手基本功</a></div><button class="theme-btn" id="themeBtn" type="button" aria-label="切換深色／淺色模式"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span id="themeLabel">深色</span></button></div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">新手友善　由簡單到困難</span>
+      <h1>冰箱裡有什麼，<br><em>就煮什麼。</em></h1>
+      <p class="hero-lead">輸入一樣食材，就能看到可以做的家常菜、要準備的材料，還有一步一步的白話做法和防失敗重點。</p>
+      <form class="search" id="searchForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label for="q" hidden>食材</label>
+        <input id="q" name="q" type="search" placeholder="例如：大白菜、雞蛋、茄子" autocomplete="off" value="大白菜">
+        <button class="btn" type="submit">找料理</button>
+      </form>
+      <div>
+        <div class="chips-label">常見食材</div>
+        <div class="chips" id="chips"></div>
+      </div>
+    </div>
+    <div class="mosaic" id="mosaic" aria-hidden="true"></div>
+  </header>
+</div>
+
+<section class="wrap path" id="path">
+  <div class="path-head">
+    <div>
+      <span class="eyebrow">主菜新手菜單</span>
+      <h2>主菜新手之路</h2>
+      <p>從不會失敗的蛋料理開始，一關一關學會煎肉、調醬汁、燉煮。每關用到上一關學會的技巧，照順序做最容易成功。一週做 1–2 道，大約兩個月就能端出請客菜。</p>
+    </div>
+    <div class="status-card" id="statusCard"></div>
+  </div>
+  <div class="stages" id="stages"></div>
+  <p class="path-note" id="pathNote"></p>
+</section>
+
+<main class="wrap results" id="results"></main>
+
+<div class="wrap">
+  <section class="ai-box" id="aiBox" hidden>
+    <h3 id="aiTitle">想要更多做法？</h3>
+    <p id="aiNote">Claude 會依你輸入的食材，再建議幾道適合新手的料理，格式和上面一樣。第一次使用時會詢問是否允許。</p>
+    <div class="ai-row">
+      <button class="btn" id="aiBtn" type="button">請 Claude 再想幾道</button>
+      <span class="status" id="aiStatus"></span>
+    </div>
+    <div id="aiResults"></div>
+  </section>
+</div>
+
+<section class="band" id="basics">
+  <div class="wrap">
+    <div class="band-head">
+      <div><span class="eyebrow">Kitchen basics</span><h2>新手廚房基本功</h2></div>
+      <p>開火之前先看過一次。這幾件事做到了，大部分的家常菜都不容易失敗。</p>
+    </div>
+    <div class="basics" id="basicsGrid"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>食材料理簿・家常菜新手指南</span>
+    <span>照片來自 Wikimedia Commons 與愛料理 iCook，作者與授權標示於各食譜頁。</span>
+  </footer>
+</div>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <article class="recipe" id="panel"></article>
+</div>
+
+<script>
+// 食材別名：搜尋時用來對應
+const ALIASES = {
+  "大白菜": ["白菜","結球白菜","山東白菜","包心白菜","天津白菜","黃芽白","napa","napa cabbage","chinese cabbage","wombok"],
+  "高麗菜": ["甘藍","捲心菜","包菜","包心菜","洋白菜","cabbage"],
+  "雞蛋": ["蛋","雞卵","egg","eggs"],
+  "番茄": ["蕃茄","西紅柿","小番茄","牛番茄","tomato","tomatoes"],
+  "豆腐": ["板豆腐","嫩豆腐","tofu"],
+  "馬鈴薯": ["土豆","洋芋","potato","potatoes"],
+  "茄子": ["eggplant","aubergine"],
+  "白蘿蔔": ["蘿蔔","菜頭","daikon","radish"],
+  "洋蔥": ["onion","onions"],
+  "雞肉": ["雞","雞腿","雞胸","雞胸肉","雞腿肉","chicken"],
+  "豬肉": ["豬絞肉","絞肉","肉末","肉燥","排骨","五花肉","豬","pork","mince"],
+  "紅蘿蔔": ["胡蘿蔔","carrot","carrots"],
+  "牛肉": ["牛","牛腩","牛肉片","beef"]
+};
+const CHIPS = ["大白菜","高麗菜","雞蛋","番茄","豆腐","馬鈴薯","茄子","白蘿蔔","洋蔥","紅蘿蔔","雞肉","豬肉","牛肉"];
+
+// n 名稱｜k 主要食材｜lv 難度1-5｜t 分鐘｜wait 額外等待｜s 人份｜d 介紹
+// ing 主材料｜sea 調味料｜tools 廚具｜steps 步驟｜fail 防失敗重點｜sk 練到的技巧｜art 插圖(v 容器, st 樣式, c 顏色)
+const RECIPES = [
+{id:"garlic-napa",n:"蒜炒大白菜",k:["大白菜"],lv:1,t:10,s:2,
+ d:"最快上手的一道，爽脆帶甜，白飯殺手。",
+ ing:[["大白菜","1/4 顆（約 400g）"],["蒜頭","3 瓣"]],
+ sea:[["食用油","1 大匙"],["鹽","1/2 小匙"],["白胡椒","少許"]],
+ tools:["炒鍋","菜刀、砧板"],
+ steps:["白菜洗淨，把白色的菜梗和綠色的菜葉分開，切成約 3 公分的片；蒜頭用刀面拍扁再切碎。","鍋子開中小火，倒油，放入蒜末炒約 30 秒，聞到香味就好，不要炒到變黑。","轉大火，先放菜梗炒約 2 分鐘，炒到邊緣變半透明。","再放菜葉炒 1 分鐘，撒鹽拌勻。","菜葉一變軟就關火盛盤，撒一點白胡椒。"],
+ fail:["菜梗比菜葉難熟，一定要先下梗、後下葉，才不會梗還硬、葉已爛。","蒜末容易焦，焦了會苦；聞到香味就要進行下一步。"],
+ sk:["爆香","大火快炒"],
+ art:{v:"plate",st:"shreds",c:["#e4ecc2","#f6f3e2","#efe2b0"]}},
+
+{id:"vinegar-napa",n:"醋溜白菜",k:["大白菜"],lv:2,t:15,s:2,
+ d:"酸香微辣的北方家常菜，很開胃。",
+ ing:[["大白菜梗","半顆的份量（約 500g）"],["乾辣椒","3–4 根"],["蒜頭","2 瓣"]],
+ sea:[["白醋或烏醋","2 大匙"],["醬油","1 大匙"],["糖","1 小匙"],["太白粉","1 大匙＋水 2 大匙"],["食用油","1.5 大匙"]],
+ tools:["炒鍋","小碗 2 個"],
+ steps:["菜梗斜著切成薄片（刀傾斜約 45 度），片越薄越容易入味。","醋、醬油、糖先在小碗裡拌好；太白粉加水在另一個碗拌勻。","中小火熱油，炒香蒜片和剪成段的乾辣椒。","轉大火放入菜梗，炒 2 分鐘到稍微變軟。","把調好的醬汁沿著鍋邊倒入，翻炒 30 秒。","太白粉水再攪一下（會沉底）倒入，拌到湯汁變稍微濃稠就起鍋。"],
+ fail:["所有醬汁「先調好」再開火，炒的時候就不會手忙腳亂。","太白粉水每次倒之前都要再攪一下，不然粉沉在碗底會結塊。"],
+ sk:["斜刀片","調醬汁","勾芡"],
+ art:{v:"plate",st:"slices",c:["#f1eac2","#c8452d","#8a5a2b"]}},
+
+{id:"napa-tofu-soup",n:"白菜豆腐湯",k:["大白菜","豆腐"],lv:1,t:20,s:3,
+ d:"清甜暖胃，一個鍋就能完成，幾乎不會失敗。",
+ ing:[["大白菜","1/4 顆"],["豆腐（板豆腐或嫩豆腐）","1 盒"],["薑","2 片"],["蔥","1 根"]],
+ sea:[["水或高湯","800 ml"],["鹽","1 小匙"],["白胡椒","少許"],["香油","幾滴"]],
+ tools:["湯鍋"],
+ steps:["白菜切大片，豆腐切 2 公分方塊，蔥切成蔥花。","鍋裡放水（或高湯）和薑片，大火煮滾。","先放菜梗煮 3 分鐘，再放菜葉。","輕輕放入豆腐，轉小火煮 5 分鐘。","加鹽和白胡椒，先試一口再決定要不要多加；關火後撒蔥花、滴香油。"],
+ fail:["放豆腐後改小火，大火滾會把豆腐沖破。","鹽分兩次加，先少放、試味道，比較不會太鹹。"],
+ sk:["試味道","火候控制"],
+ art:{v:"bowl",st:"soup",c:["#f1ead0","#fbfaf3","#7cae5a"]}},
+
+{id:"kaiyang-napa",n:"開陽白菜（蝦米白菜）",k:["大白菜"],lv:2,t:20,s:3,
+ d:"用蝦米爆香再燜白菜，台菜館的經典家常菜。",
+ ing:[["大白菜","半顆"],["蝦米","1 大匙（約 15g）"],["蒜頭","2 瓣"],["紅蘿蔔","一小段（配色用，可省）"]],
+ sea:[["醬油","1 小匙"],["鹽","1/2 小匙"],["糖","1/4 小匙"],["泡蝦米的水","100 ml"],["食用油","1 大匙"]],
+ tools:["炒鍋（有鍋蓋）"],
+ steps:["蝦米用溫水泡 10 分鐘，撈起瀝乾，泡過的水留著。","白菜切大片，紅蘿蔔切細絲，蒜切碎。","中小火熱油，放蝦米炒到香氣出來，再放蒜末。","放入菜梗和紅蘿蔔絲，翻炒 2 分鐘。","放菜葉、蝦米水、醬油、鹽、糖，蓋上鍋蓋燜 5 分鐘。","打開鍋蓋，把湯汁稍微煮少一點就完成。"],
+ fail:["蝦米一定要先炒香，這是整道菜的味道來源。","白菜本身會出很多水，不需要再另外加水。"],
+ sk:["乾貨泡發","燜煮"],
+ art:{v:"plate",st:"stirfry",c:["#f0e9c3","#e58a4a","#e0b872"]}},
+
+{id:"napa-pork-hotpot",n:"千層白菜豬肉鍋",k:["大白菜","豬肉"],lv:3,t:35,s:3,
+ d:"白菜和肉片疊起來排進鍋裡，看起來很厲害其實不難。",
+ ing:[["大白菜","半顆"],["豬五花火鍋肉片","300g"],["鴻喜菇或金針菇","1 包"],["蔥","1 根"]],
+ sea:[["水","600 ml"],["醬油","2 大匙"],["味醂","1 大匙"],["鹽","適量"],["柚子醋（沾醬，可省）","適量"]],
+ tools:["淺一點的鍋或砂鍋"],
+ steps:["白菜一片片剝下洗淨。一片白菜、一片肉片交錯疊起來，疊 4–5 層。","把疊好的白菜肉片，橫切成約 5 公分寬的段。","切面朝上，從鍋子外圈往內，一段段直立緊密地排好。","空隙塞入菇類，倒入水、醬油、味醂。","蓋上鍋蓋，中火煮滾後轉小火煮 15 分鐘，確認肉片全部變白熟透。","撒蔥花，可以沾柚子醋吃。"],
+ fail:["排得越緊越好，煮完才不會散開。","肉片要看到完全沒有粉紅色才算熟。"],
+ sk:["擺盤","小火慢煮"],
+ art:{v:"pot",st:"layers",c:["#f3efd9","#d99c8a","#9ab86a"]}},
+
+{id:"napa-braise",n:"白菜滷",k:["大白菜","雞蛋"],lv:3,t:45,s:4,
+ d:"台式古早味，炸蛋酥讓白菜吸飽香氣。",
+ ing:[["大白菜","1 顆（約 1.2kg）"],["雞蛋","2 顆"],["乾香菇","4 朵"],["蝦米","1 大匙"],["紅蘿蔔","1/3 根"],["扁魚乾","2 片（可省，但更香）"]],
+ sea:[["醬油","1 大匙"],["鹽","1 小匙"],["白胡椒","1/2 小匙"],["烏醋","1 大匙"],["水","300 ml"],["食用油","約 150 ml（炸蛋酥用）"]],
+ tools:["炒鍋","濾網或漏勺","湯鍋"],
+ steps:["白菜切大塊；香菇、蝦米泡軟，香菇切絲；紅蘿蔔切片。","（有扁魚的話）用小火把扁魚煎到金黃酥脆，撈起壓碎。","把油加熱，拿一小滴蛋液滴下去，會馬上浮起冒泡就是溫度夠了。蛋打散，透過漏勺慢慢淋進油裡，炸成金黃蛋酥撈起。","鍋子只留一點油，炒香香菇、蝦米、紅蘿蔔。","放入白菜翻炒，加水、醬油、鹽，放扁魚碎和一半的蛋酥。","蓋鍋小火燜 20 分鐘到白菜變軟，加烏醋、白胡椒，鋪上剩下的蛋酥。"],
+ fail:["油溫不夠蛋酥會變成一坨蛋，先用一滴蛋液測油溫。","熱油遇水會噴，放材料前確認都已經瀝乾。"],
+ sk:["測油溫","炸蛋酥","燜煮"],
+ art:{v:"pot",st:"stew",c:["#e7d6a3","#f0c24a","#8a5a2b"]}},
+
+{id:"napa-dumpling",n:"白菜豬肉水餃",k:["大白菜","豬肉"],lv:4,t:90,s:4,
+ d:"自己調餡、包餃子，一次包多一點可以冷凍。",
+ ing:[["大白菜","半顆（約 600g）"],["豬絞肉","400g"],["市售水餃皮","約 50 張"],["蔥","2 根"],["薑","1 小塊"]],
+ sea:[["鹽","1 小匙＋殺青用 1 小匙"],["醬油","2 大匙"],["糖","1 小匙"],["白胡椒","1/2 小匙"],["香油","1 大匙"],["水","60 ml（做蔥薑水）"]],
+ tools:["大碗","乾淨的布或紗布","湯鍋"],
+ steps:["白菜切成細末，撒 1 小匙鹽拌勻，放 15 分鐘讓它出水，再用布包起來用力擠乾。","蔥、薑切碎，泡在 60 ml 水裡，就是蔥薑水。","絞肉加鹽、醬油、糖、白胡椒，用筷子往同一個方向攪拌；蔥薑水分 3 次加入，攪到肉變得黏稠。","加入擠乾的白菜和香油拌勻，放冰箱 20 分鐘會比較好包。","水餃皮中間放 1 小匙餡，對折，用手指把邊緣捏緊。","水滾後放入水餃，再滾起來時加一碗冷水，重複 2 次；水餃浮起、皮鼓起來就熟了。"],
+ fail:["白菜沒擠乾，餡會出水、水餃容易破。","餡不要放太多，新手 1 小匙剛好；邊緣可沾一點水幫助黏合。"],
+ sk:["殺青去水","調肉餡","包餃子"],
+ art:{v:"plate",st:"dumpling",c:["#f5efdf","#e8dcc0","#6f9a4b"]}},
+
+{id:"lion-head",n:"紅燒獅子頭",k:["豬肉","大白菜"],lv:4,t:80,s:4,
+ d:"大肉丸和白菜一起燉，白菜吸滿肉汁。",
+ ing:[["豬絞肉（肥瘦約 3:7）","500g"],["大白菜","半顆"],["雞蛋","1 顆"],["蔥","2 根"],["薑","1 小塊"]],
+ sea:[["醬油","3 大匙"],["米酒","2 大匙"],["糖","1 小匙"],["太白粉","2 大匙"],["鹽","1/2 小匙"],["白胡椒","少許"],["水","600 ml"],["食用油","適量（煎肉丸用）"]],
+ tools:["深鍋或砂鍋","平底鍋"],
+ steps:["蔥、薑切碎。","絞肉加鹽、醬油 1 大匙、米酒、白胡椒、蛋，往同一方向攪到有黏性，再加蔥薑和太白粉拌勻。","手沾水，把肉餡在兩手間來回拍打幾次，捏成 4–6 顆大肉丸。","平底鍋放多一點油，中火把肉丸每一面煎到金黃定型（裡面還沒熟沒關係）。","鍋底鋪一層白菜，放上肉丸，再蓋一層白菜葉。","加水、醬油 2 大匙、糖，煮滾後轉小火燉 40 分鐘。"],
+ fail:["肉丸煎的時候先別急著翻，底部定型後再翻才不會散。","新手用煎的比用炸的安全，效果差不多。"],
+ sk:["調肉餡","煎定型","燉煮"],
+ art:{v:"pot",st:"balls",c:["#8a4a1f","#f0e8c4","#b8702a"]}},
+
+{id:"kimchi",n:"韓式辣白菜泡菜",k:["大白菜"],lv:5,t:60,wait:"＋醃 4–6 小時、發酵 2–5 天",s:8,
+ d:"自己醃泡菜，需要時間等待，但吃得到最新鮮的味道。",
+ ing:[["大白菜","1 顆（約 1.5kg）"],["白蘿蔔","1/4 根"],["韭菜或蔥","1 小把"],["蒜頭","1 整顆"],["薑","1 小塊"],["蘋果或梨","半顆"]],
+ sea:[["粗鹽","100g（醃菜用）"],["韓國辣椒粉","4–5 大匙"],["魚露","3 大匙"],["糖","1 大匙"],["糯米粉","1 大匙＋水 200 ml"]],
+ tools:["大盆","塑膠手套","可密封的玻璃罐","果汁機或磨泥器"],
+ steps:["白菜縱切成 4 瓣，每一層葉子之間都抹上粗鹽，放 4–6 小時，中間翻面一次。","糯米粉加水用小火煮成稀糊，放涼。","蒜、薑、蘋果打成泥，和糯米糊、辣椒粉、魚露、糖拌成醬。","白蘿蔔切絲、韭菜切段，拌進醬裡。","白菜用清水沖洗 3 次，洗掉多餘的鹽，擠乾。","戴手套把醬一層層抹進每片葉子之間。","白菜捲起放進乾淨罐子壓緊，室溫放 1–2 天出現酸味後，放冰箱繼續發酵。"],
+ fail:["容器、手套、刀都要乾淨沒有油，泡菜才不會發霉。","白菜要沖洗掉多餘鹽分，不然會太鹹。"],
+ sk:["鹽漬","發酵"],
+ art:{v:"plate",st:"kimchi",c:["#d8452b","#f2e2c4","#b3321f"]}},
+
+{id:"garlic-cabbage",n:"蒜炒高麗菜",k:["高麗菜"],lv:1,t:10,s:2,
+ d:"台灣便當店的招牌青菜，脆甜好吃。",
+ ing:[["高麗菜","1/4 顆"],["蒜頭","3 瓣"],["辣椒","1 根（可省）"]],
+ sea:[["食用油","1 大匙"],["鹽","1/2 小匙"],["水","2 大匙"]],
+ tools:["炒鍋（有鍋蓋）"],
+ steps:["高麗菜用手剝成一口大小，洗淨後把水瀝乾。","中小火熱油，炒香蒜片和辣椒。","轉大火，放入高麗菜快速翻炒 1 分鐘。","沿著鍋邊倒 2 大匙水，蓋上鍋蓋燜 30 秒。","打開鍋蓋撒鹽拌勻，菜一變軟就起鍋。"],
+ fail:["菜要瀝乾，帶太多水下鍋會噴油，也會變成「煮」青菜。","燜太久會變黃變軟，30 秒就夠。"],
+ sk:["爆香","嗆水燜"],
+ art:{v:"plate",st:"chunks",c:["#b9d98a","#e8f0c8","#d8402b"]}},
+
+{id:"shredded-cabbage",n:"手撕包菜（醋辣炒高麗菜）",k:["高麗菜","豬肉"],lv:2,t:15,s:2,
+ d:"湘菜館的人氣菜，微焦、帶醋香。",
+ ing:[["高麗菜","1/4 顆"],["五花肉片","80g（可省）"],["乾辣椒","4 根"],["蒜頭","3 瓣"],["花椒","1 小匙（可省）"]],
+ sea:[["醬油","1 大匙"],["烏醋","1 大匙"],["糖","1/2 小匙"],["鹽","少許"],["食用油","1 大匙"]],
+ tools:["炒鍋"],
+ steps:["高麗菜用手撕成大片，粗梗用刀背拍一下。","鍋中不放油，先把五花肉片煎到出油。","放花椒、乾辣椒、蒜片，用小火炒香。","轉最大火放入高麗菜，快炒 1 分半，炒到邊緣有點焦。","沿鍋邊淋醋，再加醬油、糖、鹽拌勻起鍋。"],
+ fail:["火一定要大，才炒得出香氣和微焦邊。","乾辣椒用小火炒，大火一下就黑了。"],
+ sk:["煸出豬油","大火快炒"],
+ art:{v:"plate",st:"chunks",c:["#a9cc78","#c8452d","#6b3b24"]}},
+
+{id:"tw-pickle",n:"台式泡菜",k:["高麗菜","紅蘿蔔"],lv:2,t:20,wait:"＋冷藏一晚",s:6,
+ d:"臭豆腐旁邊那一味，做一次可以吃一週。",
+ ing:[["高麗菜","半顆"],["紅蘿蔔","1/3 根"],["辣椒","1 根"],["蒜頭","3 瓣"]],
+ sea:[["鹽","1 大匙（殺青）"],["白醋","5 大匙"],["糖","5 大匙"],["冷開水","100 ml"]],
+ tools:["大碗","密封盒"],
+ steps:["高麗菜撕成小片，紅蘿蔔切片，辣椒切段，蒜切片。","高麗菜和紅蘿蔔加 1 大匙鹽抓一抓，放 30 分鐘讓它出水。","用冷開水沖掉鹽分，再用力擠乾。","白醋、糖、冷開水攪拌到糖溶化，就是醃汁。","全部材料放進密封盒，倒入醃汁拌勻。","放冰箱一晚就能吃。"],
+ fail:["沖洗要用冷開水，不要用生水，比較不容易壞。","醋和糖 1:1，覺得太酸可以多加一點糖。"],
+ sk:["殺青去水","醃漬"],
+ art:{v:"bowl",st:"salad",c:["#dfe9b8","#e98a3c","#d8402b"]}},
+
+{id:"cabbage-rice",n:"高麗菜飯",k:["高麗菜","豬肉"],lv:3,t:40,s:4,
+ d:"炒好料再放進電鍋，一鍋就是一餐。",
+ ing:[["白米","2 杯（電鍋量米杯）"],["高麗菜","1/4 顆"],["豬肉絲","150g"],["乾香菇","4 朵"],["蝦米","1 大匙"],["紅蘿蔔","1/4 根"],["紅蔥頭","3 顆（或 1/4 顆洋蔥）"]],
+ sea:[["醬油","2 大匙"],["鹽","1/2 小匙"],["白胡椒","少許"],["食用油","1 大匙"],["水","約 1.8 杯"]],
+ tools:["炒鍋","電鍋或電子鍋"],
+ steps:["米洗好瀝乾；香菇、蝦米泡軟切碎；高麗菜切小片；紅蘿蔔切絲；紅蔥頭切片。","熱油炒香紅蔥頭，放肉絲炒到變色。","加香菇、蝦米、紅蘿蔔炒香，淋醬油。","放入米一起炒 2 分鐘，讓米沾上油香。","放入高麗菜稍微炒一下，全部倒進電鍋內鍋，加水。","按下煮飯，跳起來後再燜 10 分鐘，加鹽、白胡椒拌勻。"],
+ fail:["水要比平常煮飯少一點，因為高麗菜會出水，不然飯會太爛。"],
+ sk:["炒香配料","電鍋煮飯"],
+ art:{v:"bowl",st:"rice",c:["#f3ead0","#a9cc78","#8a5a2b"]}},
+
+{id:"cabbage-rolls",n:"番茄燉高麗菜捲",k:["高麗菜","豬肉","番茄","洋蔥"],lv:4,t:60,s:4,
+ d:"菜葉包肉餡，在番茄湯裡慢慢燉熟。",
+ ing:[["高麗菜","大葉片 8 片"],["豬絞肉","300g"],["洋蔥","半顆"],["雞蛋","1 顆"],["麵包粉","3 大匙"],["番茄","2 顆"]],
+ sea:[["鹽","1 小匙"],["黑胡椒","少許"],["番茄醬","2 大匙"],["水","400 ml"],["牙籤","8 支"]],
+ tools:["湯鍋","平底深鍋"],
+ steps:["高麗菜挖掉菜心，整顆放進滾水燙，葉片變軟就一片片剝下，把粗梗削薄。","洋蔥切碎，和絞肉、蛋、麵包粉、鹽、胡椒攪拌到有黏性。","每片葉子放一份肉餡，從梗那端捲起，左右兩側往內折，捲緊用牙籤固定。","番茄切丁放入鍋中，加番茄醬和水煮滾。","菜捲接口朝下排進鍋裡，蓋鍋小火燉 30 分鐘。","拿掉牙籤盛盤，淋上番茄湯汁。"],
+ fail:["菜捲接口朝下、排得緊密，燉煮時就不會散開。"],
+ sk:["汆燙","包捲"],
+ art:{v:"pot",st:"rolls",c:["#b9d98a","#d4482f","#e8d9a8"]}},
+
+{id:"tomato-egg",n:"番茄炒蛋",k:["番茄","雞蛋"],lv:1,t:10,s:2,
+ d:"最經典的家常菜，酸甜滑嫩，新手第一道必學。",
+ ing:[["番茄","2 顆"],["雞蛋","3 顆"],["蔥","1 根"]],
+ sea:[["食用油","2 大匙"],["鹽","1/2 小匙"],["糖","1 小匙"],["番茄醬","1 大匙（可省）"],["水","3 大匙"]],
+ tools:["炒鍋","碗"],
+ steps:["番茄切塊，蔥切段，蛋加一小撮鹽打散。","中火熱 1.5 大匙油，倒入蛋液，蛋一半凝固（還有點濕）就先盛起來。","同一個鍋子補一點油，炒蔥白，再放番茄炒到出汁變軟。","加糖、鹽、番茄醬和水，煮到湯汁變濃。","把蛋倒回去拌一下，撒蔥綠就起鍋。"],
+ fail:["蛋先盛起、最後才回鍋，蛋才會滑嫩不老。","番茄要炒到出汁，醬汁才會紅又濃。"],
+ sk:["炒蛋","分次下鍋"],
+ art:{v:"plate",st:"egg",c:["#f2c230","#d4412c","#6ea34a"]}},
+
+{id:"tomato-egg-soup",n:"番茄蛋花湯",k:["番茄","雞蛋"],lv:1,t:15,s:3,
+ d:"10 多分鐘就有一碗熱湯，蛋花漂亮成片。",
+ ing:[["番茄","2 顆"],["雞蛋","2 顆"],["蔥","1 根"]],
+ sea:[["水","800 ml"],["鹽","1 小匙"],["糖","1/2 小匙"],["香油","幾滴"],["太白粉水","1 大匙粉＋2 大匙水（可省）"]],
+ tools:["湯鍋"],
+ steps:["番茄切塊，蔥切蔥花，蛋打散。","鍋裡放一點油，把番茄炒軟出汁。","加水煮滾，轉小火煮 5 分鐘。","加鹽、糖調味；想要湯濃一點就倒入太白粉水。","關小火，把蛋液一圈一圈細細倒入，先不要攪。","等 10 秒再輕輕推一下，撒蔥花、滴香油。"],
+ fail:["蛋液倒下去先別攪，蛋花才會成片、不會變碎渣。"],
+ sk:["蛋花","勾芡"],
+ art:{v:"bowl",st:"soup",c:["#e2583a","#f4c63a","#6ea34a"]}},
+
+{id:"plum-tomato",n:"梅粉番茄",k:["番茄"],lv:1,t:5,s:2,
+ d:"不用開火的冰涼小點，夏天很適合。",
+ ing:[["牛番茄或小番茄","2 顆／一盒"]],
+ sea:[["梅子粉","1 小匙"],["糖","1/2 小匙（可省）"]],
+ tools:["刀、砧板","保鮮盒"],
+ steps:["番茄洗乾淨，用紙巾擦乾。","切成一口大小。","撒上梅子粉和糖，輕輕拌勻。","放冰箱 15 分鐘更好吃。"],
+ fail:["番茄一定要擦乾，梅粉才會黏在上面。"],
+ sk:["刀工"],
+ art:{v:"plate",st:"chunks",c:["#d8392a","#f2e4d0","#8a2a3a"]}},
+
+{id:"tomato-beef",n:"番茄燉牛肉",k:["番茄","牛肉","洋蔥","紅蘿蔔","馬鈴薯"],lv:4,t:120,s:4,
+ d:"燉到軟嫩的牛腩配番茄湯汁，拌飯拌麵都好吃。",
+ ing:[["牛腩","600g"],["番茄","4 顆"],["洋蔥","1 顆"],["紅蘿蔔","1 根"],["馬鈴薯","1 顆"],["薑","3 片"]],
+ sea:[["番茄醬","3 大匙"],["醬油","2 大匙"],["糖","1 大匙"],["米酒","2 大匙"],["鹽","適量"],["水","800 ml"]],
+ tools:["湯鍋或鑄鐵鍋"],
+ steps:["牛腩切 4 公分塊，放入冷水鍋，煮滾後撈出沖洗乾淨（汆燙去血水）。","番茄一半切塊、一半切碎；洋蔥、紅蘿蔔、馬鈴薯切塊。","熱油炒洋蔥和薑片，放牛腩煎到表面微焦，淋米酒。","加入碎番茄和番茄醬，炒到醬汁變紅變濃。","加水、醬油、糖，煮滾後轉小火燉 60 分鐘。","放入紅蘿蔔、馬鈴薯、番茄塊，再燉 30 分鐘，加鹽調味。"],
+ fail:["牛腩要冷水下鍋汆燙，湯才不會有腥味和浮渣。","燉的時候偶爾看一下水量，快乾了就補熱水。"],
+ sk:["汆燙","燉煮"],
+ art:{v:"pot",st:"stew",c:["#c63f28","#7a3b22","#f09a3a"]}},
+
+{id:"steamed-egg",n:"滑嫩蒸蛋",k:["雞蛋"],lv:2,t:20,s:2,
+ d:"表面光滑像布丁，只要記住蛋和水的比例。",
+ ing:[["雞蛋","2 顆"],["蔥","少許"]],
+ sea:[["溫水或高湯","150 ml（蛋液的 1.5 倍）"],["鹽","1/4 小匙"],["醬油","1 小匙"],["香油","幾滴"]],
+ tools:["電鍋或蒸鍋","濾網","耐熱碗"],
+ steps:["蛋打散，加溫水和鹽，輕輕攪勻，不要打出太多泡泡。","用濾網把蛋液過濾到碗裡，撈掉表面泡泡。","碗上蓋一個盤子（防止水滴進去）。","電鍋外鍋放 1 杯水，鍋蓋夾一根筷子留縫，蒸 12–15 分鐘。","中間凝固、搖一搖像布丁就好了；淋醬油、香油，撒蔥花。"],
+ fail:["蛋:水 = 1:1.5，過濾、加蓋、鍋蓋留縫，四個步驟做到就不會坑坑洞洞。"],
+ sk:["蒸","比例"],
+ art:{v:"bowl",st:"steamed",c:["#f6d65a","#fbe9a8","#6ea34a"]}},
+
+{id:"radish-omelette",n:"菜脯蛋",k:["雞蛋"],lv:2,t:15,s:2,
+ d:"台式煎蛋，菜脯鹹香、蛋邊焦脆。",
+ ing:[["雞蛋","3 顆"],["碎菜脯（蘿蔔乾）","40g"],["蔥","1 根"]],
+ sea:[["食用油","2 大匙"],["白胡椒","少許"],["（菜脯已經很鹹，不用加鹽）",""]],
+ tools:["平底鍋"],
+ steps:["菜脯用清水泡 5 分鐘去掉一點鹹味，擠乾。","不放油，小火把菜脯炒乾炒香，放涼。","蛋打散，加菜脯、蔥花、白胡椒拌勻。","鍋裡多放一點油，倒入蛋液，中小火煎到底部金黃。","用鍋鏟把蛋切成 4 塊，一塊塊翻面，煎到兩面焦香。"],
+ fail:["整片翻很容易破，切成 4 塊再翻，新手也能成功。"],
+ sk:["煎蛋","翻面"],
+ art:{v:"plate",st:"omelette",c:["#e8a92c","#f4d05a","#6ea34a"]}},
+
+{id:"ramen-egg",n:"溏心蛋",k:["雞蛋"],lv:2,t:15,wait:"＋冷藏一晚",s:4,
+ d:"拉麵店的半熟醬油蛋，蛋黃像果醬。",
+ ing:[["雞蛋","4 顆（先放室溫）"]],
+ sea:[["醬油","4 大匙"],["味醂","3 大匙"],["水","150 ml"],["糖","1 小匙"]],
+ tools:["小湯鍋","湯匙","保鮮盒或夾鏈袋","計時器"],
+ steps:["醬油、味醂、水、糖煮滾後放涼，就是醃汁。","另一鍋水煮滾，用湯匙把室溫的蛋輕輕放進去。","計時 6 分 30 秒，中火保持小滾。","時間到立刻撈起泡冰水 5 分鐘，再剝殼。","蛋泡進醃汁，放冰箱一晚。"],
+ fail:["蛋要先回到室溫，冰蛋下鍋容易破、時間也會不準。","一定要用計時器，差 1 分鐘蛋黃就會全熟。"],
+ sk:["精準計時","醃漬"],
+ art:{v:"plate",st:"halfegg",c:["#f4f0e4","#f0a020","#b98a5a"]}},
+
+{id:"tamagoyaki",n:"玉子燒",k:["雞蛋"],lv:4,t:20,s:2,
+ d:"一層層捲起來的日式厚蛋，練手感的好題目。",
+ ing:[["雞蛋","4 顆"]],
+ sea:[["水","3 大匙"],["味醂","1 大匙"],["醬油","1 小匙"],["糖","1 小匙"],["鹽","一小撮"],["食用油","少許"]],
+ tools:["方形玉子燒鍋（或小平底鍋）","筷子","廚房紙巾"],
+ steps:["蛋和所有調味料打散，過濾一次口感更細。","鍋子燒熱，用沾油的紙巾抹一層薄油，轉中小火。","倒入約 1/4 蛋液鋪平，半凝固時從遠端往自己的方向捲起。","把蛋捲推回遠端，再抹油、倒下一層蛋液，抬起蛋捲讓蛋液流到下面。","重複到蛋液用完。","稍微放涼再切，切面比較漂亮。"],
+ fail:["火太大會起泡變硬，保持中小火。","每層在「還有點濕」的時候就捲，才黏得起來。"],
+ sk:["火候控制","捲蛋"],
+ art:{v:"plate",st:"tamago",c:["#f3c63c","#f7dc7a","#6b8f3a"]}},
+
+{id:"century-tofu",n:"皮蛋豆腐",k:["豆腐"],lv:1,t:5,s:2,
+ d:"不用開火，5 分鐘上桌的涼拌小菜。",
+ ing:[["嫩豆腐","1 盒"],["皮蛋","1–2 顆"],["蔥","1 根"],["柴魚片","少許（可省）"]],
+ sea:[["醬油膏","2 大匙"],["香油","1 小匙"],["糖","1/2 小匙"]],
+ tools:["盤子","小碗"],
+ steps:["豆腐倒扣在盤子上，倒掉多餘的水。","皮蛋剝殼切小塊，蔥切蔥花。","醬油膏、香油、糖拌成醬汁。","皮蛋放在豆腐上，淋醬汁，撒蔥花和柴魚片。"],
+ fail:["豆腐盒底部用刀劃一個小口，比較容易完整倒出來。"],
+ sk:["調醬汁"],
+ art:{v:"plate",st:"tofu",c:["#f8f4e6","#3b3a2a","#6ea34a"]}},
+
+{id:"homestyle-tofu",n:"家常豆腐",k:["豆腐","豬肉"],lv:3,t:25,s:3,
+ d:"豆腐煎到金黃再燒入味，外香內嫩。",
+ ing:[["板豆腐","1 盒"],["豬肉片","100g"],["青椒","半顆"],["紅蘿蔔","少許"],["木耳","2 朵"],["蒜頭","2 瓣"]],
+ sea:[["豆瓣醬","1 大匙"],["醬油","1 大匙"],["糖","1 小匙"],["水","100 ml"],["太白粉水","1 大匙粉＋2 大匙水"],["食用油","3 大匙"]],
+ tools:["平底鍋或炒鍋"],
+ steps:["豆腐切成約 1 公分厚的三角片，用紙巾吸乾水。","中火熱油，豆腐下鍋煎到兩面金黃，盛起。","留一點油，炒香蒜片和豆瓣醬，放肉片炒到變色。","加入紅蘿蔔、木耳、青椒拌炒。","放回豆腐，加醬油、糖、水，煮 2 分鐘讓豆腐吸汁。","倒入太白粉水，輕輕拌勻就起鍋。"],
+ fail:["豆腐要吸乾水再煎，比較不會噴油。","煎的時候別急著翻，底部變金黃後再翻才不會破。"],
+ sk:["煎豆腐","紅燒"],
+ art:{v:"plate",st:"cubes",c:["#e9b25a","#c84a2c","#6ea34a"]}},
+
+{id:"mapo-tofu",n:"麻婆豆腐",k:["豆腐","豬肉"],lv:3,t:20,s:3,
+ d:"麻、辣、燙的下飯神菜。",
+ ing:[["嫩豆腐","1 盒"],["豬絞肉","100g"],["蒜頭","2 瓣"],["薑","1 小塊"],["蔥","1 根"]],
+ sea:[["辣豆瓣醬","1.5 大匙"],["醬油","1 小匙"],["糖","1/2 小匙"],["花椒粉","1/2 小匙"],["水","150 ml"],["太白粉水","1 大匙粉＋2 大匙水"],["食用油","1 大匙"]],
+ tools:["炒鍋","湯鍋"],
+ steps:["豆腐切 2 公分方塊，放進加了一撮鹽的滾水燙 1 分鐘撈起（比較不容易碎）。","熱油把絞肉炒散，炒到乾香出油。","放蒜末、薑末、辣豆瓣醬，小火炒到油變紅。","加水、醬油、糖煮滾，放入豆腐，用鍋鏟背輕輕推，小火煮 3 分鐘。","太白粉水分 2–3 次倒入，醬汁變濃稠就停。","起鍋撒花椒粉和蔥花。"],
+ fail:["用「推」的不要用「翻」的，豆腐才會完整。","太白粉水分次加，才不會一次太稠變成糊。"],
+ sk:["炒出紅油","勾芡"],
+ art:{v:"plate",st:"cubes",c:["#c7361f","#f5ead2","#6ea34a"]}},
+
+{id:"sour-potato",n:"醋溜馬鈴薯絲",k:["馬鈴薯"],lv:2,t:15,s:2,
+ d:"清脆酸香，吃過會顛覆你對馬鈴薯的印象。",
+ ing:[["馬鈴薯","2 顆"],["青椒","半顆"],["乾辣椒","3 根"],["蒜頭","2 瓣"]],
+ sea:[["白醋","2 大匙"],["鹽","1/2 小匙"],["糖","少許"],["食用油","1 大匙"]],
+ tools:["炒鍋","刨絲器（沒有就用刀切）"],
+ steps:["馬鈴薯去皮切細絲，泡冷水洗掉澱粉，換水 2 次，瀝乾。","青椒切絲。","熱油爆香蒜和乾辣椒。","大火放入馬鈴薯絲快炒 1 分鐘，淋一半的醋。","加青椒絲、鹽、糖，再炒 1 分鐘，起鍋前淋剩下的醋。"],
+ fail:["洗掉澱粉才會脆、不黏鍋；新手用刨絲器最方便。"],
+ sk:["切絲","大火快炒"],
+ art:{v:"plate",st:"shreds",c:["#f2dc8a","#5f9e3f","#c8452d"]}},
+
+{id:"mash",n:"奶油馬鈴薯泥",k:["馬鈴薯"],lv:2,t:25,s:3,
+ d:"綿密滑順的配菜，配肉排最搭。",
+ ing:[["馬鈴薯","3 顆（約 500g）"]],
+ sea:[["奶油","30g"],["牛奶","80 ml（先溫熱）"],["鹽","1/2 小匙"],["黑胡椒","少許"]],
+ tools:["湯鍋","叉子或壓泥器"],
+ steps:["馬鈴薯去皮切大塊，放進冷水鍋，加一小撮鹽。","煮滾後轉中火煮 15 分鐘，叉子能輕鬆插入就好。","倒掉水，開小火把馬鈴薯的水氣炒乾約 1 分鐘。","趁熱壓成泥，加入奶油拌勻。","分次加入溫牛奶攪拌到滑順，加鹽、黑胡椒。"],
+ fail:["馬鈴薯要「冷水」下鍋，裡外才熟得一樣。","牛奶分次加，太稀就救不回來了。"],
+ sk:["水煮根莖類","壓泥"],
+ art:{v:"bowl",st:"mash",c:["#f4e2a2","#fbf1cc","#6b5a3a"]}},
+
+{id:"nikujaga",n:"馬鈴薯燉肉",k:["馬鈴薯","豬肉","洋蔥","紅蘿蔔"],lv:3,t:45,s:4,
+ d:"日本家庭料理，甜甜鹹鹹的醬汁很下飯。",
+ ing:[["馬鈴薯","2 顆"],["豬五花或牛肉片","200g"],["洋蔥","1 顆"],["紅蘿蔔","1 根"]],
+ sea:[["醬油","3 大匙"],["味醂","2 大匙"],["糖","1 大匙"],["米酒","2 大匙"],["水","400 ml"],["食用油","1 大匙"]],
+ tools:["湯鍋","烘焙紙或鋁箔紙"],
+ steps:["馬鈴薯、紅蘿蔔切塊，洋蔥切瓣。","熱油炒肉片到變色，加洋蔥炒軟。","加入馬鈴薯、紅蘿蔔拌炒 2 分鐘。","加水、米酒、糖、味醂，煮滾後撈掉浮沫。","加醬油，剪一張烘焙紙蓋在食材上，小火燉 20 分鐘。","拿掉紙，轉中火把湯汁煮到剩一半。"],
+ fail:["蓋一張紙（落蓋）讓湯汁循環，食材更入味、不易散。","馬鈴薯切大塊一點，才不會燉到化掉。"],
+ sk:["燉煮","收汁"],
+ art:{v:"bowl",st:"stew",c:["#e8b24e","#e8702a","#7a4a28"]}},
+
+{id:"croquette",n:"馬鈴薯可樂餅",k:["馬鈴薯","豬肉","洋蔥","雞蛋"],lv:4,t:60,s:4,
+ d:"外酥內綿，練習「裹粉油炸」的好料理。",
+ ing:[["馬鈴薯","3 顆"],["豬絞肉","150g"],["洋蔥","半顆"],["雞蛋","1 顆"],["麵粉","適量"],["麵包粉","適量"]],
+ sea:[["鹽","1/2 小匙"],["黑胡椒","少許"],["奶油","10g"],["炸油","約 500 ml"],["豬排醬","適量"]],
+ tools:["深鍋","三個淺盤"],
+ steps:["馬鈴薯去皮切塊蒸熟，壓成泥。","奶油炒洋蔥末和絞肉到熟，加鹽、胡椒，拌入馬鈴薯泥。","放涼後分成 8 份，捏成厚約 2 公分的橢圓餅，冰 20 分鐘定型。","依序沾麵粉 → 蛋液 → 麵包粉，輕輕壓緊。","油溫約 170°C（插入筷子冒出細小泡泡），每次放 2–3 個，炸 3 分鐘到金黃。","撈起瀝油，淋豬排醬，配高麗菜絲。"],
+ fail:["內餡已經熟了，炸到金黃就起鍋，炸太久會爆開。","一次不要放太多，油溫會掉、麵衣會吸油。"],
+ sk:["裹粉","油炸","判斷油溫"],
+ art:{v:"plate",st:"croquette",c:["#c98a2c","#e0a94a","#b9d98a"]}},
+
+{id:"cold-eggplant",n:"蒜泥涼拌茄子",k:["茄子"],lv:1,t:15,s:2,
+ d:"用蒸的最簡單，淋上蒜醬就很好吃。",
+ ing:[["茄子","2 條"],["蒜頭","4 瓣"],["蔥","1 根"],["辣椒","半根（可省）"]],
+ sea:[["醬油","2 大匙"],["烏醋","1 大匙"],["糖","1 小匙"],["香油","1 小匙"]],
+ tools:["電鍋或蒸鍋"],
+ steps:["茄子切成約 10 公分長段，再對半剖開。","皮朝下放入電鍋，外鍋半杯水，蒸 8–10 分鐘到變軟。","蒜、蔥、辣椒切碎，和所有調味料拌成醬汁。","茄子放涼後用手撕成條，淋上醬汁拌勻。"],
+ fail:["皮朝下蒸，比較能保住紫色。"],
+ sk:["蒸","調醬汁"],
+ art:{v:"plate",st:"strips",c:["#6b3a6a","#f2e4c8","#d8402b"]}},
+
+{id:"basil-eggplant",n:"塔香茄子",k:["茄子"],lv:2,t:15,s:2,
+ d:"九層塔香氣十足，台式熱炒店的味道。",
+ ing:[["茄子","2 條"],["九層塔","1 把"],["蒜頭","3 瓣"],["辣椒","1 根"]],
+ sea:[["醬油膏","1.5 大匙"],["糖","1 小匙"],["米酒","1 大匙"],["水","2 大匙"],["食用油","3 大匙"]],
+ tools:["炒鍋"],
+ steps:["茄子切成滾刀塊或長段。","中大火熱油，茄子皮朝下煎 1–2 分鐘到變軟，撈起。","留一點油，爆香蒜末和辣椒。","放回茄子，加醬油膏、糖、米酒、水快速拌炒。","關火前放九層塔，翻兩下就起鍋。"],
+ fail:["茄子先用多一點油煎過，才不會變成黑黑的顏色。","九層塔最後放，靠鍋子的熱度就夠了。"],
+ sk:["過油","爆香"],
+ art:{v:"plate",st:"chunks",c:["#5e2f63","#3f7a36","#d8402b"]}},
+
+{id:"yuxiang-eggplant",n:"魚香茄子",k:["茄子","豬肉"],lv:3,t:25,s:3,
+ d:"甜、酸、辣的川味燒茄子（沒有魚）。",
+ ing:[["茄子","2 條"],["豬絞肉","100g"],["蒜頭","3 瓣"],["薑","1 小塊"],["蔥","2 根"]],
+ sea:[["辣豆瓣醬","1 大匙"],["醬油","1 大匙"],["烏醋","1 大匙"],["糖","1 大匙"],["米酒","1 大匙"],["水","100 ml"],["太白粉水","1 大匙"],["食用油","3 大匙"]],
+ tools:["炒鍋"],
+ steps:["茄子切長條，泡鹽水 5 分鐘後擦乾。","中火把茄子煎到軟，盛起。","同一鍋炒絞肉到變色，加蒜、薑末和辣豆瓣醬炒出紅油。","加醬油、糖、米酒、水煮滾，放回茄子燒 2 分鐘。","沿鍋邊淋烏醋，倒入太白粉水，撒蔥花起鍋。"],
+ fail:["「魚香」是指糖和醋 1:1 的甜酸味，照比例就不會錯。"],
+ sk:["炒出紅油","紅燒"],
+ art:{v:"plate",st:"strips",c:["#5e2f63","#b8402a","#6ea34a"]}},
+
+{id:"radish-rib-soup",n:"白蘿蔔排骨湯",k:["白蘿蔔","豬肉"],lv:2,t:60,s:4,
+ d:"清甜的家常湯，用電鍋也能做。",
+ ing:[["白蘿蔔","1 根"],["豬排骨","500g"],["薑","3 片"],["蔥","1 根"]],
+ sea:[["水","1500 ml"],["米酒","1 大匙"],["鹽","1 小匙"],["白胡椒","少許"]],
+ tools:["湯鍋或電鍋"],
+ steps:["排骨放入冷水鍋，水滾後煮 2 分鐘撈出，沖洗掉浮沫（汆燙）。","白蘿蔔去皮切塊。","排骨、薑片、米酒、水放入鍋中，煮滾後轉小火燉 30 分鐘。","加入白蘿蔔再燉 20 分鐘，到蘿蔔變半透明。","加鹽調味，撒蔥花和白胡椒。"],
+ fail:["排骨一定要先汆燙，湯才會清、不腥。","電鍋版：全部放內鍋，外鍋 2 杯水，跳起再燜 15 分鐘。"],
+ sk:["汆燙","燉湯"],
+ art:{v:"bowl",st:"soup",c:["#f1ead8","#e8e2c6","#9b6a44"]}},
+
+{id:"glazed-radish",n:"醬燒白蘿蔔",k:["白蘿蔔"],lv:2,t:35,s:2,
+ d:"蘿蔔吸滿醬汁，軟嫩又下飯。",
+ ing:[["白蘿蔔","半根"],["蔥","1 根"]],
+ sea:[["醬油","2 大匙"],["味醂","1 大匙"],["糖","1 小匙"],["水","300 ml"],["食用油","1 大匙"]],
+ tools:["平底鍋（有鍋蓋）"],
+ steps:["白蘿蔔去皮切 2 公分厚圓片，在一面劃十字刀痕。","鍋中放油，蘿蔔片煎到兩面微黃。","加入水、醬油、味醂、糖，蓋鍋小火燉 20 分鐘。","打開鍋蓋轉中火收汁，讓醬汁裹在蘿蔔上。","撒蔥花。"],
+ fail:["收汁時要一直看著，醬汁變少很快會焦。"],
+ sk:["刀痕入味","收汁"],
+ art:{v:"plate",st:"discs",c:["#d9a25e","#f0d9a8","#6ea34a"]}},
+
+{id:"turnip-cake",n:"港式蘿蔔糕",k:["白蘿蔔"],lv:5,t:120,wait:"＋放涼一晚",s:8,
+ d:"過年必備的點心，步驟多但很有成就感。",
+ ing:[["白蘿蔔","1 根（約 1kg）"],["在來米粉","300g"],["臘腸","1 條"],["乾香菇","4 朵"],["蝦米","2 大匙"],["紅蔥頭","4 顆"]],
+ sea:[["水","400 ml（調粉漿）"],["鹽","1.5 小匙"],["糖","1 小匙"],["白胡椒","1 小匙"],["食用油","2 大匙"]],
+ tools:["刨絲器","炒鍋","蒸鍋或電鍋","長方形模具（抹油）"],
+ steps:["白蘿蔔刨粗絲；香菇、蝦米泡軟切碎；臘腸、紅蔥頭切丁。","在來米粉加 400 ml 水調成粉漿。","熱油炒香紅蔥頭、臘腸、香菇、蝦米，盛起一半留著鋪表面。","加入蘿蔔絲炒到出水變軟，加鹽、糖、胡椒。","轉小火，倒入粉漿一直攪拌，直到變成濃稠的糊。","倒進抹油的模具抹平，鋪上留下的料，大火蒸 50 分鐘。","完全放涼（最好冰一晚）再切片，煎到兩面金黃。"],
+ fail:["一定要完全放涼再切，熱的時候切會黏刀、散開。"],
+ sk:["調粉漿","蒸糕"],
+ art:{v:"plate",st:"slab",c:["#eee3c7","#d9b77a","#b8402a"]}},
+
+{id:"onion-egg",n:"洋蔥炒蛋",k:["洋蔥","雞蛋"],lv:1,t:10,s:2,
+ d:"兩個材料就能完成，洋蔥炒軟會變甜。",
+ ing:[["洋蔥","1 顆"],["雞蛋","3 顆"]],
+ sea:[["食用油","2 大匙"],["鹽","1/2 小匙"],["醬油","1 小匙"],["黑胡椒","少許"]],
+ tools:["炒鍋"],
+ steps:["洋蔥切絲，蛋加一點鹽打散。","熱油先炒蛋到半凝固，盛起。","同一鍋補一點油，洋蔥用中火炒到變軟、有點金黃。","倒回蛋，淋醬油、撒黑胡椒拌勻。"],
+ fail:["切洋蔥會流眼淚：先冰 15 分鐘再切就好很多。"],
+ sk:["炒蛋","炒洋蔥"],
+ art:{v:"plate",st:"egg",c:["#f2c230","#f3e6c0","#8a5a2b"]}},
+
+{id:"onion-beef",n:"洋蔥炒牛肉",k:["洋蔥","牛肉"],lv:2,t:20,s:2,
+ d:"牛肉滑嫩、洋蔥甜，一盤配兩碗飯。",
+ ing:[["牛肉片","200g"],["洋蔥","1 顆"],["蔥","1 根"]],
+ sea:[["醬油","1.5 大匙"],["米酒","1 大匙"],["糖","1 小匙"],["太白粉","1 小匙"],["黑胡椒","少許"],["食用油","1.5 大匙"]],
+ tools:["炒鍋","碗"],
+ steps:["牛肉片加醬油半大匙、米酒、太白粉抓一抓，醃 10 分鐘。","洋蔥切絲，蔥切段。","大火熱油，牛肉快炒到還有一點紅，盛起。","同一鍋炒洋蔥到變透明。","倒回牛肉，加剩下的醬油、糖、黑胡椒，快炒 30 秒，放蔥段起鍋。"],
+ fail:["牛肉先炒起再回鍋，才不會炒到又老又硬。","醃肉時加太白粉，會形成保護膜讓肉更嫩。"],
+ sk:["醃肉","分次下鍋"],
+ art:{v:"plate",st:"stirfry",c:["#7a3b22","#efe0b0","#6ea34a"]}},
+
+{id:"onion-soup",n:"法式焗烤洋蔥湯",k:["洋蔥"],lv:4,t:75,s:2,
+ d:"洋蔥慢慢炒成焦糖色，是練耐心的一道湯。",
+ ing:[["洋蔥","3 顆"],["法國麵包","2 片"],["起司絲","60g"],["蒜頭","1 瓣"]],
+ sea:[["奶油","30g"],["麵粉","1 大匙"],["牛高湯","700 ml"],["鹽","適量"],["黑胡椒","少許"]],
+ tools:["厚底鍋","烤箱","耐熱湯碗"],
+ steps:["洋蔥切細絲。","厚底鍋放奶油，洋蔥用中小火慢炒 40 分鐘，每幾分鐘翻一次，炒到深褐色。","加麵粉炒 1 分鐘。","加入高湯，小火煮 15 分鐘，加鹽、胡椒。","麵包抹蒜，烤到酥脆。","湯倒入耐熱碗，放麵包、鋪滿起司，放烤箱 220°C 烤到起司冒泡金黃。"],
+ fail:["鍋底焦香要刮起來拌進去，但如果冒黑煙就要轉小火。"],
+ sk:["焦糖化","焗烤"],
+ art:{v:"bowl",st:"gratin",c:["#b86a2a","#e9c46a","#7a3b22"]}},
+
+{id:"teriyaki",n:"照燒雞腿",k:["雞肉"],lv:2,t:25,s:2,
+ d:"雞皮酥脆、醬汁亮亮的，便當主菜首選。",
+ ing:[["去骨雞腿","2 片"],["蔥","少許"],["白芝麻","少許"]],
+ sea:[["醬油","2 大匙"],["味醂","2 大匙"],["米酒","1 大匙"],["糖","1 小匙"]],
+ tools:["平底鍋","廚房紙巾"],
+ steps:["雞腿肉比較厚的地方劃幾刀，讓厚度平均。","醬油、味醂、米酒、糖先調好。","雞皮朝下放進冷鍋（不用放油），開中火煎 8 分鐘，把雞皮煎到金黃出油。","翻面再煎 4 分鐘，用紙巾吸掉多餘的油。","倒入照燒醬，一邊煮一邊把醬汁舀到雞肉上，煮到濃稠發亮。","切塊，撒蔥花和芝麻。"],
+ fail:["冷鍋開始煎雞皮，油會慢慢逼出來，皮特別脆。","醬汁有糖容易焦，倒醬後轉中小火。","用筷子戳最厚的地方，流出清澈的汁（不是粉紅色）就熟了。"],
+ sk:["煎雞皮","收汁","判斷熟度"],
+ art:{v:"plate",st:"glazed",c:["#8a4a1f","#c8782a","#6ea34a"]}},
+
+{id:"three-cup",n:"三杯雞",k:["雞肉"],lv:3,t:30,s:3,
+ d:"台灣代表菜，麻油、醬油、米酒各一份。",
+ ing:[["帶骨雞腿塊","600g"],["老薑","1 大塊"],["蒜頭","10 瓣"],["九層塔","1 大把"],["辣椒","1 根"]],
+ sea:[["黑麻油","3 大匙"],["醬油","3 大匙"],["米酒","3 大匙"],["冰糖或砂糖","1 大匙"]],
+ tools:["砂鍋或炒鍋（有鍋蓋）"],
+ steps:["雞肉洗淨擦乾，薑切片，蒜頭去皮保留整顆。","冷鍋放麻油和薑片，小火煸到薑片捲起來、變乾。","加入蒜頭煎到金黃，再放雞肉中火煎到表面金黃。","加醬油、米酒、糖拌勻，蓋鍋小火燜 15 分鐘。","打開鍋蓋轉大火收汁，湯汁變濃稠發亮。","關火放九層塔和辣椒，蓋上鍋蓋 30 秒再拌勻。"],
+ fail:["麻油遇高溫會變苦，煸薑時一定要小火。","記住「1:1:1」：麻油、醬油、米酒一樣多。"],
+ sk:["煸薑","燜煮","收汁"],
+ art:{v:"pot",st:"stew",c:["#6a3314","#3f7a36","#c8782a"]}},
+
+{id:"kungpao",n:"宮保雞丁",k:["雞肉"],lv:3,t:25,s:2,
+ d:"雞丁滑嫩、花生酥脆，甜酸微辣。",
+ ing:[["雞胸或去骨雞腿","300g"],["熟花生","50g"],["乾辣椒","8 根"],["蔥","2 根"],["蒜頭","2 瓣"],["薑","1 小塊"]],
+ sea:[["醃料：醬油、米酒、太白粉","各 1 小匙"],["醬汁：醬油 1.5 大匙、烏醋 1 大匙、糖 1 大匙、太白粉 1 小匙、水 2 大匙","先調好"],["花椒","1 小匙"],["食用油","2 大匙"]],
+ tools:["炒鍋","碗 2 個"],
+ steps:["雞肉切 1.5 公分丁，加醃料抓勻醃 10 分鐘。","醬汁材料全部在碗裡調好。","乾辣椒剪段，蔥切段，蒜薑切片。","小火熱油，炒香花椒和乾辣椒到深紅色。","轉大火放雞丁炒到變白，加蔥、蒜、薑拌炒。","醬汁再攪一下倒入，快炒到醬汁變濃包住雞丁，關火拌入花生。"],
+ fail:["醬汁先調好一次倒入，30 秒完成，雞肉才嫩。","花生最後才放，才會保持酥脆。"],
+ sk:["醃肉","調醬汁","大火快炒"],
+ art:{v:"plate",st:"cubes",c:["#c77a3a","#b3321f","#e0b872"]}},
+
+{id:"salt-chicken",n:"鹽水雞",k:["雞肉","高麗菜"],lv:3,t:50,s:3,
+ d:"夜市人氣小吃，用燜的讓雞肉又嫩又 Q。",
+ ing:[["帶骨雞腿","2 隻"],["高麗菜","1/4 顆"],["小黃瓜","1 條"],["蔥","2 根"],["薑","3 片"],["蒜頭","2 瓣"]],
+ sea:[["煮雞：水 1500 ml、鹽 2 大匙、米酒 2 大匙",""],["拌料：香油 2 大匙、鹽 1 小匙、白胡椒 1 小匙",""]],
+ tools:["湯鍋（有鍋蓋）","大碗","冰塊水"],
+ steps:["水、鹽、米酒、蔥、薑煮滾，放入雞腿。","再次煮滾後轉最小火，蓋鍋煮 15 分鐘，關火再燜 15 分鐘。","撈起雞腿立刻泡冰塊水，讓雞皮變 Q。","用同一鍋雞湯燙高麗菜，撈起瀝乾；小黃瓜拍碎。","雞腿去骨切塊，和蔬菜、蒜末、香油、鹽、胡椒拌勻。"],
+ fail:["用「燜」的不要一直大滾，雞肉才不會又乾又柴。"],
+ sk:["泡煮雞肉","冰鎮"],
+ art:{v:"bowl",st:"salad",c:["#f2e6c6","#8fc26a","#e0c06a"]}},
+
+{id:"fly-head",n:"蒼蠅頭",k:["豬肉"],lv:2,t:15,s:2,
+ d:"韭菜花配絞肉和豆豉，名字怪但超下飯。",
+ ing:[["豬絞肉","200g"],["韭菜花","1 把"],["豆豉","1 大匙"],["辣椒","2 根"],["蒜頭","3 瓣"]],
+ sea:[["醬油","1 大匙"],["米酒","1 大匙"],["糖","1 小匙"],["食用油","1 大匙"]],
+ tools:["炒鍋"],
+ steps:["韭菜花切小丁，辣椒切圈，蒜切碎，豆豉稍微沖一下。","熱油把絞肉炒散，炒到出油、有點焦香。","加蒜、辣椒、豆豉炒香。","淋米酒、醬油、糖拌炒。","大火放韭菜花丁，快炒 1 分鐘就起鍋。"],
+ fail:["絞肉下鍋先別急著翻，讓它煎一下再炒散，才會香。"],
+ sk:["炒絞肉","大火快炒"],
+ art:{v:"plate",st:"mince",c:["#3f7a36","#8a5a2b","#d8402b"]}},
+
+{id:"ants-tree",n:"螞蟻上樹",k:["豬肉"],lv:2,t:20,s:2,
+ d:"冬粉吸飽肉汁，便宜又快速。",
+ ing:[["冬粉","2 把"],["豬絞肉","150g"],["蔥","1 根"],["蒜頭","2 瓣"]],
+ sea:[["辣豆瓣醬","1 大匙"],["醬油","1 大匙"],["糖","1/2 小匙"],["水","250 ml"],["食用油","1 大匙"]],
+ tools:["炒鍋","剪刀"],
+ steps:["冬粉泡溫水 10 分鐘到變軟，用剪刀剪短一點。","熱油炒絞肉到變色，加蒜末、辣豆瓣醬炒香。","加醬油、糖、水煮滾。","放入冬粉拌炒，讓冬粉把湯汁吸乾。","撒蔥花起鍋。"],
+ fail:["冬粉會一直吸水，湯汁收到「還有點濕」就關火。"],
+ sk:["泡發冬粉","收汁"],
+ art:{v:"plate",st:"noodle",c:["#c89a6a","#8a4a2b","#6ea34a"]}},
+
+{id:"braised-pork",n:"台式肉燥（滷肉飯）",k:["豬肉"],lv:3,t:75,s:6,
+ d:"一次煮一鍋，淋在飯上就是滷肉飯。",
+ ing:[["豬絞肉（粗絞）","600g"],["紅蔥頭","10 顆（或市售油蔥酥 3 大匙）"],["乾香菇","4 朵"],["蒜頭","3 瓣"]],
+ sea:[["醬油","5 大匙"],["米酒","3 大匙"],["冰糖","1 大匙"],["五香粉","1/4 小匙"],["白胡椒","1/2 小匙"],["水","500 ml"],["食用油","3 大匙"]],
+ tools:["厚底鍋"],
+ steps:["紅蔥頭切片，用小火炸成金黃的油蔥酥，撈起（油留著）。","香菇泡軟切小丁，蒜切碎。","用剛剛的油炒絞肉到變白出油，加香菇、蒜炒香。","加醬油炒到上色，淋米酒。","加水、冰糖、五香粉、白胡椒和油蔥酥，煮滾後轉小火燉 50 分鐘，偶爾攪一攪。","湯汁有點稠就完成了。"],
+ fail:["紅蔥頭一變淺金色就撈，離火後還會繼續變深，太深會苦。","新手可以直接用市售油蔥酥，省掉最難的一步。"],
+ sk:["炸油蔥酥","滷"],
+ art:{v:"bowl",st:"rice",c:["#f4ecd8","#6a3314","#f0c24a"]}},
+
+{id:"carrot-egg",n:"紅蘿蔔炒蛋",k:["紅蘿蔔","雞蛋"],lv:1,t:10,s:2,
+ d:"顏色漂亮，讓不愛紅蘿蔔的人也吃得下。",
+ ing:[["紅蘿蔔","1 根"],["雞蛋","2 顆"],["蔥","1 根"]],
+ sea:[["食用油","2 大匙"],["鹽","1/2 小匙"]],
+ tools:["炒鍋","刨絲器"],
+ steps:["紅蘿蔔刨絲，蛋打散。","油多放一點，紅蘿蔔絲用小火炒 3 分鐘，炒到變軟、油變成橘色。","把紅蘿蔔推到一邊，倒入蛋液，稍微凝固再一起拌炒。","加鹽、撒蔥花起鍋。"],
+ fail:["紅蘿蔔要用小火炒軟，才會甜、沒有生味。"],
+ sk:["刨絲","炒蛋"],
+ art:{v:"plate",st:"shreds",c:["#ee7f24","#f4c630","#6ea34a"]}},
+
+{id:"carrot-soup",n:"紅蘿蔔濃湯",k:["紅蘿蔔","洋蔥","馬鈴薯"],lv:2,t:35,s:3,
+ d:"不用麵粉，靠馬鈴薯讓湯自然變濃。",
+ ing:[["紅蘿蔔","3 根"],["洋蔥","半顆"],["馬鈴薯","1 顆"]],
+ sea:[["奶油","20g"],["水或高湯","700 ml"],["鮮奶","100 ml"],["鹽","1 小匙"],["黑胡椒","少許"]],
+ tools:["湯鍋","果汁機或手持攪拌棒"],
+ steps:["紅蘿蔔、馬鈴薯去皮切小塊，洋蔥切絲。","奶油炒洋蔥到軟，加紅蘿蔔、馬鈴薯拌炒 2 分鐘。","加水煮滾，轉小火煮 20 分鐘到蔬菜很軟。","稍微放涼，用果汁機打成泥。","倒回鍋中加鮮奶，小火加熱（不要煮滾），加鹽和胡椒。"],
+ fail:["熱湯要放涼一點再打，果汁機裝太滿、太燙會噴出來。","加牛奶後不要大滾，不然會分離。"],
+ sk:["煮濃湯"],
+ art:{v:"bowl",st:"soup",c:["#ee7f24","#f6b870","#fbf1d8"]}}
+];
+
+// 新手基本功
+const BASICS = [
+ ["量匙怎麼算","1 大匙 ≈ 15 ml（一般湯匙滿滿一匙）；1 小匙 ≈ 5 ml（咖啡匙）。「少許」是用手指捏一小撮；「適量」是邊試邊加。"],
+ ["火候怎麼看","大火：火焰碰到鍋底且往外竄。中火：火焰剛好碰到鍋底。小火：火焰離鍋底有一點距離。電磁爐約 大火 8–10、中火 5–6、小火 2–3 段。"],
+ ["爆香","用小～中火把蒜、薑、蔥等在油裡炒 20–30 秒，聞到香味就放下一樣材料。變黑就是焦了，會苦。"],
+ ["汆燙","肉放進冷水鍋，煮滾後再煮 1–2 分鐘撈起沖洗，去掉血水和腥味。燙青菜則是水滾後才放。"],
+ ["勾芡","太白粉：水 = 1：2 拌勻，倒之前一定要再攪一次。分次倒入，湯汁變稍微濃稠就停。"],
+ ["試味道","鹽和醬油永遠「先少放」，起鍋前試一口再補，加太多就救不回來。"],
+ ["下鍋前準備好","開火前把所有材料切好、醬汁調好排在旁邊，炒的時候才不會手忙腳亂而燒焦。"],
+ ["怎麼判斷熟了","肉：切開中間沒有粉紅色，或筷子戳下去流出清澈的汁。根莖類：筷子能輕鬆插穿。"]
+];
+
+const PHOTOS={"garlic-napa": {"src": "photos/garlic-napa.webp", "credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302"}, "vinegar-napa": {"src": "photos/vinegar-napa.webp", "credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269"}, "napa-tofu-soup": {"src": "photos/napa-tofu-soup.webp", "credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg"}, "kaiyang-napa": {"src": "photos/kaiyang-napa.webp", "credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414"}, "napa-pork-hotpot": {"src": "photos/napa-pork-hotpot.webp", "credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828"}, "napa-braise": {"src": "photos/napa-braise.webp", "credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg"}, "napa-dumpling": {"src": "photos/napa-dumpling.webp", "credit": "Francesc Fort／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Jiaozi_-_Don_Pepe.jpg"}, "lion-head": {"src": "photos/lion-head.webp", "credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg"}, "kimchi": {"src": "photos/kimchi.webp", "credit": "최광모／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Baechu_kimchi.jpg"}, "garlic-cabbage": {"src": "photos/garlic-cabbage.webp", "credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg"}, "shredded-cabbage": {"src": "photos/shredded-cabbage.webp", "credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg"}, "tw-pickle": {"src": "photos/tw-pickle.webp", "credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716"}, "cabbage-rice": {"src": "photos/cabbage-rice.webp", "credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638"}, "cabbage-rolls": {"src": "photos/cabbage-rolls.webp", "credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg"}, "tomato-egg": {"src": "photos/tomato-egg.webp", "credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg"}, "tomato-egg-soup": {"src": "photos/tomato-egg-soup.webp", "credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg"}, "plum-tomato": {"src": "photos/plum-tomato.webp", "credit": "Olgatladi2020／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:A_sliced_tomato_on_a_saucer.jpg"}, "tomato-beef": {"src": "photos/tomato-beef.webp", "credit": "愛料理 iCook 網友食譜「無水番茄燉牛肉」", "url": "https://icook.tw/recipes/476488"}, "steamed-egg": {"src": "photos/steamed-egg.webp", "credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg"}, "radish-omelette": {"src": "photos/radish-omelette.webp", "credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg"}, "ramen-egg": {"src": "photos/ramen-egg.webp", "credit": "datatw／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Soy_egg.jpg"}, "tamagoyaki": {"src": "photos/tamagoyaki.webp", "credit": "極地狐／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:%E9%B3%A5%E7%84%BC%E3%81%8D%E5%B1%85%E9%85%92%E5%B1%8B_(39394233682).jpg"}, "century-tofu": {"src": "photos/century-tofu.webp", "credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg"}, "homestyle-tofu": {"src": "photos/homestyle-tofu.webp", "credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309"}, "mapo-tofu": {"src": "photos/mapo-tofu.webp", "credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg"}, "sour-potato": {"src": "photos/sour-potato.webp", "credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg"}, "mash": {"src": "photos/mash.webp", "credit": "Jon Sullivan／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Mash_Potatoes.jpg"}, "nikujaga": {"src": "photos/nikujaga.webp", "credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg"}, "croquette": {"src": "photos/croquette.webp", "credit": "Ocdp／Wikimedia Commons（CC0）", "url": "https://commons.wikimedia.org/wiki/File:Potato_croquettes_001.jpg"}, "cold-eggplant": {"src": "photos/cold-eggplant.webp", "credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067"}, "basil-eggplant": {"src": "photos/basil-eggplant.webp", "credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg"}, "yuxiang-eggplant": {"src": "photos/yuxiang-eggplant.webp", "credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg"}, "radish-rib-soup": {"src": "photos/radish-rib-soup.webp", "credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985"}, "glazed-radish": {"src": "photos/glazed-radish.webp", "credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg"}, "turnip-cake": {"src": "photos/turnip-cake.webp", "credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg"}, "onion-egg": {"src": "photos/onion-egg.webp", "credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736"}, "onion-beef": {"src": "photos/onion-beef.webp", "credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg"}, "onion-soup": {"src": "photos/onion-soup.webp", "credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg"}, "teriyaki": {"src": "photos/teriyaki.webp", "credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg"}, "three-cup": {"src": "photos/three-cup.webp", "credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg"}, "kungpao": {"src": "photos/kungpao.webp", "credit": "N509FZ／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Kung_Pao_Chicken_at_Yujiayan_Restaurant_(20230510123120).jpg"}, "salt-chicken": {"src": "photos/salt-chicken.webp", "credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494"}, "fly-head": {"src": "photos/fly-head.webp", "credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg"}, "ants-tree": {"src": "photos/ants-tree.webp", "credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg"}, "braised-pork": {"src": "photos/braised-pork.webp", "credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg"}, "carrot-egg": {"src": "photos/carrot-egg.webp", "credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436"}, "carrot-soup": {"src": "photos/carrot-soup.webp", "credit": "Vegan Feast Catering／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Cream_of_Carrot_Soup_(4129540261).jpg"}};
+</script>
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LEVEL_NAME=["","非常簡單","簡單","普通","有點挑戰","進階"];
+const TIERS=[
+  {lv:"LEVEL 1–2",name:"新手就能做",sub:"步驟少、不太會失敗",test:lv=>lv<=2},
+  {lv:"LEVEL 3",name:"多一點功夫",sub:"熟悉基本功後挑戰",test:lv=>lv===3},
+  {lv:"LEVEL 4–5",name:"週末挑戰",sub:"時間長、步驟多",test:lv=>lv>=4}
+];
+const ICON_CLOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+const ICON_USER='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>';
+let current={q:"",keys:[],list:[]};
+let aiList=[];
+
+/* ---------- 插圖（用 canvas 畫出料理的俯視圖） ---------- */
+function hash(s){let h=2166136261;for(const ch of String(s)){h^=ch.codePointAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){let a=hash(seed);return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hex(c){c=String(c||"#cccccc").replace("#","");if(c.length===3)c=c.split("").map(x=>x+x).join("");const n=parseInt(c,16);return isNaN(n)?[200,200,200]:[n>>16&255,n>>8&255,n&255]}
+function shade(c,amt){const [r,g,b]=hex(c);const f=v=>Math.max(0,Math.min(255,Math.round(amt>=0?v+(255-v)*amt:v*(1+amt))));return`rgb(${f(r)},${f(g)},${f(b)})`}
+function rgba(c,a){const [r,g,b]=hex(c);return`rgba(${r},${g},${b},${a})`}
+
+function drawDish(cv,art,seed){
+  const ctx=cv.getContext("2d"); if(!ctx)return;
+  const W=cv.width,H=cv.height,R0=rng(seed),rnd=(a,b)=>a+(b-a)*R0();
+  art=art||{}; const c=(Array.isArray(art.c)&&art.c.length?art.c:["#e9d8a6","#c8703a","#6ea34a"]).concat(["#e9d8a6","#c8703a","#6ea34a"]).slice(0,3);
+  const st=art.st||"chunks", v=art.v||"plate";
+  // table
+  const tables=[["#c9a57c","#b48f66"],["#d9cfbb","#c9bda6"],["#a8b8a6","#96a894"],["#8e7a64","#7a6853"],["#cdb8a0","#bba58b"]];
+  const tb=tables[Math.floor(R0()*tables.length)];
+  ctx.fillStyle=tb[0];ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle=rgba(tb[1],.7);ctx.lineWidth=2;
+  for(let i=0;i<22;i++){const y=rnd(0,H);ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(W*.3,y+rnd(-14,14),W*.7,y+rnd(-14,14),W,y+rnd(-10,10));ctx.stroke()}
+  const cx=W/2,cy=H/2,R=Math.min(W,H)*.45;
+  // vessel
+  ctx.save();ctx.shadowColor="rgba(0,0,0,.28)";ctx.shadowBlur=R*.12;ctx.shadowOffsetY=R*.05;
+  let fr;
+  if(v==="pot"){
+    ctx.fillStyle="#2b2926";
+    ctx.fillRect(cx-R*1.18,cy-R*.1,R*.4,R*.2);ctx.fillRect(cx+R*.78,cy-R*.1,R*.4,R*.2);
+    circle(ctx,cx,cy,R,"#2b2926");ctx.restore();
+    circle(ctx,cx,cy,R*.95,"#45413b");circle(ctx,cx,cy,R*.9,"#34312c");fr=R*.86;
+  }else if(v==="bowl"){
+    const bc=["#2f4f5f","#e9e4d8","#8a4f3a","#3d5a45","#c9d4dc"][Math.floor(R0()*5)];
+    circle(ctx,cx,cy,R,bc);ctx.restore();
+    circle(ctx,cx,cy,R*.93,shade(bc,.18));circle(ctx,cx,cy,R*.86,shade(bc,-.12));fr=R*.84;
+  }else{
+    circle(ctx,cx,cy,R,"#f7f5ef");ctx.restore();
+    ctx.strokeStyle="#e4dfd2";ctx.lineWidth=R*.02;ctx.beginPath();ctx.arc(cx,cy,R*.8,0,7);ctx.stroke();
+    circle(ctx,cx,cy,R*.79,"#fbfaf6");fr=R*.72;
+  }
+  const pt=m=>{const a=R0()*Math.PI*2,d=Math.sqrt(R0())*m;return[cx+Math.cos(a)*d,cy+Math.sin(a)*d]};
+  const pick=()=>{const x=R0();return x<.6?c[0]:x<.85?c[1]:c[2]};
+  const mound=(col,rad)=>{const g=ctx.createRadialGradient(cx,cy,rad*.1,cx,cy,rad);g.addColorStop(0,rgba(col,.55));g.addColorStop(1,rgba(col,0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,rad,0,7);ctx.fill()};
+  const soft=()=>{ctx.shadowColor="rgba(0,0,0,.22)";ctx.shadowBlur=4;ctx.shadowOffsetY=1.5};
+  const noShadow=()=>{ctx.shadowColor="transparent";ctx.shadowBlur=0;ctx.shadowOffsetY=0};
+  const blob=(x,y,s,col,pts)=>{pts=pts||9;ctx.fillStyle=col;ctx.beginPath();for(let i=0;i<=pts;i++){const a=i/pts*Math.PI*2,rr=s*rnd(.72,1.12);const px=x+Math.cos(a)*rr,py=y+Math.sin(a)*rr;i?ctx.lineTo(px,py):ctx.moveTo(px,py)}ctx.closePath();ctx.fill()};
+  const clipIn=r=>{ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,7);ctx.clip()};
+  const liquidBase=(col)=>{const g=ctx.createRadialGradient(cx-fr*.2,cy-fr*.2,fr*.1,cx,cy,fr);g.addColorStop(0,shade(col,.12));g.addColorStop(1,shade(col,-.14));ctx.fillStyle=g;ctx.fillRect(cx-fr,cy-fr,fr*2,fr*2)};
+  const rrect=(x,y,w,h,r,rot,col)=>{ctx.save();ctx.translate(x,y);ctx.rotate(rot||0);ctx.fillStyle=col;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(-w/2,-h/2,w,h,r);else ctx.rect(-w/2,-h/2,w,h);ctx.fill();ctx.restore()};
+  const greens=n=>{for(let i=0;i<n;i++){const[x,y]=pt(fr*.8);ctx.strokeStyle=c[2];ctx.lineWidth=fr*.018;ctx.beginPath();ctx.arc(x,y,fr*rnd(.02,.035),0,7);ctx.stroke()}};
+
+  switch(st){
+  case "shreds":case "noodle":case "strips":{
+    mound(c[0],fr*.95);
+    const N=st==="noodle"?240:st==="strips"?34:150,w=st==="strips"?fr*.08:st==="noodle"?fr*.018:fr*.03;
+    soft();ctx.lineCap="round";
+    for(let i=0;i<N;i++){const[x,y]=pt(fr*.78),a=R0()*Math.PI,len=fr*rnd(.22,st==="strips"?.55:.45),dx=Math.cos(a)*len/2,dy=Math.sin(a)*len/2,o=rnd(-.3,.3)*len;
+      const col=st==="noodle"?(R0()<.8?shade(c[0],rnd(-.05,.12)):pick()):pick();
+      ctx.strokeStyle=col;ctx.lineWidth=w*rnd(.8,1.2);ctx.beginPath();ctx.moveTo(x-dx,y-dy);ctx.quadraticCurveTo(x-dy/len*o*2,y+dx/len*o*2,x+dx,y+dy);ctx.stroke()}
+    noShadow();break}
+  case "rice":{
+    clipIn(fr);ctx.fillStyle=c[0];ctx.fillRect(cx-fr,cy-fr,fr*2,fr*2);
+    for(let i=0;i<700;i++){const[x,y]=pt(fr);ctx.fillStyle=R0()<.5?"rgba(255,255,255,.85)":rgba(shade(c[0],-.08),.8);ctx.beginPath();ctx.ellipse(x,y,fr*.028,fr*.012,R0()*3,0,7);ctx.fill()}
+    soft();for(let i=0;i<46;i++){const a=R0()*Math.PI*2,d=Math.sqrt(R0())*fr*.5;blob(cx+fr*.12+Math.cos(a)*d,cy-fr*.05+Math.sin(a)*d,fr*rnd(.05,.1),R0()<.75?c[1]:c[2])}
+    noShadow();ctx.restore();break}
+  case "soup":case "stew":case "steamed":case "mash":case "gratin":{
+    clipIn(fr);liquidBase(c[0]);soft();
+    if(st==="soup"){for(let i=0;i<12;i++){const[x,y]=pt(fr*.8);blob(x,y,fr*rnd(.07,.14),rgba(c[1],.9))}noShadow();greens(18);
+      for(let i=0;i<14;i++){const[x,y]=pt(fr*.85);ctx.fillStyle="rgba(255,240,190,.45)";ctx.beginPath();ctx.ellipse(x,y,fr*rnd(.015,.04),fr*rnd(.01,.03),0,0,7);ctx.fill()}}
+    else if(st==="stew"){for(let i=0;i<28;i++){const[x,y]=pt(fr*.78);blob(x,y,fr*rnd(.09,.17),R0()<.6?c[1]:c[2])}noShadow();
+      for(let i=0;i<8;i++){const[x,y]=pt(fr*.8);ctx.fillStyle="rgba(255,255,255,.22)";ctx.beginPath();ctx.ellipse(x,y,fr*.05,fr*.02,R0()*3,0,7);ctx.fill()}}
+    else if(st==="steamed"){noShadow();ctx.fillStyle="rgba(255,255,255,.35)";ctx.beginPath();ctx.ellipse(cx-fr*.25,cy-fr*.3,fr*.4,fr*.14,-.5,0,7);ctx.fill();
+      ctx.strokeStyle="rgba(90,50,20,.7)";ctx.lineWidth=fr*.03;ctx.lineCap="round";for(let i=0;i<3;i++){ctx.beginPath();ctx.arc(cx+rnd(-fr*.2,fr*.2),cy+rnd(-fr*.1,fr*.2),fr*rnd(.15,.3),rnd(0,3),rnd(3,5));ctx.stroke()}
+      for(let i=0;i<14;i++){const[x,y]=pt(fr*.6);blob(x,y,fr*.025,c[2],6)}}
+    else if(st==="mash"){noShadow();ctx.strokeStyle=rgba(shade(c[0],-.2),.6);ctx.lineWidth=fr*.025;for(let i=1;i<6;i++){ctx.beginPath();ctx.arc(cx,cy,fr*i*.15,rnd(0,2),rnd(3,6));ctx.stroke()}
+      soft();rrect(cx,cy,fr*.26,fr*.2,fr*.04,.3,c[1]);noShadow();for(let i=0;i<40;i++){const[x,y]=pt(fr*.8);ctx.fillStyle=c[2];ctx.fillRect(x,y,2.5,2.5)}}
+    else{for(let i=0;i<34;i++){const[x,y]=pt(fr*.8);blob(x,y,fr*rnd(.12,.22),rgba(c[1],.95),12)}noShadow();
+      for(let i=0;i<30;i++){const[x,y]=pt(fr*.8);blob(x,y,fr*rnd(.02,.06),rgba(shade(c[0],-.35),.7))}}
+    noShadow();ctx.restore();break}
+  case "egg":{
+    mound(c[0],fr*.95);soft();
+    for(let i=0;i<14;i++){const[x,y]=pt(fr*.62);blob(x,y,fr*rnd(.13,.21),shade(c[0],rnd(-.06,.1)),11)}
+    for(let i=0;i<12;i++){const[x,y]=pt(fr*.66);blob(x,y,fr*rnd(.07,.12),c[1])}
+    noShadow();for(let i=0;i<16;i++){const[x,y]=pt(fr*.7);blob(x,y,fr*.03,c[2],6)}break}
+  case "omelette":{
+    soft();blob(cx,cy,fr*.86,c[0],22);noShadow();
+    for(let i=0;i<22;i++){const[x,y]=pt(fr*.72);blob(x,y,fr*rnd(.06,.16),rgba(shade(c[0],-.3),.4))}
+    for(let i=0;i<30;i++){const[x,y]=pt(fr*.7);blob(x,y,fr*.025,R0()<.5?c[2]:shade(c[1],-.1),6)}
+    ctx.strokeStyle="#fbfaf6";ctx.lineWidth=fr*.025;ctx.beginPath();ctx.moveTo(cx-fr*.85,cy);ctx.lineTo(cx+fr*.85,cy);ctx.moveTo(cx,cy-fr*.85);ctx.lineTo(cx,cy+fr*.85);ctx.stroke();break}
+  case "tamago":{
+    for(let i=0;i<5;i++){const x=cx+(i-2)*fr*.33,y=cy+Math.abs(i-2)*fr*.05;soft();rrect(x,y,fr*.3,fr*.62,fr*.05,0,c[0]);noShadow();
+      ctx.strokeStyle=rgba(shade(c[0],-.2),.7);ctx.lineWidth=2;for(let k=1;k<4;k++){ctx.beginPath();ctx.moveTo(x-fr*.14,y-fr*.3+k*fr*.15);ctx.quadraticCurveTo(x,y-fr*.26+k*fr*.15,x+fr*.14,y-fr*.3+k*fr*.15);ctx.stroke()}
+      ctx.fillStyle=rgba(c[1],.6);ctx.fillRect(x-fr*.12,y-fr*.28,fr*.24,fr*.04)}
+    blob(cx+fr*.55,cy+fr*.62,fr*.08,c[2],7);break}
+  case "glazed":{
+    for(let i=0;i<6;i++){const x=cx+(i-2.5)*fr*.27,y=cy+Math.sin(i)*fr*.06;soft();rrect(x,y,fr*.26,fr*.7,fr*.08,.18,c[0]);noShadow();
+      rrect(x,y-fr*.02,fr*.18,fr*.58,fr*.06,.18,c[1]);ctx.fillStyle="rgba(255,255,255,.28)";ctx.beginPath();ctx.ellipse(x-fr*.04,y-fr*.15,fr*.03,fr*.13,.18,0,7);ctx.fill()}
+    for(let i=0;i<40;i++){const[x,y]=pt(fr*.6);ctx.fillStyle=R0()<.6?"#f6efdc":c[2];ctx.beginPath();ctx.ellipse(x,y,2.4,1.4,R0()*3,0,7);ctx.fill()}break}
+  case "croquette":{
+    ctx.lineCap="round";for(let i=0;i<60;i++){const x=cx+fr*rnd(.25,.7),y=cy+fr*rnd(-.55,.55);ctx.strokeStyle=shade(c[2],rnd(-.1,.2));ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+rnd(-20,20),y+rnd(-8,8));ctx.stroke()}
+    for(let i=0;i<3;i++){const x=cx-fr*.28+(i%2)*fr*.2,y=cy-fr*.42+i*fr*.4;soft();ctx.fillStyle=c[0];ctx.beginPath();ctx.ellipse(x,y,fr*.3,fr*.2,.2,0,7);ctx.fill();noShadow();
+      for(let k=0;k<60;k++){const a=R0()*7,d=Math.sqrt(R0());ctx.fillStyle=R0()<.5?c[1]:shade(c[0],-.2);ctx.fillRect(x+Math.cos(a)*d*fr*.27,y+Math.sin(a)*d*fr*.17,3,3)}}
+    ctx.strokeStyle="#4a2a14";ctx.lineWidth=fr*.03;ctx.beginPath();ctx.moveTo(cx-fr*.5,cy-fr*.45);ctx.bezierCurveTo(cx-fr*.2,cy-fr*.3,cx-fr*.4,cy,cx-fr*.1,cy+fr*.1);ctx.stroke();break}
+  case "slab":{
+    for(let i=0;i<4;i++){const x=cx+(i-1.5)*fr*.36,y=cy+(i%2?1:-1)*fr*.06;soft();rrect(x,y,fr*.32,fr*.62,fr*.03,.08,c[0]);noShadow();
+      rrect(x,y-fr*.24,fr*.3,fr*.1,fr*.02,.08,rgba(c[1],.9));for(let k=0;k<6;k++)blob(x+rnd(-fr*.1,fr*.1),y+rnd(-fr*.2,fr*.25),fr*.025,c[2],6)}break}
+  case "tofu":{
+    soft();rrect(cx,cy,fr*1.15,fr*1.0,fr*.04,.05,c[0]);noShadow();
+    for(let i=0;i<9;i++)blob(cx+rnd(-fr*.4,fr*.4),cy+rnd(-fr*.35,fr*.35),fr*rnd(.07,.12),c[1],7);
+    ctx.strokeStyle="rgba(95,55,25,.75)";ctx.lineWidth=fr*.035;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(cx-fr*.5,cy-fr*.2);ctx.bezierCurveTo(cx-fr*.1,cy-fr*.5,cx+fr*.1,cy+fr*.4,cx+fr*.5,cy+fr*.1);ctx.stroke();
+    for(let i=0;i<22;i++)blob(cx+rnd(-fr*.5,fr*.5),cy+rnd(-fr*.45,fr*.45),fr*.025,c[2],6);break}
+  case "halfegg":{
+    const pos=[[-.38,-.3],[.38,-.3],[-.38,.32],[.38,.32]];
+    pos.forEach(([dx,dy])=>{const x=cx+dx*fr,y=cy+dy*fr;soft();ctx.fillStyle=c[0];ctx.beginPath();ctx.ellipse(x,y,fr*.26,fr*.3,0,0,7);ctx.fill();noShadow();
+      ctx.strokeStyle=rgba(c[2],.8);ctx.lineWidth=fr*.04;ctx.stroke();
+      const g=ctx.createRadialGradient(x-fr*.04,y-fr*.04,2,x,y,fr*.15);g.addColorStop(0,shade(c[1],.3));g.addColorStop(1,c[1]);ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y+fr*.02,fr*.14,0,7);ctx.fill()});break}
+  case "dumpling":{
+    const n=8;for(let i=0;i<n;i++){const a=i/n*Math.PI*2,x=cx+Math.cos(a)*fr*.55,y=cy+Math.sin(a)*fr*.55;
+      ctx.save();ctx.translate(x,y);ctx.rotate(a+Math.PI/2);soft();ctx.fillStyle=c[0];ctx.beginPath();ctx.moveTo(-fr*.22,fr*.06);ctx.quadraticCurveTo(0,-fr*.3,fr*.22,fr*.06);ctx.quadraticCurveTo(0,fr*.14,-fr*.22,fr*.06);ctx.fill();noShadow();
+      ctx.strokeStyle=shade(c[0],-.18);ctx.lineWidth=1.6;for(let k=-2;k<=2;k++){ctx.beginPath();ctx.moveTo(k*fr*.05,-fr*.08);ctx.lineTo(k*fr*.06,-fr*.02);ctx.stroke()}ctx.restore()}
+    soft();circle(ctx,cx,cy,fr*.2,"#3a2a1c");noShadow();circle(ctx,cx,cy,fr*.16,"#5b3a22");for(let i=0;i<6;i++)blob(cx+rnd(-fr*.1,fr*.1),cy+rnd(-fr*.1,fr*.1),fr*.02,c[2],6);break}
+  case "rolls":{
+    clipIn(fr);liquidBase(c[1]);
+    for(let i=0;i<5;i++){const a=i/5*Math.PI*2+.3,x=cx+Math.cos(a)*fr*.42,y=cy+Math.sin(a)*fr*.42;soft();rrect(x,y,fr*.5,fr*.3,fr*.14,a,c[0]);noShadow();
+      ctx.save();ctx.translate(x,y);ctx.rotate(a);ctx.strokeStyle=shade(c[0],-.2);ctx.lineWidth=2;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-fr*.2,k*fr*.07);ctx.quadraticCurveTo(0,k*fr*.09,fr*.2,k*fr*.07);ctx.stroke()}ctx.restore()}
+    soft();rrect(cx,cy,fr*.5,fr*.3,fr*.14,0,c[0]);noShadow();for(let i=0;i<20;i++){const[x,y]=pt(fr*.9);blob(x,y,fr*.035,c[2],6)}ctx.restore();break}
+  case "balls":{
+    clipIn(fr);liquidBase(c[2]);soft();
+    for(let i=0;i<14;i++){const[x,y]=pt(fr*.85);blob(x,y,fr*rnd(.12,.2),rgba(c[1],.95),12)}
+    const bp=[[-.3,-.25],[.32,-.2],[-.2,.35],[.35,.33]];bp.forEach(([dx,dy])=>{const x=cx+dx*fr,y=cy+dy*fr,g=ctx.createRadialGradient(x-fr*.08,y-fr*.08,2,x,y,fr*.28);g.addColorStop(0,shade(c[0],.25));g.addColorStop(1,shade(c[0],-.15));ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,fr*.26,0,7);ctx.fill()});
+    noShadow();ctx.restore();break}
+  case "layers":{
+    clipIn(fr);ctx.fillStyle=c[0];ctx.fillRect(cx-fr,cy-fr,fr*2,fr*2);
+    for(let rr=fr;rr>fr*.1;rr-=fr*.14){ctx.lineWidth=fr*.05;for(let a=0;a<Math.PI*2;a+=.5){ctx.strokeStyle=R0()<.5?c[1]:shade(c[1],-.12);ctx.beginPath();ctx.arc(cx,cy,rr,a,a+.46);ctx.stroke()}
+      ctx.lineWidth=fr*.02;ctx.strokeStyle=shade(c[0],-.12);ctx.beginPath();ctx.arc(cx,cy,rr-fr*.05,0,7);ctx.stroke()}
+    soft();for(let i=0;i<12;i++){const[x,y]=pt(fr*.85);blob(x,y,fr*.05,c[2],8)}noShadow();ctx.restore();break}
+  default:{ // chunks, stirfry, cubes, mince, kimchi, salad, slices, discs
+    mound(c[0],fr*.95);soft();
+    const N=st==="mince"?280:st==="discs"?9:st==="cubes"?30:46;
+    for(let i=0;i<N;i++){const[x,y]=pt(fr*(st==="discs"?.55:.72)),col=pick();
+      if(st==="cubes"){const s=fr*rnd(.11,.15);rrect(x,y,s,s,s*.18,R0()*3,col)}
+      else if(st==="discs"){ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,fr*.18,0,7);ctx.fill();noShadow();ctx.strokeStyle=shade(col,-.2);ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x-fr*.1,y);ctx.lineTo(x+fr*.1,y);ctx.moveTo(x,y-fr*.1);ctx.lineTo(x,y+fr*.1);ctx.stroke();soft()}
+      else if(st==="slices"){ctx.fillStyle=col;ctx.beginPath();ctx.ellipse(x,y,fr*.17,fr*.055,R0()*3,0,7);ctx.fill()}
+      else if(st==="mince"){blob(x,y,fr*rnd(.015,.04),col,6)}
+      else blob(x,y,fr*rnd(.07,.15),col)}
+    noShadow();break}
+  }
+}
+function circle(ctx,x,y,r,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
+function makeVisual(r,w,h){const p=(typeof PHOTOS!=="undefined")&&PHOTOS[r.id];if(p){const im=document.createElement("img");im.src=p.src;im.alt=r.n+" 成品照片";im.loading="lazy";im.decoding="async";return im}return makeCanvas(r,w,h)}
+function makeCanvas(r,w,h){const cv=document.createElement("canvas");cv.width=w;cv.height=h;try{drawDish(cv,r.art,r.id+r.n)}catch(e){}cv.setAttribute("role","img");cv.setAttribute("aria-label",r.n+" 插圖");return cv}
+
+
+/* ---------- 搜尋 ---------- */
+function norm(s){return String(s||"").trim().toLowerCase().replace(/\s+/g," ")}
+function resolveKeys(q){
+  q=norm(q);if(!q)return[];
+  const keys=Object.keys(ALIASES);
+  const exact=keys.filter(k=>k===q||ALIASES[k].some(a=>a.toLowerCase()===q));
+  if(exact.length)return exact;
+  return keys.filter(k=>(q.length>=2&&k.includes(q))||q.includes(k)||ALIASES[k].some(a=>{a=a.toLowerCase();return(q.length>=2&&a.includes(q))||(a.length>=2&&q.includes(a))}));
+}
+function search(q){
+  const keys=resolveKeys(q);
+  let list=RECIPES.filter(r=>r.k.some(k=>keys.includes(k)));
+  if(!list.length&&norm(q)){const nq=norm(q);list=RECIPES.filter(r=>r.ing.some(([n])=>n.toLowerCase().includes(nq)))}
+  list.sort((a,b)=>a.lv-b.lv||a.t-b.t);
+  return{q:q.trim(),keys,list};
+}
+function dotsHTML(lv){let h='<span class="dots" aria-label="難度 '+lv+' / 5">';for(let i=1;i<=5;i++)h+='<i class="'+(i<=lv?"on":"")+'"></i>';return h+"</span>"}
+function timeText(r){return r.t+" 分鐘"+(r.wait?" "+r.wait:"")}
+
+function cardEl(r){
+  const b=document.createElement("button");b.type="button";b.className="card";
+  const m=document.createElement("div");m.className="media";m.appendChild(makeVisual(r,560,420));
+  m.insertAdjacentHTML("beforeend",'<span class="badge l'+r.lv+'"><i></i>'+esc(LEVEL_NAME[r.lv]||"")+'</span>'+(r.ai?'<span class="ai-tag">Claude 建議</span>':''));
+  b.appendChild(m);
+  b.insertAdjacentHTML("beforeend",'<div><h4>'+esc(r.n)+'</h4></div><p>'+esc(r.d)+'</p><div class="meta"><span>'+ICON_CLOCK+esc(r.t+" 分鐘")+'</span>'+dotsHTML(r.lv)+(r.wait?'<span>'+esc(r.wait)+'</span>':'')+'</div>');
+  b.addEventListener("click",()=>openDetail(r));
+  return b;
+}
+function featureEl(r){
+  const b=document.createElement("button");b.type="button";b.className="feature";
+  const m=document.createElement("div");m.className="media";m.appendChild(makeVisual(r,960,720));b.appendChild(m);
+  b.insertAdjacentHTML("beforeend",'<div class="body"><span class="eyebrow">新手先從這道開始</span><h3>'+esc(r.n)+'</h3><p>'+esc(r.d)+'</p>'+
+    '<div class="meta"><span>'+ICON_CLOCK+esc(timeText(r))+'</span><span>'+ICON_USER+'約 '+esc(r.s||2)+' 人份</span>'+dotsHTML(r.lv)+'<span>'+esc(LEVEL_NAME[r.lv]||"")+'</span></div>'+
+    (r.sk&&r.sk.length?'<div class="skills">'+r.sk.map(s=>'<span class="skill">'+esc(s)+'</span>').join("")+'</div>':'')+
+    '<span class="cta">看完整做法 →</span></div>');
+  b.addEventListener("click",()=>openDetail(r));
+  return b;
+}
+function renderTiers(list,container,easyOnly){
+  TIERS.forEach((t,ti)=>{
+    if(easyOnly&&ti===2)return;
+    const items=list.filter(r=>t.test(r.lv));if(!items.length)return;
+    const sec=document.createElement("section");sec.className="tier";
+    sec.innerHTML='<div class="tier-head"><span class="lv">'+t.lv+'</span><h3>'+t.name+'</h3><small>'+t.sub+'</small></div>';
+    const g=document.createElement("div");g.className="grid";items.forEach(r=>g.appendChild(cardEl(r)));sec.appendChild(g);container.appendChild(sec);
+  });
+}
+function render(){
+  const easyOnly=$("#easyOnly")?$("#easyOnly").checked:true, res=$("#results"); res.innerHTML="";
+  const {q,list,keys}=current;
+  document.querySelectorAll(".chip").forEach(ch=>ch.setAttribute("aria-pressed",String(keys.length===1&&keys[0]===ch.dataset.k)));
+  const label=keys.length?keys.join("、"):q;
+  const shown=easyOnly?list.filter(r=>r.lv<=3):list, hidden=list.length-shown.length;
+  res.insertAdjacentHTML("beforeend",
+    '<div class="res-head"><div><span class="eyebrow">搜尋結果</span><h2>'+esc(label||"—")+'</h2><p class="count">'+(list.length?'共 '+list.length+' 道料理，由簡單排到困難':'資料庫裡還沒有這個食材')+'</p></div>'+
+    '<label class="switch"><input type="checkbox" id="easyOnly"'+(easyOnly?' checked':'')+'><span class="track"></span>只看新手友善（難度 1–3）</label></div>');
+  $("#easyOnly").addEventListener("change",render);
+  if(hidden)res.insertAdjacentHTML("beforeend",'<p class="hidden-note">另外還有 '+hidden+' 道進階料理，<button class="linkbtn" id="showHard" type="button">顯示全部</button></p>');
+  const sh=$("#showHard");if(sh)sh.onclick=()=>{$("#easyOnly").checked=false;render()};
+  if(shown.length){
+    res.appendChild(featureEl(shown[0]));
+    renderTiers(shown.slice(1),res,false);
+  }else{
+    res.insertAdjacentHTML("beforeend",'<div class="empty">'+(sampleFn?"這個食材還沒有收錄。可以在下方請 Claude 幫你想幾道適合新手的做法。":"這個食材還沒有收錄。試試上方的常見食材，或換個說法，例如「白菜」「蛋」。")+'</div>');
+  }
+  $("#aiBox").hidden=!sampleFn||!q;
+  $("#aiTitle").textContent=list.length?"想要更多「"+(label||q)+"」的做法？":"「"+q+"」可以做什麼？";
+  $("#aiBtn").textContent=list.length?"請 Claude 再想幾道":"請 Claude 幫我想";
+  renderAI();
+}
+function renderAI(){
+  const box=$("#aiResults");box.innerHTML="";
+  const mine=aiList.filter(r=>r.forQ===current.q);if(!mine.length)return;
+  const easyOnly=$("#easyOnly")?$("#easyOnly").checked:true;
+  mine.sort((a,b)=>a.lv-b.lv||a.t-b.t);
+  renderTiers(mine,box,easyOnly);
+  box.insertAdjacentHTML("beforeend",'<p class="note" style="margin-top:14px">Claude 建議的做法是即時產生的，第一次做時建議搭配食譜頁裡的參考影片對照。</p>');
+}
+function go(q,scroll){current=search(q);$("#aiStatus").textContent="";render();if(scroll)$("#results").scrollIntoView({block:"start"});}
+
+/* ---------- 食譜頁 ---------- */
+let lastFocus=null;
+function openDetail(r){
+  lastFocus=document.activeElement;
+  const p=$("#panel");p.innerHTML="";
+  const ph=(typeof PHOTOS!=="undefined")&&PHOTOS[r.id];
+  const hero=document.createElement("header");hero.className="r-hero";hero.appendChild(makeVisual(r,1400,600));
+  hero.insertAdjacentHTML("beforeend",'<div class="r-hero-text"><span class="eyebrow">難度 '+r.lv+'／5・'+esc(LEVEL_NAME[r.lv]||"")+(r.ai?'・Claude 建議':'')+'</span><h2 id="dTitle">'+esc(r.n)+'</h2><p>'+esc(r.d)+'</p></div>'+
+    (ph?'<div class="credit">照片：<a target="_blank" rel="noopener" href="'+esc(ph.url)+'">'+esc(ph.credit)+'</a></div>':'')+
+    '<button class="close" type="button" aria-label="關閉"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>');
+  p.appendChild(hero);
+  const q=encodeURIComponent(r.n.replace(/（.*?）/g,""));
+  const list=(title,arr,pre)=>arr&&arr.length?'<h4>'+title+'</h4><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return'<li><label><input type="checkbox" id="'+pre+i+'"><span>'+esc(n)+'</span><span class="q">'+esc(qt)+'</span></label></li>'}).join("")+'</ul>':"";
+  const total=(r.ing||[]).length+(r.sea||[]).length+(r.tools||[]).length;
+  p.insertAdjacentHTML("beforeend",
+   '<div class="r-facts"><div><span>難度</span><b>'+dotsHTML(r.lv)+esc(LEVEL_NAME[r.lv]||"")+'</b></div><div><span>時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>份量</span><b>約 '+esc(r.s||2)+' 人份</b></div><div><span>步驟</span><b>'+(r.steps||[]).length+' 步</b></div></div>'+
+   '<div class="r-body">'+
+    '<aside class="r-prep"><div class="r-prep-head"><h3>需要準備</h3><span class="progress" id="prog">0／'+total+'</span></div><div class="bar"><i id="progBar"></i></div>'+
+      list("主要材料",r.ing,"i")+list("調味料",r.sea,"s")+list("廚具",(r.tools||[]).map(t=>[t,""]),"t")+
+      (r.wait?'<p class="note" style="margin-top:12px">另外需要：'+esc(r.wait.replace(/^＋/,""))+'</p>':'')+'</aside>'+
+    '<div class="r-main">'+
+     (r.fail&&r.fail.length?'<section class="tips"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"/></svg>防失敗重點</h3><ul>'+r.fail.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ul></section>':"")+
+     '<section><div class="sec-title"><h3>做法</h3><small>做完一步點一下，幫你記住進度</small></div><ol class="steps">'+(r.steps||[]).map(s=>'<li><span>'+esc(s)+'</span></li>').join("")+'</ol></section>'+
+     (r.sk&&r.sk.length?'<section><div class="sec-title"><h3>這道菜練到的技巧</h3></div><div class="skills">'+r.sk.map(s=>'<span class="skill">'+esc(s)+'</span>').join("")+'</div></section>':"")+
+     '<section><div class="sec-title"><h3>參考來源</h3><small>看影片和其他人的做法對照，學得更快</small></div><div class="refs">'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+q+'+%E5%81%9A%E6%B3%95"><b>YouTube 影片</b><span>看別人實際操作，最適合新手</span></a>'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://icook.tw/search/'+q+'"><b>愛料理 iCook</b><span>台灣最大食譜社群，看網友心得</span></a>'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://cookpad.com/tw/search/'+q+'"><b>Cookpad 台灣</b><span>家常版本多，常有簡化做法</span></a>'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=isch&q='+q+'"><b>Google 圖片</b><span>看更多成品照片</span></a>'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://www.google.com/search?q='+q+'+%E9%A3%9F%E8%AD%9C"><b>Google 搜尋食譜</b><span>更多部落格和網站的做法</span></a>'+
+     '</div>'+(ph?'<p class="note" style="margin-top:12px">封面是網路上的實拍照片，實際做出來的樣子會因份量和擺盤而不同。</p>':(r.ai?'<p class="note" style="margin-top:12px">這道是 Claude 即時建議的做法，封面是示意插圖。</p>':''))+'</section>'+
+    '</div></div>');
+  const pp=pathPos(r.id);if(pp){p.querySelector(".r-facts").insertAdjacentHTML("afterend",'<div class="r-path"><span>主菜新手之路・<b>第 '+(pp.stage+1)+' 關「'+esc(STAGES[pp.stage].n)+'」</b>・成功的樣子：'+esc(pp.item.goal)+'</span><button class="btn" type="button" id="rDone" aria-pressed="'+(!!done[r.id])+'">'+(done[r.id]?"✓ 已完成":"我做到了！")+'</button></div>');p.querySelector("#rDone").onclick=()=>toggleDone(r.id)}
+  const upd=()=>{const all=p.querySelectorAll(".checklist input"),n=[...all].filter(x=>x.checked).length;$("#prog").textContent=n+"／"+all.length;$("#progBar").style.width=(all.length?n/all.length*100:0)+"%"};
+  p.querySelectorAll(".checklist input").forEach(x=>x.addEventListener("change",upd));
+  p.querySelectorAll(".steps li").forEach(li=>li.addEventListener("click",()=>li.classList.toggle("done")));
+  p.querySelector(".close").onclick=closeDetail;
+  const sh=$("#sheet");sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";p.querySelector(".close").focus();
+}
+function closeDetail(){$("#sheet").hidden=true;document.body.style.overflow="";if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+$("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeDetail()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#sheet").hidden)closeDetail()});
+
+const byId={};RECIPES.forEach(r=>byId[r.id]=r);
+/* ---------- 主菜新手之路 ---------- */
+const STAGES=[
+ {n:"蛋料理暖身",skill:"控制火候、炒蛋不老",badge:"蛋料理達人",why:"蛋便宜又熟得快，失敗了也不心疼，最適合先練手感。",items:[
+  {id:"tomato-egg",why:"只有兩樣主材料，10 分鐘上桌。",goal:"蛋是一大塊一大塊的滑嫩，番茄有紅色湯汁。"},
+  {id:"onion-egg",why:"再練一次「蛋先盛起、最後回鍋」。",goal:"洋蔥軟甜帶點金黃，蛋不乾。"},
+  {id:"radish-omelette",why:"第一次挑戰「煎」和「翻面」。",goal:"兩面金黃焦香，切 4 塊翻面都沒散掉。"}]},
+ {n:"第一塊肉",skill:"醃肉、煎肉、判斷熟度",badge:"煎肉小能手",why:"學會把肉煎熟又不老，之後大部分的主菜都難不倒你。",items:[
+  {id:"teriyaki",why:"冷鍋煎雞皮，幾乎不用技巧就很成功。",goal:"雞皮金黃酥脆、醬汁發亮，切開沒有粉紅色。"},
+  {id:"onion-beef",why:"學會醃肉，讓肉變嫩。",goal:"牛肉軟嫩不硬，洋蔥還帶一點脆。"},
+  {id:"fly-head",why:"絞肉很快熟，練大火快炒的節奏。",goal:"絞肉乾香、韭菜花還是翠綠色。"}]},
+ {n:"台灣味經典",skill:"調醬汁、燜煮、收汁",badge:"台灣味掌廚",why:"這關的菜一端上桌，家人朋友一定認得。",items:[
+  {id:"three-cup",why:"記住麻油、醬油、米酒 1:1:1 就不會錯。",goal:"醬汁濃稠發亮，九層塔香氣很明顯。"},
+  {id:"mapo-tofu",why:"第一次練勾芡，豆腐要推不要翻。",goal:"豆腐完整不碎，醬汁濃稠會掛在豆腐上。"},
+  {id:"kungpao",why:"練習先調好醬汁，一次倒入。",goal:"雞丁嫩、花生脆，醬汁包住每一塊雞肉。"}]},
+ {n:"一鍋到底",skill:"燉煮與時間管理",badge:"燉煮職人",why:"燉菜只要把材料備好，剩下交給時間，成就感最大。",items:[
+  {id:"napa-pork-hotpot",why:"看起來很厲害，其實只是疊起來、排進鍋。",goal:"一圈圈的花紋完整，肉片全熟。"},
+  {id:"nikujaga",why:"練習「落蓋」和收汁。",goal:"馬鈴薯鬆軟入味，但沒有燉到化掉。"},
+  {id:"braised-pork",why:"一次煮一鍋，可以吃好幾餐。",goal:"肉燥油亮、湯汁微稠，淋在飯上就是滷肉飯。"}]},
+ {n:"請客主菜",skill:"長時間燉煮、整合所有技巧",badge:"請客主廚",why:"畢業考！做給朋友吃，一定會被稱讚。",items:[
+  {id:"tomato-beef",why:"汆燙、煎香、燉煮三個技巧一次用上。",goal:"牛腩用筷子能輕鬆夾開，湯汁酸甜濃郁。"},
+  {id:"lion-head",why:"調肉餡、摔打、煎定型、燉煮全部到齊。",goal:"肉丸鬆軟不散，白菜吸滿肉汁。"}]}
+];
+const PATH_IDS=STAGES.flatMap(s=>s.items.map(i=>i.id));
+let done={};let pathDb=null,pathDoc=null;
+const LS_KEY="shicai-path-done";
+function lsLoad(){try{return JSON.parse(localStorage.getItem(LS_KEY)||"{}")||{}}catch(e){return{}}}
+function lsSave(){try{localStorage.setItem(LS_KEY,JSON.stringify(done))}catch(e){}}
+function pathPos(id){let n=0;for(let s=0;s<STAGES.length;s++)for(const it of STAGES[s].items){n++;if(it.id===id)return{no:n,stage:s,item:it}}return null}
+function stageDone(s){return STAGES[s].items.every(i=>done[i.id])}
+function currentTitle(){let t="廚房新手";STAGES.forEach((s,i)=>{if(stageDone(i))t=s.badge});return t}
+function nextDish(){return PATH_IDS.find(id=>!done[id])}
+const MEDAL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M8.5 10 6 3h4l2 4 2-4h4l-2.5 7"/><path d="m12 12.5.9 1.8 2 .3-1.4 1.4.3 2-1.8-1-1.8 1 .3-2-1.4-1.4 2-.3Z"/></svg>';
+function renderPath(){
+  const n=PATH_IDS.filter(id=>done[id]).length,total=PATH_IDS.length,nx=nextDish();
+  const nr=nx&&byId[nx],np=nx&&pathPos(nx);
+  $("#statusCard").innerHTML='<div class="t"><div><small>目前稱號</small><div class="title">'+esc(currentTitle())+'</div></div><span class="count">已完成 '+n+'／'+total+' 道</span></div>'+
+    '<div class="pbar"><i style="width:'+(n/total*100)+'%"></i></div>'+
+    (nr?'<button class="next" type="button" id="nextBtn">'+(typeof PHOTOS!=="undefined"&&PHOTOS[nr.id]?'<img src="'+PHOTOS[nr.id].src+'" alt="">':'')+'<span><em>下一道・第 '+np.no+' 道</em><b>'+esc(nr.n)+'</b></span></button>':'<div class="title" style="font-size:20px">全部完成！你已經是可以請客的主廚了。</div>');
+  const nb=$("#nextBtn");if(nb)nb.onclick=()=>openDetail(nr);
+  let no=0;
+  $("#stages").innerHTML=STAGES.map((s,si)=>{
+    const sd=stageDone(si);
+    return '<article class="stage"><div class="stage-info"><span class="stage-no">第 '+(si+1)+' 關</span><h3>'+esc(s.n)+'</h3><p>'+esc(s.why)+'</p><div class="learn"><b>學會</b><span>'+esc(s.skill)+'</span></div>'+
+      '<span class="medal'+(sd?' on':'')+'">'+MEDAL+(sd?'已解鎖：':'完成這關解鎖：')+esc(s.badge)+'</span></div><div class="dishes">'+
+      s.items.map(it=>{no++;const r=byId[it.id];if(!r)return"";const d=!!done[it.id];
+        return '<div class="dish'+(d?' done':'')+'"><button class="ph" type="button" data-open="'+it.id+'" aria-label="看 '+esc(r.n)+' 的做法"><span class="num">'+String(no).padStart(2,"0")+'</span></button>'+
+        '<div class="dbody"><h4>'+esc(r.n)+'</h4><p class="why">'+esc(it.why)+'</p><p class="goal"><b>成功的樣子：</b>'+esc(it.goal)+'</p>'+
+        '<div class="row"><small>'+esc(r.t)+' 分鐘・'+esc(LEVEL_NAME[r.lv])+'</small><button class="donebtn" type="button" data-done="'+it.id+'" aria-pressed="'+d+'">'+(d?'✓ 做到了':'我做到了')+'</button></div></div></div>'}).join("")+
+      '</div></article>'}).join("");
+  $("#stages").querySelectorAll("[data-open]").forEach(b=>{const r=byId[b.dataset.open];b.insertBefore(makeVisual(r,420,262),b.firstChild);b.onclick=()=>openDetail(r)});
+  $("#stages").querySelectorAll("[data-done]").forEach(b=>b.onclick=()=>toggleDone(b.dataset.done));
+}
+let saving=Promise.resolve();
+function persist(){lsSave();if(pathDoc){saving=saving.then(()=>pathDoc.set({done})).catch(()=>{})}}
+function toggleDone(id){
+  const before=currentTitle(),pos=pathPos(id);
+  if(done[id])delete done[id];else done[id]=new Date().toISOString().slice(0,10);
+  persist();renderPath();
+  if(done[id]){
+    const after=currentTitle(),r=byId[id];
+    if(after!==before)celebrate("解鎖新稱號：「"+after+"」","完成第 "+(pos.stage+1)+" 關，太厲害了！",true);
+    else celebrate("完成「"+r.n+"」！",nextDish()?"下一道："+byId[nextDish()].n:"全部 14 道都完成了！",false);
+  }
+  const rb=document.getElementById("rDone");if(rb){rb.setAttribute("aria-pressed",String(!!done[id]));rb.textContent=done[id]?"✓ 已完成":"我做到了！"}
+}
+let toastT=null;
+function celebrate(title,sub,big){
+  document.querySelectorAll(".toast").forEach(t=>t.remove());
+  const t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.innerHTML='<div><b>'+esc(title)+'</b><br><span>'+esc(sub)+'</span></div>';document.body.appendChild(t);
+  clearTimeout(toastT);toastT=setTimeout(()=>t.remove(),3800);
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const cv=document.createElement("canvas");cv.id="confetti";cv.width=innerWidth;cv.height=innerHeight;document.body.appendChild(cv);
+  const g=cv.getContext("2d"),cols=["#e3a126","#2e5b45","#b3432c","#8cc3a2","#f6d25a"],N=big?160:70,P=[];
+  for(let i=0;i<N;i++)P.push({x:innerWidth/2+(Math.random()-.5)*120,y:innerHeight*.75,vx:(Math.random()-.5)*14,vy:-(8+Math.random()*12),r:4+Math.random()*5,c:cols[i%cols.length],a:Math.random()*6,s:(Math.random()-.5)*.3});
+  let f=0;(function step(){g.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.a+=p.s;g.save();g.translate(p.x,p.y);g.rotate(p.a);g.fillStyle=p.c;g.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);g.restore()});if(++f<110)requestAnimationFrame(step);else cv.remove()})();
+}
+async function initPathStore(){
+  done=lsLoad();renderPath();
+  if(!(window.claude&&typeof window.claude.use==="function"))return;
+  try{
+    const [db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
+    if(!db||!user)return;const uid=await user.id();if(!uid)return;
+    pathDb=db;pathDoc=db.doc("data/users/"+uid+"/progress");
+    const snap=await pathDoc.get();
+    if(snap.exists){const d=(snap.data&&typeof snap.data==="function"?snap.data():snap.data)||{};if(d.done&&typeof d.done==="object"){done=Object.assign({},d.done);lsSave();renderPath()}}
+    else if(Object.keys(done).length){persist()}
+  }catch(e){pathDoc=null}
+}
+
+/* ---------- Claude 建議（sample capability） ---------- */
+let sampleFn=null; const aiState={busy:false,err:""}; let aiCtl=null;
+const STYLES=["shreds","strips","noodle","chunks","stirfry","cubes","mince","slices","discs","salad","soup","stew","steamed","mash","gratin","rice","egg","omelette","glazed","tofu","dumpling","rolls","balls","layers"];
+function aiPrompt(q,exclude){
+  return `你是一位很會教新手的台灣家常菜老師。使用者剛開始學做菜，想用「${q}」當主要食材做料理。
+請建議 5 道以「${q}」為主角的料理，由簡單到困難排列，其中至少 3 道是難度 1–2，最多 1 道難度 4，不要難度 5。
+避開這些已經有的料理：${exclude.join("、")||"（無）"}。
+要求：
+- 全部使用台灣繁體中文與台灣常用說法；份量用「大匙、小匙、g、ml、顆、根」。
+- 步驟 4–7 步，每步一兩句，用新手看得懂的白話（例如「炒到邊緣變半透明」「筷子能輕鬆插入」），說清楚火候和時間。
+- fail 寫 1–3 條最容易失敗的地方和怎麼避免。
+- 只用家裡常見的調味料和廚具。
+只回覆一個 JSON 陣列，不要其他文字。每個元素格式：
+{"n":"料理名稱","lv":1,"t":15,"wait":"","s":2,"d":"一句介紹","ing":[["材料","份量"]],"sea":[["調味料","份量"]],"tools":["廚具"],"steps":["步驟"],"fail":["防失敗重點"],"sk":["練到的技巧"],"art":{"v":"plate","st":"chunks","c":["#主色","#次色","#點綴色"]}}
+lv 是 1–5 的整數，t 是分鐘數（整數），wait 是額外等待時間（例如「＋冷藏一晚」，沒有就空字串）。
+art 用來畫俯視插圖：v 只能是 plate、bowl、pot 其中之一（湯品用 bowl，燉煮用 pot）；st 只能是 ${STYLES.join("、")} 其中之一；c 是三個代表這道菜外觀的 hex 顏色。`;
+}
+function clean(x,q,i){
+  if(!x||typeof x!=="object"||!x.n)return null;
+  const arr=a=>Array.isArray(a)?a:[];
+  const pairs=a=>arr(a).map(p=>Array.isArray(p)?[String(p[0]||""),String(p[1]||"")]:[String(p||""),""]).filter(p=>p[0]);
+  const art=x.art&&typeof x.art==="object"?x.art:{};
+  return{id:"ai-"+hash(q+x.n+i),n:String(x.n).slice(0,40),k:[],lv:Math.max(1,Math.min(5,Math.round(+x.lv||2))),t:Math.max(1,Math.round(+x.t||20)),wait:x.wait?String(x.wait):"",s:+x.s||2,
+    d:String(x.d||""),ing:pairs(x.ing),sea:pairs(x.sea),tools:arr(x.tools).map(String),steps:arr(x.steps).map(String),fail:arr(x.fail).map(String),sk:arr(x.sk).map(String),
+    art:{v:["plate","bowl","pot"].includes(art.v)?art.v:"plate",st:STYLES.includes(art.st)?art.st:"chunks",c:arr(art.c).filter(c=>/^#[0-9a-f]{3,6}$/i.test(c)).slice(0,3)},ai:true,forQ:q};
+}
+async function askAI(){
+  if(!sampleFn||aiState.busy)return;
+  const q=current.q;if(!q)return;
+  aiState.busy=true;const btn=$("#aiBtn"),st=$("#aiStatus");btn.disabled=true;st.className="status";st.innerHTML='<span class="spinner"></span>Claude 正在想食譜，大約需要 20–60 秒…';
+  aiCtl=new AbortController();
+  const exclude=current.list.map(r=>r.n).concat(aiList.filter(r=>r.forQ===q).map(r=>r.n));
+  try{
+    const data=await sampleFn.json(aiPrompt(q,exclude),{signal:aiCtl.signal});
+    const raw=Array.isArray(data)?data:(data&&Array.isArray(data.recipes)?data.recipes:[]);
+    const got=raw.map((x,i)=>clean(x,q,i+aiList.length)).filter(Boolean);
+    if(!got.length)throw{code:"empty"};
+    aiList=aiList.concat(got);st.textContent="已加入 "+got.length+" 道 Claude 建議的料理。";
+    renderAI();
+  }catch(e){
+    st.className="status err";
+    const code=e&&e.code;
+    st.textContent=code==="not_granted"?"沒有取得使用 Claude 的允許，所以無法產生新食譜。":code==="rate_limited"?"一次問太多了，請等一分鐘再試。":code==="cancelled"?"已取消。":"這次沒有成功產生食譜，可以再按一次試試。";
+    if(code==="not_granted"){$("#aiBox").hidden=true;sampleFn=null}
+  }finally{aiState.busy=false;btn.disabled=false}
+}
+$("#aiBtn").addEventListener("click",askAI);
+
+
+
+/* ---------- 深色／淺色 ---------- */
+const TKEY="shicai-theme";
+function effectiveDark(){const a=document.documentElement.getAttribute("data-theme");if(a==="dark")return true;if(a==="light")return false;return matchMedia("(prefers-color-scheme: dark)").matches}
+function syncTheme(){const d=effectiveDark();document.documentElement.classList.toggle("is-dark",d);$("#themeLabel").textContent=d?"淺色":"深色";$("#themeBtn").setAttribute("aria-label",d?"切換成淺色模式":"切換成深色模式")}
+try{const s=localStorage.getItem(TKEY);if(s==="dark"||s==="light")document.documentElement.setAttribute("data-theme",s)}catch(e){}
+$("#themeBtn").addEventListener("click",()=>{const next=effectiveDark()?"light":"dark";document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem(TKEY,next)}catch(e){}syncTheme()});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",syncTheme);
+new MutationObserver(syncTheme).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+syncTheme();
+
+/* ---------- 初始化 ---------- */
+const countFor=k=>RECIPES.filter(r=>r.k.includes(k)).length;
+$("#chips").innerHTML=CHIPS.map(k=>'<button type="button" class="chip" data-k="'+esc(k)+'" aria-pressed="false">'+esc(k)+'<small>'+countFor(k)+'</small></button>').join("");
+$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;$("#q").value=b.dataset.k;go(b.dataset.k,true)});
+$("#basicsGrid").innerHTML=BASICS.map(([t,d])=>'<div><b>'+esc(t)+'</b><span>'+esc(d)+'</span></div>').join("");
+const MOS=[["tomato-egg","番茄炒蛋"],["three-cup","三杯雞"],["napa-pork-hotpot","千層白菜豬肉鍋"],["mapo-tofu","麻婆豆腐"]];
+$("#mosaic").innerHTML=MOS.slice(0,3).map(([id,n])=>(typeof PHOTOS!=="undefined"&&PHOTOS[id])?'<figure><img src="'+PHOTOS[id].src+'" alt=""><figcaption>'+esc(n)+'</figcaption></figure>':'<figure></figure>').join("")+
+  '<div class="stamp"><div><b>'+RECIPES.length+'</b><span>道家常菜</span></div><div><b>'+CHIPS.length+'</b><span>種常見食材</span></div></div>';
+$("#searchForm").addEventListener("submit",e=>{e.preventDefault();go($("#q").value,true);if(!current.list.length&&sampleFn)askAI();});
+go($("#q").value,false);
+initPathStore();
+if(window.claude&&typeof window.claude.use==="function"){
+  window.claude.use("sample").then(s=>{if(s){sampleFn=s;render()}}).catch(()=>{});
+}
+})();
+</script>
+
+</body>
+</html>
