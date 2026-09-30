@@ -4,4 +4,4 @@
 
 網站：https://rick97005196-star.github.io/shicai/
 
-照片來自 Wikimedia Commons（依各自 CC 授權標示作者）與愛料理 iCook 網友食譜，出處標示於各食譜頁。
+照片來自 Unsplash、Wikimedia Commons（依各自授權標示作者）與愛料理 iCook 網友食譜，出處標示於各食譜頁。
