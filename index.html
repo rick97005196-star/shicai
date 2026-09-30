@@ -1,491 +1,404 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>食材料理簿｜新手家常菜指南</title>
-<meta name="description" content="輸入手邊的食材，找到由簡單到困難的家常菜。每一步都寫清楚火候、時間和成功的樣子，還有烹飪模式、計時器與 14 道主菜的新手闖關菜單。">
-<meta property="og:title" content="食材料理簿｜新手家常菜指南">
-<meta property="og:description" content="冰箱裡有什麼，就煮什麼。從最簡單的開始學做菜。">
+<title>食材料理簿｜澳洲打工度假的料理新手課程</title>
+<meta name="description" content="給在澳洲打工度假的料理新手：從煮一鍋白飯開始，一課學一道配飯的家常菜。材料附英文名稱與購買地點（Woolworths、Coles、亞洲超市），步驟寫清楚火候、時間與完成的樣子。">
+<meta property="og:title" content="食材料理簿｜一碗白飯，配一道菜">
+<meta property="og:description" content="給在澳洲打工度假的料理新手，從白飯開始循序漸進。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="photos/napa-pork-hotpot.webp">
-<meta name="theme-color" content="#11110f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2311110f'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23cdae78' font-family='serif'%3E%E9%A3%9F%3C/text%3E%3C/svg%3E">
-<script>try{var s=localStorage.getItem("shicai-theme");if(s==="dark"||s==="light")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+<meta property="og:image" content="photos/hero.webp">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6b4f'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif'%3E%E9%A3%9F%3C/text%3E%3C/svg%3E">
+<script>try{if(localStorage.getItem("shicai-theme2")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* Layout: 深色全版封面（大圖＋搜尋）→ 食材圖片牆 → 主菜新手之路 → 搜尋結果（食材橫幅＋推薦大卡＋分級照片卡）→ 深色基本功帶；食譜頁＝大圖封面＋左側備料清單、右側詳細步驟，另有全螢幕烹飪模式 */
+/* Layout: 白色正式食譜網站。頂部導覽 → 左文右圖的封面 → 新手課程（白飯＋一道菜，依序十課）→ 用食材找料理 → 搜尋結果 → 澳洲新手廚房 → 基本功；食譜頁為白底文章式：標題、資訊列、大圖，左欄材料（附英文與購買地點）、右欄步驟 */
 :root{
-  --bg:#f7f5f0; --surface:#ffffff; --surface-2:#efebe3; --ink:#1a1917; --muted:#6e6a62; --line:#e4dfd5;
-  --gold:#9c7a44; --gold-ink:#ffffff; --gold-soft:#f2eadb; --sage:#4f6b58; --sage-soft:#e6ece7; --chili:#9e3b28; --chili-soft:#f6e6e0;
-  --night:#11110f; --night-2:#1b1a18; --night-ink:#efe9dd; --night-muted:#a39d91; --night-line:rgba(239,233,221,.14);
+  --bg:#ffffff; --soft:#f7f5f1; --card:#ffffff; --ink:#1f2328; --muted:#62686e; --line:#e8e4dd;
+  --brand:#2f6b4f; --brand-ink:#ffffff; --brand-soft:#e9f1ec; --warm:#b7791f; --warm-soft:#fbf3e4; --red:#b8452e; --red-soft:#fbece7;
+  --shadow:0 1px 2px rgba(31,35,40,.05),0 8px 24px rgba(31,35,40,.06);
   --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
-  --latin:"Cormorant Garamond","Noto Serif TC",Georgia,serif;
   --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --ease:cubic-bezier(.2,.7,.2,1);
+  --r:14px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0f0f0e; --surface:#181816; --surface-2:#211f1c; --ink:#eee9df; --muted:#a29c90; --line:#2d2b27;
-  --gold:#cdae78; --gold-ink:#161410; --gold-soft:#2a2419; --sage:#9dbba6; --sage-soft:#1d2620; --chili:#ea8b70; --chili-soft:#35201a;
-  --night:#080807; --night-2:#131210; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0f0f0e; --surface:#181816; --surface-2:#211f1c; --ink:#eee9df; --muted:#a29c90; --line:#2d2b27;
-  --gold:#cdae78; --gold-ink:#161410; --gold-soft:#2a2419; --sage:#9dbba6; --sage-soft:#1d2620; --chili:#ea8b70; --chili-soft:#35201a;
-  --night:#080807; --night-2:#131210; color-scheme:dark}
+  --bg:#17191b; --soft:#1e2124; --card:#212427; --ink:#ebeae6; --muted:#a3a8ad; --line:#33373b;
+  --brand:#7fbf9c; --brand-ink:#10231a; --brand-soft:#1f2e26; --warm:#e0b15a; --warm-soft:#302717; --red:#ec8f78; --red-soft:#35221d;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0;line-height:1.3;text-wrap:balance;letter-spacing:.04em}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;margin:0;line-height:1.35;text-wrap:balance}
+h4{font-family:var(--sans);font-weight:700}
 p{margin:0}
 a{color:inherit}
 button{font:inherit;color:inherit}
 img{max-width:100%;display:block}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
-.kicker{font-family:var(--latin);font-size:13px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
-.kicker-zh{font-size:12.5px;letter-spacing:.3em;color:var(--gold);font-weight:500}
-.rule{height:1px;background:var(--line);border:0;margin:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--gold);background:var(--gold);color:var(--gold-ink);padding:13px 26px;font-size:14px;font-weight:500;letter-spacing:.14em;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s}
-@media (hover:hover){.btn:hover{background:transparent;color:var(--gold)}}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
-.btn:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.08em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink);padding:11px 20px;border-radius:999px;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:filter .2s,background .2s}
+.btn:hover{filter:brightness(1.08)}
+.btn.line{background:transparent;color:var(--brand)}
+.btn.line:hover{background:var(--brand-soft);filter:none}
+.btn:disabled{opacity:.45;cursor:default}
 .btn svg{width:17px;height:17px}
 
-/* ---------- 封面 ---------- */
-.cover{background:var(--night);color:var(--night-ink);position:relative;overflow:hidden}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;position:relative;z-index:2}
-.logo{display:flex;align-items:baseline;gap:14px;text-decoration:none}
-.logo b{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.2em}
-.logo span{font-family:var(--latin);font-style:italic;font-size:15px;color:var(--night-muted);letter-spacing:.06em}
-.nav-right{display:flex;align-items:center;gap:26px}
-.nav-links{display:flex;gap:26px;font-size:13.5px;letter-spacing:.14em}
-.nav-links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
-.nav-links a:hover{color:var(--night-ink)}
-.theme-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--night-line);color:var(--night-ink);padding:7px 13px;font-size:12.5px;letter-spacing:.12em;cursor:pointer}
-.theme-btn:hover{border-color:#cdae78}
-.theme-btn svg{width:15px;height:15px}
-.theme-btn .i-sun{display:none}.is-dark .theme-btn .i-sun{display:block}.is-dark .theme-btn .i-moon{display:none}
-.cover-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(24px,5vw,64px) clamp(48px,7vw,96px);position:relative;z-index:1}
-.cover-copy{display:grid;grid-template-columns:minmax(0,1fr);gap:26px;min-width:0}
-.cover h1{font-size:clamp(36px,5.2vw,66px);font-weight:500;line-height:1.22;letter-spacing:.08em}
-.cover h1 em{font-style:normal;color:#cdae78}
-.cover .lead{color:var(--night-muted);font-size:16px;max-width:30em;font-weight:300;letter-spacing:.04em}
-.search{display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(239,233,221,.35);padding-bottom:10px;max-width:520px;width:100%}
-.search svg{width:20px;height:20px;flex:none;color:var(--night-muted)}
-.search input{flex:1 1 0;width:0;min-width:0;border:0;background:transparent;font:inherit;font-size:19px;font-family:var(--serif);color:var(--night-ink);outline:none;letter-spacing:.06em;padding-block:6px}
-.search input::placeholder{color:rgba(239,233,221,.4)}
-.search .btn{padding:11px 20px;background:#cdae78;border-color:#cdae78;color:#161410}
-@media (hover:hover){.search .btn:hover{background:transparent;color:#cdae78}}
-.cover-meta{display:flex;gap:34px;flex-wrap:wrap}
-.cover-meta div{display:grid;line-height:1.2}
-.cover-meta b{font-family:var(--latin);font-size:40px;font-weight:500;color:var(--night-ink);font-variant-numeric:lining-nums}
-.cover-meta span{font-size:12.5px;color:var(--night-muted);letter-spacing:.16em}
-.cover-art{position:relative;min-width:0;aspect-ratio:4/5;max-height:640px;justify-self:end;width:100%}
-.cover-art figure{margin:0;position:absolute;overflow:hidden}
-.cover-art img{width:100%;height:100%;object-fit:cover}
-.cover-art .a1{inset:0 18% 12% 0}
-.cover-art .a2{width:44%;aspect-ratio:1;right:0;bottom:0;outline:10px solid var(--night)}
-.cover-art figcaption{position:absolute;left:14px;bottom:12px;font-family:var(--latin);font-style:italic;font-size:15px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.cover-art .tag{position:absolute;left:0;top:-30px;font-family:var(--latin);font-size:12px;letter-spacing:.3em;color:var(--night-muted)}
+/* 導覽 */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:.06em;flex:none}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-style:normal;font-size:16px}
+.menu{display:flex;align-items:center;gap:4px}
+.menu a{text-decoration:none;font-size:14.5px;color:var(--muted);padding:8px 12px;border-radius:8px}
+.menu a:hover{color:var(--ink);background:var(--soft)}
+.iconbtn{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer;flex:none}
+.iconbtn:hover{border-color:var(--brand)}
+.iconbtn svg{width:18px;height:18px}
+.i-sun{display:none}:root[data-theme="dark"] .i-sun{display:block}:root[data-theme="dark"] .i-moon{display:none}
 
-/* ---------- 區塊標題 ---------- */
-.section{padding-block:clamp(56px,8vw,112px)}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 56px;align-items:end;margin-bottom:clamp(28px,4vw,48px)}
-.sec-head h2{font-size:clamp(30px,3.8vw,46px);font-weight:500;letter-spacing:.08em;margin-top:12px}
-.sec-head p{color:var(--muted);max-width:34em;font-weight:300}
+/* 封面 */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(28px,5vw,64px)}
+.hero-copy{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
+.hero h1{font-size:clamp(34px,4.8vw,56px);letter-spacing:.04em}
+.hero h1 span{color:var(--brand)}
+.hero .lead{color:var(--muted);font-size:17px;max-width:30em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:14px;margin-top:6px}
+.hero-facts span{display:inline-flex;align-items:center;gap:6px}
+.hero-facts svg{width:16px;height:16px;color:var(--brand)}
+.hero-img{position:relative;min-width:0}
+.hero-img img{width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:20px}
+.hero-img .cap{position:absolute;left:14px;bottom:14px;background:color-mix(in srgb,var(--card) 94%,transparent);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);font-size:14px;max-width:80%}
+.hero-img .cap b{display:block;font-family:var(--serif);font-size:16px}
+.hero-img .cap span{color:var(--muted);font-size:13px}
 
-/* ---------- 食材牆 ---------- */
-.ing-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px}
-.ing:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-.ing:first-child .lab b{font-size:26px}
-.ing{position:relative;aspect-ratio:3/4;min-width:0;overflow:hidden;border:0;padding:0;cursor:pointer;background:var(--surface-2);text-align:left}
-.ing img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .4s}
-.ing:hover img{transform:scale(1.06)}
-.ing::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.72));transition:opacity .3s}
-.ing .lab{position:absolute;left:12px;right:12px;bottom:10px;z-index:1;color:#fff;display:grid;gap:0;line-height:1.35}
-.ing .lab b{font-family:var(--serif);font-weight:500;font-size:17px;letter-spacing:.1em;white-space:nowrap}
-.ing .lab span{font-family:var(--latin);font-size:13.5px;font-style:italic;opacity:.8;white-space:nowrap}
-.ing[aria-pressed="true"]{outline:2px solid var(--gold);outline-offset:3px}
+/* 區塊 */
+.sec{padding-block:clamp(44px,6vw,80px)}
+.sec.soft{background:var(--soft)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 32px;margin-bottom:clamp(22px,3vw,34px)}
+.sec-head h2{font-size:clamp(26px,3.2vw,36px);margin-top:6px}
+.sec-head p{color:var(--muted);max-width:38em;margin-top:8px}
 
-/* ---------- 主菜之路 ---------- */
-.path{background:var(--surface);border-block:1px solid var(--line)}
-.status{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:center;border:1px solid var(--line);padding:22px 26px;background:var(--bg)}
-.status .title{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--gold);letter-spacing:.1em}
-.status small{display:block;font-size:12px;color:var(--muted);letter-spacing:.2em;margin-bottom:4px}
-.status .count{font-family:var(--latin);font-size:18px;color:var(--muted)}
-.pbar{grid-column:1/-1;height:2px;background:var(--line);overflow:hidden}
-.pbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .6s var(--ease)}
-.next{grid-column:1/-1;display:flex;align-items:center;gap:16px;border:0;background:none;padding:0;cursor:pointer;text-align:left}
-.next img,.next canvas{width:64px;height:64px;object-fit:cover;flex:none}
-.next span{display:grid;line-height:1.4;min-width:0}
-.next em{font-style:normal;font-size:12px;color:var(--muted);letter-spacing:.16em}
-.next b{font-family:var(--serif);font-size:18px;font-weight:600}
-.next::after{content:"→";margin-left:auto;color:var(--gold);font-size:20px}
-.stages{display:grid;gap:0;margin-top:clamp(28px,4vw,48px)}
-.stage{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:22px 48px;padding-block:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
-.stage:last-child{border-bottom:1px solid var(--line)}
-.stage-info{display:grid;gap:10px;align-content:start}
-.stage-no{font-family:var(--latin);font-size:56px;line-height:.9;color:var(--gold);font-weight:500}
-.stage-info h3{font-size:24px;font-weight:600;letter-spacing:.12em}
-.stage-info p{color:var(--muted);font-size:14.5px;font-weight:300}
-.learn{font-size:13.5px}
-.learn b{color:var(--ink);font-weight:500;margin-right:8px;letter-spacing:.1em}
-.medal{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.1em;color:var(--muted);justify-self:start;border:1px solid var(--line);padding:5px 12px}
-.medal svg{width:18px;height:18px}
-.medal.on{color:var(--gold);border-color:var(--gold);background:var(--gold-soft)}
-.dishes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.dish{display:grid;grid-template-rows:auto 1fr;min-width:0;position:relative}
-.dish .ph{position:relative;aspect-ratio:4/3;overflow:hidden;border:0;padding:0;cursor:pointer;background:var(--surface-2);display:block;width:100%}
-.dish .ph img,.dish .ph canvas{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.dish .ph:hover img{transform:scale(1.05)}
-.dish .num{position:absolute;left:0;top:0;background:var(--night);color:#efe9dd;font-family:var(--latin);font-size:15px;padding:4px 12px;letter-spacing:.1em}
-.dish.done .ph::after{content:"✓ 已完成";position:absolute;inset:0;display:grid;place-items:center;background:rgba(17,17,15,.55);color:#efe9dd;font-family:var(--serif);letter-spacing:.2em;font-size:16px}
-.dish .dbody{padding-top:14px;display:grid;gap:8px;align-content:start}
-.dish h4{font-size:18px;font-weight:600;letter-spacing:.08em}
-.dish .why{font-size:14px;color:var(--muted);font-weight:300;line-height:1.65}
-.dish .goal{font-size:13.5px;line-height:1.65;border-left:2px solid var(--gold);padding-left:10px}
-.dish .goal b{font-weight:500;color:var(--gold);margin-right:4px}
-.dish .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
-.dish .row small{color:var(--muted);font-size:12.5px;letter-spacing:.06em}
-.donebtn{border:1px solid var(--line);background:transparent;padding:6px 14px;font-size:12.5px;letter-spacing:.1em;cursor:pointer;transition:all .25s}
-.donebtn:hover{border-color:var(--gold);color:var(--gold)}
-.donebtn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+/* 課程 */
+.lessons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.lesson{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-align:left;padding:0;cursor:pointer;min-width:0;transition:box-shadow .2s,transform .2s}
+.lesson:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.lesson .ph{position:relative;aspect-ratio:4/3;background:var(--soft);overflow:hidden}
+.lesson .ph img,.lesson .ph canvas{width:100%;height:100%;object-fit:cover}
+.lesson .no{position:absolute;left:10px;top:10px;background:var(--card);color:var(--ink);font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;box-shadow:var(--shadow)}
+.lesson .bd{padding:12px 14px 14px;display:grid;gap:4px;align-content:start;flex:1}
+.lesson .combo{font-size:12.5px;color:var(--muted)}
+.lesson h3{font-family:var(--sans);font-size:16.5px;font-weight:700;line-height:1.45}
+.lesson .learn{font-size:13px;color:var(--brand);font-weight:500}
+.lesson .tm{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:5px;margin-top:2px}
+.lesson .tm svg{width:14px;height:14px}
 
-/* ---------- 搜尋結果 ---------- */
-.res-banner{position:relative;height:clamp(180px,24vw,300px);overflow:hidden;background:var(--night);margin-bottom:clamp(28px,4vw,44px)}
-.res-banner img{width:100%;height:100%;object-fit:cover;opacity:.78}
-.res-banner .t{position:absolute;inset:auto 0 0 0;padding:clamp(18px,3vw,34px);background:linear-gradient(180deg,transparent,rgba(0,0,0,.7));color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
-.res-banner h2{font-size:clamp(34px,5vw,58px);font-weight:500;letter-spacing:.14em}
-.res-banner .count{font-family:var(--latin);font-size:18px;font-style:italic;opacity:.9}
-.res-head-plain{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:28px}
-.res-head-plain h2{font-size:clamp(32px,4.4vw,52px);font-weight:500;letter-spacing:.12em}
-.res-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-bottom:28px}
-.res-tools p{color:var(--muted);font-size:14px}
-.switch{display:inline-flex;align-items:center;gap:12px;cursor:pointer;user-select:none;font-size:13.5px;color:var(--muted);letter-spacing:.06em}
-.switch input{position:absolute;opacity:0;width:1px;height:1px}
-.switch .track{width:40px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background .25s;flex:none}
-.switch .track::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .25s var(--ease)}
-.switch input:checked + .track{background:var(--gold)}
-.switch input:checked + .track::after{transform:translateX(18px)}
-.switch input:focus-visible + .track{outline:2px solid var(--gold);outline-offset:2px}
-.linkbtn{background:none;border:0;padding:0;color:var(--gold);text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:inherit}
+/* 食材 */
+.finder{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 18px;max-width:640px;width:100%;box-shadow:var(--shadow)}
+.search svg{width:19px;height:19px;flex:none;color:var(--muted)}
+.search input{flex:1 1 0;width:0;min-width:0;border:0;background:transparent;font:inherit;font-size:16.5px;color:var(--ink);outline:none;padding-block:8px}
+.search input::placeholder{color:var(--muted)}
+.ings{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:8px}
+@media(max-width:1060px){.ings{grid-template-columns:repeat(7,minmax(0,1fr))}}
+.ing{display:grid;justify-items:center;gap:8px;background:none;border:0;padding:6px 0;cursor:pointer;text-align:center}
+.ing img{width:72px;height:72px;max-width:100%;aspect-ratio:1;height:auto;border-radius:50%;object-fit:cover;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line);transition:box-shadow .2s,transform .2s}
+.ing:hover img{transform:scale(1.04)}
+.ing[aria-pressed="true"] img{box-shadow:0 0 0 2px var(--brand)}
+.ing b{font-size:15px;font-weight:500;line-height:1.2}
+.ing span{font-size:12px;color:var(--muted);line-height:1.2}
 
-.feature{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);background:var(--surface);border:1px solid var(--line);cursor:pointer;text-align:left;padding:0;width:100%;margin-bottom:clamp(40px,6vw,72px)}
-.feature .media{position:relative;min-height:380px;overflow:hidden;background:var(--surface-2)}
-.feature .media img,.feature .media canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
-.feature:hover .media img{transform:scale(1.04)}
-.feature .body{padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}
-.feature h3{font-size:clamp(28px,3.2vw,40px);font-weight:500;letter-spacing:.1em}
-.feature p{color:var(--muted);font-weight:300}
-.feature .cta{margin-top:10px;display:inline-flex;align-items:center;gap:12px;font-size:14px;letter-spacing:.16em;color:var(--gold)}
-.feature .cta::after{content:"";width:34px;height:1px;background:currentColor;transition:width .4s var(--ease)}
-.feature:hover .cta::after{width:56px}
-
-.tier{margin-bottom:clamp(40px,6vw,72px)}
-.tier-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.tier-head .lv{font-family:var(--latin);font-size:13px;letter-spacing:.3em;color:var(--gold)}
-.tier-head h3{font-size:24px;font-weight:500;letter-spacing:.12em}
-.tier-head small{color:var(--muted);font-size:13.5px;font-weight:300}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:40px 24px}
-.card{display:flex;flex-direction:column;gap:14px;background:none;border:0;padding:0;text-align:left;cursor:pointer;min-width:0}
-.card .media{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--surface-2)}
-.card .media img,.card .media canvas{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.card:hover .media img,.card:hover .media canvas{transform:scale(1.05)}
-.badge{position:absolute;top:0;left:0;background:var(--night);color:#efe9dd;font-size:12px;letter-spacing:.16em;padding:5px 11px}
-.ai-tag{position:absolute;top:0;right:0;background:#cdae78;color:#161410;font-size:12px;padding:5px 10px;letter-spacing:.1em}
-.card h4{font-size:19px;font-weight:600;letter-spacing:.08em;line-height:1.4}
-.card p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;font-size:13px;color:var(--muted);letter-spacing:.04em}
-.meta span{display:inline-flex;align-items:center;gap:6px}
+/* 結果 */
+.res-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.res-head h2{font-size:clamp(26px,3.4vw,38px)}
+.res-head p{color:var(--muted);font-size:14.5px;margin-top:4px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.fbtn{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 20px}
+.card{display:flex;flex-direction:column;gap:10px;background:none;border:0;padding:0;text-align:left;cursor:pointer;min-width:0}
+.card .ph{position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:var(--soft)}
+.card .ph img,.card .ph canvas{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .ph img{transform:scale(1.04)}
+.lv{position:absolute;left:10px;top:10px;background:var(--card);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;box-shadow:var(--shadow)}
+.lv.l1,.lv.l2{color:var(--brand)}.lv.l3{color:var(--warm)}.lv.l4,.lv.l5{color:var(--red)}
+.ai-tag{position:absolute;right:10px;top:10px;background:var(--warm);color:#fff;border-radius:999px;padding:2px 10px;font-size:12px}
+.card h3{font-family:var(--sans);font-size:17px;font-weight:700;line-height:1.45}
+.card p{color:var(--muted);font-size:14px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:13px;color:var(--muted)}
+.meta span{display:inline-flex;align-items:center;gap:5px}
 .meta svg{width:14px;height:14px}
-.dots{display:inline-flex;gap:4px}
-.dots i{width:6px;height:6px;border-radius:50%;background:var(--line);display:block}
-.dots i.on{background:var(--gold)}
-.empty{border:1px solid var(--line);padding:36px;color:var(--muted);text-align:center;background:var(--surface)}
-.ai-box{margin-top:12px;border:1px solid var(--line);background:var(--surface);padding:clamp(22px,3vw,36px);display:grid;gap:14px}
-.ai-box h3{font-size:22px;font-weight:500;letter-spacing:.1em}
-.ai-box p{color:var(--muted);font-size:14.5px;font-weight:300;max-width:52em}
-.ai-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.status-txt{font-size:14px;color:var(--muted)}
-.status-txt.err{color:var(--chili)}
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:6px}
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:30px;text-align:center;color:var(--muted)}
+.more{margin-top:34px;display:grid;gap:12px;border:1px solid var(--line);border-radius:var(--r);padding:22px;background:var(--soft)}
+.more h3{font-size:20px}
+.more p{color:var(--muted);font-size:14.5px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.status{font-size:14px;color:var(--muted)}
+.status.err{color:var(--red)}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- 基本功 ---------- */
-.band{background:var(--night);color:var(--night-ink)}
-.band .sec-head p{color:var(--night-muted)}
-.basics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--night-line)}
-.basics div{padding:26px 24px 30px 0;border-bottom:1px solid var(--night-line);min-width:0}
-.basics .n{font-family:var(--latin);font-size:14px;color:#cdae78;letter-spacing:.2em}
-.basics b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:.1em;margin:8px 0}
-.basics span{color:var(--night-muted);font-size:14px;line-height:1.8;font-weight:300}
-footer{padding-block:34px 48px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;letter-spacing:.04em}
+/* 澳洲小知識、基本功 */
+.tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;min-width:0}
+.tip .ic{width:36px;height:36px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;margin-bottom:12px}
+.tip .ic svg{width:19px;height:19px}
+.tip h3{font-family:var(--sans);font-size:17px;margin-bottom:6px}
+.tip p{color:var(--muted);font-size:14.5px}
+.basics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.basic{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.basic .n{font-weight:700;color:var(--brand);font-size:15px}
+.basic h3{font-family:var(--sans);font-size:16px;margin-bottom:2px}
+.basic p{color:var(--muted);font-size:14.5px}
+footer{border-top:1px solid var(--line);padding-block:26px 40px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
-/* ---------- 食譜頁 ---------- */
-.sheet{position:fixed;inset:0;background:var(--bg);overflow-y:auto;z-index:30;animation:rise .45s var(--ease)}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.r-hero{position:relative;height:min(78vh,720px);min-height:360px;background:#111;color:#fff;overflow:hidden}
-.r-hero img,.r-hero canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.r-hero.lowres .bg{filter:blur(28px) brightness(.55);transform:scale(1.15)}
-.r-hero.lowres .fg{inset:auto;top:52%;right:clamp(24px,6vw,96px);left:auto;transform:translateY(-50%);width:auto;height:auto;max-width:min(46%,640px);max-height:74%;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.r-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.78) 100%)}
-.r-top{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4vw,48px)}
-.r-top .brand{font-family:var(--serif);letter-spacing:.2em;font-size:15px;color:rgba(255,255,255,.85)}
-.close{width:46px;height:46px;border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.25);color:#fff;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px)}
-.close:hover{background:rgba(0,0,0,.5)}
-.close svg{width:20px;height:20px}
-.r-hero-text{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:clamp(20px,4vw,48px);max-width:1240px;margin:0 auto;display:grid;gap:12px}
-.r-hero-text .kicker{color:#e3c894}
-.r-hero h2{font-size:clamp(34px,5.6vw,72px);font-weight:500;letter-spacing:.12em;color:#fff}
-.r-hero p{color:rgba(255,255,255,.85);font-size:16.5px;font-weight:300;max-width:36em}
-.credit{position:absolute;right:clamp(18px,4vw,48px);bottom:14px;z-index:1;font-size:11.5px;color:rgba(255,255,255,.65);max-width:40%;text-align:right}
-.credit a{color:inherit}
-.r-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line);max-width:1240px;margin:0 auto}
-.r-facts div{padding:22px clamp(16px,3vw,32px);border-right:1px solid var(--line);display:grid;gap:4px;min-width:0}
-.r-facts div:last-child{border-right:0}
-.r-facts span{font-size:12px;color:var(--muted);letter-spacing:.24em}
-.r-facts b{font-family:var(--serif);font-size:19px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;letter-spacing:.06em}
-.r-path{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;background:var(--gold-soft);padding:16px clamp(18px,4vw,48px)}
-.r-path span{font-size:14.5px;max-width:60em}
-.r-path b{color:var(--gold);font-weight:500}
-.r-body{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(28px,5vw,72px);padding:clamp(28px,5vw,64px) clamp(18px,4vw,48px) 80px;max-width:1240px;margin:0 auto}
-.r-prep{align-self:start;position:sticky;top:20px;display:grid;gap:22px}
-.panel{border:1px solid var(--line);background:var(--surface);padding:24px}
-.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
-.panel h3{font-size:22px;font-weight:600;letter-spacing:.12em}
-.progress{font-family:var(--latin);font-size:16px;color:var(--muted)}
-.bar{height:2px;background:var(--line);overflow:hidden;margin-bottom:8px}
-.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
-.panel h4{font-family:var(--latin);font-size:12.5px;font-weight:600;letter-spacing:.28em;color:var(--gold);margin:20px 0 4px;text-transform:uppercase}
-.panel h4 small{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;margin-left:8px;color:var(--muted)}
+/* 食譜頁 */
+.sheet{position:fixed;inset:0;z-index:30;background:var(--bg);overflow-y:auto}
+.sheet-bar{position:sticky;top:0;z-index:2;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.sheet-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.back{display:inline-flex;align-items:center;gap:6px;border:0;background:none;cursor:pointer;font-size:15px;padding:6px 4px;color:var(--ink)}
+.back svg{width:18px;height:18px}
+.sheet-bar .t{font-weight:700;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(22px,4vw,52px);align-items:center;padding-block:clamp(22px,4vw,44px)}
+.crumb{font-size:13.5px;color:var(--brand);font-weight:700}
+.r-head h1{font-size:clamp(30px,4vw,46px);margin:8px 0 12px;letter-spacing:.03em}
+.r-head .desc{color:var(--muted);font-size:16.5px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);margin:22px 0;overflow:hidden}
+.facts div{padding:12px 16px;border-right:1px solid var(--line);min-width:0}
+.facts div:last-child{border-right:0}
+.facts span{display:block;font-size:12.5px;color:var(--muted)}
+.facts b{font-size:16px}
+.r-img{position:relative;min-width:0}
+.r-img img,.r-img canvas{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px}
+.r-img .credit{font-size:12px;color:var(--muted);margin-top:8px;text-align:right}
+.r-img .credit a{color:inherit}
+.learnbox{background:var(--brand-soft);border-radius:12px;padding:12px 16px;font-size:14.5px;margin-top:14px}
+.learnbox b{color:var(--brand)}
+.r-body{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-bottom:56px;border-top:1px solid var(--line);padding-top:clamp(24px,4vw,44px)}
+.side{display:grid;gap:18px;align-content:start;align-self:start;position:sticky;top:76px}
+.box{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:20px}
+.box-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.box h2{font-size:21px}
+.box .count{font-size:13px;color:var(--muted)}
+.box h3{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--brand);margin:16px 0 2px;letter-spacing:.04em}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:var(--muted);margin-top:4px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
 .checklist{list-style:none;margin:0;padding:0}
-.checklist label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.checklist label{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:4px 10px;align-items:start;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
 .checklist li:last-child label{border-bottom:0}
-.checklist input{margin-top:6px;width:16px;height:16px;accent-color:var(--gold);flex:none}
-.checklist .q{margin-left:auto;color:var(--muted);font-size:14px;text-align:right;padding-left:12px}
-.checklist input:checked ~ span{text-decoration:line-through;opacity:.45}
-.preplist{list-style:none;margin:0;padding:0;counter-reset:p;display:grid;gap:12px}
-.preplist li{counter-increment:p;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.7}
-.preplist li::before{content:counter(p);font-family:var(--latin);font-size:18px;color:var(--gold);line-height:1.5}
-.r-main{display:grid;gap:44px;min-width:0;align-content:start}
-.tips{border:1px solid var(--gold);background:var(--gold-soft);padding:22px 24px}
-.tips h3{font-size:19px;font-weight:600;letter-spacing:.12em;margin-bottom:10px;display:flex;align-items:center;gap:10px;color:var(--gold)}
-.tips h3 svg{width:20px;height:20px}
-.tips ul{margin:0;padding-left:20px;display:grid;gap:8px}
-.sec-title{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:10px}
-.sec-title h3{font-size:28px;font-weight:500;letter-spacing:.14em}
-.sec-title small{color:var(--muted);font-size:13.5px;display:block;margin-top:4px}
-.steps{list-style:none;margin:0;padding:0;display:grid}
-.step{display:grid;grid-template-columns:72px minmax(0,1fr);gap:18px;padding:28px 0;border-bottom:1px solid var(--line);transition:opacity .3s}
-.step .no{font-family:var(--latin);font-size:46px;line-height:.9;color:var(--gold);font-weight:500}
-.step.done{opacity:.4}
-.step.done .no{color:var(--muted)}
-.step h4{font-size:20px;font-weight:600;letter-spacing:.08em;margin-bottom:10px}
-.step .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:4px 10px;border:1px solid var(--line);color:var(--ink);letter-spacing:.06em;background:var(--surface)}
+.checklist input{margin-top:5px;width:16px;height:16px;accent-color:var(--brand)}
+.checklist .nm{font-size:15px}
+.checklist .q{font-size:14px;color:var(--muted);text-align:right}
+.checklist .en{grid-column:2/4;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:-2px}
+.tag{font-size:11px;font-weight:700;border-radius:999px;padding:0 7px;line-height:1.7}
+.tag.S{background:var(--brand-soft);color:var(--brand)}
+.tag.A{background:var(--warm-soft);color:var(--warm)}
+.checklist input:checked ~ .nm{text-decoration:line-through;opacity:.5}
+.prep{list-style:none;margin:0;padding:0;counter-reset:p;display:grid;gap:10px}
+.prep li{counter-increment:p;display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;font-size:14.5px;line-height:1.7}
+.prep li::before{content:counter(p);width:22px;height:22px;border-radius:50%;background:var(--soft);color:var(--muted);font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:2px}
+.main{display:grid;gap:36px;min-width:0;align-content:start}
+.warn{background:var(--warm-soft);border-radius:var(--r);padding:18px 20px}
+.warn h2{font-family:var(--sans);font-size:17px;color:var(--warm);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.warn h2 svg{width:19px;height:19px}
+.warn ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
+.steps-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:6px}
+.steps-head h2{font-size:26px}
+.steps-head p{color:var(--muted);font-size:14px;margin-top:4px}
+.steps{list-style:none;margin:0;padding:0}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.step .no{width:40px;height:40px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:700;font-size:16px}
+.step.done .no{background:var(--line);color:var(--muted)}
+.step.done .body{opacity:.5}
+.step h3{font-family:var(--sans);font-size:18px;margin:6px 0 8px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:13px;border-radius:999px;padding:3px 11px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
 .pill svg{width:14px;height:14px}
-.pill.heat{color:var(--chili);border-color:color-mix(in srgb,var(--chili) 40%,transparent)}
-.pill.heat .f{display:inline-flex;gap:1px}
-.pill.timer{cursor:pointer;color:var(--gold);border-color:color-mix(in srgb,var(--gold) 50%,transparent)}
-.pill.timer:hover{background:var(--gold);color:var(--gold-ink)}
-.step .d{font-size:16.5px;line-height:1.95}
-.step .cue,.step .tip{margin-top:12px;font-size:14.5px;line-height:1.8;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;padding:10px 14px}
-.step .cue{background:var(--sage-soft)}
-.step .cue b{color:var(--sage);font-weight:500;white-space:nowrap}
-.step .tip{background:var(--chili-soft)}
-.step .tip b{color:var(--chili);font-weight:500;white-space:nowrap}
-.step .mark{margin-top:14px;background:none;border:0;padding:0;font-size:13px;color:var(--muted);letter-spacing:.1em;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.pill.heat{background:var(--red-soft);color:var(--red);border-color:transparent}
+.pill.heat .f{display:inline-flex}
+.pill.timer{background:var(--brand-soft);color:var(--brand);border-color:transparent;cursor:pointer;font-weight:500}
+.pill.timer:hover{background:var(--brand);color:var(--brand-ink)}
+.step .d{font-size:16px;line-height:1.9}
+.step .cue,.step .hint{margin-top:10px;font-size:14.5px;line-height:1.75;border-radius:10px;padding:9px 13px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+.step .cue{background:var(--brand-soft)}
+.step .cue b{color:var(--brand);white-space:nowrap}
+.step .hint{background:var(--red-soft)}
+.step .hint b{color:var(--red);white-space:nowrap}
+.step .mark{margin-top:10px;background:none;border:0;padding:0;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .skills{display:flex;flex-wrap:wrap;gap:8px}
-.skill{border:1px solid var(--line);padding:5px 14px;font-size:13.5px;letter-spacing:.08em}
-.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0;border-top:1px solid var(--line)}
-.ref{display:grid;gap:4px;padding:16px 18px 16px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:color .2s}
-.ref:hover b{color:var(--gold)}
-.ref b{font-size:15px;font-weight:500;display:flex;justify-content:space-between;gap:8px;letter-spacing:.06em}
-.ref b::after{content:"↗";color:var(--gold)}
-.ref span{color:var(--muted);font-size:13px;font-weight:300}
-.note{color:var(--muted);font-size:13px;font-weight:300}
+.skill{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13.5px}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ref{display:grid;gap:2px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;background:var(--card)}
+.ref:hover{border-color:var(--brand)}
+.ref b{font-size:15px;font-weight:500}
+.ref span{font-size:13px;color:var(--muted)}
+.pager{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pager button{display:grid;gap:2px;text-align:left;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card);cursor:pointer}
+.pager button:hover{border-color:var(--brand)}
+.pager button:last-child{text-align:right}
+.pager span{font-size:12.5px;color:var(--muted)}
+.pager b{font-size:15.5px}
+.note{font-size:13px;color:var(--muted)}
 
-/* ---------- 烹飪模式 ---------- */
-.cook{position:fixed;inset:0;z-index:50;background:#0c0c0b;color:#efe9dd;display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:rise .35s var(--ease)}
-.cook-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(18px,4vw,48px) 14px;border-bottom:1px solid rgba(239,233,221,.12)}
-.cook-top .ttl{font-family:var(--serif);letter-spacing:.14em;font-size:16px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cook-top .close{border-color:rgba(239,233,221,.3)}
-.cook-dots{display:flex;gap:6px;padding:14px clamp(18px,4vw,48px) 0}
-.cook-dots i{flex:1;height:2px;background:rgba(239,233,221,.15)}
-.cook-dots i.on{background:#cdae78}
-.cook-body{overflow-y:auto;padding:clamp(20px,4vw,56px) clamp(18px,6vw,120px);display:grid;align-content:center;gap:20px;max-width:1000px;margin:0 auto;width:100%}
-.cook-body .k{font-family:var(--latin);font-size:15px;letter-spacing:.3em;color:#cdae78}
-.cook-body h3{font-size:clamp(28px,4.4vw,46px);font-weight:500;letter-spacing:.1em}
-.cook-body .pills .pill{background:transparent;color:#efe9dd;border-color:rgba(239,233,221,.25)}
-.cook-body .pills .pill.heat{color:#f0a489}
-.cook-body .d{font-size:clamp(19px,2.3vw,24px);line-height:1.9;font-weight:300}
-.cook-body .cue{font-size:16.5px;line-height:1.8;border-left:2px solid #9dbba6;padding-left:14px;color:#cfe0d4}
-.cook-body .tip{font-size:16.5px;line-height:1.8;border-left:2px solid #ea8b70;padding-left:14px;color:#f2cdbf}
-.bigtimer{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px}
-.bigtimer .t{font-family:var(--latin);font-size:clamp(48px,8vw,84px);line-height:1;font-variant-numeric:tabular-nums;color:#efe9dd}
-.bigtimer .t.run{color:#cdae78}
-.bigtimer .t.end{color:#ea8b70;animation:blink 1s steps(2) infinite}
+/* 步驟模式 */
+.cook{position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.cook-top{border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top,0px)) clamp(16px,4vw,32px) 10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cook-top .t{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cook-bar{height:4px;background:var(--soft)}
+.cook-bar i{display:block;height:100%;background:var(--brand);transition:width .3s}
+.cook-body{overflow-y:auto;padding:clamp(22px,4vw,48px) clamp(16px,6vw,96px);max-width:920px;width:100%;margin:0 auto;display:grid;gap:16px;align-content:start}
+.cook-body .k{font-size:14px;font-weight:700;color:var(--brand)}
+.cook-body h2{font-family:var(--sans);font-size:clamp(24px,3.6vw,34px)}
+.cook-body .d{font-size:clamp(18px,2.2vw,22px);line-height:1.85}
+.cook-body .cue,.cook-body .hint{font-size:16px;line-height:1.75;border-radius:12px;padding:12px 16px}
+.cook-body .cue{background:var(--brand-soft)}
+.cook-body .hint{background:var(--red-soft)}
+.bigtimer{display:flex;flex-wrap:wrap;align-items:center;gap:14px;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.bigtimer .tt{font-size:clamp(40px,7vw,64px);font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.bigtimer .tt.run{color:var(--brand)}
+.bigtimer .tt.end{color:var(--red);animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:.35}}
-.cook-nav{display:flex;justify-content:space-between;gap:12px;padding:16px clamp(18px,4vw,48px) calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(239,233,221,.12)}
-.cook-nav .btn{min-width:130px}
-.cook-nav .btn.ghost{color:#efe9dd;border-color:rgba(239,233,221,.3)}
+.cook-nav{border-top:1px solid var(--line);padding:12px clamp(16px,4vw,32px) calc(12px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;justify-content:space-between}
+.cook-nav .btn{min-width:140px}
 
-/* ---------- 浮動計時器 ---------- */
-.ftimer{position:fixed;right:clamp(12px,3vw,28px);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;background:#0c0c0b;color:#efe9dd;border:1px solid rgba(205,174,120,.5);display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;box-shadow:0 16px 40px rgba(0,0,0,.35);max-width:calc(100vw - 24px)}
-.ftimer .t{font-family:var(--latin);font-size:28px;font-variant-numeric:tabular-nums;color:#cdae78;line-height:1}
-.ftimer .t.end{color:#ea8b70;animation:blink 1s steps(2) infinite}
-.ftimer .l{font-size:12.5px;color:#a39d91;max-width:10em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.ftimer button{background:transparent;border:1px solid rgba(239,233,221,.25);color:#efe9dd;width:34px;height:34px;cursor:pointer;display:grid;place-items:center}
+/* 浮動計時 */
+.ftimer{position:fixed;right:clamp(12px,3vw,24px);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:45;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 12px 32px rgba(0,0,0,.16);display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;max-width:calc(100vw - 24px)}
+.ftimer .tt{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--brand)}
+.ftimer .tt.end{color:var(--red);animation:blink 1s steps(2) infinite}
+.ftimer .l{font-size:12.5px;color:var(--muted);max-width:11em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.ftimer button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center}
 .ftimer button svg{width:15px;height:15px}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:#0c0c0b;color:#efe9dd;border:1px solid rgba(205,174,120,.5);padding:14px 22px;box-shadow:0 12px 40px rgba(0,0,0,.35);max-width:calc(100vw - 32px);animation:pop .35s var(--ease);text-align:center}
-.toast b{font-family:var(--serif);color:#cdae78;font-size:17px;letter-spacing:.1em;display:block}
-.toast span{font-size:14px;color:#cfc8ba}
-@keyframes pop{from{transform:translate(-50%,16px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
-#confetti{position:fixed;inset:0;pointer-events:none;z-index:59}
+.toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.2);max-width:calc(100vw - 32px);text-align:center;font-size:15px}
+.toast b{display:block}
 
-/* ---------- 響應式 ---------- */
-@media (max-width:1000px){
-  .basics{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ing-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+/* 響應式 */
+@media (hover:none){.lesson:hover{transform:none;box-shadow:none}}
+@media (max-width:1060px){
+  .lessons{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .menu a.opt{display:none}
 }
-@media (max-width:900px){
-  .cover-grid{grid-template-columns:minmax(0,1fr)}
-  .cover-art{aspect-ratio:5/4;max-height:none;justify-self:stretch}
-  .cover-art .a1{inset:0 22% 14% 0}
-  .sec-head{grid-template-columns:minmax(0,1fr)}
-  .stage{grid-template-columns:minmax(0,1fr)}
-  .feature{grid-template-columns:minmax(0,1fr)}
-  .feature .media{min-height:0;aspect-ratio:4/3}
+@media (max-width:860px){
+  .hero,.r-head{grid-template-columns:minmax(0,1fr)}
+  .hero-img{order:-1}
+  .r-img{order:-1}
   .r-body{grid-template-columns:minmax(0,1fr)}
-  .r-prep{position:static}
-  .r-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .r-facts div:nth-child(2){border-right:0}
-  .r-facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  .credit{position:static;max-width:none;text-align:left;padding:8px clamp(18px,4vw,48px);color:var(--muted);background:var(--bg)}
-  .r-hero{height:62vh}
+  .side{position:static}
+  .basics{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   body{font-size:15.5px}
-  .nav-links{display:none}
-  .logo span{display:none}
-  .cover h1{letter-spacing:.05em}
-  .search .btn{padding:10px 14px;letter-spacing:.08em}
-  .cover-meta b{font-size:32px}
-  .ing-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:clamp(18px,4vw,48px);gap:10px;margin-inline:calc(-1 * clamp(18px,4vw,48px));padding:0 clamp(18px,4vw,48px) 6px;scrollbar-width:none}
-  .ing-grid::-webkit-scrollbar{display:none}
-  .ing,.ing:first-child{flex:0 0 38%;aspect-ratio:3/4;scroll-snap-align:start}
-  .ing:first-child .lab b{font-size:15px}
-  .cover-art .tag{display:none}
-  .ing .lab{left:8px;right:8px;bottom:8px}
-  .ing .lab b{font-size:15px;letter-spacing:.06em}
-  .ing .lab span{display:none}
-  .status{grid-template-columns:minmax(0,1fr);padding:18px}
-  .dishes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:clamp(18px,4vw,48px);gap:14px;margin-inline:calc(-1 * clamp(18px,4vw,48px));padding:0 clamp(18px,4vw,48px) 8px;scrollbar-width:none}
-  .dishes::-webkit-scrollbar{display:none}
-  .dish{flex:0 0 78%;scroll-snap-align:center}
-  .stage-no{font-size:44px}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
-  .card{gap:10px}
+  .menu a{display:none}
+  .lessons{grid-template-columns:minmax(0,1fr);gap:10px}
+  .lesson{flex-direction:row;align-items:stretch}
+  .lesson .ph{flex:0 0 112px;aspect-ratio:auto;min-height:100px}
+  .lesson .no{left:6px;top:6px;font-size:11.5px;padding:2px 8px}
+  .lesson .bd{padding:10px 12px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}
   .card p{display:none}
-  .card h4{font-size:15.5px;letter-spacing:.04em}
-  .badge{font-size:11px;padding:3px 8px;letter-spacing:.08em}
-  .meta{font-size:12px;gap:4px 10px}
-  .basics{grid-template-columns:minmax(0,1fr)}
-  .r-hero h2{letter-spacing:.06em}
-  .step{grid-template-columns:44px minmax(0,1fr);gap:12px;padding:24px 0}
-  .step .no{font-size:34px}
-  .step h4{font-size:18px}
-  .step .d{font-size:16px}
-  .panel{padding:18px}
+  .card h3{font-size:15.5px}
+  .ings{display:flex;overflow-x:auto;gap:4px;scroll-snap-type:x proximity;scroll-padding-inline:16px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .ings::-webkit-scrollbar{display:none}
+  .ing{flex:0 0 76px;scroll-snap-align:start}
+  .ing img{width:64px;height:64px}
+  .ing b{font-size:14px}
+  .ing span{font-size:11px}
+  .tips{grid-template-columns:minmax(0,1fr)}
+  .facts b{font-size:15px}
+  .facts div{padding:10px 12px}
+  .refs,.pager{grid-template-columns:minmax(0,1fr)}
+  .pager button:last-child{text-align:left}
+  .step{grid-template-columns:36px minmax(0,1fr);gap:12px}
+  .step .no{width:34px;height:34px;font-size:15px}
+  .hero-img .cap{display:none}
   .cook-nav .btn{min-width:0;flex:1}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 
-<header class="cover" id="top">
+<header class="top">
   <div class="wrap">
-    <nav class="nav">
-      <a class="logo" href="#top"><b>食材料理簿</b><span>Kitchen notes for beginners</span></a>
-      <div class="nav-right">
-        <div class="nav-links"><a href="#ingredients">食材</a><a href="#path">主菜之路</a><a href="#results">料理</a><a href="#basics">基本功</a></div>
-        <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深色／淺色模式"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span id="themeLabel">深色</span></button>
-      </div>
-    </nav>
-    <div class="cover-grid">
-      <div class="cover-copy">
-        <span class="kicker">A beginner's kitchen</span>
-        <h1>冰箱裡有什麼，<br><em>就煮什麼。</em></h1>
-        <p class="lead">輸入一樣食材，找到適合新手的家常料理。每一步都寫清楚火候、時間，以及做到什麼樣子才算對。</p>
-        <form class="search" id="searchForm" role="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <label for="q" hidden>食材</label>
-          <input id="q" name="q" type="search" placeholder="例如：大白菜、雞蛋、茄子" autocomplete="off" value="大白菜">
-          <button class="btn" type="submit">尋找料理</button>
-        </form>
-        <div class="cover-meta" id="coverMeta"></div>
-      </div>
-      <div class="cover-art" id="coverArt" aria-hidden="true"></div>
+    <a class="logo" href="#home"><i>食</i>食材料理簿</a>
+    <div class="menu">
+      <a href="#course">新手課程</a>
+      <a href="#finder">用食材找料理</a>
+      <a href="#australia" class="opt">澳洲廚房</a>
+      <a href="#basics" class="opt">基本功</a>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="切換深色模式"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
     </div>
   </div>
 </header>
 
-<section class="section wrap" id="ingredients">
-  <div class="sec-head">
-    <div><span class="kicker">Ingredients</span><h2>從手邊的食材開始</h2></div>
-    <p>點一樣食材，就能看到用它可以做的料理，由最簡單的排到最有挑戰的。</p>
+<section class="wrap hero" id="home">
+  <div class="hero-copy">
+    <span class="eyebrow">給在澳洲打工度假的料理新手</span>
+    <h1>一碗白飯，<br><span>配一道菜。</span></h1>
+    <p class="lead">從煮好一鍋白飯開始，一課學一道配飯的家常菜。材料都附上英文名稱和購買地點，在 Woolworths、Coles 或亞洲超市就買得到。</p>
+    <div class="hero-cta"><a class="btn" href="#course">從第 1 課開始</a><a class="btn line" href="#finder">用食材找料理</a></div>
+    <div class="hero-facts" id="heroFacts"></div>
   </div>
-  <div class="ing-grid" id="ingGrid"></div>
+  <div class="hero-img" id="heroImg"></div>
 </section>
 
-<section class="section path" id="path">
+<section class="sec soft" id="course">
   <div class="wrap">
     <div class="sec-head">
-      <div><span class="kicker">The main course path</span><h2>主菜新手之路</h2><p style="margin-top:14px">從不會失敗的蛋料理開始，五個關卡依序學會控火、煎肉、調醬汁、燉煮，最後端出請客主菜。一週一到兩道，大約兩個月完成。</p></div>
-      <div class="status" id="statusCard"></div>
+      <div><span class="eyebrow">新手課程</span><h2>白飯＋一道菜，十堂課</h2><p>照順序做，每一課只多學一個新技巧。一週做一到兩課，大約一個多月就能每天自己煮晚餐。</p></div>
     </div>
-    <div class="stages" id="stages"></div>
+    <div class="lessons" id="lessons"></div>
   </div>
 </section>
 
-<main class="section wrap" id="results"></main>
-
-<div class="wrap" style="padding-bottom:40px">
-  <section class="ai-box" id="aiBox" hidden>
-    <h3 id="aiTitle">想要更多做法？</h3>
-    <p id="aiNote">Claude 會依你輸入的食材，再建議幾道適合新手的料理。第一次使用時會詢問是否允許。</p>
-    <div class="ai-row">
-      <button class="btn" id="aiBtn" type="button">請 Claude 再想幾道</button>
-      <span class="status-txt" id="aiStatus"></span>
+<section class="sec" id="finder">
+  <div class="wrap finder">
+    <div class="sec-head" style="margin-bottom:0">
+      <div><span class="eyebrow">用食材找料理</span><h2>冰箱裡有什麼？</h2><p>輸入或點選手邊的食材，就會列出可以做的料理，由簡單排到困難。中文或英文都可以搜尋，例如 wombok、mince。</p></div>
     </div>
-    <div id="aiResults"></div>
-  </section>
-</div>
+    <form class="search" id="searchForm" role="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="q" hidden>食材</label>
+      <input id="q" name="q" type="search" placeholder="例如：大白菜、雞蛋、mince" autocomplete="off" value="大白菜">
+      <button class="btn" type="submit">搜尋</button>
+    </form>
+    <div class="ings" id="ings"></div>
+    <div id="results"></div>
+    <section class="more" id="aiBox" hidden>
+      <h3 id="aiTitle">想要更多做法？</h3>
+      <p id="aiNote">Claude 會依你輸入的食材，再建議幾道適合新手的料理。第一次使用時會詢問是否允許。</p>
+      <div class="row"><button class="btn" id="aiBtn" type="button">請 Claude 再想幾道</button><span class="status" id="aiStatus"></span></div>
+      <div id="aiResults"></div>
+    </section>
+  </div>
+</section>
 
-<section class="section band" id="basics">
+<section class="sec soft" id="australia">
   <div class="wrap">
-    <div class="sec-head">
-      <div><span class="kicker">Kitchen basics</span><h2>新手廚房基本功</h2></div>
-      <p>開火之前先讀一次。這八件事做到了，大部分的家常菜都不容易失敗。</p>
-    </div>
-    <div class="basics" id="basicsGrid"></div>
+    <div class="sec-head"><div><span class="eyebrow">澳洲新手廚房</span><h2>在澳洲下廚前，先知道這些</h2><p>分租房的電爐、不一樣的量匙、買不到的調味料，這裡整理了最常遇到的狀況。</p></div></div>
+    <div class="tips" id="auTips"></div>
   </div>
 </section>
 
-<div class="wrap">
-  <footer>
-    <span>食材料理簿・家常菜新手指南</span>
-    <span>照片來自 Unsplash、Wikimedia Commons 與愛料理 iCook，作者與授權標示於各食譜頁。</span>
-  </footer>
-</div>
+<section class="sec" id="basics">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">廚房基本功</span><h2>開火前讀一次</h2><p>火候、爆香、勾芡這些詞，食譜裡常常出現，這裡用白話說明。</p></div></div>
+    <div class="basics" id="basicsList"></div>
+  </div>
+</section>
 
-<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle"><article id="panel"></article></div>
-<div class="cook" id="cook" hidden role="dialog" aria-modal="true" aria-label="烹飪模式"></div>
+<footer><div class="wrap"><span>食材料理簿・給澳洲打工度假的料理新手</span><span>照片來自 Unsplash、Wikimedia Commons 與愛料理 iCook，作者與授權標示於各食譜頁。</span></div></footer>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle"></div>
+<div class="cook" id="cook" hidden role="dialog" aria-modal="true" aria-label="步驟模式"></div>
 <div class="ftimer" id="ftimer" hidden role="timer"></div>
 
 <script>
@@ -983,7 +896,7 @@ const RECIPES = [
 
 // 新手基本功
 const BASICS = [
- ["量匙怎麼算","1 大匙 ≈ 15 ml（一般湯匙滿滿一匙）；1 小匙 ≈ 5 ml（咖啡匙）。「少許」是用手指捏一小撮；「適量」是邊試邊加。"],
+ ["量匙怎麼算","本站 1 大匙＝15 ml、1 小匙＝5 ml。澳洲的 1 tablespoon 是 20 ml，請改用 3 teaspoon。「少許」是用手指捏一小撮；「適量」是邊試邊加。"],
  ["火候怎麼看","大火：火焰碰到鍋底且往外竄。中火：火焰剛好碰到鍋底。小火：火焰離鍋底有一點距離。電磁爐約 大火 8–10、中火 5–6、小火 2–3 段。"],
  ["爆香","用小～中火把蒜、薑、蔥等在油裡炒 20–30 秒，聞到香味就放下一樣材料。變黑就是焦了，會苦。"],
  ["汆燙","肉放進冷水鍋，煮滾後再煮 1–2 分鐘撈起沖洗，去掉血水和腥味。燙青菜則是水滾後才放。"],
@@ -1532,8 +1445,78 @@ STEPS["carrot-soup"] = {
   {t:"加鮮奶、調味",d:"倒回鍋中，加入鮮奶，小火加熱，加鹽 1 小匙、黑胡椒。",h:"小火",time:"3 分鐘",sec:180,cue:"湯冒出熱氣、邊緣有小泡泡就好。",tip:"加奶後不要大滾，否則會油水分離。"}
  ]};
 
-const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}};
+// ===== 白飯（第一課） =====
+RECIPES.unshift({id:"rice",n:"一鍋好吃的白飯",k:["白飯"],lv:1,t:40,s:3,
+ d:"所有課程的起點。學會煮飯，之後每一道菜都能配著吃。",
+ ing:[["白米","2 杯（電子鍋附的量米杯，約 300g）"]],
+ sea:[["水","電子鍋：刻度 2 的線／鍋子：約 390 ml"]],
+ tools:["電子鍋（Rice cooker），或有蓋子的小鍋子","量米杯","濾網或大碗"],
+ fail:["水量是成敗關鍵：米和水大約 1：1.2，第一次照刻度做，之後再依口感微調。","煮好後一定要再燜 10 分鐘，不要一跳起來就打開。"],
+ sk:["洗米","控制水量","燜"],
+ art:{v:"bowl",st:"rice",c:["#f7f4ec","#f0ebdc","#e6dfcc"]}});
+STEPS["rice"]={
+ prep:["選米：澳洲超市最適合的是 Calrose（中粒米，口感接近台灣米），或 Jasmine（泰國香米，比較鬆散）。新手推薦 SunRice Calrose。","用量米杯量 2 杯米，約 3 人份。","準備一個濾網或大碗洗米。"],
+ steps:[
+  {t:"洗米",d:"米倒進大碗，加冷水淹過，用手輕輕抓洗 10 秒，把白色的洗米水倒掉。重複 2–3 次。",h:"不開火",time:"2 分鐘",sec:120,cue:"洗米水從很白變成微微混濁。",tip:"不用洗到完全清澈，也不要用力搓，米會碎。"},
+  {t:"泡米",d:"洗好的米瀝乾，放進內鍋，加入水，靜置讓米吸水。",h:"不開火",time:"20–30 分鐘",sec:1500,cue:"米粒從半透明變成不透明的白色。",tip:"趕時間可以跳過，但泡過的飯會更Q、更均勻。"},
+  {t:"加水（電子鍋）",d:"內鍋放平，加水到內鍋上「2」的刻度線。沒有刻度就用：米 2 杯＋水 2.4 杯（約 390 ml）。",h:"不開火",cue:"水面剛好對齊刻度線。",tip:"Jasmine 米水可以少一點點，Calrose 照刻度就好。"},
+  {t:"開始煮（電子鍋）",d:"放進電子鍋，選「White rice」或一般模式，按下開始。",h:"電子鍋",time:"約 30–40 分鐘",cue:"電子鍋跳到保溫（Keep warm）。"},
+  {t:"沒有電子鍋：用鍋子煮",d:"米和 390 ml 水放進有蓋的小鍋，開大火煮到滾。滾了立刻轉最小火，蓋上鍋蓋煮 12 分鐘，然後關火。",h:"大火→小火",time:"12 分鐘",sec:720,cue:"打開一小縫看，水已經被吸乾，表面有小洞洞。",tip:"煮的過程不要一直掀蓋，蒸氣跑掉飯會半生不熟。"},
+  {t:"燜 10 分鐘",d:"不管用電子鍋或鍋子，煮好後都不要打開，讓飯繼續燜。",h:"關火",time:"10 分鐘",sec:600,cue:"時間到打開，飯粒飽滿、有光澤。"},
+  {t:"翻鬆",d:"用飯匙從鍋邊往下插到底，把飯「由下往上」輕輕翻鬆，讓多餘的水氣散掉。",h:"關火",cue:"飯粒粒分明、不黏成一團。",tip:"吃不完的飯趁熱用保鮮盒分裝冷凍，要吃時微波 2 分鐘就像剛煮好。"}
+ ]};
+
+// ===== 新手課程：白飯＋一道菜 =====
+const LESSONS=[
+ {id:"rice",learn:"洗米、水量、燜",why:"先學會煮飯，後面每一課都是「白飯＋一道菜」。"},
+ {id:"tomato-egg",learn:"控制火候、炒蛋不老",why:"兩樣食材、一個鍋，十分鐘就能配飯。"},
+ {id:"garlic-cabbage",learn:"爆香、炒青菜",why:"學會炒青菜，飯桌上就有蔬菜。"},
+ {id:"teriyaki",learn:"煎肉、判斷熟度",why:"第一次處理肉，冷鍋煎雞皮幾乎不會失敗。"},
+ {id:"onion-beef",learn:"醃肉、大火快炒",why:"學會醃肉讓牛肉變嫩，超市的牛肉條就能做。"},
+ {id:"mapo-tofu",learn:"炒醬、勾芡",why:"第一次練勾芡，醬汁拌飯最下飯。"},
+ {id:"braised-pork",learn:"滷、一次煮一鍋",why:"煮一鍋可以吃好幾餐，冷凍保存最方便。"},
+ {id:"three-cup",learn:"燜煮、收汁",why:"台灣味代表，記住 1:1:1 就不會錯。"},
+ {id:"nikujaga",learn:"燉煮、落蓋",why:"把材料放進鍋，剩下交給時間。"},
+ {id:"tomato-beef",learn:"汆燙、長時間燉",why:"畢業菜：整合前面學過的技巧。"}
+];
+
+// ===== 澳洲買食材對照 =====
+// S＝一般超市（Woolworths、Coles、ALDI）｜A＝亞洲超市（通常在 Asian aisle 找不到的）
+const SHOP=[
+ ["大白菜","Wombok（Chinese cabbage）","S"],["高麗菜","Cabbage","S"],["白米","Calrose / Jasmine rice","S"],
+ ["去骨雞腿","Chicken thigh fillets","S"],["帶骨雞腿","Chicken drumsticks / thigh cutlets","S"],["雞胸","Chicken breast","S"],["雞腿","Chicken thigh","S"],
+ ["豬絞肉","Pork mince","S"],["絞肉","Mince","S"],["五花肉","Pork belly","S"],["豬排骨","Pork spare ribs","S"],["豬肉絲","Pork stir-fry strips","S"],["豬肉片","Pork stir-fry strips","S"],["火鍋肉片","Hot pot sliced pork","A"],
+ ["牛腩","Gravy beef / beef brisket","S"],["牛肉片","Beef stir-fry strips","S"],
+ ["雞蛋","Eggs","S"],["番茄","Tomatoes","S"],["牛番茄","Truss tomatoes","S"],["小番茄","Cherry tomatoes","S"],
+ ["板豆腐","Firm tofu","S"],["嫩豆腐","Silken tofu","S"],["豆腐","Tofu","S"],["皮蛋","Century egg","A"],
+ ["馬鈴薯","Potatoes","S"],["洋蔥","Brown onion","S"],["紅蘿蔔","Carrot","S"],["白蘿蔔","Daikon","A"],["茄子","Eggplant","S"],
+ ["青椒","Green capsicum","S"],["辣椒","Red chilli","S"],["乾辣椒","Dried chilli","S"],["蒜頭","Garlic","S"],["蒜","Garlic","S"],["薑","Ginger","S"],["老薑","Ginger","S"],
+ ["蔥","Spring onion","S"],["紅蔥頭","French shallots（或買現成 fried shallots）","A"],["九層塔","Thai basil","A"],["韭菜花","Garlic chive flowers","A"],["韭菜","Garlic chives","A"],
+ ["乾香菇","Dried shiitake mushrooms","A"],["鴻喜菇","Shimeji mushrooms","S"],["金針菇","Enoki mushrooms","S"],["木耳","Wood ear fungus","A"],["蝦米","Dried shrimp","A"],["扁魚","Dried flounder","A"],["菜脯","Preserved radish","A"],["臘腸","Chinese sausage","A"],
+ ["冬粉","Mung bean vermicelli","A"],["水餃皮","Dumpling wrappers","S"],["麵包粉","Panko breadcrumbs","S"],["麵粉","Plain flour","S"],["在來米粉","Rice flour","S"],["糯米粉","Glutinous rice flour","A"],
+ ["法國麵包","Baguette","S"],["起司絲","Grated cheese","S"],["奶油","Butter","S"],["牛奶","Milk","S"],["鮮奶","Milk","S"],["鮮奶油","Thickened cream","S"],
+ ["小黃瓜","Lebanese cucumber","S"],["玉米筍","Baby corn","S"],["蘋果","Apple","S"],["梨","Nashi pear","S"],["花生","Roasted peanuts","S"],["荸薺","Water chestnuts（罐頭）","S"],
+ ["醬油膏","Thick soy sauce（醬油膏）","A"],["醬油","Soy sauce","S"],["烏醋","Chinkiang black vinegar","A"],["白醋","White vinegar","S"],["米酒","Chinese cooking wine（紹興酒可代替）","S"],["味醂","Mirin","S"],
+ ["黑麻油","Black sesame oil","A"],["香油","Sesame oil","S"],["麻油","Sesame oil","S"],["辣豆瓣醬","Chilli bean paste（Doubanjiang）","A"],["豆瓣醬","Chilli bean paste（Doubanjiang）","A"],["豆豉","Fermented black beans","A"],
+ ["太白粉","Cornflour","S"],["花椒粉","Ground Sichuan pepper","A"],["花椒","Sichuan peppercorns","A"],["五香粉","Five spice powder","S"],["白胡椒","White pepper","S"],["黑胡椒","Black pepper","S"],
+ ["冰糖","Rock sugar","A"],["糖","Sugar","S"],["鹽","Salt","S"],["粗鹽","Rock / sea salt","S"],["番茄醬","Tomato sauce（澳洲的 tomato sauce 就是番茄醬）","S"],["豬排醬","Tonkatsu sauce","A"],
+ ["韓國辣椒粉","Gochugaru（Korean chilli flakes）","A"],["魚露","Fish sauce","S"],["梅子粉","Plum powder","A"],["柚子醋","Ponzu","S"],["柴魚片","Bonito flakes","A"],["牛高湯","Beef stock","S"],["高湯","Chicken stock","S"],["食用油","Vegetable / canola oil","S"],["油","Vegetable oil","S"],["白芝麻","Sesame seeds","S"],["百里香","Thyme","S"],["白酒","White wine","S"]
+].sort((a,b)=>b[0].length-a[0].length);
+
+// ===== 澳洲新手廚房 =====
+const AU_TIPS=[
+ ["量匙要注意","澳洲的 1 tablespoon 是 20 ml，本站的「1 大匙」是 15 ml。用澳洲量匙時，請改用 3 個 teaspoon（1 tsp＝5 ml）。"],
+ ["去哪裡買","大部分食材在 Woolworths、Coles、ALDI 都買得到。醬油膏、豆瓣醬、烏醋、米酒等台灣調味料，要去亞洲超市（Asian grocery）。本站每樣材料都標了英文名稱和購買地點。"],
+ ["選米","最接近台灣口感的是 Calrose 中粒米；Jasmine 泰國香米比較鬆散，也很適合配炒菜。"],
+ ["電爐比較慢","分租房常見電爐或電磁爐，加熱比瓦斯慢。熱鍋時間多等 30 秒，轉小火後溫度也會慢慢才降下來。"],
+ ["沒有炒鍋也可以","用一般的大平底鍋（frypan）就能做本站所有熱炒，一次不要放太多，分兩次炒會更香。"],
+ ["一次煮、分裝冷凍","肉燥、燉菜、白飯都適合一次多做，分裝進保鮮盒冷凍，下班回家微波就能吃。"]
+];
+ALIASES["白飯"]=["飯","米","白米","rice","steamed rice"];
+
+const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}, "rice": {"credit": "攝影 Pille R. Priske／Unsplash", "url": "https://unsplash.com/photos/rice-in-bowl-xmuIgjuQG0M", "src": "photos/rice.webp"}};
 const ING_PHOTOS={"大白菜": {"src": "photos/ing-napa.webp", "credit": "攝影 Jason Leung／Unsplash", "url": "https://unsplash.com/photos/several-heads-of-fresh-napa-cabbage-lined-up-BCXgdJJ5nPY"}, "高麗菜": {"src": "photos/ing-cabbage.webp", "credit": "攝影 ibuki Tsubo／Unsplash", "url": "https://unsplash.com/photos/green-leaf-vegetable-on-white-surface-7iRMOXXxH7c"}, "雞蛋": {"src": "photos/ing-egg.webp", "credit": "攝影 Jakub Kapusnak／Unsplash", "url": "https://unsplash.com/photos/shallow-focus-photography-of-brown-eggs-Hj53USePB1E"}, "番茄": {"src": "photos/ing-tomato.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/red-tomatoes-on-brown-wooden-table-eb26eV-ys_k"}, "豆腐": {"src": "photos/ing-tofu.webp", "credit": "攝影 Rajesh Kavasseri／Unsplash", "url": "https://unsplash.com/photos/white-and-black-square-shape-on-brown-wooden-table-fPQCj3f3kRc"}, "馬鈴薯": {"src": "photos/ing-potato.webp", "credit": "攝影 Lars Blankers／Unsplash", "url": "https://unsplash.com/photos/brown-potato-lot-B0s3Xndk6tw"}, "茄子": {"src": "photos/ing-eggplant.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/a-pile-of-purple-eggplant-with-green-stems-d6I1ZNZJcNo"}, "白蘿蔔": {"src": "photos/ing-daikon.webp", "credit": "攝影 liam matthews／Unsplash", "url": "https://unsplash.com/photos/white-radishes-and-bitter-melons-in-a-crate-0BCwHPrs9hM"}, "洋蔥": {"src": "photos/ing-onion.webp", "credit": "攝影 mayu ken／Unsplash", "url": "https://unsplash.com/photos/white-garlic-on-brown-wooden-table-CNZ-9s5p2i8"}, "紅蘿蔔": {"src": "photos/ing-carrot.webp", "credit": "攝影 Maja Vujic／Unsplash", "url": "https://unsplash.com/photos/a-bunch-of-carrots-sitting-on-top-of-a-wooden-table-hoUlccGAhxY"}, "雞肉": {"src": "photos/ing-chicken.webp", "credit": "攝影 Satmar Meats／Unsplash", "url": "https://unsplash.com/photos/raw-chicken-pieces-with-vegetables-on-a-wooden-board-1pj56A6OQgA"}, "豬肉": {"src": "photos/ing-pork.webp", "credit": "攝影 Tomoyo S／Unsplash", "url": "https://unsplash.com/photos/brown-food-on-white-ceramic-bowl-TTuYs8aZlns"}, "牛肉": {"src": "photos/ing-beef.webp", "credit": "攝影 David Foodphototasty／Unsplash", "url": "https://unsplash.com/photos/two-steaks-on-a-plate-with-parsley-U5lLwx17rWs"}};
+const EXTRA={"hero": {"credit": "攝影 Chanhee Lee／Unsplash", "url": "https://unsplash.com/photos/white-and-blue-ceramic-bowl-with-rice-dBO0Crt4qC8", "src": "photos/hero.webp"}};
 </script>
 <script>
 (function(){
@@ -1541,26 +1524,27 @@ const ING_PHOTOS={"大白菜": {"src": "photos/ing-napa.webp", "credit": "攝影
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const LEVEL_NAME=["","非常簡單","簡單","普通","有點挑戰","進階"];
-const TIERS=[
-  {lv:"Level I–II",name:"新手就能做",sub:"步驟少、不太會失敗",test:lv=>lv<=2},
-  {lv:"Level III",name:"多一點功夫",sub:"熟悉基本功後挑戰",test:lv=>lv===3},
-  {lv:"Level IV–V",name:"週末挑戰",sub:"時間長、步驟多",test:lv=>lv>=4}
-];
 const ICON={
- clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
- user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+ clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+ user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
  flame:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.4 1.2-4 2.5-5.3.2 1.6 1 2.8 2.2 3.3C11 8.5 11.4 5 12 2Z"/></svg>',
- close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
- bulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+ close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+ bulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"/></svg>',
  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>',
- chef:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14a4 4 0 1 1 1.6-7.7A5 5 0 0 1 16.4 6.3 4 4 0 1 1 18 14"/><path d="M6 14v6h12v-6M9 17h6"/></svg>',
- medal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M8.5 10 6 3h4l2 4 2-4h4l-2.5 7"/></svg>'
+ steps:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.5"/><circle cx="4.5" cy="12" r="1.5"/><circle cx="4.5" cy="18" r="1.5"/></svg>',
+ bowl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5M16 7c0-1.5 1-2 1-3.5"/></svg>',
+ cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12h11l2-8H6"/></svg>',
+ spoon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="7" rx="4" ry="5"/><path d="M12 12v10"/></svg>',
+ fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.4 1.2-4 2.5-5.3.2 1.6 1 2.8 2.2 3.3C11 8.5 11.4 5 12 2Z"/></svg>',
+ pan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="12" r="7"/><path d="M17 12h6"/></svg>',
+ box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v12H3zM3 8l2-4h14l2 4M10 12h4"/></svg>'
 };
 const byId={};RECIPES.forEach(r=>{byId[r.id]=r;if(typeof STEPS!=="undefined"&&STEPS[r.id]){r.prep=STEPS[r.id].prep;r.steps2=STEPS[r.id].steps}});
-let current={q:"",keys:[],list:[]};
-let aiList=[];
+const lessonNo=id=>LESSONS.findIndex(l=>l.id===id);
 const photo=id=>(typeof PHOTOS!=="undefined")&&PHOTOS[id];
+let current={q:"",keys:[],list:[]},aiList=[],filterLv="easy";
 
 /* ---------- 插圖（用 canvas 畫出料理的俯視圖） ---------- */
 function hash(s){let h=2166136261;for(const ch of String(s)){h^=ch.codePointAt(0);h=Math.imul(h,16777619)}return h>>>0}
@@ -1711,12 +1695,22 @@ function makeVisual(r,w,h){const p=(typeof PHOTOS!=="undefined")&&PHOTOS[r.id];i
 function makeCanvas(r,w,h){const cv=document.createElement("canvas");cv.width=w;cv.height=h;try{drawDish(cv,r.art,r.id+r.n)}catch(e){}cv.setAttribute("role","img");cv.setAttribute("aria-label",r.n+" 插圖");return cv}
 
 
-function makeVisual(r,w,h,eager){const p=photo(r.id);if(p){const im=document.createElement("img");im.src=p.src;im.alt=r.n;if(!eager)im.loading="lazy";im.decoding="async";return im}return makeCanvas(r,w,h)}
-function makeCanvas(r,w,h){const cv=document.createElement("canvas");cv.width=w;cv.height=h;try{drawDish(cv,r.art,r.id+r.n)}catch(e){}cv.setAttribute("role","img");cv.setAttribute("aria-label",r.n+" 示意插圖");return cv}
-function fmt(s){s=Math.max(0,Math.round(s));const m=Math.floor(s/60),x=s%60;return String(m).padStart(2,"0")+":"+String(x).padStart(2,"0")}
-function heatLevel(h){h=String(h||"");if(/大火/.test(h)&&!/中大/.test(h))return 3;if(/中大火/.test(h))return 3;if(/中小火/.test(h))return 1;if(/中火/.test(h))return 2;if(/小火/.test(h))return 1;return 0}
-function heatPill(h){if(!h)return"";const n=heatLevel(h);return '<span class="pill heat"><span class="f">'+(n?ICON.flame.repeat(n):'')+'</span>'+esc(h)+'</span>'}
+function makeVisual(r,w,h,eager){const p=photo(r.id);if(p){const im=document.createElement("img");im.src=p.src;im.alt=r.n;if(!eager)im.loading="lazy";im.decoding="async";return im}const cv=document.createElement("canvas");cv.width=w;cv.height=h;try{drawDish(cv,r.art,r.id+r.n)}catch(e){}cv.setAttribute("role","img");cv.setAttribute("aria-label",r.n+" 示意插圖");return cv}
+function fmt(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function heatLevel(h){h=String(h||"");if(/中大火/.test(h))return 3;if(/大火/.test(h))return 3;if(/中小火/.test(h))return 1;if(/中火/.test(h))return 2;if(/小火/.test(h))return 1;return 0}
+function heatPill(h){if(!h||h==="不開火")return"";const n=heatLevel(h);return '<span class="pill heat"><span class="f">'+(n?ICON.flame.repeat(n):'')+'</span>'+esc(h)+'</span>'}
 function normSteps(r){if(r.steps2)return r.steps2;return (r.steps||[]).map((s,i)=>typeof s==="string"?{t:"步驟 "+(i+1),d:s}:s)}
+function shopFor(name){for(const [k,en,w] of SHOP){if(String(name).includes(k))return{en,w}}return null}
+
+/* ---------- 課程 ---------- */
+function renderLessons(){
+  const box=$("#lessons");box.innerHTML="";
+  LESSONS.forEach((l,i)=>{const r=byId[l.id];if(!r)return;
+    const b=document.createElement("button");b.type="button";b.className="lesson";
+    const ph=document.createElement("div");ph.className="ph";ph.appendChild(makeVisual(r,400,300));ph.insertAdjacentHTML("beforeend",'<span class="no">第 '+(i+1)+' 課</span>');b.appendChild(ph);
+    b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="combo">'+(i===0?'所有課程的基礎':'白飯＋')+'</span><h3>'+esc(r.n)+'</h3><span class="learn">學會：'+esc(l.learn)+'</span><span class="tm">'+ICON.clock+esc(r.t)+' 分鐘・'+esc(LEVEL_NAME[r.lv])+'</span></div>');
+    b.onclick=()=>openDetail(r);box.appendChild(b)});
+}
 
 /* ---------- 搜尋 ---------- */
 function norm(s){return String(s||"").trim().toLowerCase().replace(/\s+/g," ")}
@@ -1730,265 +1724,128 @@ function resolveKeys(q){
 function search(q){
   const keys=resolveKeys(q);
   let list=RECIPES.filter(r=>r.k.some(k=>keys.includes(k)));
-  if(!list.length&&norm(q)){const nq=norm(q);list=RECIPES.filter(r=>r.ing.some(([n])=>n.toLowerCase().includes(nq)))}
+  if(!list.length&&norm(q)){const nq=norm(q);list=RECIPES.filter(r=>r.ing.some(([n])=>n.toLowerCase().includes(nq))||(r.n.includes(q.trim())))}
   list.sort((a,b)=>a.lv-b.lv||a.t-b.t);
   return{q:q.trim(),keys,list};
 }
-function dotsHTML(lv){let h='<span class="dots" aria-label="難度 '+lv+' / 5">';for(let i=1;i<=5;i++)h+='<i class="'+(i<=lv?"on":"")+'"></i>';return h+"</span>"}
-function timeText(r){return r.t+" 分鐘"+(r.wait?" "+r.wait:"")}
-
 function cardEl(r){
   const b=document.createElement("button");b.type="button";b.className="card";
-  const m=document.createElement("div");m.className="media";m.appendChild(makeVisual(r,560,420));
-  m.insertAdjacentHTML("beforeend",'<span class="badge">'+esc(LEVEL_NAME[r.lv]||"")+'</span>'+(r.ai?'<span class="ai-tag">Claude 建議</span>':''));
-  b.appendChild(m);
-  b.insertAdjacentHTML("beforeend",'<h4>'+esc(r.n)+'</h4><p>'+esc(r.d)+'</p><div class="meta"><span>'+ICON.clock+esc(r.t+" 分鐘")+'</span>'+dotsHTML(r.lv)+'</div>');
-  b.addEventListener("click",()=>openDetail(r));
-  return b;
+  const ph=document.createElement("div");ph.className="ph";ph.appendChild(makeVisual(r,560,420));
+  ph.insertAdjacentHTML("beforeend",'<span class="lv l'+r.lv+'">'+esc(LEVEL_NAME[r.lv])+'</span>'+(r.ai?'<span class="ai-tag">Claude 建議</span>':''));
+  b.appendChild(ph);
+  b.insertAdjacentHTML("beforeend",'<h3>'+esc(r.n)+'</h3><p>'+esc(r.d)+'</p><div class="meta"><span>'+ICON.clock+esc(r.t)+' 分鐘</span><span>'+ICON.user+esc(r.s||2)+' 人份</span></div>');
+  b.onclick=()=>openDetail(r);return b;
 }
-function featureEl(r){
-  const b=document.createElement("button");b.type="button";b.className="feature";
-  const m=document.createElement("div");m.className="media";m.appendChild(makeVisual(r,960,720));b.appendChild(m);
-  b.insertAdjacentHTML("beforeend",'<div class="body"><span class="kicker-zh">新手先從這道開始</span><h3>'+esc(r.n)+'</h3><p>'+esc(r.d)+'</p>'+
-    '<div class="meta"><span>'+ICON.clock+esc(timeText(r))+'</span><span>'+ICON.user+'約 '+esc(r.s||2)+' 人份</span>'+dotsHTML(r.lv)+'<span>'+esc(LEVEL_NAME[r.lv]||"")+'</span></div>'+
-    '<span class="cta">閱讀完整做法</span></div>');
-  b.addEventListener("click",()=>openDetail(r));
-  return b;
-}
-function renderTiers(list,container,easyOnly){
-  TIERS.forEach((t,ti)=>{
-    if(easyOnly&&ti===2)return;
-    const items=list.filter(r=>t.test(r.lv));if(!items.length)return;
-    const sec=document.createElement("section");sec.className="tier";
-    sec.innerHTML='<div class="tier-head"><span class="lv">'+t.lv+'</span><h3>'+t.name+'</h3><small>'+t.sub+'</small></div>';
-    const g=document.createElement("div");g.className="grid";items.forEach(r=>g.appendChild(cardEl(r)));sec.appendChild(g);container.appendChild(sec);
-  });
-}
-let easyOnly=true;
 function render(){
   const res=$("#results");res.innerHTML="";
   const {q,list,keys}=current;
-  document.querySelectorAll(".ing").forEach(ch=>ch.setAttribute("aria-pressed",String(keys.length===1&&keys[0]===ch.dataset.k)));
+  document.querySelectorAll(".ing").forEach(el=>el.setAttribute("aria-pressed",String(keys.length===1&&keys[0]===el.dataset.k)));
   const label=keys.length?keys.join("、"):q;
-  const shown=easyOnly?list.filter(r=>r.lv<=3):list, hidden=list.length-shown.length;
-  const ip=keys.length===1&&typeof ING_PHOTOS!=="undefined"&&ING_PHOTOS[keys[0]];
-  const countTxt=list.length?list.length+' dishes':'—';
-  res.insertAdjacentHTML("beforeend",ip?
-    '<div class="res-banner"><img src="'+ip.src+'" alt=""><div class="t"><div><span class="kicker" style="color:#e3c894">Search result</span><h2>'+esc(label)+'</h2></div><span class="count">'+countTxt+'</span></div></div>':
-    '<div class="res-head-plain"><div><span class="kicker">Search result</span><h2>'+esc(label||"—")+'</h2></div><span class="count" style="font-family:var(--latin);font-size:18px;color:var(--muted);font-style:italic">'+countTxt+'</span></div>');
-  res.insertAdjacentHTML("beforeend",'<div class="res-tools"><p>'+(list.length?'共 '+list.length+' 道料理，由簡單排到困難'+(hidden?'。另有 '+hidden+' 道進階料理，<button class="linkbtn" id="showHard" type="button">顯示全部</button>':''):'資料庫裡還沒有這個食材')+'</p>'+
-    '<label class="switch"><input type="checkbox" id="easyOnly"'+(easyOnly?' checked':'')+'><span class="track"></span>只看新手友善（難度 1–3）</label></div>');
-  $("#easyOnly").addEventListener("change",e=>{easyOnly=e.target.checked;render()});
-  const sh=$("#showHard");if(sh)sh.onclick=()=>{easyOnly=false;render()};
-  if(shown.length){res.appendChild(featureEl(shown[0]));renderTiers(shown.slice(1),res,false)}
-  else res.insertAdjacentHTML("beforeend",'<div class="empty">'+(sampleFn?"這個食材還沒有收錄。可以在下方請 Claude 幫你想幾道適合新手的做法。":"這個食材還沒有收錄。試試上方的食材，或換個說法，例如「白菜」「蛋」。")+'</div>');
+  const shown=list.filter(r=>filterLv==="all"?true:filterLv==="easy"?r.lv<=2:filterLv==="mid"?r.lv===3:r.lv>=4);
+  res.insertAdjacentHTML("beforeend",'<div class="res-head"><div><h2>'+esc(label||"—")+'</h2><p>'+(list.length?'共 '+list.length+' 道料理，由簡單排到困難':'資料庫裡還沒有這個食材')+'</p></div>'+
+    (list.length?'<div class="filters" role="group" aria-label="難度">'+[["easy","簡單"],["mid","普通"],["hard","進階"],["all","全部"]].map(([v,t])=>'<button type="button" class="fbtn" data-f="'+v+'" aria-pressed="'+(filterLv===v)+'">'+t+'</button>').join("")+'</div>':'')+'</div>');
+  res.querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{filterLv=b.dataset.f;render()});
+  if(!list.length){res.insertAdjacentHTML("beforeend",'<div class="empty">'+(sampleFn?"這個食材還沒有收錄。可以在下方請 Claude 幫你想幾道適合新手的做法。":"這個食材還沒有收錄。試試上面的食材，或換個說法，例如「白菜」「蛋」。")+'</div>')}
+  else if(!shown.length){res.insertAdjacentHTML("beforeend",'<div class="empty">這個難度沒有料理，換個難度看看。</div>')}
+  else{const g=document.createElement("div");g.className="grid";shown.forEach(r=>g.appendChild(cardEl(r)));res.appendChild(g)}
   $("#aiBox").hidden=!sampleFn||!q;
   $("#aiTitle").textContent=list.length?"想要更多「"+(label||q)+"」的做法？":"「"+q+"」可以做什麼？";
   $("#aiBtn").textContent=list.length?"請 Claude 再想幾道":"請 Claude 幫我想";
   renderAI();
 }
-function renderAI(){
-  const box=$("#aiResults");box.innerHTML="";
-  const mine=aiList.filter(r=>r.forQ===current.q);if(!mine.length)return;
-  mine.sort((a,b)=>a.lv-b.lv||a.t-b.t);
-  renderTiers(mine,box,easyOnly);
-  box.insertAdjacentHTML("beforeend",'<p class="note">Claude 建議的做法是即時產生的，封面是示意插圖，第一次做時建議搭配參考影片。</p>');
-}
-function go(q,scroll){current=search(q);$("#aiStatus").textContent="";render();if(scroll)$("#results").scrollIntoView({block:"start"});}
+function renderAI(){const box=$("#aiResults");box.innerHTML="";const mine=aiList.filter(r=>r.forQ===current.q);if(!mine.length)return;mine.sort((a,b)=>a.lv-b.lv||a.t-b.t);const g=document.createElement("div");g.className="grid";mine.forEach(r=>g.appendChild(cardEl(r)));box.appendChild(g);box.insertAdjacentHTML("beforeend",'<p class="note" style="margin-top:12px">Claude 建議的做法是即時產生的，封面是示意插圖。</p>')}
+function go(q,scroll){current=search(q);filterLv=current.list.some(r=>r.lv<=2)?"easy":"all";$("#aiStatus").textContent="";render();if(scroll)$("#finder").scrollIntoView({block:"start"})}
 
 /* ---------- 食譜頁 ---------- */
-let lastFocus=null,openRecipe=null;
+let lastFocus=null;
 function openDetail(r){
-  lastFocus=document.activeElement;openRecipe=r;
-  const p=$("#panel");p.innerHTML="";
-  const ph=photo(r.id);
-  const hero=document.createElement("header");hero.className="r-hero";const hv=makeVisual(r,1400,800,true);hero.appendChild(hv);
-  if(hv.tagName==="IMG"){const chk=()=>{if(hv.naturalWidth&&hv.naturalWidth<1000&&innerWidth>700){hero.classList.add("lowres");hv.classList.add("bg");const fg=hv.cloneNode();fg.className="fg";fg.style.zIndex="0";hv.after(fg)}};hv.complete?chk():hv.addEventListener("load",chk,{once:true})}
-  hero.insertAdjacentHTML("beforeend",'<div class="r-top"><span class="brand">食材料理簿</span><button class="close" type="button" aria-label="關閉">'+ICON.close+'</button></div>'+
-    '<div class="r-hero-text"><span class="kicker">Level '+r.lv+' · '+esc(LEVEL_NAME[r.lv]||"")+(r.ai?' · Claude':'')+'</span><h2 id="dTitle">'+esc(r.n)+'</h2><p>'+esc(r.d)+'</p></div>'+
-    (ph?'<div class="credit">照片：<a target="_blank" rel="noopener" href="'+esc(ph.url)+'">'+esc(ph.credit)+'</a></div>':''));
-  p.appendChild(hero);
-  const steps=normSteps(r);
+  lastFocus=document.activeElement;
+  const sh=$("#sheet");sh.innerHTML="";
+  const ph=photo(r.id),steps=normSteps(r),li=lessonNo(r.id),L=li>=0?LESSONS[li]:null;
   const q=encodeURIComponent(r.n.replace(/（.*?）/g,""));
-  const list=(title,zh,arr,pre)=>arr&&arr.length?'<h4>'+title+'<small>'+zh+'</small></h4><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return'<li><label><input type="checkbox" id="'+pre+i+'"><span>'+esc(n)+'</span><span class="q">'+esc(qt)+'</span></label></li>'}).join("")+'</ul>':"";
+  const item=(n,qt,pre,i,withShop)=>{const s=withShop&&shopFor(n);return '<li><label><input type="checkbox" id="'+pre+i+'"><span class="nm">'+esc(n)+'</span><span class="q">'+esc(qt)+'</span>'+(s?'<span class="en">'+esc(s.en)+'<span class="tag '+s.w+'">'+(s.w==="A"?"亞洲超市":"一般超市")+'</span></span>':'')+'</label></li>'};
+  const list=(title,arr,pre,withShop)=>arr&&arr.length?'<h3>'+title+'</h3><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return item(n,qt,pre,i,withShop)}).join("")+'</ul>':"";
   const total=(r.ing||[]).length+(r.sea||[]).length+(r.tools||[]).length;
-  const stepHTML=steps.map((s,i)=>'<li class="step" data-i="'+i+'"><span class="no">'+String(i+1).padStart(2,"0")+'</span><div><h4>'+esc(s.t||("步驟 "+(i+1)))+'</h4>'+
-     ((s.h&&s.h!=="不開火")||s.time?'<div class="pills">'+(s.h&&s.h!=="不開火"?heatPill(s.h):'')+(s.time?(s.sec?'<button class="pill timer" type="button" data-sec="'+s.sec+'" data-label="'+esc(s.t||"")+'">'+ICON.clock+esc(s.time)+'・開始計時</button>':'<span class="pill">'+ICON.clock+esc(s.time)+'</span>'):'')+'</div>':'')+
-     '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>成功的樣子</b><span>'+esc(s.cue)+'</span></p>':'')+(s.tip?'<p class="tip"><b>新手提醒</b><span>'+esc(s.tip)+'</span></p>':'')+
-     '<button class="mark" type="button">標記為完成</button></div></li>').join("");
-  p.insertAdjacentHTML("beforeend",
-   '<div class="r-facts"><div><span>難度</span><b>'+dotsHTML(r.lv)+esc(LEVEL_NAME[r.lv]||"")+'</b></div><div><span>時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>份量</span><b>約 '+esc(r.s||2)+' 人份</b></div><div><span>步驟</span><b>'+steps.length+' 步</b></div></div>'+
-   '<div class="r-body">'+
-    '<aside class="r-prep"><div class="panel"><div class="panel-head"><h3>需要準備</h3><span class="progress" id="prog">0 / '+total+'</span></div><div class="bar"><i id="progBar"></i></div>'+
-      list("Ingredients","主要材料",r.ing,"i")+list("Seasoning","調味料",r.sea,"s")+list("Tools","廚具",(r.tools||[]).map(t=>[t,""]),"t")+
-      (r.wait?'<p class="note" style="margin-top:14px">另外需要：'+esc(r.wait.replace(/^＋/,""))+'</p>':'')+'</div>'+
-      (r.prep&&r.prep.length?'<div class="panel"><div class="panel-head"><h3>開火前的備料</h3></div><ol class="preplist">'+r.prep.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol></div>':'')+'</aside>'+
-    '<div class="r-main">'+
-     (r.fail&&r.fail.length?'<section class="tips"><h3>'+ICON.bulb+'防失敗重點</h3><ul>'+r.fail.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ul></section>':"")+
-     '<section><div class="sec-title"><div><h3>做法</h3><small>每一步都有火候、時間和「成功的樣子」。有時間的步驟可以直接計時。</small></div><button class="btn" type="button" id="startCook">'+ICON.chef+'開始烹飪模式</button></div><ol class="steps">'+stepHTML+'</ol></section>'+
-     (r.sk&&r.sk.length?'<section><div class="sec-title"><h3>這道菜練到的技巧</h3></div><div class="skills">'+r.sk.map(s=>'<span class="skill">'+esc(s)+'</span>').join("")+'</div></section>':"")+
-     '<section><div class="sec-title"><div><h3>參考來源</h3><small>看影片和其他人的做法對照，學得更快</small></div></div><div class="refs">'+
-       '<a class="ref" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+q+'+%E5%81%9A%E6%B3%95"><b>YouTube 影片</b><span>看別人實際操作，最適合新手</span></a>'+
-       '<a class="ref" target="_blank" rel="noopener" href="https://icook.tw/search/'+q+'"><b>愛料理 iCook</b><span>台灣最大食譜社群</span></a>'+
-       '<a class="ref" target="_blank" rel="noopener" href="https://cookpad.com/tw/search/'+q+'"><b>Cookpad 台灣</b><span>家常版本多，常有簡化做法</span></a>'+
-       '<a class="ref" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=isch&q='+q+'"><b>Google 圖片</b><span>看更多成品照片</span></a>'+
-     '</div>'+(ph?'<p class="note" style="margin-top:14px">封面為示意實拍照片，實際成品會因份量與擺盤而不同。</p>':(r.ai?'<p class="note" style="margin-top:14px">這道是 Claude 即時建議的做法，封面是示意插圖。</p>':''))+'</section>'+
-    '</div></div>');
-  const pp=typeof pathPos==="function"&&pathPos(r.id);
-  if(pp){p.querySelector(".r-facts").insertAdjacentHTML("afterend",'<div class="r-path"><span>主菜新手之路・<b>第 '+(pp.stage+1)+' 關「'+esc(STAGES[pp.stage].n)+'」</b>　成功的樣子：'+esc(pp.item.goal)+'</span><button class="btn" type="button" id="rDone" aria-pressed="'+(!!done[r.id])+'">'+(done[r.id]?"✓ 已完成":"我做到了")+'</button></div>');p.querySelector("#rDone").onclick=()=>toggleDone(r.id)}
-  const upd=()=>{const all=p.querySelectorAll(".checklist input"),n=[...all].filter(x=>x.checked).length;$("#prog").textContent=n+" / "+all.length;$("#progBar").style.width=(all.length?n/all.length*100:0)+"%"};
-  p.querySelectorAll(".checklist input").forEach(x=>x.addEventListener("change",upd));
-  p.querySelectorAll(".step .mark").forEach(b=>b.addEventListener("click",()=>{const li=b.closest(".step");li.classList.toggle("done");b.textContent=li.classList.contains("done")?"取消完成":"標記為完成"}));
-  p.querySelectorAll(".pill.timer").forEach(b=>b.addEventListener("click",()=>startTimer(+b.dataset.sec,r.n+"・"+b.dataset.label)));
-  p.querySelector("#startCook").onclick=()=>openCook(r,0);
-  p.querySelector(".close").onclick=closeDetail;
-  const sh=$("#sheet");sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";p.querySelector(".close").focus();
+  sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(r.n)+'</span><button class="btn" type="button" id="startCook">'+ICON.steps+'步驟模式</button></div></div>'+
+   '<div class="wrap"><div class="r-head"><div><span class="crumb">'+(L?'新手課程・第 '+(li+1)+' 課':'食譜')+'</span><h1 id="dTitle">'+esc(r.n)+'</h1><p class="desc">'+esc(r.d)+'</p>'+
+     '<div class="facts"><div><span>難度</span><b>'+esc(LEVEL_NAME[r.lv])+'</b></div><div><span>時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>份量</span><b>'+esc(r.s||2)+' 人份</b></div></div>'+
+     (r.wait?'<p class="note">另外需要：'+esc(r.wait.replace(/^＋/,""))+'</p>':'')+
+     (L?'<div class="learnbox"><b>這一課學會：</b>'+esc(L.learn)+'。'+esc(L.why)+'</div>':'')+
+   '</div><div class="r-img" id="rImg"></div></div>'+
+   '<div class="r-body"><aside class="side"><div class="box"><div class="box-head"><h2>材料</h2><span class="count" id="prog">0 / '+total+'</span></div>'+
+     '<div class="legend"><span><span class="tag S">一般超市</span>Woolworths、Coles、ALDI</span><span><span class="tag A">亞洲超市</span>Asian grocery</span></div>'+
+     list("主要材料",r.ing,"i",true)+list("調味料",r.sea,"s",true)+list("廚具",(r.tools||[]).map(t=>[t,""]),"t",false)+'</div>'+
+     (r.prep&&r.prep.length?'<div class="box"><h2 style="margin-bottom:12px">開火前的準備</h2><ol class="prep">'+r.prep.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol></div>':'')+'</aside>'+
+   '<div class="main">'+
+     (r.fail&&r.fail.length?'<section class="warn"><h2>'+ICON.bulb+'做之前先看：最容易失敗的地方</h2><ul>'+r.fail.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ul></section>':'')+
+     '<section><div class="steps-head"><div><h2>做法</h2><p>每一步都寫了火候、時間和「做到什麼樣子就對了」。有時間的步驟可以直接按下去計時。</p></div></div><ol class="steps">'+
+      steps.map((s,i)=>'<li class="step"><span class="no">'+(i+1)+'</span><div class="body"><h3>'+esc(s.t||"步驟 "+(i+1))+'</h3>'+
+        ((s.h&&s.h!=="不開火")||s.time?'<div class="pills">'+heatPill(s.h)+(s.time?(s.sec?'<button class="pill timer" type="button" data-sec="'+s.sec+'" data-label="'+esc(s.t||"")+'">'+ICON.clock+esc(s.time)+'・計時</button>':'<span class="pill">'+ICON.clock+esc(s.time)+'</span>'):'')+'</div>':'')+
+        '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>做到這樣就對了</b><span>'+esc(s.cue)+'</span></p>':'')+(s.tip?'<p class="hint"><b>小提醒</b><span>'+esc(s.tip)+'</span></p>':'')+
+        '<button class="mark" type="button">做完這一步</button></div></li>').join("")+'</ol></section>'+
+     (r.sk&&r.sk.length?'<section><h2 style="font-size:20px;margin-bottom:10px">這道菜練到的技巧</h2><div class="skills">'+r.sk.map(s=>'<span class="skill">'+esc(s)+'</span>').join("")+'</div></section>':'')+
+     '<section><h2 style="font-size:20px;margin-bottom:10px">看影片學更快</h2><div class="refs">'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+q+'+%E5%81%9A%E6%B3%95"><b>YouTube 影片 ↗</b><span>看別人實際操作</span></a>'+
+       '<a class="ref" target="_blank" rel="noopener" href="https://icook.tw/search/'+q+'"><b>愛料理 iCook ↗</b><span>台灣網友的做法和心得</span></a>'+
+     '</div></section>'+
+     (L?'<nav class="pager" aria-label="課程導覽">'+(li>0?'<button type="button" data-go="'+LESSONS[li-1].id+'"><span>← 上一課</span><b>'+esc(byId[LESSONS[li-1].id].n)+'</b></button>':'<span></span>')+(li<LESSONS.length-1?'<button type="button" data-go="'+LESSONS[li+1].id+'"><span>下一課 →</span><b>'+esc(byId[LESSONS[li+1].id].n)+'</b></button>':'')+'</nav>':'')+
+   '</div></div></div>';
+  const img=$("#rImg");img.appendChild(makeVisual(r,1200,900,true));if(ph)img.insertAdjacentHTML("beforeend",'<p class="credit">照片：<a target="_blank" rel="noopener" href="'+esc(ph.url)+'">'+esc(ph.credit)+'</a>（示意，實際成品會因份量與擺盤不同）</p>');else if(r.ai)img.insertAdjacentHTML("beforeend",'<p class="credit">示意插圖</p>');
+  const upd=()=>{const all=sh.querySelectorAll(".checklist input"),n=[...all].filter(x=>x.checked).length;$("#prog").textContent=n+" / "+all.length};
+  sh.querySelectorAll(".checklist input").forEach(x=>x.addEventListener("change",upd));
+  sh.querySelectorAll(".step .mark").forEach(b=>b.onclick=()=>{const li=b.closest(".step");li.classList.toggle("done");b.textContent=li.classList.contains("done")?"取消":"做完這一步"});
+  sh.querySelectorAll(".pill.timer").forEach(b=>b.onclick=()=>startTimer(+b.dataset.sec,r.n+"・"+b.dataset.label));
+  sh.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>openDetail(byId[b.dataset.go]));
+  $("#startCook").onclick=()=>openCook(r);
+  $("#backBtn").onclick=closeDetail;
+  sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";$("#backBtn").focus();
 }
-function closeDetail(){$("#sheet").hidden=true;openRecipe=null;document.body.style.overflow="";if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+function closeDetail(){$("#sheet").hidden=true;document.body.style.overflow="";if(lastFocus&&lastFocus.focus)lastFocus.focus()}
 
 /* ---------- 計時器 ---------- */
 let timer=null;
 function beep(){try{const A=window.AudioContext||window.webkitAudioContext;const a=new A();[0,.35,.7].forEach(t=>{const o=a.createOscillator(),g=a.createGain();o.frequency.value=880;o.connect(g);g.connect(a.destination);g.gain.setValueAtTime(.0001,a.currentTime+t);g.gain.exponentialRampToValueAtTime(.3,a.currentTime+t+.02);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+t+.28);o.start(a.currentTime+t);o.stop(a.currentTime+t+.3)})}catch(e){}try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}}
-function startTimer(sec,label){
-  if(timer)clearInterval(timer.iv);
-  timer={total:sec,end:Date.now()+sec*1000,left:sec,label,running:true,done:false};
-  timer.iv=setInterval(tick,250);tick();
-}
-function tick(){
-  if(!timer)return;
-  if(timer.running){timer.left=Math.max(0,(timer.end-Date.now())/1000);if(timer.left<=0&&!timer.done){timer.done=true;timer.running=false;beep();showToast("時間到！",timer.label)}}
-  paintTimer();
-}
-function toggleTimer(){if(!timer||timer.done)return;if(timer.running){timer.running=false}else{timer.end=Date.now()+timer.left*1000;timer.running=true}paintTimer()}
+function startTimer(sec,label){if(timer)clearInterval(timer.iv);timer={end:Date.now()+sec*1000,left:sec,label,running:true,done:false};timer.iv=setInterval(tick,250);tick()}
+function tick(){if(!timer)return;if(timer.running){timer.left=Math.max(0,(timer.end-Date.now())/1000);if(timer.left<=0&&!timer.done){timer.done=true;timer.running=false;beep();toast("時間到",timer.label)}}paintTimer()}
+function toggleTimer(){if(!timer||timer.done)return;if(timer.running)timer.running=false;else{timer.end=Date.now()+timer.left*1000;timer.running=true}paintTimer()}
 function stopTimer(){if(timer){clearInterval(timer.iv);timer=null}paintTimer()}
 function paintTimer(){
-  const f=$("#ftimer");
-  if(!timer){f.hidden=true;const bt=document.querySelector("#cookTimer .t");if(bt){bt.className="t";bt.textContent=bt.dataset.def||"00:00"}syncCookTimerBtn();return}
-  const t=fmt(Math.ceil(timer.left)),cls="t"+(timer.done?" end":"");
-  f.hidden=!$("#cook").hidden?true:false;
-  f.innerHTML='<span class="'+cls+'">'+t+'</span><span class="l">'+esc(timer.done?"時間到":timer.label)+'</span><button type="button" id="ftToggle" aria-label="暫停或繼續">'+(timer.running?ICON.pause:ICON.play)+'</button><button type="button" id="ftStop" aria-label="關閉計時器">'+ICON.close+'</button>';
-  $("#ftToggle").onclick=toggleTimer;$("#ftStop").onclick=stopTimer;
-  const bt=document.querySelector("#cookTimer .t");
-  if(bt&&bt.dataset.label===timer.label){bt.textContent=t;bt.className="t"+(timer.done?" end":timer.running?" run":"")}
-  syncCookTimerBtn();
+  const f=$("#ftimer");const bt=document.querySelector("#cookTimer .tt");
+  if(!timer){f.hidden=true;if(bt){bt.className="tt";bt.textContent=bt.dataset.def}syncCookBtn();return}
+  const t=fmt(Math.ceil(timer.left));
+  f.hidden=!$("#cook").hidden;
+  f.innerHTML='<span class="tt'+(timer.done?" end":"")+'">'+t+'</span><span class="l">'+esc(timer.done?"時間到":timer.label)+'</span><button type="button" id="ftT" aria-label="暫停或繼續">'+(timer.running?ICON.pause:ICON.play)+'</button><button type="button" id="ftS" aria-label="關閉計時器">'+ICON.close+'</button>';
+  $("#ftT").onclick=toggleTimer;$("#ftS").onclick=stopTimer;
+  if(bt&&bt.dataset.label===timer.label){bt.textContent=t;bt.className="tt"+(timer.done?" end":timer.running?" run":"")}
+  syncCookBtn();
 }
+function toast(a,b){document.querySelectorAll(".toast").forEach(t=>t.remove());const t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.innerHTML='<b>'+esc(a)+'</b>'+esc(b);document.body.appendChild(t);setTimeout(()=>t.remove(),4000)}
 
-/* ---------- 烹飪模式 ---------- */
+/* ---------- 步驟模式 ---------- */
 let cookR=null,cookI=0,wake=null;
 async function lockWake(){try{if("wakeLock" in navigator)wake=await navigator.wakeLock.request("screen")}catch(e){wake=null}}
-function openCook(r,i){cookR=r;cookI=i||0;$("#cook").hidden=false;lockWake();paintCook();paintTimer()}
+function openCook(r){cookR=r;cookI=0;$("#cook").hidden=false;lockWake();paintCook();paintTimer()}
 function closeCook(){$("#cook").hidden=true;try{wake&&wake.release()}catch(e){}wake=null;paintTimer()}
-function syncCookTimerBtn(){const b=document.getElementById("cookTimerBtn");if(!b)return;const lab=b.dataset.label;const mine=timer&&timer.label===lab;b.innerHTML=mine&&timer.running?ICON.pause+"暫停":mine&&!timer.done?ICON.play+"繼續":ICON.play+"開始計時"}
+function syncCookBtn(){const b=document.getElementById("cookTB");if(!b)return;const mine=timer&&timer.label===b.dataset.label;b.innerHTML=mine&&timer.running?ICON.pause+"暫停":mine&&!timer.done?ICON.play+"繼續":ICON.play+"開始計時"}
 function paintCook(){
   const r=cookR,steps=normSteps(r),s=steps[cookI],n=steps.length,label=r.n+"・"+(s.t||"");
   const c=$("#cook");
-  c.innerHTML='<div><div class="cook-top"><span class="ttl">'+esc(r.n)+'</span><button class="close" type="button" id="cookClose" aria-label="離開烹飪模式">'+ICON.close+'</button></div><div class="cook-dots">'+steps.map((_,k)=>'<i class="'+(k<=cookI?"on":"")+'"></i>').join("")+'</div></div>'+
-   '<div class="cook-body"><span class="k">Step '+String(cookI+1).padStart(2,"0")+' / '+String(n).padStart(2,"0")+'</span><h3>'+esc(s.t||"")+'</h3>'+
-   ((s.h&&s.h!=="不開火")||s.time?'<div class="pills">'+(s.h&&s.h!=="不開火"?heatPill(s.h):'')+(s.time?'<span class="pill">'+ICON.clock+esc(s.time)+'</span>':'')+'</div>':'')+
-   '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue">成功的樣子：'+esc(s.cue)+'</p>':'')+(s.tip?'<p class="tip">新手提醒：'+esc(s.tip)+'</p>':'')+
-   (s.sec?'<div class="bigtimer" id="cookTimer"><span class="t" data-label="'+esc(label)+'" data-def="'+fmt(s.sec)+'">'+fmt(s.sec)+'</span><button class="btn" type="button" id="cookTimerBtn" data-label="'+esc(label)+'"></button><button class="btn ghost" type="button" id="cookTimerReset" style="color:#efe9dd;border-color:rgba(239,233,221,.3)">重設</button></div>':'')+
-   '</div><div class="cook-nav"><button class="btn ghost" type="button" id="cookPrev"'+(cookI===0?' disabled':'')+'>← 上一步</button><button class="btn" type="button" id="cookNext">'+(cookI===n-1?'完成 ✓':'下一步 →')+'</button></div>';
-  $("#cookClose").onclick=closeCook;
-  $("#cookPrev").onclick=()=>{if(cookI>0){cookI--;paintCook();paintTimer()}};
-  $("#cookNext").onclick=()=>{if(cookI<n-1){cookI++;paintCook();paintTimer()}else{closeCook();showToast("完成「"+r.n+"」！","辛苦了，趁熱享用吧。");if(typeof pathPos==="function"&&pathPos(r.id)&&!done[r.id])toggleDone(r.id)}};
-  const tb=$("#cookTimerBtn");
-  if(tb){tb.onclick=()=>{if(timer&&timer.label===label&&!timer.done)toggleTimer();else startTimer(s.sec,label)};$("#cookTimerReset").onclick=()=>{if(timer&&timer.label===label)stopTimer()}}
-  syncCookTimerBtn();
+  c.innerHTML='<div><div class="cook-top"><span class="t">'+esc(r.n)+'</span><button class="iconbtn" type="button" id="cookX" aria-label="離開步驟模式">'+ICON.close+'</button></div><div class="cook-bar"><i style="width:'+((cookI+1)/n*100)+'%"></i></div></div>'+
+   '<div class="cook-body"><span class="k">第 '+(cookI+1)+' 步，共 '+n+' 步</span><h2>'+esc(s.t||"")+'</h2>'+
+   ((s.h&&s.h!=="不開火")||s.time?'<div class="pills">'+heatPill(s.h)+(s.time?'<span class="pill">'+ICON.clock+esc(s.time)+'</span>':'')+'</div>':'')+
+   '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>做到這樣就對了：</b>'+esc(s.cue)+'</p>':'')+(s.tip?'<p class="hint"><b>小提醒：</b>'+esc(s.tip)+'</p>':'')+
+   (s.sec?'<div class="bigtimer" id="cookTimer"><span class="tt" data-label="'+esc(label)+'" data-def="'+fmt(s.sec)+'">'+fmt(s.sec)+'</span><button class="btn" type="button" id="cookTB" data-label="'+esc(label)+'"></button><button class="btn line" type="button" id="cookTR">重設</button></div>':'')+
+   '</div><div class="cook-nav"><button class="btn line" type="button" id="cookP"'+(cookI===0?' disabled':'')+'>上一步</button><button class="btn" type="button" id="cookN">'+(cookI===n-1?'完成':'下一步')+'</button></div>';
+  $("#cookX").onclick=closeCook;
+  $("#cookP").onclick=()=>{if(cookI>0){cookI--;paintCook();paintTimer()}};
+  $("#cookN").onclick=()=>{if(cookI<n-1){cookI++;paintCook();paintTimer()}else closeCook()};
+  const tb=$("#cookTB");if(tb){tb.onclick=()=>{if(timer&&timer.label===label&&!timer.done)toggleTimer();else startTimer(s.sec,label)};$("#cookTR").onclick=()=>{if(timer&&timer.label===label)stopTimer()}}
+  syncCookBtn();
 }
-
-/* ---------- 其他事件 ---------- */
 document.addEventListener("keydown",e=>{
-  if(!$("#cook").hidden){if(e.key==="Escape")closeCook();else if(e.key==="ArrowRight")$("#cookNext").click();else if(e.key==="ArrowLeft"&&!$("#cookPrev").disabled)$("#cookPrev").click();return}
+  if(!$("#cook").hidden){if(e.key==="Escape")closeCook();else if(e.key==="ArrowRight")$("#cookN").click();else if(e.key==="ArrowLeft"&&!$("#cookP").disabled)$("#cookP").click();return}
   if(e.key==="Escape"&&!$("#sheet").hidden)closeDetail();
 });
-let toastT=null;
-function showToast(title,sub){document.querySelectorAll(".toast").forEach(t=>t.remove());const t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.innerHTML='<b>'+esc(title)+'</b><span>'+esc(sub)+'</span>';document.body.appendChild(t);clearTimeout(toastT);toastT=setTimeout(()=>t.remove(),4200)}
-
-/* ---------- 主菜新手之路 ---------- */
-const STAGES=[
- {n:"蛋料理暖身",skill:"控制火候、炒蛋不老",badge:"蛋料理達人",why:"蛋便宜又熟得快，失敗了也不心疼，最適合先練手感。",items:[
-  {id:"tomato-egg",why:"只有兩樣主材料，十分鐘上桌。",goal:"蛋是一大塊一大塊的滑嫩，番茄有紅色湯汁。"},
-  {id:"onion-egg",why:"再練一次「蛋先盛起、最後回鍋」。",goal:"洋蔥軟甜帶點金黃，蛋不乾。"},
-  {id:"radish-omelette",why:"第一次挑戰「煎」和「翻面」。",goal:"兩面金黃焦香，切四塊翻面都沒散掉。"}]},
- {n:"第一塊肉",skill:"醃肉、煎肉、判斷熟度",badge:"煎肉小能手",why:"學會把肉煎熟又不老，之後大部分的主菜都難不倒你。",items:[
-  {id:"teriyaki",why:"冷鍋煎雞皮，幾乎不用技巧就很成功。",goal:"雞皮金黃酥脆、醬汁發亮，切開沒有粉紅色。"},
-  {id:"onion-beef",why:"學會醃肉，讓肉變嫩。",goal:"牛肉軟嫩不硬，洋蔥還帶一點脆。"},
-  {id:"fly-head",why:"絞肉很快熟，練大火快炒的節奏。",goal:"絞肉乾香、韭菜花還是翠綠色。"}]},
- {n:"台灣味經典",skill:"調醬汁、燜煮、收汁",badge:"台灣味掌廚",why:"這關的菜一端上桌，家人朋友一定認得。",items:[
-  {id:"three-cup",why:"記住麻油、醬油、米酒 1:1:1 就不會錯。",goal:"醬汁濃稠發亮，九層塔香氣很明顯。"},
-  {id:"mapo-tofu",why:"第一次練勾芡，豆腐要推不要翻。",goal:"豆腐完整不碎，醬汁濃稠會掛在豆腐上。"},
-  {id:"kungpao",why:"練習先調好醬汁，一次倒入。",goal:"雞丁嫩、花生脆，醬汁包住每一塊雞肉。"}]},
- {n:"一鍋到底",skill:"燉煮與時間管理",badge:"燉煮職人",why:"燉菜只要把材料備好，剩下交給時間，成就感最大。",items:[
-  {id:"napa-pork-hotpot",why:"看起來很厲害，其實只是疊起來、排進鍋。",goal:"一圈圈的花紋完整，肉片全熟。"},
-  {id:"nikujaga",why:"練習「落蓋」和收汁。",goal:"馬鈴薯鬆軟入味，但沒有燉到化掉。"},
-  {id:"braised-pork",why:"一次煮一鍋，可以吃好幾餐。",goal:"肉燥油亮、湯汁微稠，淋在飯上就是滷肉飯。"}]},
- {n:"請客主菜",skill:"長時間燉煮、整合所有技巧",badge:"請客主廚",why:"畢業考。做給朋友吃，一定會被稱讚。",items:[
-  {id:"tomato-beef",why:"汆燙、煎香、燉煮三個技巧一次用上。",goal:"牛腩用筷子能輕鬆夾開，湯汁酸甜濃郁。"},
-  {id:"lion-head",why:"調肉餡、摔打、煎定型、燉煮全部到齊。",goal:"肉丸鬆軟不散，白菜吸滿肉汁。"}]}
-];
-const PATH_IDS=STAGES.flatMap(s=>s.items.map(i=>i.id));
-const ROMAN=["I","II","III","IV","V"];
-let done={};let pathDoc=null;
-const LS_KEY="shicai-path-done";
-function lsLoad(){try{return JSON.parse(localStorage.getItem(LS_KEY)||"{}")||{}}catch(e){return{}}}
-function lsSave(){try{localStorage.setItem(LS_KEY,JSON.stringify(done))}catch(e){}}
-function pathPos(id){let n=0;for(let s=0;s<STAGES.length;s++)for(const it of STAGES[s].items){n++;if(it.id===id)return{no:n,stage:s,item:it}}return null}
-function stageDone(s){return STAGES[s].items.every(i=>done[i.id])}
-function currentTitle(){let t="廚房新手";STAGES.forEach((s,i)=>{if(stageDone(i))t=s.badge});return t}
-function nextDish(){return PATH_IDS.find(id=>!done[id])}
-function renderPath(){
-  const n=PATH_IDS.filter(id=>done[id]).length,total=PATH_IDS.length,nx=nextDish();
-  const nr=nx&&byId[nx],np=nx&&pathPos(nx);
-  $("#statusCard").innerHTML='<div><small>目前稱號</small><div class="title">'+esc(currentTitle())+'</div></div><span class="count">'+n+' / '+total+'</span>'+
-    '<div class="pbar"><i style="width:'+(n/total*100)+'%"></i></div>'+
-    (nr?'<button class="next" type="button" id="nextBtn"><span id="nextImg"></span><span><em>下一道・第 '+np.no+' 道</em><b>'+esc(nr.n)+'</b></span></button>':'<div class="title" style="grid-column:1/-1;font-size:18px">全部完成，你已經是可以請客的主廚了。</div>');
-  if(nr){$("#nextImg").replaceWith(makeVisual(nr,128,128,true));$("#nextBtn").onclick=()=>openDetail(nr)}
-  let no=0;
-  $("#stages").innerHTML=STAGES.map((s,si)=>{
-    const sd=stageDone(si);
-    return '<article class="stage"><div class="stage-info"><span class="stage-no">'+ROMAN[si]+'</span><span class="kicker-zh">第 '+(si+1)+' 關</span><h3>'+esc(s.n)+'</h3><p>'+esc(s.why)+'</p><p class="learn"><b>學會</b>'+esc(s.skill)+'</p>'+
-      '<span class="medal'+(sd?' on':'')+'">'+ICON.medal+(sd?'已解鎖：':'完成解鎖：')+esc(s.badge)+'</span></div><div class="dishes">'+
-      s.items.map(it=>{no++;const r=byId[it.id];if(!r)return"";const d=!!done[it.id];
-        return '<div class="dish'+(d?' done':'')+'"><button class="ph" type="button" data-open="'+it.id+'" aria-label="看 '+esc(r.n)+' 的做法"><span class="num">N° '+String(no).padStart(2,"0")+'</span></button>'+
-        '<div class="dbody"><h4>'+esc(r.n)+'</h4><p class="why">'+esc(it.why)+'</p><p class="goal"><b>成功的樣子</b>'+esc(it.goal)+'</p>'+
-        '<div class="row"><small>'+esc(r.t)+' 分鐘・'+esc(LEVEL_NAME[r.lv])+'</small><button class="donebtn" type="button" data-done="'+it.id+'" aria-pressed="'+d+'">'+(d?'✓ 做到了':'我做到了')+'</button></div></div></div>'}).join("")+
-      '</div></article>'}).join("");
-  $("#stages").querySelectorAll("[data-open]").forEach(b=>{const r=byId[b.dataset.open];b.insertBefore(makeVisual(r,420,315),b.firstChild);b.onclick=()=>openDetail(r)});
-  $("#stages").querySelectorAll("[data-done]").forEach(b=>b.onclick=()=>toggleDone(b.dataset.done));
-}
-let saving=Promise.resolve();
-function persist(){lsSave();if(pathDoc){saving=saving.then(()=>pathDoc.set({done})).catch(()=>{})}}
-function toggleDone(id){
-  const before=currentTitle(),pos=pathPos(id);
-  if(done[id])delete done[id];else done[id]=new Date().toISOString().slice(0,10);
-  persist();renderPath();
-  if(done[id]){
-    const after=currentTitle(),r=byId[id];
-    if(after!==before)celebrate("解鎖新稱號「"+after+"」","完成第 "+(pos.stage+1)+" 關，太厲害了。",true);
-    else celebrate("完成「"+r.n+"」",nextDish()?"下一道："+byId[nextDish()].n:"全部 14 道都完成了！",false);
-  }
-  const rb=document.getElementById("rDone");if(rb){rb.setAttribute("aria-pressed",String(!!done[id]));rb.textContent=done[id]?"✓ 已完成":"我做到了"}
-}
-function celebrate(title,sub,big){
-  showToast(title,sub);
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  const cv=document.createElement("canvas");cv.id="confetti";cv.width=innerWidth;cv.height=innerHeight;document.body.appendChild(cv);
-  const g=cv.getContext("2d"),cols=["#cdae78","#9c7a44","#efe9dd","#9dbba6","#e3c894"],N=big?160:70,P=[];
-  for(let i=0;i<N;i++)P.push({x:innerWidth/2+(Math.random()-.5)*120,y:innerHeight*.75,vx:(Math.random()-.5)*14,vy:-(8+Math.random()*12),r:4+Math.random()*5,c:cols[i%cols.length],a:Math.random()*6,s:(Math.random()-.5)*.3});
-  let f=0;(function step(){g.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.a+=p.s;g.save();g.translate(p.x,p.y);g.rotate(p.a);g.fillStyle=p.c;g.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);g.restore()});if(++f<110)requestAnimationFrame(step);else cv.remove()})();
-}
-async function initPathStore(){
-  done=lsLoad();renderPath();
-  if(!(window.claude&&typeof window.claude.use==="function"))return;
-  try{
-    const [db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
-    if(!db||!user)return;const uid=await user.id();if(!uid)return;
-    pathDoc=db.doc("data/users/"+uid+"/progress");
-    const snap=await pathDoc.get();
-    if(snap.exists){const d=snap.data()||{};if(d.done&&typeof d.done==="object"){done=Object.assign({},d.done);lsSave();renderPath()}}
-    else if(Object.keys(done).length){persist()}
-  }catch(e){pathDoc=null}
-}
 
 /* ---------- Claude 建議（sample capability） ---------- */
 let sampleFn=null; const aiState={busy:false,err:""}; let aiCtl=null;
@@ -2040,30 +1897,26 @@ $("#aiBtn").addEventListener("click",askAI);
 
 
 
-/* ---------- 深色／淺色 ---------- */
-const TKEY="shicai-theme";
-function effectiveDark(){const a=document.documentElement.getAttribute("data-theme");if(a==="dark")return true;if(a==="light")return false;return matchMedia("(prefers-color-scheme: dark)").matches}
-function syncTheme(){const d=effectiveDark();document.documentElement.classList.toggle("is-dark",d);$("#themeLabel").textContent=d?"淺色":"深色";$("#themeBtn").setAttribute("aria-label",d?"切換成淺色模式":"切換成深色模式")}
-try{const s=localStorage.getItem(TKEY);if(s==="dark"||s==="light")document.documentElement.setAttribute("data-theme",s)}catch(e){}
-$("#themeBtn").addEventListener("click",()=>{const next=effectiveDark()?"light":"dark";document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem(TKEY,next)}catch(e){}syncTheme()});
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change",syncTheme);
-new MutationObserver(syncTheme).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
-syncTheme();
+/* ---------- 深色（手動切換，預設淺色） ---------- */
+const TKEY="shicai-theme2";
+function setTheme(t){if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.setAttribute("data-theme","light");$("#themeBtn").setAttribute("aria-label",t==="dark"?"切換淺色模式":"切換深色模式")}
+let theme="light";try{if(localStorage.getItem(TKEY)==="dark")theme="dark"}catch(e){}
+setTheme(theme);
+$("#themeBtn").onclick=()=>{theme=theme==="dark"?"light":"dark";setTheme(theme);try{localStorage.setItem(TKEY,theme)}catch(e){}};
 
 /* ---------- 初始化 ---------- */
-const countFor=k=>RECIPES.filter(r=>r.k.includes(k)).length;
-const EN={"大白菜":"Napa","高麗菜":"Cabbage","雞蛋":"Egg","番茄":"Tomato","豆腐":"Tofu","馬鈴薯":"Potato","茄子":"Eggplant","白蘿蔔":"Daikon","洋蔥":"Onion","紅蘿蔔":"Carrot","雞肉":"Chicken","豬肉":"Pork","牛肉":"Beef"};
-$("#ingGrid").innerHTML=CHIPS.map(k=>{const ip=typeof ING_PHOTOS!=="undefined"&&ING_PHOTOS[k];return '<button type="button" class="ing" data-k="'+esc(k)+'" aria-pressed="false">'+(ip?'<img src="'+ip.src+'" alt="" loading="lazy">':'')+'<span class="lab"><b>'+esc(k)+'</b><span>'+(EN[k]||"")+' · '+countFor(k)+'</span></span></button>'}).join("");
-$("#ingGrid").addEventListener("click",e=>{const b=e.target.closest(".ing");if(!b)return;$("#q").value=b.dataset.k;go(b.dataset.k,true)});
-$("#basicsGrid").innerHTML=BASICS.map(([t,d],i)=>'<div><span class="n">N° '+String(i+1).padStart(2,"0")+'</span><b>'+esc(t)+'</b><span>'+esc(d)+'</span></div>').join("");
-$("#coverMeta").innerHTML='<div><b>'+RECIPES.length+'</b><span>道家常菜</span></div><div><b>'+CHIPS.length+'</b><span>種常見食材</span></div><div><b>'+Object.values(typeof STEPS!=="undefined"?STEPS:{}).reduce((a,s)=>a+s.steps.length,0)+'</b><span>個詳細步驟</span></div>';
-(function(){const a=photo("napa-pork-hotpot"),b=photo("three-cup");$("#coverArt").innerHTML='<span class="tag">SEASONAL · NO. 04</span>'+(a?'<figure class="a1"><img src="'+a.src+'" alt=""><figcaption>Mille-feuille nabe</figcaption></figure>':'')+(b?'<figure class="a2"><img src="'+b.src+'" alt=""><figcaption>Three-cup chicken</figcaption></figure>':'')})();
-$("#searchForm").addEventListener("submit",e=>{e.preventDefault();go($("#q").value,true);if(!current.list.length&&sampleFn)askAI();});
+const EN={"大白菜":"Wombok","高麗菜":"Cabbage","雞蛋":"Eggs","番茄":"Tomato","豆腐":"Tofu","馬鈴薯":"Potato","茄子":"Eggplant","白蘿蔔":"Daikon","洋蔥":"Onion","紅蘿蔔":"Carrot","雞肉":"Chicken","豬肉":"Pork mince","牛肉":"Beef"};
+$("#ings").innerHTML=CHIPS.map(k=>{const ip=typeof ING_PHOTOS!=="undefined"&&ING_PHOTOS[k];return '<button type="button" class="ing" data-k="'+esc(k)+'" aria-pressed="false">'+(ip?'<img src="'+ip.src+'" alt="" loading="lazy">':'')+'<b>'+esc(k)+'</b><span>'+esc(EN[k]||"")+'</span></button>'}).join("");
+$("#ings").addEventListener("click",e=>{const b=e.target.closest(".ing");if(!b)return;$("#q").value=b.dataset.k;go(b.dataset.k,false);$("#results").scrollIntoView({block:"start",behavior:"smooth"})});
+const tipIcons=[ICON.spoon,ICON.cart,ICON.bowl,ICON.fire,ICON.pan,ICON.box];
+$("#auTips").innerHTML=AU_TIPS.map(([t,d],i)=>'<div class="tip"><div class="ic">'+tipIcons[i%tipIcons.length]+'</div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div>').join("");
+$("#basicsList").innerHTML=BASICS.map(([t,d],i)=>'<div class="basic"><span class="n">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div></div>').join("");
+$("#heroFacts").innerHTML='<span>'+ICON.bowl+LESSONS.length+' 堂白飯＋一道菜課程</span><span>'+ICON.steps+RECIPES.length+' 道詳細食譜</span><span>'+ICON.cart+'材料附英文與購買地點</span>';
+(function(){const h=typeof EXTRA!=="undefined"&&EXTRA.hero;if(h)$("#heroImg").innerHTML='<img src="'+h.src+'" alt="白飯與家常菜" fetchpriority="high"><div class="cap"><b>第 1 課：一鍋好吃的白飯</b><span>所有課程的起點，40 分鐘</span></div>';$("#heroImg .cap")&&($("#heroImg .cap").style.cursor="pointer",$("#heroImg .cap").onclick=()=>openDetail(byId.rice))})();
+renderLessons();
+$("#searchForm").addEventListener("submit",e=>{e.preventDefault();go($("#q").value,false);$("#results").scrollIntoView({block:"start",behavior:"smooth"});if(!current.list.length&&sampleFn)askAI()});
 go($("#q").value,false);
-initPathStore();
-if(window.claude&&typeof window.claude.use==="function"){
-  window.claude.use("sample").then(s=>{if(s){sampleFn=s;render()}}).catch(()=>{});
-}
+if(window.claude&&typeof window.claude.use==="function"){window.claude.use("sample").then(s=>{if(s){sampleFn=s;render()}}).catch(()=>{})}
 })();
 </script>
 
