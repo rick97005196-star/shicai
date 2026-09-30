@@ -197,6 +197,18 @@ img{max-width:100%;display:block}
 .r-img .collage img,.r-img .collage canvas{aspect-ratio:auto;border-radius:0}
 .checklist .use{grid-column:2/4;font-size:12px;color:var(--muted);margin-top:-2px}
 
+/* 菜單依難度 */
+.mtabs .lvb{display:inline-flex;align-items:center;gap:6px}
+.lvn{width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:grid;place-items:center;color:#fff}
+.l1 .lvn,.lvbadge.l1{background:#3f8f5f}.l2 .lvn,.lvbadge.l2{background:#2f6b4f}.l3 .lvn,.lvbadge.l3{background:#b7791f}.l4 .lvn,.lvbadge.l4{background:#c0602b}.l5 .lvn,.lvbadge.l5{background:#b8452e}
+.mgroup{margin-top:34px}
+.mg-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.lvbadge{width:40px;height:40px;border-radius:12px;color:#fff;font-weight:700;font-size:18px;display:grid;place-items:center;flex:none}
+.mg-head h3{font-family:var(--sans);font-size:21px;display:flex;align-items:baseline;gap:10px}
+.mg-head h3 span{font-size:14px;font-weight:500;color:var(--muted)}
+.mg-head p{color:var(--muted);font-size:14.5px}
+.more-btn{display:flex;margin:18px auto 0}
+
 /* 新手起步 */
 .ssteps{list-style:none;margin:0 0 22px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .ssteps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
@@ -556,10 +568,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <a class="logo" href="#home"><i>食</i>食材料理簿</a>
     <div class="menu">
-      <a href="#start">新手起步</a>
-      <a href="#course">課程</a>
-      <a href="#menus">菜單</a>
+      <a href="#menus">新手菜單</a>
       <a href="#finder">找料理</a>
+      <a href="#start">新手起步</a>
       <a href="#australia" class="opt">澳洲廚房</a>
       <a href="#basics" class="opt">基本功</a>
       <button class="iconbtn listbtn" id="listBtn" type="button" aria-label="我的清單"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12h11l2-8H6"/></svg><span class="badge" hidden></span></button>
@@ -572,37 +583,26 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="hero-copy">
     <span class="eyebrow">給在澳洲打工度假的料理新手</span>
     <h1>一碗白飯，<br><span>配一道菜。</span></h1>
-    <p class="lead">從煮好一鍋白飯開始，一課學一道配飯的家常菜。材料都附上英文名稱和購買地點，在 Woolworths、Coles 或亞洲超市就買得到。</p>
-    <div class="hero-cta"><a class="btn" href="#course">從第 1 課開始</a><a class="btn line" href="#start">剛到澳洲？先看這裡</a></div>
+    <p class="lead">不知道今天煮什麼？照著新手菜單做就好，從十分鐘的炒蛋排到三菜一湯。材料都附上英文名稱和購買地點，在 Woolworths、Coles 或亞洲超市就買得到。</p>
+    <div class="hero-cta"><a class="btn" href="#menus">看新手菜單</a><a class="btn line" href="#start">剛到澳洲？先看這裡</a></div>
     <div class="hero-facts" id="heroFacts"></div>
   </div>
   <div class="hero-img" id="heroImg"></div>
 </section>
 
-<section class="sec soft" id="start">
-  <div class="wrap">
-    <div class="sec-head"><div><span class="eyebrow">新手起步</span><h2>剛到澳洲，第一週先做這四件事</h2><p>還沒煮過飯也沒關係。先把廚房需要的東西買齊，再從一鍋白飯開始。</p></div></div>
-    <ol class="ssteps" id="startSteps"></ol>
-    <div class="kits"><div class="box kit" id="kitTools"></div><div class="box kit" id="kitPantry"></div></div>
-    <div class="guides" id="guides"></div>
-  </div>
-</section>
 
-<section class="sec" id="course">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><span class="eyebrow">新手課程</span><h2>白飯＋一道菜，十堂課</h2><p>照順序做，每一課只多學一個新技巧。一週做一到兩課，大約一個多月就能每天自己煮晚餐。</p></div>
-    </div>
-    <div class="lessons" id="lessons"></div>
-  </div>
-</section>
+
+
+
+
+
+
 
 <section class="sec soft" id="menus">
   <div class="wrap">
-    <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2>今天吃什麼？照菜單做就好</h2><p>依人數挑一組照著做就好。每一組都附上合併好的買菜清單、做菜順序，從最簡單的排到比較難的。</p></div></div>
-    <div class="mtabs" id="mtabs" role="group" aria-label="菜單分類"></div>
-    <p class="mdesc" id="mdesc"></p>
-    <div class="mgrid" id="mgrid"></div>
+    <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2 id="mTitle">新手菜單，從簡單排到困難</h2><p>從只要十分鐘的炒蛋開始，一步步做到三菜一湯。挑一組照著做就好，每一組都有合併好的買菜清單和做菜順序。</p></div></div>
+    <div class="mtabs" id="mtabs" role="group" aria-label="依難度篩選"></div>
+    <div id="mgroups"></div>
   </div>
 </section>
 
@@ -628,7 +628,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec soft" id="australia">
+<section class="sec soft" id="start">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">新手起步</span><h2>剛到澳洲，第一週先做這四件事</h2><p>還沒煮過飯也沒關係。先把廚房需要的東西買齊，再從一鍋白飯開始。</p></div></div>
+    <ol class="ssteps" id="startSteps"></ol>
+    <div class="kits"><div class="box kit" id="kitTools"></div><div class="box kit" id="kitPantry"></div></div>
+    <div class="guides" id="guides"></div>
+  </div>
+</section>
+
+<section class="sec" id="australia">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">澳洲新手廚房</span><h2>在澳洲下廚前，先知道這些</h2><p>分租房的電爐、不一樣的量匙、買不到的調味料，這裡整理了最常遇到的狀況。</p></div></div>
     <div class="tips" id="auTips"></div>
@@ -652,7 +661,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec" id="basics">
+<section class="sec soft" id="basics">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">廚房基本功</span><h2>開火前讀一次</h2><p>火候、爆香、勾芡這些詞，食譜裡常常出現，這裡用白話說明。</p></div></div>
     <div class="basics" id="basicsList"></div>
@@ -664,9 +673,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <nav class="bnav" aria-label="主要導覽">
   <a href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>首頁</a>
-  <a href="#course"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5M16 7c0-1.5 1-2 1-3.5"/></svg>課程</a>
   <a href="#menus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>菜單</a>
   <a href="#finder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>找料理</a>
+  <a href="#start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg>起步</a>
   <button type="button" id="bnList"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12h11l2-8H6"/></svg>清單<span class="badge" hidden></span></button>
 </nav>
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle"></div>
@@ -1719,7 +1728,7 @@ STEPS["carrot-soup"] = {
 
 // ===== 白飯（第一課） =====
 RECIPES.unshift({id:"rice",n:"一鍋好吃的白飯",k:["白飯"],lv:1,t:40,s:3,
- d:"所有課程的起點。學會煮飯，之後每一道菜都能配著吃。",
+ d:"每一組菜單的基礎。學會煮飯，之後每一道菜都能配著吃。",
  ing:[["白米","2 杯（電子鍋附的量米杯，約 300g）"]],
  sea:[["水","電子鍋：刻度 2 的線／鍋子：約 390 ml"]],
  tools:["電子鍋（Rice cooker），或有蓋子的小鍋子","量米杯","濾網或大碗"],
@@ -2061,6 +2070,86 @@ MENU_GROUPS.push(
  MENUS.forEach(m=>{if(OVR[m.id])m.g=OVR[m.id];else if(GMAP[m.g])m.g=GMAP[m.g]});
 })();
 
+// ===== 第三批菜單（依難度） =====
+MENUS.push(
+ // 非常簡單
+ {id:"n1",g:"one",n:"蒜炒高麗菜＋番茄蛋花湯",who:"1–2 人",rice:true,dishes:["garlic-cabbage","tomato-egg-soup"],d:"一盤青菜、一碗湯，清爽又簡單。"},
+ {id:"n2",g:"one",n:"紅蘿蔔炒蛋＋白菜豆腐湯",who:"1–2 人",rice:true,dishes:["carrot-egg","napa-tofu-soup"],d:"甜甜的紅蘿蔔炒蛋配一碗暖湯，胃口不好也吃得下。"},
+ {id:"n3",g:"one",n:"洋蔥炒蛋＋蒜炒大白菜",who:"1–2 人",rice:true,dishes:["onion-egg","garlic-napa"],d:"兩道都是十分鐘的快炒，一個鍋子先炒蛋再炒菜。"},
+ {id:"n4",g:"one",n:"番茄炒蛋＋皮蛋豆腐",who:"1–2 人",rice:true,dishes:["tomato-egg","century-tofu"],d:"一道熱炒、一道冷盤，豆腐只要切一切。"},
+ {id:"n5",g:"one",n:"蒜泥茄子＋紅蘿蔔炒蛋",who:"1–2 人",rice:true,dishes:["cold-eggplant","carrot-egg"],d:"茄子放進電鍋蒸，蒸的時候炒蛋。"},
+ {id:"n6",g:"two",n:"兩蛋一湯",who:"2–3 人・很省錢",rice:true,dishes:["tomato-egg","carrot-egg","napa-tofu-soup"],d:"番茄炒蛋、紅蘿蔔炒蛋、白菜豆腐湯，材料便宜又營養。"},
+ {id:"n7",g:"party",n:"四道十分鐘小菜",who:"3–4 人・第一次請客",rice:true,dishes:["garlic-cabbage","onion-egg","plum-tomato","century-tofu"],d:"全部都是非常簡單的菜，第一次請朋友吃飯也不會手忙腳亂。"},
+ {id:"n8",g:"two",n:"清爽蔬食晚餐",who:"2 人・不吃肉",rice:true,dishes:["garlic-napa","cold-eggplant","tomato-egg-soup"],d:"大白菜、茄子、番茄，一餐吃到很多蔬菜。"},
+ {id:"n9",g:"one",n:"三道冷盤配白飯",who:"1–2 人・夏天",rice:true,dishes:["century-tofu","cold-eggplant","plum-tomato"],d:"天氣很熱的時候，只要蒸一下茄子，其他都不用開火。"},
+ {id:"n10",g:"one",n:"蒜炒高麗菜＋番茄炒蛋",who:"1–2 人",rice:true,dishes:["garlic-cabbage","tomato-egg"],d:"最基本的一菜一蛋，學會這兩道就能天天配飯。"},
+ {id:"n11",g:"one",n:"洋蔥炒蛋＋番茄蛋花湯",who:"1–2 人",rice:true,dishes:["onion-egg","tomato-egg-soup"],d:"一炒一湯，只用洋蔥、番茄、雞蛋。"},
+ {id:"n12",g:"one",n:"蒜炒大白菜＋番茄炒蛋",who:"1–2 人",rice:true,dishes:["garlic-napa","tomato-egg"],d:"大白菜炒得軟甜，番茄炒蛋酸甜下飯。"},
+ // 簡單
+ {id:"e1",g:"one",n:"照燒雞腿＋番茄炒蛋",who:"1–2 人",rice:true,dishes:["teriyaki","tomato-egg"],d:"雞腿煎好放著，同一個鍋子擦一擦就能炒蛋。"},
+ {id:"e2",g:"two",n:"照燒雞腿＋紅蘿蔔濃湯",who:"2 人・西式",dishes:["teriyaki","carrot-soup"],d:"不配飯也可以，配一片烤麵包就像咖啡廳的午餐。"},
+ {id:"e3",g:"one",n:"洋蔥炒牛肉＋蒜炒大白菜",who:"1–2 人",rice:true,dishes:["onion-beef","garlic-napa"],d:"一肉一菜，二十分鐘內上桌。"},
+ {id:"e4",g:"one",n:"洋蔥炒牛肉＋滑嫩蒸蛋",who:"1–2 人",rice:true,dishes:["onion-beef","steamed-egg"],d:"蒸蛋放進電鍋，同時在爐子上炒牛肉。"},
+ {id:"e5",g:"one",n:"蒼蠅頭＋番茄蛋花湯",who:"1–2 人",rice:true,dishes:["fly-head","tomato-egg-soup"],d:"重口味的蒼蠅頭配一碗酸甜的湯。"},
+ {id:"e6",g:"one",n:"蒼蠅頭＋蒜炒高麗菜",who:"1–2 人",rice:true,dishes:["fly-head","garlic-cabbage"],d:"熱炒店最常見的組合，兩道都是大火快炒。"},
+ {id:"e7",g:"one",n:"螞蟻上樹＋番茄蛋花湯",who:"1–2 人",dishes:["ants-tree","tomato-egg-soup"],d:"冬粉很有飽足感，不配飯也吃得飽。"},
+ {id:"e8",g:"two",n:"塔香茄子＋白菜豆腐湯",who:"2 人",rice:true,dishes:["basil-eggplant","napa-tofu-soup"],d:"九層塔很香，配一碗清淡的湯剛好。"},
+ {id:"e9",g:"one",n:"醋溜白菜＋菜脯蛋",who:"1–2 人",rice:true,dishes:["vinegar-napa","radish-omelette"],d:"酸酸辣辣的白菜梗，配香香的菜脯蛋。"},
+ {id:"e10",g:"two",n:"醋溜白菜＋洋蔥炒牛肉",who:"2 人",rice:true,dishes:["vinegar-napa","onion-beef"],d:"一道開胃的菜、一道有肉的主菜。"},
+ {id:"e11",g:"two",n:"開陽白菜＋照燒雞腿",who:"2 人",rice:true,dishes:["kaiyang-napa","teriyaki"],d:"蝦米白菜很鮮，照燒雞腿很香。"},
+ {id:"e12",g:"one",n:"醬燒白蘿蔔＋滑嫩蒸蛋",who:"1–2 人・清淡",rice:true,dishes:["glazed-radish","steamed-egg"],d:"兩道都是軟軟的，不吃肉的日子也很滿足。"},
+ {id:"e13",g:"two",n:"白蘿蔔排骨湯＋蒜炒高麗菜",who:"2–3 人",rice:true,dishes:["radish-rib-soup","garlic-cabbage"],d:"湯燉一小時不用顧，最後炒一盤青菜。"},
+ {id:"e14",g:"two",n:"白蘿蔔排骨湯＋番茄炒蛋",who:"2–3 人",rice:true,dishes:["radish-rib-soup","tomato-egg"],d:"一鍋湯配一道最簡單的熱炒。"},
+ {id:"e15",g:"one",n:"照燒雞腿＋醋溜馬鈴薯絲",who:"1–2 人",rice:true,dishes:["teriyaki","sour-potato"],d:"甜鹹的雞腿配酸酸脆脆的馬鈴薯絲。"},
+ {id:"e16",g:"two",n:"洋蔥炒牛肉＋馬鈴薯泥",who:"2 人・西式",dishes:["onion-beef","mash"],d:"不配白飯，改配綿密的馬鈴薯泥。"},
+ {id:"e17",g:"one",n:"番茄炒蛋＋紅蘿蔔濃湯",who:"1–2 人",rice:true,dishes:["tomato-egg","carrot-soup"],d:"濃湯可以一次煮多一點冷凍。"},
+ {id:"e18",g:"one",n:"溏心蛋＋醋溜馬鈴薯絲",who:"1 人",rice:true,dishes:["ramen-egg","sour-potato"],d:"溏心蛋可以前一天先做好。"},
+ {id:"e19",g:"two",n:"手撕包菜＋白菜豆腐湯",who:"2 人",rice:true,dishes:["shredded-cabbage","napa-tofu-soup"],d:"一道微辣的熱炒，一碗清湯。"},
+ {id:"e20",g:"two",n:"菜脯蛋＋蒜炒大白菜＋台式泡菜",who:"2 人・台式",rice:true,dishes:["radish-omelette","garlic-napa","tw-pickle"],d:"泡菜提前一天做，當天只要煎蛋、炒菜。"},
+ {id:"e21",g:"one",n:"照燒雞腿定食",who:"1–2 人・日式",rice:true,dishes:["teriyaki","steamed-egg","plum-tomato"],d:"主菜、蒸蛋、小菜，像日本的定食。"},
+ {id:"e22",g:"party",n:"快炒三菜一湯",who:"3–4 人",rice:true,dishes:["onion-beef","fly-head","garlic-cabbage","tomato-egg-soup"],d:"三道都是十幾分鐘的快炒，最後才炒，熱熱上桌。"},
+ {id:"e23",g:"party",n:"雞蛋四吃",who:"3 人・愛吃蛋",rice:true,dishes:["tomato-egg","radish-omelette","steamed-egg","ramen-egg"],d:"炒、煎、蒸、溏心，一盒雞蛋四種吃法。"},
+ {id:"e24",g:"party",n:"便宜家常四菜一湯",who:"3–4 人・省錢",rice:true,dishes:["radish-omelette","sour-potato","garlic-napa","carrot-egg","napa-tofu-soup"],d:"沒有肉也很豐盛，材料都很便宜。"},
+ {id:"e25",g:"two",n:"開陽白菜＋蒼蠅頭",who:"2 人",rice:true,dishes:["kaiyang-napa","fly-head"],d:"一道清淡、一道重口味，很下飯。"},
+ {id:"e26",g:"one",n:"塔香茄子＋紅蘿蔔炒蛋",who:"1–2 人",rice:true,dishes:["basil-eggplant","carrot-egg"],d:"不吃肉的日子，兩道都很香。"},
+ // 普通
+ {id:"m1",g:"two",n:"麻婆豆腐＋菜脯蛋",who:"2 人",rice:true,dishes:["mapo-tofu","radish-omelette"],d:"麻辣的豆腐配香香的蛋。"},
+ {id:"m2",g:"two",n:"宮保雞丁＋蒜炒大白菜",who:"2 人",rice:true,dishes:["kungpao","garlic-napa"],d:"香辣的雞丁配一盤清甜的大白菜。"},
+ {id:"m3",g:"two",n:"宮保雞丁＋醋溜馬鈴薯絲",who:"2 人・川味",rice:true,dishes:["kungpao","sour-potato"],d:"兩道川菜，香辣又開胃。"},
+ {id:"m4",g:"two",n:"三杯雞＋白菜豆腐湯",who:"2 人",rice:true,dishes:["three-cup","napa-tofu-soup"],d:"三杯雞很濃，配一碗清湯剛好。"},
+ {id:"m5",g:"two",n:"三杯雞＋番茄炒蛋",who:"2 人",rice:true,dishes:["three-cup","tomato-egg"],d:"三杯雞燜的時候，另一個爐口炒蛋。"},
+ {id:"m6",g:"two",n:"家常豆腐＋番茄蛋花湯",who:"2 人",rice:true,dishes:["homestyle-tofu","tomato-egg-soup"],d:"有肉有豆腐有蔬菜，再配一碗湯。"},
+ {id:"m7",g:"two",n:"馬鈴薯燉肉＋蒜炒高麗菜",who:"2–3 人",rice:true,dishes:["nikujaga","garlic-cabbage"],d:"燉肉放著慢慢煮，最後十分鐘炒青菜。"},
+ {id:"m8",g:"two",n:"馬鈴薯燉肉＋番茄蛋花湯",who:"2–3 人",rice:true,dishes:["nikujaga","tomato-egg-soup"],d:"日式燉菜配一碗酸甜的湯。"},
+ {id:"m9",g:"two",n:"魚香茄子＋蒜炒高麗菜",who:"2 人",rice:true,dishes:["yuxiang-eggplant","garlic-cabbage"],d:"魚香茄子很下飯，高麗菜很清爽。"},
+ {id:"m10",g:"two",n:"鹽水雞＋番茄蛋花湯",who:"2 人",rice:true,dishes:["salt-chicken","tomato-egg-soup"],d:"鹽水雞可以先做好冰著，要吃時煮個湯。"},
+ {id:"m11",g:"two",n:"滷肉飯＋番茄蛋花湯",who:"2–3 人",rice:true,dishes:["braised-pork","tomato-egg-soup"],d:"最經典的小吃店組合。"},
+ {id:"m12",g:"two",n:"滷肉飯＋皮蛋豆腐＋燙青菜",who:"2–3 人・台灣味",rice:true,dishes:["braised-pork","century-tofu","garlic-napa"],d:"滷肉飯、皮蛋豆腐、一盤青菜，台灣小吃店的味道。"},
+ {id:"m13",g:"two",n:"高麗菜飯＋白菜豆腐湯",who:"2–3 人",dishes:["cabbage-rice","napa-tofu-soup"],d:"飯和菜一起煮，再配一碗湯。"},
+ {id:"m14",g:"two",n:"白菜滷＋菜脯蛋",who:"2–3 人・台式",rice:true,dishes:["napa-braise","radish-omelette"],d:"台灣家裡常見的兩道菜。"},
+ {id:"m15",g:"two",n:"千層白菜鍋＋滑嫩蒸蛋",who:"2 人",rice:true,dishes:["napa-pork-hotpot","steamed-egg"],d:"一鍋煮到底，再配一碗蒸蛋。"},
+ {id:"m16",g:"two",n:"家常豆腐＋蒜炒大白菜",who:"2 人",rice:true,dishes:["homestyle-tofu","garlic-napa"],d:"一道燒豆腐、一盤青菜。"},
+ {id:"m17",g:"party",n:"川味三人餐",who:"3 人・愛吃辣",rice:true,dishes:["kungpao","yuxiang-eggplant","napa-tofu-soup"],d:"宮保雞丁、魚香茄子，再配一碗清湯解辣。"},
+ {id:"m18",g:"party",n:"台式三菜一湯",who:"4 人",rice:true,dishes:["three-cup","homestyle-tofu","garlic-napa","radish-rib-soup"],d:"三杯雞、家常豆腐、炒青菜、排骨湯，很像台灣家裡的晚餐。"},
+ {id:"m19",g:"two",n:"麻婆豆腐＋醬燒白蘿蔔",who:"2 人",rice:true,dishes:["mapo-tofu","glazed-radish"],d:"一辣一甜，都很下飯。"},
+ {id:"m20",g:"two",n:"宮保雞丁＋皮蛋豆腐",who:"2 人",rice:true,dishes:["kungpao","century-tofu"],d:"熱炒配冷盤，皮蛋豆腐可以先做好。"},
+ // 有點挑戰
+ {id:"h1",g:"two",n:"番茄燉牛肉＋馬鈴薯泥",who:"2–3 人・西式",dishes:["tomato-beef","mash"],d:"燉牛肉淋在馬鈴薯泥上，像西餐廳的燉肉。"},
+ {id:"h2",g:"two",n:"紅燒獅子頭＋蒜炒高麗菜",who:"2–3 人",rice:true,dishes:["lion-head","garlic-cabbage"],d:"大肉丸燉得軟嫩，配一盤清爽的高麗菜。"},
+ {id:"h3",g:"two",n:"番茄燉高麗菜捲＋紅蘿蔔濃湯",who:"2–3 人・西式",dishes:["cabbage-rolls","carrot-soup"],d:"高麗菜捲包絞肉，在番茄湯裡燉軟。"},
+ {id:"h4",g:"one",n:"玉子燒便當",who:"1–2 人・帶便當",rice:true,dishes:["tamagoyaki","teriyaki","garlic-cabbage"],d:"玉子燒、照燒雞、炒青菜，放涼也好吃。"},
+ {id:"h5",g:"two",n:"可樂餅定食",who:"2 人・日式",rice:true,dishes:["croquette","garlic-cabbage","tomato-egg-soup"],d:"金黃酥脆的可樂餅，配青菜和湯。"},
+ {id:"h6",g:"party",n:"水餃配涼拌茄子",who:"3–4 人",dishes:["napa-dumpling","cold-eggplant"],d:"自己包水餃，配一道清爽的涼拌茄子。"},
+ {id:"h7",g:"two",n:"焗烤洋蔥湯＋照燒雞腿",who:"2 人・西式",dishes:["onion-soup","teriyaki"],d:"洋蔥要慢慢炒，週末有空再做。"},
+ {id:"h8",g:"party",n:"日式定食挑戰",who:"3 人・日式",rice:true,dishes:["tamagoyaki","nikujaga","napa-tofu-soup"],d:"玉子燒要多練幾次，燉肉可以先做好。"},
+ {id:"h9",g:"two",n:"番茄燉牛肉＋醋溜白菜",who:"2–3 人",rice:true,dishes:["tomato-beef","vinegar-napa"],d:"燉牛肉很濃，配一道酸酸的白菜解膩。"},
+ // 進階
+ {id:"x1",g:"two",n:"自製泡菜＋洋蔥炒牛肉",who:"2 人・韓式",rice:true,dishes:["kimchi","onion-beef"],d:"泡菜要提前 2–3 天做，當天只要炒牛肉。"},
+ {id:"x2",g:"party",n:"蘿蔔糕＋番茄蛋花湯",who:"4 人・早午餐",dishes:["turnip-cake","tomato-egg-soup"],d:"蘿蔔糕前一天蒸好，當天煎到金黃。"},
+ {id:"x3",g:"party",n:"泡菜配蛋料理",who:"3 人・韓式",rice:true,dishes:["kimchi","steamed-egg","radish-omelette"],d:"自己做的泡菜，配軟嫩的蒸蛋和菜脯蛋。"},
+ {id:"x4",g:"party",n:"港式點心桌",who:"4 人",dishes:["turnip-cake","century-tofu","ramen-egg"],d:"蘿蔔糕、皮蛋豆腐、溏心蛋，大部分可以前一天做好。"}
+);
+
 // ===== 每一步用的鍋具 =====
 // 每一步一個值："" 代表不用鍋具；字串＝鍋具名稱；[名稱, 換鍋時的說明, "alt"(另一種做法，不計入換鍋)]
 const POTS={
@@ -2139,15 +2228,15 @@ const STARTER_PANTRY=[
  ["香油","Sesame oil","S","起鍋前滴幾滴很香。"],
  ["白胡椒","White pepper","S","湯、炒菜都會用到。"],
  ["蒜頭、薑","Garlic, ginger","S","爆香必備，放陰涼處可以放很久。"],
- ["雞蛋","Eggs","S","最便宜的蛋白質，新手課程第 2 課就會用到。"],
+ ["雞蛋","Eggs","S","最便宜的蛋白質，最簡單的菜單都會用到。"],
  ["醬油膏","Thick soy sauce","A","有空再去亞洲超市買，沾醬、拌豆腐用。"],
  ["辣豆瓣醬","Chilli bean paste（Doubanjiang）","A","麻婆豆腐、魚香茄子會用到。"]
 ];
 const START_STEPS=[
  ["買基本廚具","先問房東或室友廚房有什麼，缺的再去 Kmart、Big W 或 ALDI 買，便宜又好用。"],
  ["買基本調味料","大部分在 Woolworths、Coles 買得到，買一次可以用好幾個月。"],
- ["煮第一鍋白飯","從新手課程第 1 課開始，學會煮飯，之後每一課都是白飯配一道菜。"],
- ["照著菜單煮","不知道吃什麼就看新手菜單，買菜清單可以一鍵加入。"]
+ ["煮第一鍋白飯","每一組菜單都配白飯，先學會用電子鍋或鍋子煮一鍋好吃的飯。"],
+ ["從最簡單的菜單開始","新手菜單從非常簡單排到進階，買菜清單可以一鍵加入。"]
 ];
 // 手風琴：[標題, 圖示, [[小標, 內容]...]]
 const START_GUIDES=[
@@ -2240,7 +2329,7 @@ const ICON={
  box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v12H3zM3 8l2-4h14l2 4M10 12h4"/></svg>'
 };
 const byId={};RECIPES.forEach(r=>{byId[r.id]=r;if(typeof STEPS!=="undefined"&&STEPS[r.id]){r.prep=STEPS[r.id].prep;r.steps2=STEPS[r.id].steps}});
-const lessonNo=id=>LESSONS.findIndex(l=>l.id===id);
+const lessonNo=id=>-1;
 const photo=id=>(typeof PHOTOS!=="undefined")&&PHOTOS[id];
 let current={q:"",keys:[],list:[]},aiList=[],filterLv="easy";
 
@@ -2578,16 +2667,32 @@ function mFlow(m){
   else if(ds.length>1)out.push("全部上桌，開動！");
   return out;
 }
+const LV_INFO=[null,
+ ["非常簡單","十分鐘左右的炒蛋、炒青菜和冷盤。第一次下廚從這裡開始。"],
+ ["簡單","開始煎雞腿、炒牛肉，醬汁也很簡單。"],
+ ["普通","練習勾芡、燉煮，味道更有層次。"],
+ ["有點挑戰","步驟比較多、時間比較長的大菜，週末有空再做。"],
+ ["進階","需要前一天準備，或一次做很多。"]];
+let menuLvF=0;const menuMore={};
+function menuCard(m){const ds=menuDishes(m);
+  const b=document.createElement("button");b.type="button";b.className="mcard";b.appendChild(collage(m,560));
+  b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who">'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(mTime(m))+' 分鐘</span></div></div>');
+  b.onclick=()=>openMenu(m);return b}
 function renderMenus(){
-  $("#mtabs").innerHTML=MENU_GROUPS.map(g=>'<button type="button" class="fbtn" data-g="'+g.id+'" aria-pressed="'+(menuTab===g.id)+'">'+esc(g.n)+'</button>').join("");
-  $("#mtabs").querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{menuTab=b.dataset.g;renderMenus()});
-  const g=MENU_GROUPS.find(x=>x.id===menuTab);const list=MENUS.filter(m=>m.g===menuTab).sort((a,b)=>menuLv(a)-menuLv(b)||mTime(a)-mTime(b));
-  $("#mdesc").textContent=g.d+"（共 "+list.length+" 組）";
-  const box=$("#mgrid");box.innerHTML="";
-  list.forEach(m=>{const ds=menuDishes(m);
-    const b=document.createElement("button");b.type="button";b.className="mcard";b.appendChild(collage(m,560));
-    b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who">'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(mTime(m))+' 分鐘</span><span>'+esc(LEVEL_NAME[menuLv(m)])+'</span></div></div>');
-    b.onclick=()=>openMenu(m);box.appendChild(b)});
+  const plan=m=>m.g==="week"?1:0;const all=MENUS.slice().sort((a,b)=>menuLv(a)-menuLv(b)||plan(a)-plan(b)||mTime(a)-mTime(b)||menuDishes(a).length-menuDishes(b).length);
+  const cnt=l=>all.filter(m=>menuLv(m)===l).length;
+  $("#mTitle").textContent=all.length+" 組新手菜單，從簡單排到困難";
+  $("#mtabs").innerHTML='<button type="button" class="fbtn" data-l="0" aria-pressed="'+(menuLvF===0)+'">全部 '+all.length+'</button>'+[1,2,3,4,5].map(l=>'<button type="button" class="fbtn lvb l'+l+'" data-l="'+l+'" aria-pressed="'+(menuLvF===l)+'"><span class="lvn">'+l+'</span>'+LV_INFO[l][0]+' '+cnt(l)+'</button>').join("");
+  $("#mtabs").querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{menuLvF=+b.dataset.l;renderMenus();const t=document.getElementById("mgroups");if(t.getBoundingClientRect().top<0)t.scrollIntoView({block:"start"})});
+  const box=$("#mgroups");box.innerHTML="";
+  (menuLvF?[menuLvF]:[1,2,3,4,5]).forEach(l=>{
+    const list=all.filter(m=>menuLv(m)===l);if(!list.length)return;
+    const lim=menuLvF||menuMore[l]?list.length:6;
+    const g=document.createElement("section");g.className="mgroup";
+    g.innerHTML='<div class="mg-head"><span class="lvbadge l'+l+'">'+l+'</span><div><h3>'+LV_INFO[l][0]+'<span>'+list.length+' 組</span></h3><p>'+LV_INFO[l][1]+'</p></div></div>';
+    const grid=document.createElement("div");grid.className="mgrid";list.slice(0,lim).forEach(m=>grid.appendChild(menuCard(m)));g.appendChild(grid);
+    if(lim<list.length){const mb=document.createElement("button");mb.type="button";mb.className="btn line more-btn";mb.textContent="顯示全部「"+LV_INFO[l][0]+"」"+list.length+" 組";mb.onclick=()=>{menuMore[l]=1;renderMenus()};g.appendChild(mb)}
+    box.appendChild(g)});
 }
 function menuShop(m){
   const ds=menuDishes(m);const src=m.rice&&!ds.some(r=>r.id==="rice")?[byId.rice,...ds]:ds;
@@ -2829,10 +2934,9 @@ function initGloss(){
 /* ---------- 手機底部導覽 ---------- */
 function initBnav(){
   $("#bnList").onclick=openList;$("#listBtn").onclick=openList;
-  const ids=["home","course","menus","finder"];
+  const ids=["home","menus","finder","start"];
   const links=[...document.querySelectorAll(".bnav a")];
   const upd=()=>{let cur="home";ids.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<140)cur=id});
-    if(document.getElementById("start").getBoundingClientRect().top<140&&document.getElementById("course").getBoundingClientRect().top>=140)cur="home";
     links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur))};
   addEventListener("scroll",upd,{passive:true});upd();
 }
@@ -2853,9 +2957,8 @@ const tipIcons=[ICON.spoon,ICON.cart,ICON.bowl,ICON.fire,ICON.pan,ICON.box];
 $("#auTips").innerHTML=AU_TIPS.map(([t,d],i)=>'<div class="tip"><div class="ic">'+tipIcons[i%tipIcons.length]+'</div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div>').join("");
 $("#legendAll").innerHTML=legendHTML();
 $("#basicsList").innerHTML=BASICS.map(([t,d],i)=>'<div class="basic"><span class="n">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div></div>').join("");
-$("#heroFacts").innerHTML='<span>'+ICON.bowl+LESSONS.length+' 堂白飯＋一道菜課程</span><span>'+ICON.cart+MENUS.length+' 組新手菜單</span><span>'+ICON.steps+RECIPES.length+' 道詳細食譜</span>';
-(function(){const h=typeof EXTRA!=="undefined"&&EXTRA.hero;if(h)$("#heroImg").innerHTML='<img src="'+h.src+'" alt="白飯與家常菜" fetchpriority="high"><div class="cap"><b>第 1 課：一鍋好吃的白飯</b><span>所有課程的起點，40 分鐘</span></div>';$("#heroImg .cap")&&($("#heroImg .cap").style.cursor="pointer",$("#heroImg .cap").onclick=()=>openDetail(byId.rice))})();
-renderLessons();
+$("#heroFacts").innerHTML='<span>'+ICON.cart+MENUS.length+' 組新手菜單</span><span>'+ICON.steps+RECIPES.length+' 道詳細食譜</span><span>'+ICON.bowl+'材料附英文與購買地點</span>';
+(function(){const h=typeof EXTRA!=="undefined"&&EXTRA.hero;if(h)$("#heroImg").innerHTML='<img src="'+h.src+'" alt="白飯與家常菜" fetchpriority="high"><div class="cap"><b>先學會煮一鍋好吃的白飯</b><span>每一組菜單都配白飯・點這裡看做法</span></div>';$("#heroImg .cap")&&($("#heroImg .cap").style.cursor="pointer",$("#heroImg .cap").onclick=()=>openDetail(byId.rice))})();
 renderMenus();
 renderStart();
 initGloss();
