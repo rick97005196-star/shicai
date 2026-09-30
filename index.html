@@ -272,6 +272,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .pill.heat .f{display:inline-flex}
 .pill.timer{background:var(--brand-soft);color:var(--brand);border-color:transparent;cursor:pointer;font-weight:500}
 .pill.timer:hover{background:var(--brand);color:var(--brand-ink)}
+.pill.pot{background:var(--card);color:var(--ink);font-weight:500}
+.pill.pot svg{color:var(--brand)}
+.swap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;background:var(--warm-soft);border-radius:10px;padding:9px 13px;margin:4px 0 8px;font-size:14.5px;line-height:1.7}
+.swap svg{width:18px;height:18px;color:var(--warm);margin-top:3px}
+.swap b{color:var(--warm)}
+.potnote{font-size:14px;color:var(--muted);margin:-2px 0 8px}
+.potsum{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:14.5px;margin-top:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.potsum>svg{width:18px;height:18px;color:var(--brand)}
+.potsum .pn{font-weight:700}
+.potsum .ar{color:var(--muted)}
 .step .d{font-size:16px;line-height:1.9}
 .step .cue,.step .hint{margin-top:10px;font-size:14.5px;line-height:1.75;border-radius:10px;padding:9px 13px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
 .step .cue{background:var(--brand-soft)}
@@ -304,6 +314,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .cook-body .k{font-size:14px;font-weight:700;color:var(--brand)}
 .cook-body h2{font-family:var(--sans);font-size:clamp(24px,3.6vw,34px)}
 .cook-body .d{font-size:clamp(18px,2.2vw,22px);line-height:1.85}
+.cook-body .swap{font-size:16px}
 .cook-body .cue,.cook-body .hint{font-size:16px;line-height:1.75;border-radius:12px;padding:12px 16px}
 .cook-body .cue{background:var(--brand-soft)}
 .cook-body .hint{background:var(--red-soft)}
@@ -1776,6 +1787,59 @@ const MENUS=[
   tips:["蘿蔔糕一定要放涼才好切，前一天做最方便。"]}
 ];
 
+// ===== 每一步用的鍋具 =====
+// 每一步一個值："" 代表不用鍋具；字串＝鍋具名稱；[名稱, 換鍋時的說明, "alt"(另一種做法，不計入換鍋)]
+const POTS={
+ "rice":["大碗","電子鍋","電子鍋","電子鍋",["小鍋子（有蓋）","沒有電子鍋時，改用有蓋的小鍋子煮。","alt"],["電子鍋或小鍋子","","alt"],["電子鍋或小鍋子","","alt"]],
+ "garlic-napa":["","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "vinegar-napa":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "napa-tofu-soup":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "kaiyang-napa":["","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "napa-pork-hotpot":["","","淺鍋或砂鍋","淺鍋或砂鍋","淺鍋或砂鍋","淺鍋或砂鍋"],
+ "napa-braise":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "napa-dumpling":["大碗","","大碗","大碗","大碗","","大湯鍋","大湯鍋","大湯鍋"],
+ "lion-head":["大碗","大碗","","","平底鍋",["深鍋或砂鍋","煎好的肉丸移到深鍋或砂鍋裡燉，平底鍋可以先放一邊。"],"深鍋或砂鍋","深鍋或砂鍋"],
+ "kimchi":["大盆","大盆","小鍋子","果汁機","","","玻璃罐"],
+ "garlic-cabbage":["","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "shredded-cabbage":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "tw-pickle":["大碗","大碗","","保鮮盒","保鮮盒"],
+ "cabbage-rice":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋",["電鍋或電子鍋","把炒鍋裡的料全部倒進電鍋（或電子鍋）的內鍋，接下來交給電鍋。"],"電鍋或電子鍋"],
+ "cabbage-rolls":["湯鍋","","大碗","",["深鍋","可以直接用燙菜葉的湯鍋：水倒掉、擦乾就好。"],"深鍋","深鍋"],
+ "tomato-egg":["炒鍋","炒鍋","炒鍋",["炒鍋","同一個鍋子繼續用，不用洗。"],"炒鍋","炒鍋","炒鍋"],
+ "tomato-egg-soup":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "plum-tomato":["","","大碗","大碗"],
+ "tomato-beef":["湯鍋","",["湯鍋","把汆燙的水倒掉、鍋子沖一下擦乾，同一個鍋繼續用。"],"湯鍋","湯鍋","湯鍋","湯鍋"],
+ "steamed-egg":["大碗","耐熱碗","耐熱碗","電鍋",""],
+ "radish-omelette":["平底鍋","大碗","平底鍋","平底鍋","平底鍋","平底鍋"],
+ "ramen-egg":["小鍋子 A",["小鍋子 B","再拿第二個鍋子煮水；醃汁留在第一個鍋子放涼。"],"小鍋子 B","冰塊水","","夾鏈袋"],
+ "tamagoyaki":["玉子燒鍋","玉子燒鍋","玉子燒鍋","玉子燒鍋","玉子燒鍋","玉子燒鍋","玉子燒鍋"],
+ "century-tofu":["盤子","盤子","",""],
+ "homestyle-tofu":["平底鍋","平底鍋","平底鍋","平底鍋","平底鍋","平底鍋"],
+ "mapo-tofu":["湯鍋",["炒鍋","豆腐留在湯鍋裡小火泡著，另外拿一個炒鍋開始炒。"],"炒鍋","炒鍋",["炒鍋","用漏勺把湯鍋裡的豆腐撈進炒鍋。"],"炒鍋","炒鍋"],
+ "sour-potato":["大碗","","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "mash":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "nikujaga":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "croquette":["大碗","平底鍋","大碗","","",["深鍋","炸的時候改用比較深的鍋子，油才不會噴出來。"],"深鍋","深鍋"],
+ "cold-eggplant":["耐熱盤","電鍋","","",""],
+ "basil-eggplant":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "yuxiang-eggplant":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "radish-rib-soup":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "glazed-radish":["平底鍋","平底鍋","平底鍋","平底鍋","平底鍋"],
+ "turnip-cake":["炒鍋","炒鍋","炒鍋","炒鍋","模具",["蒸鍋或電鍋","模具放進蒸鍋（或電鍋）蒸，炒鍋可以先洗。"],"",["平底鍋","要吃的時候，切片用平底鍋煎。"]],
+ "onion-egg":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "onion-beef":["大碗","炒鍋","炒鍋",["炒鍋","同一個鍋子繼續炒洋蔥，不用洗。"],"炒鍋","炒鍋"],
+ "onion-soup":["厚底鍋","厚底鍋","厚底鍋","厚底鍋","厚底鍋",["烤箱或平底鍋","湯留在厚底鍋小火保溫，另外烤麵包。"],["烤箱","湯倒進耐熱碗，放進烤箱。"]],
+ "teriyaki":["平底鍋","平底鍋","平底鍋","平底鍋","平底鍋","平底鍋","砧板"],
+ "three-cup":["砂鍋或炒鍋","砂鍋或炒鍋","砂鍋或炒鍋","砂鍋或炒鍋","砂鍋或炒鍋","砂鍋或炒鍋","砂鍋或炒鍋"],
+ "kungpao":["大碗","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "salt-chicken":["湯鍋","湯鍋","湯鍋","冰塊水",["湯鍋","回到剛剛煮雞的湯鍋，用同一鍋雞湯燙菜。"],"砧板","大碗"],
+ "fly-head":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "ants-tree":["大碗","炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "braised-pork":["厚底鍋","厚底鍋","厚底鍋","厚底鍋","厚底鍋","厚底鍋",""],
+ "carrot-egg":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "carrot-soup":["湯鍋","湯鍋","湯鍋","湯鍋","果汁機",["湯鍋","打好的湯倒回原本的湯鍋加熱。"]]
+};
+
 const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}, "rice": {"credit": "攝影 Pille R. Priske／Unsplash", "url": "https://unsplash.com/photos/rice-in-bowl-xmuIgjuQG0M", "src": "photos/rice.webp"}};
 const ING_PHOTOS={"大白菜": {"src": "photos/ing-napa.webp", "credit": "攝影 Jason Leung／Unsplash", "url": "https://unsplash.com/photos/several-heads-of-fresh-napa-cabbage-lined-up-BCXgdJJ5nPY"}, "高麗菜": {"src": "photos/ing-cabbage.webp", "credit": "攝影 ibuki Tsubo／Unsplash", "url": "https://unsplash.com/photos/green-leaf-vegetable-on-white-surface-7iRMOXXxH7c"}, "雞蛋": {"src": "photos/ing-egg.webp", "credit": "攝影 Jakub Kapusnak／Unsplash", "url": "https://unsplash.com/photos/shallow-focus-photography-of-brown-eggs-Hj53USePB1E"}, "番茄": {"src": "photos/ing-tomato.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/red-tomatoes-on-brown-wooden-table-eb26eV-ys_k"}, "豆腐": {"src": "photos/ing-tofu.webp", "credit": "攝影 Rajesh Kavasseri／Unsplash", "url": "https://unsplash.com/photos/white-and-black-square-shape-on-brown-wooden-table-fPQCj3f3kRc"}, "馬鈴薯": {"src": "photos/ing-potato.webp", "credit": "攝影 Lars Blankers／Unsplash", "url": "https://unsplash.com/photos/brown-potato-lot-B0s3Xndk6tw"}, "茄子": {"src": "photos/ing-eggplant.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/a-pile-of-purple-eggplant-with-green-stems-d6I1ZNZJcNo"}, "白蘿蔔": {"src": "photos/ing-daikon.webp", "credit": "攝影 liam matthews／Unsplash", "url": "https://unsplash.com/photos/white-radishes-and-bitter-melons-in-a-crate-0BCwHPrs9hM"}, "洋蔥": {"src": "photos/ing-onion.webp", "credit": "攝影 mayu ken／Unsplash", "url": "https://unsplash.com/photos/white-garlic-on-brown-wooden-table-CNZ-9s5p2i8"}, "紅蘿蔔": {"src": "photos/ing-carrot.webp", "credit": "攝影 Maja Vujic／Unsplash", "url": "https://unsplash.com/photos/a-bunch-of-carrots-sitting-on-top-of-a-wooden-table-hoUlccGAhxY"}, "雞肉": {"src": "photos/ing-chicken.webp", "credit": "攝影 Satmar Meats／Unsplash", "url": "https://unsplash.com/photos/raw-chicken-pieces-with-vegetables-on-a-wooden-board-1pj56A6OQgA"}, "豬肉": {"src": "photos/ing-pork.webp", "credit": "攝影 Tomoyo S／Unsplash", "url": "https://unsplash.com/photos/brown-food-on-white-ceramic-bowl-TTuYs8aZlns"}, "牛肉": {"src": "photos/ing-beef.webp", "credit": "攝影 David Foodphototasty／Unsplash", "url": "https://unsplash.com/photos/two-steaks-on-a-plate-with-parsley-U5lLwx17rWs"}};
 const EXTRA={"hero": {"credit": "攝影 Chanhee Lee／Unsplash", "url": "https://unsplash.com/photos/white-and-blue-ceramic-bowl-with-rice-dBO0Crt4qC8", "src": "photos/hero.webp"}};
@@ -1801,6 +1865,7 @@ const ICON={
  spoon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="7" rx="4" ry="5"/><path d="M12 12v10"/></svg>',
  fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.4 1.2-4 2.5-5.3.2 1.6 1 2.8 2.2 3.3C11 8.5 11.4 5 12 2Z"/></svg>',
  pan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="12" r="7"/><path d="M17 12h6"/></svg>',
+ swap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>',
  box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v12H3zM3 8l2-4h14l2 4M10 12h4"/></svg>'
 };
 const byId={};RECIPES.forEach(r=>{byId[r.id]=r;if(typeof STEPS!=="undefined"&&STEPS[r.id]){r.prep=STEPS[r.id].prep;r.steps2=STEPS[r.id].steps}});
@@ -1962,6 +2027,23 @@ function fmt(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padS
 function heatLevel(h){h=String(h||"");if(/中大火/.test(h))return 3;if(/大火/.test(h))return 3;if(/中小火/.test(h))return 1;if(/中火/.test(h))return 2;if(/小火/.test(h))return 1;return 0}
 function heatPill(h){if(!h||h==="不開火")return"";const n=heatLevel(h);return '<span class="pill heat"><span class="f">'+(n?ICON.flame.repeat(n):'')+'</span>'+esc(h)+'</span>'}
 function normSteps(r){if(r.steps2)return r.steps2;return (r.steps||[]).map((s,i)=>typeof s==="string"?{t:"步驟 "+(i+1),d:s}:s)}
+const HEAT=/鍋|烤箱/;
+function potPlan(r){
+  const P=typeof POTS!=="undefined"&&POTS[r.id];if(!P)return null;
+  let last=null;const seen=[];
+  const plan=P.map(x=>{const [p,note,alt]=Array.isArray(x)?x:[x,"",""];const o={p,note:note||"",alt:alt==="alt",change:false,back:false};
+    if(p&&HEAT.test(p)&&!o.alt){if(last&&p!==last){o.change=true;o.back=seen.includes(p)}last=p;if(!seen.includes(p))seen.push(p)}
+    return o});
+  return{plan,pots:seen};
+}
+function potSummary(pp){if(!pp||!pp.pots.length)return"";const n=pp.pots.length;
+  return '<p class="potsum">'+ICON.pan+(n===1?'<span>全程只用一個 <span class="pn">'+esc(pp.pots[0])+'</span>，不用換鍋。</span>':'<span>這道菜會用到 '+n+' 個鍋具，照順序是：</span>'+pp.pots.map(x=>'<span class="pn">'+esc(x)+'</span>').join('<span class="ar">→</span>'))+'</p>'}
+function potBits(o){if(!o||!o.p)return{pill:"",pre:"",post:""};
+  const pill='<span class="pill pot">'+ICON.pan+esc(o.p)+'</span>';
+  const pre=o.change?'<p class="swap">'+ICON.swap+'<span><b>'+(o.back?'回到':'換鍋')+'：</b>接下來'+(o.back?'回到':'改用')+'「'+esc(o.p)+'」。'+esc(o.note)+'</span></p>':'';
+  const post=!o.change&&o.note?'<p class="potnote">'+esc(o.note)+'</p>':'';
+  return{pill,pre,post};
+}
 function shopFor(name){for(const [k,en,w] of SHOP){if(String(name).includes(k))return{en,w,k}}return null}
 
 /* ---------- 課程 ---------- */
@@ -2024,7 +2106,7 @@ function openDetail(r,back){
   if($("#sheet").hidden)lastFocus=document.activeElement;
   sheetBack=back||null;
   const sh=$("#sheet");sh.innerHTML="";
-  const ph=photo(r.id),steps=normSteps(r),li=lessonNo(r.id),L=li>=0?LESSONS[li]:null;
+  const ph=photo(r.id),steps=normSteps(r),pp=potPlan(r),li=lessonNo(r.id),L=li>=0?LESSONS[li]:null;
   const q=encodeURIComponent(r.n.replace(/（.*?）/g,""));
   const item=(n,qt,pre,i,withShop)=>{const s=withShop&&shopFor(n);return '<li><label><input type="checkbox" id="'+pre+i+'"><span class="nm">'+esc(n)+'</span><span class="q">'+esc(qt)+'</span>'+(s?'<span class="en">'+esc(s.en)+'<span class="tag '+s.w+'">'+(s.w==="A"?"亞洲超市":"一般超市")+'</span></span>':'')+'</label></li>'};
   const list=(title,arr,pre,withShop)=>arr&&arr.length?'<h3>'+title+'</h3><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return item(n,qt,pre,i,withShop)}).join("")+'</ul>':"";
@@ -2041,11 +2123,11 @@ function openDetail(r,back){
      (r.prep&&r.prep.length?'<div class="box"><h2 style="margin-bottom:12px">開火前的準備</h2><ol class="prep">'+r.prep.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol></div>':'')+'</aside>'+
    '<div class="main">'+
      (r.fail&&r.fail.length?'<section class="warn"><h2>'+ICON.bulb+'做之前先看：最容易失敗的地方</h2><ul>'+r.fail.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ul></section>':'')+
-     '<section><div class="steps-head"><div><h2>做法</h2><p>每一步都寫了火候、時間和「做到什麼樣子就對了」。有時間的步驟可以直接按下去計時。</p></div></div><ol class="steps">'+
-      steps.map((s,i)=>'<li class="step"><span class="no">'+(i+1)+'</span><div class="body"><h3>'+esc(s.t||"步驟 "+(i+1))+'</h3>'+
-        ((s.h&&s.h!=="不開火")||s.time?'<div class="pills">'+heatPill(s.h)+(s.time?(s.sec?'<button class="pill timer" type="button" data-sec="'+s.sec+'" data-label="'+esc(s.t||"")+'">'+ICON.clock+esc(s.time)+'・計時</button>':'<span class="pill">'+ICON.clock+esc(s.time)+'</span>'):'')+'</div>':'')+
+     '<section><div class="steps-head"><div><h2>做法</h2><p>每一步都寫了用哪個鍋、火候、時間和「做到什麼樣子就對了」。有時間的步驟可以直接按下去計時。</p>'+potSummary(pp)+'</div></div><ol class="steps">'+
+      steps.map((s,i)=>{const pb=potBits(pp&&pp.plan[i]);return '<li class="step"><span class="no">'+(i+1)+'</span><div class="body">'+pb.pre+'<h3>'+esc(s.t||"步驟 "+(i+1))+'</h3>'+
+        ((s.h&&s.h!=="不開火")||s.time||pb.pill?'<div class="pills">'+pb.pill+heatPill(s.h)+(s.time?(s.sec?'<button class="pill timer" type="button" data-sec="'+s.sec+'" data-label="'+esc(s.t||"")+'">'+ICON.clock+esc(s.time)+'・計時</button>':'<span class="pill">'+ICON.clock+esc(s.time)+'</span>'):'')+'</div>':'')+pb.post+
         '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>做到這樣就對了</b><span>'+esc(s.cue)+'</span></p>':'')+(s.tip?'<p class="hint"><b>小提醒</b><span>'+esc(s.tip)+'</span></p>':'')+
-        '<button class="mark" type="button">做完這一步</button></div></li>').join("")+'</ol></section>'+
+        '<button class="mark" type="button">做完這一步</button></div></li>'}).join("")+'</ol></section>'+
      (r.sk&&r.sk.length?'<section><h2 style="font-size:20px;margin-bottom:10px">這道菜練到的技巧</h2><div class="skills">'+r.sk.map(s=>'<span class="skill">'+esc(s)+'</span>').join("")+'</div></section>':'')+
      '<section><h2 style="font-size:20px;margin-bottom:10px">看影片學更快</h2><div class="refs">'+
        '<a class="ref" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+q+'+%E5%81%9A%E6%B3%95"><b>YouTube 影片 ↗</b><span>看別人實際操作</span></a>'+
@@ -2150,11 +2232,11 @@ function openCook(r){cookR=r;cookI=0;$("#cook").hidden=false;lockWake();paintCoo
 function closeCook(){$("#cook").hidden=true;try{wake&&wake.release()}catch(e){}wake=null;paintTimer()}
 function syncCookBtn(){const b=document.getElementById("cookTB");if(!b)return;const mine=timer&&timer.label===b.dataset.label;b.innerHTML=mine&&timer.running?ICON.pause+"暫停":mine&&!timer.done?ICON.play+"繼續":ICON.play+"開始計時"}
 function paintCook(){
-  const r=cookR,steps=normSteps(r),s=steps[cookI],n=steps.length,label=r.n+"・"+(s.t||"");
+  const r=cookR,steps=normSteps(r),s=steps[cookI],n=steps.length,label=r.n+"・"+(s.t||""),pp=potPlan(r),pb=potBits(pp&&pp.plan[cookI]);
   const c=$("#cook");
   c.innerHTML='<div><div class="cook-top"><span class="t">'+esc(r.n)+'</span><button class="iconbtn" type="button" id="cookX" aria-label="離開步驟模式">'+ICON.close+'</button></div><div class="cook-bar"><i style="width:'+((cookI+1)/n*100)+'%"></i></div></div>'+
-   '<div class="cook-body"><span class="k">第 '+(cookI+1)+' 步，共 '+n+' 步</span><h2>'+esc(s.t||"")+'</h2>'+
-   ((s.h&&s.h!=="不開火")||s.time?'<div class="pills">'+heatPill(s.h)+(s.time?'<span class="pill">'+ICON.clock+esc(s.time)+'</span>':'')+'</div>':'')+
+   '<div class="cook-body"><span class="k">第 '+(cookI+1)+' 步，共 '+n+' 步</span>'+pb.pre+'<h2>'+esc(s.t||"")+'</h2>'+
+   ((s.h&&s.h!=="不開火")||s.time||pb.pill?'<div class="pills">'+pb.pill+heatPill(s.h)+(s.time?'<span class="pill">'+ICON.clock+esc(s.time)+'</span>':'')+'</div>':'')+pb.post+
    '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>做到這樣就對了：</b>'+esc(s.cue)+'</p>':'')+(s.tip?'<p class="hint"><b>小提醒：</b>'+esc(s.tip)+'</p>':'')+
    (s.sec?'<div class="bigtimer" id="cookTimer"><span class="tt" data-label="'+esc(label)+'" data-def="'+fmt(s.sec)+'">'+fmt(s.sec)+'</span><button class="btn" type="button" id="cookTB" data-label="'+esc(label)+'"></button><button class="btn line" type="button" id="cookTR">重設</button></div>':'')+
    '</div><div class="cook-nav"><button class="btn line" type="button" id="cookP"'+(cookI===0?' disabled':'')+'>上一步</button><button class="btn" type="button" id="cookN">'+(cookI===n-1?'完成':'下一步')+'</button></div>';
