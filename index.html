@@ -11,6 +11,11 @@
 <meta property="og:image" content="photos/hero.webp">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6b4f'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif'%3E%E9%A3%9F%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="食材料理簿">
+<script>if("serviceWorker" in navigator&&location.protocol==="https:")addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script>
 <script>try{if(localStorage.getItem("shicai-theme2")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body>
@@ -191,6 +196,82 @@ img{max-width:100%;display:block}
 .mtips ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
 .r-img .collage img,.r-img .collage canvas{aspect-ratio:auto;border-radius:0}
 .checklist .use{grid-column:2/4;font-size:12px;color:var(--muted);margin-top:-2px}
+
+/* 新手起步 */
+.ssteps{list-style:none;margin:0 0 22px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ssteps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.ssteps .sn{width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:700}
+.ssteps h3{font-family:var(--sans);font-size:16px;margin:3px 0 4px}
+.ssteps p{font-size:14px;color:var(--muted);line-height:1.65}
+.kits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.kit h2{display:flex;align-items:center;gap:8px}
+.kit h2 svg{width:22px;height:22px;color:var(--brand)}
+.kit .note{margin-bottom:6px}
+.btn.full{width:100%;margin-top:14px}
+.tag.M{background:var(--brand);color:var(--brand-ink)}.tag.R{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.guides{display:grid;gap:10px;margin-top:22px}
+.guide{background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.guide summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none;font-weight:700;font-size:17px}
+.guide summary::-webkit-details-marker{display:none}
+.gic{width:36px;height:36px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
+.gic svg{width:19px;height:19px}
+.chev{margin-left:auto;color:var(--muted);transition:transform .2s;display:grid}
+.chev svg{width:20px;height:20px}
+.guide[open] .chev{transform:rotate(180deg)}
+.guide ul{list-style:none;margin:0;padding:0 18px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.guide li{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px}
+.guide li b{font-size:15px}
+.guide li span{color:var(--muted);line-height:1.7}
+
+/* 清單、收藏 */
+.listbtn{position:relative}
+.badge{position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;border-radius:999px;background:var(--red);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px;line-height:1}
+.bar-r{display:flex;align-items:center;gap:8px;flex:none}
+.iconbtn.fav[aria-pressed="true"]{color:var(--red);border-color:var(--red)}
+.iconbtn.fav[aria-pressed="true"] svg{fill:currentColor}
+.addlist{margin:12px 0 2px}
+.wrap.narrow{max-width:860px}
+.list-head{padding:clamp(22px,4vw,40px) 0 18px}
+.list-head h1{font-size:clamp(28px,4vw,40px);margin:6px 0 6px}
+.list-head .desc{color:var(--muted)}
+.mylist label{grid-template-columns:18px minmax(0,1fr) auto}
+.rm{border:0;background:none;color:var(--muted);cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:8px;margin:-6px -6px 0 0}
+.rm:hover{background:var(--soft);color:var(--red)}
+.rm svg{width:16px;height:16px}
+.mylist input:checked ~ .en,.mylist input:checked ~ .use{opacity:.5}
+.list-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn.danger{color:var(--red);border-color:var(--red)}
+.btn.danger:hover{background:var(--red-soft)}
+.empty.big{display:grid;justify-items:center;gap:8px;padding:40px 24px}
+.empty.big>svg{width:40px;height:40px;color:var(--brand)}
+.empty.big b{font-size:18px;color:var(--ink)}
+.empty.big span{max-width:30em}
+.empty.big .btn{margin-top:8px}
+.note.offline{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;margin:18px 0;background:var(--soft);border-radius:12px;padding:12px 14px;line-height:1.7}
+.note.offline svg{width:18px;height:18px;color:var(--brand);margin-top:3px}
+.favs{padding:10px 0 60px}
+.favs h2{font-size:24px;display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.favs h2 svg{width:22px;height:22px;color:var(--red)}
+.favs .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* 英文對照、換算 */
+.au-tools{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;margin-top:18px;align-items:start}
+.gloss-bar{display:grid;gap:10px;margin:10px 0 6px}
+.gsearch{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:0 14px;background:var(--bg)}
+.gsearch svg{width:17px;height:17px;color:var(--muted);flex:none}
+.gsearch input{flex:1 1 0;width:0;min-width:0;border:0;background:none;font:inherit;font-size:15px;padding:10px 0;color:var(--ink);outline:none}
+.gloss-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.gloss-list li{display:grid;grid-template-columns:minmax(0,5.5em) minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.gloss-list li span:not(.tag){color:var(--muted);font-size:13.5px;line-height:1.5}
+.gloss-list .none{grid-template-columns:1fr;color:var(--muted)}
+.ctable{width:100%;border-collapse:collapse;font-size:14.5px}
+.ctable th,.ctable td{text-align:left;padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.ctable th{font-weight:500;padding-right:12px;width:48%}
+.ctable td{color:var(--muted)}
+.ctable td b{color:var(--red)}
+
+/* 手機底部導覽 */
+.bnav{display:none}
 
 /* 澳洲小知識、基本功 */
 .tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -387,6 +468,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .lessons{grid-template-columns:repeat(3,minmax(0,1fr))}
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ssteps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .au-tools{grid-template-columns:minmax(0,1fr)}
+  .favs .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .menu a.opt{display:none}
 }
@@ -396,12 +480,29 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .r-img{order:-1}
   .r-body{grid-template-columns:minmax(0,1fr)}
   .side{position:static}
+  .kits{grid-template-columns:minmax(0,1fr)}
+  .guide ul{grid-template-columns:minmax(0,1fr)}
   .m-body .side{order:2}
   .basics{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   body{font-size:15.5px}
-  .menu a{display:none}
+  .menu a,.listbtn{display:none}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .bnav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:25;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+  .bnav a,.bnav button{position:relative;display:grid;justify-items:center;gap:2px;font-size:11.5px;color:var(--muted);text-decoration:none;background:none;border:0;padding:4px 0;cursor:pointer;font-family:inherit}
+  .bnav svg{width:23px;height:23px}
+  .bnav a.on{color:var(--brand);font-weight:700}
+  .bnav .badge{top:-2px;right:calc(50% - 22px)}
+  .ftimer{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .ssteps{grid-template-columns:minmax(0,1fr);gap:8px}
+  .ssteps li{padding:12px 14px}
+  .guide summary{font-size:16px;padding:14px}
+  .guide ul{padding:0 14px 8px}
+  .gloss-list{grid-template-columns:minmax(0,1fr)}
+  .favs .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bar-r .btn{padding:9px 14px}
   .lessons{grid-template-columns:minmax(0,1fr);gap:10px}
   .lesson{flex-direction:row;align-items:stretch}
   .lesson .ph{flex:0 0 112px;aspect-ratio:auto;min-height:100px}
@@ -455,11 +556,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <a class="logo" href="#home"><i>食</i>食材料理簿</a>
     <div class="menu">
-      <a href="#course">新手課程</a>
-      <a href="#menus">新手菜單</a>
-      <a href="#finder">用食材找料理</a>
+      <a href="#start">新手起步</a>
+      <a href="#course">課程</a>
+      <a href="#menus">菜單</a>
+      <a href="#finder">找料理</a>
       <a href="#australia" class="opt">澳洲廚房</a>
       <a href="#basics" class="opt">基本功</a>
+      <button class="iconbtn listbtn" id="listBtn" type="button" aria-label="我的清單"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12h11l2-8H6"/></svg><span class="badge" hidden></span></button>
       <button class="iconbtn" id="themeBtn" type="button" aria-label="切換深色模式"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
     </div>
   </div>
@@ -470,13 +573,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <span class="eyebrow">給在澳洲打工度假的料理新手</span>
     <h1>一碗白飯，<br><span>配一道菜。</span></h1>
     <p class="lead">從煮好一鍋白飯開始，一課學一道配飯的家常菜。材料都附上英文名稱和購買地點，在 Woolworths、Coles 或亞洲超市就買得到。</p>
-    <div class="hero-cta"><a class="btn" href="#course">從第 1 課開始</a><a class="btn line" href="#finder">用食材找料理</a></div>
+    <div class="hero-cta"><a class="btn" href="#course">從第 1 課開始</a><a class="btn line" href="#start">剛到澳洲？先看這裡</a></div>
     <div class="hero-facts" id="heroFacts"></div>
   </div>
   <div class="hero-img" id="heroImg"></div>
 </section>
 
-<section class="sec soft" id="course">
+<section class="sec soft" id="start">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">新手起步</span><h2>剛到澳洲，第一週先做這四件事</h2><p>還沒煮過飯也沒關係。先把廚房需要的東西買齊，再從一鍋白飯開始。</p></div></div>
+    <ol class="ssteps" id="startSteps"></ol>
+    <div class="kits"><div class="box kit" id="kitTools"></div><div class="box kit" id="kitPantry"></div></div>
+    <div class="guides" id="guides"></div>
+  </div>
+</section>
+
+<section class="sec" id="course">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">新手課程</span><h2>白飯＋一道菜，十堂課</h2><p>照順序做，每一課只多學一個新技巧。一週做一到兩課，大約一個多月就能每天自己煮晚餐。</p></div>
@@ -485,7 +597,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec" id="menus">
+<section class="sec soft" id="menus">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2>今天吃什麼？照菜單做就好</h2><p>依人數挑一組照著做就好。每一組都附上合併好的買菜清單、做菜順序，從最簡單的排到比較難的。</p></div></div>
     <div class="mtabs" id="mtabs" role="group" aria-label="菜單分類"></div>
@@ -494,7 +606,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec soft" id="finder">
+<section class="sec" id="finder">
   <div class="wrap finder">
     <div class="sec-head" style="margin-bottom:0">
       <div><span class="eyebrow">用食材找料理</span><h2>冰箱裡有什麼？</h2><p>輸入或點選手邊的食材，就會列出可以做的料理，由簡單排到困難。中文或英文都可以搜尋，例如 wombok、mince。</p></div>
@@ -516,14 +628,31 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec" id="australia">
+<section class="sec soft" id="australia">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">澳洲新手廚房</span><h2>在澳洲下廚前，先知道這些</h2><p>分租房的電爐、不一樣的量匙、買不到的調味料，這裡整理了最常遇到的狀況。</p></div></div>
     <div class="tips" id="auTips"></div>
+    <div class="au-tools">
+      <div class="box gloss"><div class="box-head"><h2>超市英文對照</h2></div><p class="note">在超市找不到東西時，查一下英文怎麼說。</p>
+        <div class="gloss-bar"><label class="gsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="glossQ" type="search" placeholder="輸入中文或英文，例如：蔥、mince" aria-label="搜尋食材"></label>
+        <div class="filters" id="glossF"><button type="button" class="fbtn" data-w="all">全部</button><button type="button" class="fbtn" data-w="S">一般超市</button><button type="button" class="fbtn" data-w="A">亞洲超市</button></div></div>
+        <ul class="gloss-list" id="glossList"></ul><button type="button" class="btn line full" id="glossMore">顯示全部</button></div>
+      <div class="box conv"><div class="box-head"><h2>量匙與單位換算</h2></div><p class="note">澳洲的量匙和台灣不一樣，照這張表就不會加錯。</p>
+        <table class="ctable"><tbody>
+          <tr><th>本站 1 大匙</th><td>15 ml ＝ 3 小匙</td></tr>
+          <tr><th>澳洲 1 tablespoon</th><td><b>20 ml</b> ＝ 4 teaspoons</td></tr>
+          <tr><th>1 小匙 ＝ 1 teaspoon</th><td>5 ml（台澳一樣）</td></tr>
+          <tr><th>澳洲 1 cup（量杯）</th><td>250 ml</td></tr>
+          <tr><th>電子鍋附的量米杯</th><td>約 180 ml，比量杯小</td></tr>
+          <tr><th>烤箱 fan-forced（旋風）</th><td>食譜溫度減 20°C</td></tr>
+          <tr><th>價格標示 per kg</th><td>每公斤的價格，500g 就是一半</td></tr>
+        </tbody></table>
+        <p class="note" style="margin-top:12px">沒有 15 ml 的湯匙？用澳洲量匙時，本站的「1 大匙」就量 3 個 teaspoon。</p></div>
+    </div>
   </div>
 </section>
 
-<section class="sec soft" id="basics">
+<section class="sec" id="basics">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">廚房基本功</span><h2>開火前讀一次</h2><p>火候、爆香、勾芡這些詞，食譜裡常常出現，這裡用白話說明。</p></div></div>
     <div class="basics" id="basicsList"></div>
@@ -533,6 +662,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <footer><div class="wrap"><span>食材料理簿・給澳洲打工度假的料理新手</span><span>照片來自 Unsplash、Wikimedia Commons 與愛料理 iCook，作者與授權標示於各食譜頁。</span></div></footer>
 
+<nav class="bnav" aria-label="主要導覽">
+  <a href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>首頁</a>
+  <a href="#course"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5M16 7c0-1.5 1-2 1-3.5"/></svg>課程</a>
+  <a href="#menus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>菜單</a>
+  <a href="#finder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>找料理</a>
+  <button type="button" id="bnList"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12h11l2-8H6"/></svg>清單<span class="badge" hidden></span></button>
+</nav>
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle"></div>
 <div class="cook" id="cook" hidden role="dialog" aria-modal="true" aria-label="步驟模式"></div>
 <div class="ftimer" id="ftimer" hidden role="timer"></div>
@@ -1978,6 +2114,68 @@ const POTS={
  "carrot-soup":["湯鍋","湯鍋","湯鍋","湯鍋","果汁機",["湯鍋","打好的湯倒回原本的湯鍋加熱。"]]
 };
 
+// ===== 新手起步 =====
+// [中文, English, 說明, 必備(1)/推薦(0)]
+const STARTER_TOOLS=[
+ ["有蓋平底鍋（約 28 公分，不沾）","Non-stick frypan with lid","本站大部分的菜都能用它做，最先買這個。",1],
+ ["有蓋小湯鍋","Saucepan with lid","煮湯、煮蛋、燙青菜，沒電子鍋時也能煮飯。",1],
+ ["鍋鏟、湯勺、夾子","Spatula, ladle, tongs","不沾鍋要用矽膠或木頭的鍋鏟，才不會刮壞。",1],
+ ["菜刀＋砧板","Chef's knife, chopping board","有兩塊砧板更好：一塊切生肉、一塊切菜。",1],
+ ["量匙、量杯","Measuring spoons & cups","澳洲的 1 tablespoon 是 20 ml，本站的 1 大匙是 15 ml。",1],
+ ["保鮮盒 5–6 個","Food containers","分裝剩菜、冷凍白飯和肉燥。",1],
+ ["濾網","Colander","洗米、瀝乾青菜。",1],
+ ["電子鍋","Rice cooker","分租房沒有的話很值得買，煮飯不用顧。",0],
+ ["夾鏈袋","Zip-lock bags","肉買回來分裝冷凍。",0],
+ ["刨絲器","Grater","刨紅蘿蔔絲、馬鈴薯絲。",0]
+];
+// [中文, English, S/A, 說明]
+const STARTER_PANTRY=[
+ ["白米","Calrose rice（SunRice）","S","中粒米，口感最接近台灣的米。"],
+ ["醬油","Soy sauce","S","台灣菜最常用，選一般的 soy sauce 就好。"],
+ ["食用油","Canola / vegetable oil","S","炒菜用。"],
+ ["鹽、糖","Salt, sugar","S","最基本的調味。"],
+ ["太白粉","Cornflour","S","勾芡、醃肉用。在烘焙區找。"],
+ ["米酒","Chinese cooking wine","S","大超市的亞洲貨架（Asian aisle）就有。"],
+ ["香油","Sesame oil","S","起鍋前滴幾滴很香。"],
+ ["白胡椒","White pepper","S","湯、炒菜都會用到。"],
+ ["蒜頭、薑","Garlic, ginger","S","爆香必備，放陰涼處可以放很久。"],
+ ["雞蛋","Eggs","S","最便宜的蛋白質，新手課程第 2 課就會用到。"],
+ ["醬油膏","Thick soy sauce","A","有空再去亞洲超市買，沾醬、拌豆腐用。"],
+ ["辣豆瓣醬","Chilli bean paste（Doubanjiang）","A","麻婆豆腐、魚香茄子會用到。"]
+];
+const START_STEPS=[
+ ["買基本廚具","先問房東或室友廚房有什麼，缺的再去 Kmart、Big W 或 ALDI 買，便宜又好用。"],
+ ["買基本調味料","大部分在 Woolworths、Coles 買得到，買一次可以用好幾個月。"],
+ ["煮第一鍋白飯","從新手課程第 1 課開始，學會煮飯，之後每一課都是白飯配一道菜。"],
+ ["照著菜單煮","不知道吃什麼就看新手菜單，買菜清單可以一鍵加入。"]
+];
+// 手風琴：[標題, 圖示, [[小標, 內容]...]]
+const START_GUIDES=[
+ ["分租房廚房須知","home",[
+  ["用完馬上清乾淨","鍋子、碗盤、爐台用完馬上洗、擦乾、放回原位。分租房最常吵架的原因就是廚房沒收。"],
+  ["冰箱只用自己的那一層","食物放在分配給你的那一層，盒子上可以貼名字和日期。"],
+  ["煎炒要開抽油煙機","澳洲的房子大多有煙霧偵測器（smoke alarm），大火炒菜、煎肉前先開抽油煙機或窗戶，避免警報大響。"],
+  ["油不要倒進水槽","用過的油放涼後倒進舊罐子丟垃圾，鍋裡少量的油用廚房紙擦掉，水管才不會塞住。"],
+  ["看清楚是哪種爐子","電磁爐（induction）要用底部能吸住磁鐵的鍋子；電爐加熱和降溫都比較慢，轉小火要提早一點。"],
+  ["垃圾照規定分類","多數地區是黃色蓋子回收、紅色蓋子一般垃圾，細節依當地市政府（council）規定，問室友最快。"]
+ ]],
+ ["食物安全，避免拉肚子","shield",[
+  ["冷藏 5°C 以下、冷凍 -18°C","冰箱不要塞太滿，冷空氣才能流通。"],
+  ["冷凍肉放冰箱冷藏退冰","前一晚從冷凍庫移到冷藏，不要放在室溫退冰。趕時間可以用微波爐的解凍功能，解凍後馬上煮。"],
+  ["雞肉、絞肉一定要全熟","切開最厚的地方，中間沒有粉紅色、流出來的汁是清的才算熟。"],
+  ["剩菜 2 小時內放冰箱","煮好的菜稍微放涼就冷藏，2–3 天內吃完；吃不完的就冷凍。"],
+  ["白飯不要放在室溫過夜","煮好的飯吃不完，趁熱分裝，放涼後冷藏或冷凍。"],
+  ["生的熟的分開","切過生肉的刀和砧板，洗乾淨之後才能切要直接吃的東西。"]
+ ]],
+ ["超市省錢小技巧","cart",[
+  ["每週三換特價","Woolworths 和 Coles 的每週特價從週三開始，買菜前先看一下特價目錄。"],
+  ["晚上找降價標籤","快關門時，肉、麵包常會貼上降價標籤（reduced），買回家當天煮或馬上冷凍。"],
+  ["ALDI 通常比較便宜","品項比較少，但雞蛋、牛奶、蔬菜、基本調味料很划算。"],
+  ["亞洲超市買亞洲食材","豆腐、大白菜、白蘿蔔、醬油膏、豆瓣醬，在亞洲超市通常比較齊全也比較便宜。"],
+  ["買大包裝再分裝","大盒的雞腿、絞肉單價比較低，買回來分成一餐一包冷凍。"]
+ ]]
+];
+
 const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}, "rice": {"credit": "攝影 Pille R. Priske／Unsplash", "url": "https://unsplash.com/photos/rice-in-bowl-xmuIgjuQG0M", "src": "photos/rice.webp"}};
 const ING_PHOTOS={"大白菜": {"src": "photos/ing-napa.webp", "credit": "攝影 Jason Leung／Unsplash", "url": "https://unsplash.com/photos/several-heads-of-fresh-napa-cabbage-lined-up-BCXgdJJ5nPY"}, "高麗菜": {"src": "photos/ing-cabbage.webp", "credit": "攝影 ibuki Tsubo／Unsplash", "url": "https://unsplash.com/photos/green-leaf-vegetable-on-white-surface-7iRMOXXxH7c"}, "雞蛋": {"src": "photos/ing-egg.webp", "credit": "攝影 Jakub Kapusnak／Unsplash", "url": "https://unsplash.com/photos/shallow-focus-photography-of-brown-eggs-Hj53USePB1E"}, "番茄": {"src": "photos/ing-tomato.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/red-tomatoes-on-brown-wooden-table-eb26eV-ys_k"}, "豆腐": {"src": "photos/ing-tofu.webp", "credit": "攝影 Rajesh Kavasseri／Unsplash", "url": "https://unsplash.com/photos/white-and-black-square-shape-on-brown-wooden-table-fPQCj3f3kRc"}, "馬鈴薯": {"src": "photos/ing-potato.webp", "credit": "攝影 Lars Blankers／Unsplash", "url": "https://unsplash.com/photos/brown-potato-lot-B0s3Xndk6tw"}, "茄子": {"src": "photos/ing-eggplant.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/a-pile-of-purple-eggplant-with-green-stems-d6I1ZNZJcNo"}, "白蘿蔔": {"src": "photos/ing-daikon.webp", "credit": "攝影 liam matthews／Unsplash", "url": "https://unsplash.com/photos/white-radishes-and-bitter-melons-in-a-crate-0BCwHPrs9hM"}, "洋蔥": {"src": "photos/ing-onion.webp", "credit": "攝影 mayu ken／Unsplash", "url": "https://unsplash.com/photos/white-garlic-on-brown-wooden-table-CNZ-9s5p2i8"}, "紅蘿蔔": {"src": "photos/ing-carrot.webp", "credit": "攝影 Maja Vujic／Unsplash", "url": "https://unsplash.com/photos/a-bunch-of-carrots-sitting-on-top-of-a-wooden-table-hoUlccGAhxY"}, "雞肉": {"src": "photos/ing-chicken.webp", "credit": "攝影 Satmar Meats／Unsplash", "url": "https://unsplash.com/photos/raw-chicken-pieces-with-vegetables-on-a-wooden-board-1pj56A6OQgA"}, "豬肉": {"src": "photos/ing-pork.webp", "credit": "攝影 Tomoyo S／Unsplash", "url": "https://unsplash.com/photos/brown-food-on-white-ceramic-bowl-TTuYs8aZlns"}, "牛肉": {"src": "photos/ing-beef.webp", "credit": "攝影 David Foodphototasty／Unsplash", "url": "https://unsplash.com/photos/two-steaks-on-a-plate-with-parsley-U5lLwx17rWs"}};
 const EXTRA={"hero": {"credit": "攝影 Chanhee Lee／Unsplash", "url": "https://unsplash.com/photos/white-and-blue-ceramic-bowl-with-rice-dBO0Crt4qC8", "src": "photos/hero.webp"}};
@@ -1997,6 +2195,12 @@ const ICON={
  bulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"/></svg>',
  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>',
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>',
+ shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>',
+ chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>',
+ copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
+ trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
  steps:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.5"/><circle cx="4.5" cy="12" r="1.5"/><circle cx="4.5" cy="18" r="1.5"/></svg>',
  bowl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5M16 7c0-1.5 1-2 1-3.5"/></svg>',
  cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12h11l2-8H6"/></svg>',
@@ -2309,7 +2513,7 @@ function openDetail(r,back){
   const item=(n,qt,pre,i,withShop)=>{const s=withShop&&shopFor(n);return '<li><label><input type="checkbox" id="'+pre+i+'"><span class="nm">'+(pre==="t"?'<span class="ti '+potType(n).cat+'">'+potType(n).icon+'</span>':'')+esc(n)+'</span><span class="q">'+esc(qt)+'</span>'+(s?'<span class="en">'+esc(s.en)+'<span class="tag '+s.w+'">'+(s.w==="A"?"亞洲超市":"一般超市")+'</span></span>':'')+'</label></li>'};
   const list=(title,arr,pre,withShop)=>arr&&arr.length?'<h3>'+title+'</h3><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return item(n,qt,pre,i,withShop)}).join("")+'</ul>':"";
   const total=(r.ing||[]).length+(r.sea||[]).length+(r.tools||[]).length;
-  sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(r.n)+'</span><button class="btn" type="button" id="startCook">'+ICON.steps+'步驟模式</button></div></div>'+
+  sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(r.n)+'</span><span class="bar-r">'+(r.ai?'':'<button class="iconbtn fav" type="button" id="favBtn" aria-pressed="'+isFav(r.id)+'" aria-label="收藏">'+ICON.heart+'</button>')+'<button class="btn" type="button" id="startCook">'+ICON.steps+'步驟模式</button></span></div></div>'+
    '<div class="wrap"><div class="r-head"><div><span class="crumb">'+(L?'新手課程・第 '+(li+1)+' 課':'食譜')+'</span><h1 id="dTitle">'+esc(r.n)+'</h1><p class="desc">'+esc(r.d)+'</p>'+
      '<div class="facts"><div><span>'+ICON.gauge+'難度</span><b>'+esc(LEVEL_NAME[r.lv])+'</b></div><div><span>'+ICON.clock+'時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>'+ICON.user+'份量</span><b>'+esc(r.s||2)+' 人份</b></div></div>'+
      (r.wait?'<p class="note">另外需要：'+esc(r.wait.replace(/^＋/,""))+'</p>':'')+
@@ -2317,6 +2521,7 @@ function openDetail(r,back){
    '</div><div class="r-img" id="rImg"></div></div>'+
    '<div class="r-body"><aside class="side"><div class="box"><div class="box-head"><h2>材料</h2><span class="count" id="prog">0 / '+total+'</span></div>'+
      '<div class="legend"><span><span class="tag S">一般超市</span>Woolworths、Coles、ALDI</span><span><span class="tag A">亞洲超市</span>Asian grocery</span></div>'+
+     '<button type="button" class="btn line full addlist" id="addList">'+ICON.cart+'材料加入購物清單</button>'+
      list(ICON.carrot+"主要材料",r.ing,"i",true)+list(ICON.salt+"調味料",r.sea,"s",true)+list(ICON.pan+"廚具",(r.tools||[]).map(t=>[t,""]),"t",false)+'</div>'+
      (r.prep&&r.prep.length?'<div class="box"><h2 style="margin-bottom:12px">開火前的準備</h2><ol class="prep">'+r.prep.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol></div>':'')+'</aside>'+
    '<div class="main">'+
@@ -2340,6 +2545,8 @@ function openDetail(r,back){
   sh.querySelectorAll(".pill.timer").forEach(b=>b.onclick=()=>startTimer(+b.dataset.sec,r.n+"・"+b.dataset.label));
   sh.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>openDetail(byId[b.dataset.go]));
   $("#startCook").onclick=()=>openCook(r);
+  $("#addList").onclick=()=>{const n=addRecipe(r);toast("已加入購物清單",n?n+" 項新材料，點「清單」查看":"材料都已經在清單裡了")};
+  const fb=$("#favBtn");if(fb)fb.onclick=()=>{const on=toggleFav(r.id);fb.setAttribute("aria-pressed",String(on));toast(on?"已收藏":"已取消收藏",on?"在「清單」頁面可以找到":r.n)};
   $("#backBtn").onclick=closeDetail;
   if(back)$("#backBtn").lastChild.textContent="回到菜單";
   sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";$("#backBtn").focus();
@@ -2406,7 +2613,7 @@ function openMenu(m){
    '<div class="r-body m-body"><aside class="side"><div class="box" id="shopBox"><div class="box-head"><h2>買菜清單</h2><span class="count" id="prog">0 / '+total+'</span></div>'+
      '<div class="legend"><span><span class="tag S">一般超市</span>Woolworths、Coles、ALDI</span><span><span class="tag A">亞洲超市</span>Asian grocery</span></div>'+
      grp("主要食材",byW("S"))+grp("要去亞洲超市買的",byW("A"))+grp("調味料（家裡沒有才買）",shop.sea)+
-     '<p class="note" style="margin-top:12px">標示「幾道菜」的材料，份量請看各道食譜再加起來。</p></div></aside>'+
+     '<p class="note" style="margin-top:12px">標示「幾道菜」的材料，份量請看各道食譜再加起來。</p><button type="button" class="btn full" id="addMenu">'+ICON.cart+'整份加入購物清單</button></div></aside>'+
    '<div class="main">'+
      (m.days?'<section><div class="steps-head"><div><h2>這週的菜</h2><p>每天配一碗白飯。點菜名看詳細做法。</p></div></div><div class="days">'+m.days.map(d=>'<div class="day"><span class="dl">'+esc(d.l)+'</span><div class="m-dishes">'+d.dishes.map(id=>dishBtn(byId[id])).join("")+'</div></div>').join("")+'</div>'+riceLine+'</section>'
             :'<section><div class="steps-head"><div><h2>這一餐的菜</h2><p>點菜名看詳細做法和步驟。</p></div></div><div class="m-dishes">'+ds.map(dishBtn).join("")+'</div>'+riceLine+'</section>')+
@@ -2418,6 +2625,7 @@ function openMenu(m){
   const upd=()=>{const all=sh.querySelectorAll(".checklist input"),n=[...all].filter(x=>x.checked).length;$("#prog").textContent=n+" / "+all.length};
   sh.querySelectorAll(".checklist input").forEach(x=>x.addEventListener("change",upd));
   sh.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>openDetail(byId[b.dataset.r],()=>openMenu(m)));
+  $("#addMenu").onclick=()=>{const n=addMenu(m);toast("已加入購物清單",n?n+" 項新材料，點「清單」查看":"材料都已經在清單裡了")};
   $("#toShop").onclick=e=>{e.preventDefault();const t=$("#shopBox");sh.scrollTo({top:t.getBoundingClientRect().top+sh.scrollTop-70,behavior:"smooth"})};
   $("#backBtn").onclick=closeDetail;
   sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";$("#backBtn").focus();
@@ -2518,6 +2726,118 @@ $("#aiBtn").addEventListener("click",askAI);
 
 
 
+/* ---------- 新手起步 ---------- */
+function renderStart(){
+  $("#startSteps").innerHTML=START_STEPS.map(([t,d],i)=>'<li><span class="sn">'+(i+1)+'</span><div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div></li>').join("");
+  const kit=(id,title,sub,rows,add)=>{
+    $(id).innerHTML='<div class="box-head"><h2>'+title+'</h2></div><p class="note">'+sub+'</p><ul class="checklist kitlist">'+rows+'</ul><button type="button" class="btn line full" data-add="'+add+'">'+ICON.cart+'全部加入購物清單</button>';
+  };
+  kit("#kitTools",ICON.pan+"基本廚具","在 Kmart、Big W、ALDI 都買得到。分租房通常已經有一部分，先問房東或室友。",
+    STARTER_TOOLS.map(([n,en,d,must])=>'<li><label><input type="checkbox"><span class="nm"><span class="ti '+potType(n).cat+'">'+potType(n).icon+'</span>'+esc(n)+'</span><span class="q"><span class="tag '+(must?'M':'R')+'">'+(must?'必備':'推薦')+'</span></span><span class="en">'+esc(en)+'</span><span class="use">'+esc(d)+'</span></label></li>').join(""),"tools");
+  kit("#kitPantry",ICON.salt+"基本調味料","買一次可以用好幾個月。標「亞洲超市」的可以晚一點再買。",
+    STARTER_PANTRY.map(([n,en,w,d])=>'<li><label><input type="checkbox"><span class="nm">'+esc(n)+'</span><span class="q"><span class="tag '+w+'">'+(w==="A"?"亞洲超市":"一般超市")+'</span></span><span class="en">'+esc(en)+'</span><span class="use">'+esc(d)+'</span></label></li>').join(""),"pantry");
+  document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{
+    const kind=b.dataset.add;
+    const items=kind==="tools"?STARTER_TOOLS.map(([n,en])=>({n,en,c:"T",use:["基本廚具"]})):STARTER_PANTRY.map(([n,en,w])=>({n,en,c:w,use:["基本調味料"]}));
+    const added=addItems(items);toast("已加入購物清單",added+" 項新的東西，點下方「清單」查看");
+  });
+  const gi={home:ICON.home,shield:ICON.shield,cart:ICON.cart};
+  $("#guides").innerHTML=START_GUIDES.map(([t,ic,rows],i)=>'<details class="guide"'+(i===0?' open':'')+'><summary><span class="gic">'+gi[ic]+'</span><span>'+esc(t)+'</span><span class="chev">'+ICON.chev+'</span></summary><ul>'+rows.map(([a,b])=>'<li><b>'+esc(a)+'</b><span>'+esc(b)+'</span></li>').join("")+'</ul></details>').join("");
+}
+
+/* ---------- 購物清單與收藏 ---------- */
+const LKEY="shicai-list-v1",FKEY="shicai-favs-v1";
+function loadJ(k){try{const v=JSON.parse(localStorage.getItem(k)||"null");return Array.isArray(v)?v:[]}catch(e){return[]}}
+let LIST=loadJ(LKEY),FAVS=loadJ(FKEY);
+function saveList(){try{localStorage.setItem(LKEY,JSON.stringify(LIST))}catch(e){}updateBadge()}
+function saveFavs(){try{localStorage.setItem(FKEY,JSON.stringify(FAVS))}catch(e){}}
+function updateBadge(){const n=LIST.filter(x=>!x.done).length;document.querySelectorAll(".badge").forEach(b=>{b.textContent=n>99?"99+":n;b.hidden=!n})}
+function addItems(items){
+  let added=0;
+  items.forEach(it=>{
+    if(!it.n||it.n==="水")return;
+    const s=it.c==="T"?null:shopFor(it.n);
+    const k=it.c==="T"?"T:"+it.n:(s?s.k:it.n);
+    const c=it.c||(s?s.w:"O");
+    let ex=LIST.find(x=>x.k===k);
+    if(!ex){ex={k,n:it.n,en:it.en||(s?s.en:""),c,use:[],done:false};LIST.push(ex);added++}
+    else ex.done=false;
+    (it.use||[]).forEach(u=>{if(!ex.use.includes(u))ex.use.push(u)});
+  });
+  saveList();return added;
+}
+function addRecipe(r){return addItems([...(r.ing||[]),...(r.sea||[])].map(([n])=>({n,use:[r.n]})))}
+function addMenu(m){const sh=menuShop(m);return addItems([...sh.ing,...sh.sea].map(x=>({n:x.n,use:x.use})))}
+function isFav(id){return FAVS.includes(id)}
+function toggleFav(id){FAVS=isFav(id)?FAVS.filter(x=>x!==id):[id,...FAVS];saveFavs();return isFav(id)}
+const CAT_NAME={S:"一般超市（Woolworths、Coles、ALDI）",A:"亞洲超市（Asian grocery）",T:"廚具（Kmart、Big W）",O:"其他"};
+function listText(){
+  const out=["食材料理簿・購物清單"];
+  ["S","A","T","O"].forEach(c=>{const it=LIST.filter(x=>x.c===c&&!x.done);if(!it.length)return;out.push("","【"+CAT_NAME[c]+"】");it.forEach(x=>out.push("□ "+x.n+(x.en?"  "+x.en:"")))});
+  return out.join("\n");
+}
+async function copyList(){
+  const t=listText();
+  try{await navigator.clipboard.writeText(t);toast("已複製","可以貼到備忘錄或 LINE")}
+  catch(e){const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("已複製","可以貼到備忘錄或 LINE")}catch(e2){toast("無法自動複製","請手動選取文字")}ta.remove()}
+}
+function openList(){
+  if($("#sheet").hidden)lastFocus=document.activeElement;
+  sheetBack=null;
+  const sh=$("#sheet");
+  const left=LIST.filter(x=>!x.done).length,done=LIST.length-left;
+  const group=c=>{const it=LIST.filter(x=>x.c===c);if(!it.length)return"";
+    return '<h3>'+esc(CAT_NAME[c])+'</h3><ul class="checklist mylist">'+it.map(x=>'<li><label><input type="checkbox" data-k="'+esc(x.k)+'"'+(x.done?' checked':'')+'><span class="nm">'+(c==="T"?'<span class="ti '+potType(x.n).cat+'">'+potType(x.n).icon+'</span>':'')+esc(x.n)+'</span><button type="button" class="rm" data-rm="'+esc(x.k)+'" aria-label="從清單移除 '+esc(x.n)+'">'+ICON.close+'</button>'+(x.en?'<span class="en">'+esc(x.en)+'</span>':'')+(x.use.length?'<span class="use">用在：'+x.use.map(esc).join("、")+'</span>':'')+'</label></li>').join("")+'</ul>'};
+  const favs=FAVS.map(id=>byId[id]).filter(Boolean);
+  sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">我的清單</span>'+(LIST.length?'<button class="btn line" type="button" id="copyList">'+ICON.copy+'複製清單</button>':'<span></span>')+'</div></div>'+
+   '<div class="wrap narrow"><div class="list-head"><span class="crumb">我的清單</span><h1 id="dTitle">購物清單</h1>'+
+   (LIST.length?'<p class="desc">還要買 '+left+' 項'+(done?'，已買 '+done+' 項':'')+'。在超市邊逛邊打勾，清單會自動記在這支手機裡。</p>':'')+'</div>'+
+   (LIST.length?'<div class="box">'+group("S")+group("A")+group("T")+group("O")+
+     '<div class="list-actions">'+(done?'<button type="button" class="btn line" id="clrDone">'+ICON.trash+'清除已買的</button>':'')+'<button type="button" class="btn line danger" id="clrAll">'+ICON.trash+'全部清除</button></div></div>'
+    :'<div class="empty big">'+ICON.cart+'<b>清單還是空的</b><span>打開任何一道食譜或菜單，按「加入購物清單」，材料就會自動整理到這裡，並附上英文名稱。</span><a class="btn" href="#menus" id="goMenus">去看新手菜單</a></div>')+
+   '<p class="note offline">'+ICON.bulb+'超市收訊不好？把這個網站「加到主畫面」：iPhone 在 Safari 按分享 → 加入主畫面；Android 在 Chrome 按右上角選單 → 加到主畫面。打開過的頁面沒網路也能看。</p>'+
+   '<section class="favs"><h2>'+ICON.heart+'收藏的料理</h2>'+(favs.length?'<div class="grid" id="favGrid"></div>':'<p class="note">在食譜頁按右上角的愛心，就會出現在這裡。</p>')+'</section></div>';
+  if(favs.length){const g=$("#favGrid");favs.forEach(r=>{const c=cardEl(r);c.onclick=()=>openDetail(r,openList);g.appendChild(c)})}
+  sh.querySelectorAll(".mylist input").forEach(x=>x.onchange=()=>{const it=LIST.find(i=>i.k===x.dataset.k);if(it){it.done=x.checked;saveList()}});
+  sh.querySelectorAll("[data-rm]").forEach(b=>b.onclick=e=>{e.preventDefault();LIST=LIST.filter(i=>i.k!==b.dataset.rm);saveList();const y=sh.scrollTop;openList();sh.scrollTop=y});
+  const cd=$("#clrDone");if(cd)cd.onclick=()=>{LIST=LIST.filter(i=>!i.done);saveList();openList()};
+  const ca=$("#clrAll");if(ca)ca.onclick=()=>{if(ca.dataset.sure){LIST=[];saveList();openList()}else{ca.dataset.sure="1";ca.lastChild.textContent="再按一次確認清除"}};
+  const cp=$("#copyList");if(cp)cp.onclick=copyList;
+  const gm=$("#goMenus");if(gm)gm.onclick=()=>closeDetail();
+  $("#backBtn").onclick=closeDetail;
+  sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";$("#backBtn").focus();
+}
+
+/* ---------- 超市英文對照、換算 ---------- */
+let glossQ="",glossW="all",glossAll=false;
+function renderGloss(){
+  const seen=new Set();const rows=SHOP.filter(([k])=>{if(seen.has(k))return false;seen.add(k);return true}).slice().sort((a,b)=>(a[2]==="S"?0:1)-(b[2]==="S"?0:1)||a[0].localeCompare(b[0],"zh-Hant"));
+  const q=glossQ.trim().toLowerCase();
+  let list=rows.filter(([k,en,w])=>(glossW==="all"||w===glossW)&&(!q||k.includes(q)||en.toLowerCase().includes(q)));
+  const total=list.length;const cut=!q&&!glossAll&&total>18;if(cut)list=list.slice(0,18);
+  $("#glossList").innerHTML=list.length?list.map(([k,en,w])=>'<li><b>'+esc(k)+'</b><span>'+esc(en)+'</span><span class="tag '+w+'">'+(w==="A"?"亞洲超市":"一般超市")+'</span></li>').join(""):'<li class="none">找不到，換個說法試試看。</li>';
+  $("#glossMore").hidden=!cut;$("#glossMore").textContent="顯示全部 "+total+" 項";
+  document.querySelectorAll("#glossF .fbtn").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.w===glossW)));
+}
+function initGloss(){
+  $("#glossQ").addEventListener("input",e=>{glossQ=e.target.value;renderGloss()});
+  document.querySelectorAll("#glossF .fbtn").forEach(b=>b.onclick=()=>{glossW=b.dataset.w;renderGloss()});
+  $("#glossMore").onclick=()=>{glossAll=true;renderGloss()};
+  renderGloss();
+}
+
+/* ---------- 手機底部導覽 ---------- */
+function initBnav(){
+  $("#bnList").onclick=openList;$("#listBtn").onclick=openList;
+  const ids=["home","course","menus","finder"];
+  const links=[...document.querySelectorAll(".bnav a")];
+  const upd=()=>{let cur="home";ids.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<140)cur=id});
+    if(document.getElementById("start").getBoundingClientRect().top<140&&document.getElementById("course").getBoundingClientRect().top>=140)cur="home";
+    links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur))};
+  addEventListener("scroll",upd,{passive:true});upd();
+}
+
+
 /* ---------- 深色（手動切換，預設淺色） ---------- */
 const TKEY="shicai-theme2";
 function setTheme(t){if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.setAttribute("data-theme","light");$("#themeBtn").setAttribute("aria-label",t==="dark"?"切換淺色模式":"切換深色模式")}
@@ -2537,6 +2857,10 @@ $("#heroFacts").innerHTML='<span>'+ICON.bowl+LESSONS.length+' 堂白飯＋一道
 (function(){const h=typeof EXTRA!=="undefined"&&EXTRA.hero;if(h)$("#heroImg").innerHTML='<img src="'+h.src+'" alt="白飯與家常菜" fetchpriority="high"><div class="cap"><b>第 1 課：一鍋好吃的白飯</b><span>所有課程的起點，40 分鐘</span></div>';$("#heroImg .cap")&&($("#heroImg .cap").style.cursor="pointer",$("#heroImg .cap").onclick=()=>openDetail(byId.rice))})();
 renderLessons();
 renderMenus();
+renderStart();
+initGloss();
+initBnav();
+updateBadge();
 $("#searchForm").addEventListener("submit",e=>{e.preventDefault();go($("#q").value,false);$("#results").scrollIntoView({block:"start",behavior:"smooth"});if(!current.list.length&&sampleFn)askAI()});
 go($("#q").value,false);
 if(window.claude&&typeof window.claude.use==="function"){window.claude.use("sample").then(s=>{if(s){sampleFn=s;render()}}).catch(()=>{})}

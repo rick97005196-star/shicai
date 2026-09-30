@@ -1,0 +1,16 @@
+{
+  "name": "食材料理簿｜澳洲打工度假的料理新手課程",
+  "short_name": "食材料理簿",
+  "description": "給在澳洲打工度假的料理新手：從一鍋白飯開始，一課學一道配飯的家常菜。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2f6b4f",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
