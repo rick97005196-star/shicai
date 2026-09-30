@@ -20,6 +20,7 @@
 <style>
 /* Layout: 白色正式食譜網站。頂部導覽 → 左文右圖的封面 → 新手課程（白飯＋一道菜，依序十課）→ 用食材找料理 → 搜尋結果 → 澳洲新手廚房 → 基本功；食譜頁為白底文章式：標題、資訊列、大圖，左欄材料（附英文與購買地點）、右欄步驟 */
 :root{
+  --fry:#a4541a; --fry-soft:#fbeee3; --boil:#2c6390; --boil-soft:#e6f0f8; --app:#6a4c9c; --app-soft:#f0ebf8;
   --bg:#ffffff; --soft:#f7f5f1; --card:#ffffff; --ink:#1f2328; --muted:#62686e; --line:#e8e4dd;
   --brand:#2f6b4f; --brand-ink:#ffffff; --brand-soft:#e9f1ec; --warm:#b7791f; --warm-soft:#fbf3e4; --red:#b8452e; --red-soft:#fbece7;
   --shadow:0 1px 2px rgba(31,35,40,.05),0 8px 24px rgba(31,35,40,.06);
@@ -28,6 +29,7 @@
   --r:14px;
 }
 :root[data-theme="dark"]{
+  --fry:#eba670; --fry-soft:#35271c; --boil:#8ebde6; --boil-soft:#1c2a36; --app:#bca6e8; --app-soft:#2a2438;
   --bg:#17191b; --soft:#1e2124; --card:#212427; --ink:#ebeae6; --muted:#a3a8ad; --line:#33373b;
   --brand:#7fbf9c; --brand-ink:#10231a; --brand-soft:#1f2e26; --warm:#e0b15a; --warm-soft:#302717; --red:#ec8f78; --red-soft:#35221d;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
@@ -272,8 +274,50 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .pill.heat .f{display:inline-flex}
 .pill.timer{background:var(--brand-soft);color:var(--brand);border-color:transparent;cursor:pointer;font-weight:500}
 .pill.timer:hover{background:var(--brand);color:var(--brand-ink)}
-.pill.pot{background:var(--card);color:var(--ink);font-weight:500}
-.pill.pot svg{color:var(--brand)}
+.pill.pot{font-weight:500;border-color:transparent}
+.pill.pot{padding:2px 11px 2px 8px}
+.pill.pot svg{width:21px;height:21px}
+.lg .pill.pot svg{width:22px;height:22px}
+.pill.lid svg,.pill.off svg{width:17px;height:17px}
+.pill.pot.fry,.ti.fry{background:var(--fry-soft);color:var(--fry)}
+.pill.pot.boil,.ti.boil{background:var(--boil-soft);color:var(--boil)}
+.pill.pot.app,.ti.app{background:var(--app-soft);color:var(--app)}
+.pill.pot.prep,.ti.prep{background:var(--soft);color:var(--muted)}
+.pill.off{color:var(--muted)}
+.pill.lid{background:var(--card)}
+.pill.lid svg{color:var(--boil)}
+.pill.swapk{background:var(--warm-soft);color:var(--warm);border-color:transparent}
+.cuek,.hintk{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;border-radius:8px;padding:3px 9px}
+.cuek{background:var(--brand-soft);color:var(--brand)}.hintk{background:var(--red-soft);color:var(--red)}
+.cuek svg,.hintk svg{width:15px;height:15px}
+.step .cue b,.step .hint b,.cook-body .cue b,.cook-body .hint b{display:inline-flex;align-items:center;gap:5px}
+.step .cue b svg,.step .hint b svg,.cook-body .cue b svg,.cook-body .hint b svg{width:16px;height:16px;flex:none}
+.swap .pill{vertical-align:1px;margin:0 2px;padding:1px 9px}
+.facts span{display:flex!important;align-items:center;gap:5px}
+.facts span svg{width:14px;height:14px}
+.box h3{display:flex;align-items:center;gap:6px}
+.box h3 svg{width:16px;height:16px}
+.checklist .nm{display:inline-flex;align-items:center;gap:8px}
+.ti{width:26px;height:26px;border-radius:7px;display:inline-grid;place-items:center;flex:none}
+.ti svg{width:19px;height:19px}
+.lgd{margin-top:10px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.lgd summary{cursor:pointer;padding:10px 14px;font-size:14.5px;color:var(--brand);font-weight:500;display:flex;align-items:center;gap:6px;list-style:none}
+.lgd summary::-webkit-details-marker{display:none}
+.lgd summary svg{width:17px;height:17px}
+.lgd[open] summary{border-bottom:1px solid var(--line)}
+.lgd .lg-grid{padding:14px}
+.lg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.lg-grid h4{font-size:15px;margin-bottom:6px}
+.lg-cat{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:-6px}
+.dot.fry{background:var(--fry)}.dot.boil{background:var(--boil)}.dot.app{background:var(--app)}.dot.prep{background:var(--muted)}
+.lg{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.lg li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted);line-height:1.55}
+.lg li:last-child{border-bottom:0}
+.lg li>:first-child{justify-self:start}
+.lg-box{margin-top:36px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:22px 24px}
+.lg-box h3{font-size:22px}
+.lg-box>p{color:var(--muted);font-size:14.5px;margin:4px 0 16px}
 .swap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;background:var(--warm-soft);border-radius:10px;padding:9px 13px;margin:4px 0 8px;font-size:14.5px;line-height:1.7}
 .swap svg{width:18px;height:18px;color:var(--warm);margin-top:3px}
 .swap b{color:var(--warm)}
@@ -284,6 +328,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .potsum .ar{color:var(--muted)}
 .step .d{font-size:16px;line-height:1.9}
 .step .cue,.step .hint{margin-top:10px;font-size:14.5px;line-height:1.75;border-radius:10px;padding:9px 13px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+.step .cue,.step .hint{grid-template-columns:minmax(0,1fr);gap:2px}
 .step .cue{background:var(--brand-soft)}
 .step .cue b{color:var(--brand);white-space:nowrap}
 .step .hint{background:var(--red-soft)}
@@ -386,6 +431,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .facts b{font-size:15px}
   .facts div{padding:10px 12px}
   .refs,.pager{grid-template-columns:minmax(0,1fr)}
+  .lg-grid{grid-template-columns:minmax(0,1fr)}
+  .lg li{grid-template-columns:128px minmax(0,1fr)}
+  .lg-box{padding:18px 16px}
   .pager button:last-child{text-align:left}
   .step{grid-template-columns:36px minmax(0,1fr);gap:12px}
   .step .no{width:34px;height:34px;font-size:15px}
@@ -471,6 +519,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">廚房基本功</span><h2>開火前讀一次</h2><p>火候、爆香、勾芡這些詞，食譜裡常常出現，這裡用白話說明。</p></div></div>
     <div class="basics" id="basicsList"></div>
+    <div class="lg-box" id="legendBox"><h3>看懂食譜上的圖示</h3><p>每一步都會用這些圖示標出要用哪個鍋、火開多大、要不要蓋鍋蓋。</p><div id="legendAll"></div></div>
   </div>
 </section>
 
@@ -1866,6 +1915,35 @@ const ICON={
  fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.4 1.2-4 2.5-5.3.2 1.6 1 2.8 2.2 3.3C11 8.5 11.4 5 12 2Z"/></svg>',
  pan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="12" r="7"/><path d="M17 12h6"/></svg>',
  swap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>',
+ wok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h15.5c0 4-3.5 7-7.75 7S2 14 2 10Z"/><path d="M17.5 10.5 22 8"/><path d="M5 17.5h9.5"/></svg>',
+ fry:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h13v1.5A3.5 3.5 0 0 1 11.5 17h-6A3.5 3.5 0 0 1 2 13.5V12Z"/><path d="M15 13h7"/></svg>',
+ tamago:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="12" height="12" rx="1.5"/><path d="M14.5 12H22"/><path d="M5.5 10h6M5.5 14h6"/></svg>',
+ stock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9Z"/><path d="M3.5 9h17"/><path d="M5 12.5H2.5M19 12.5h2.5"/><path d="M10 6.5h4"/></svg>',
+ sauce:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 10.5h11v5.5a3 3 0 0 1-3 3h-5a3 3 0 0 1-3-3v-5.5Z"/><path d="M1.5 10.5h13"/><path d="M13.5 12H22"/></svg>',
+ dutch:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-6Z"/><path d="M4 11a8 3.5 0 0 1 16 0"/><path d="M12 4.5v3"/><path d="M10.5 4.5h3"/><path d="M4 14H2M20 14h2"/></svg>',
+ clay:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h12c1.6 2 2.1 4.2 1 7a4 4 0 0 1-3.8 3H8.8A4 4 0 0 1 5 17c-1.1-2.8-.6-5 1-7Z"/><path d="M6 10a6 3 0 0 1 12 0"/><circle cx="12" cy="5.5" r="1.1"/></svg>',
+ tatung:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9.5h14V19a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9.5Z"/><path d="M5 9.5a7 3.5 0 0 1 14 0"/><path d="M11 4.5h2"/><rect x="10" y="13.5" width="4" height="3" rx=".6"/><path d="M5 12H3.5M19 12h1.5"/></svg>',
+ cooker:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="4.5"/><path d="M3 11.5h18"/><rect x="9" y="14" width="6" height="3" rx="1"/><path d="M10 4.5h4"/></svg>',
+ steamer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6Z"/><path d="M4 15.5h16"/><path d="M3 12h18"/><path d="M8 9c0-1.2 1.2-1.6 1.2-3M12 9c0-1.2 1.2-1.6 1.2-3M16 9c0-1.2 1.2-1.6 1.2-3"/></svg>',
+ oven:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 8h18"/><rect x="6.5" y="11" width="11" height="7" rx="1"/><path d="M7 5.5h.01M10 5.5h.01M17 5.5h-3"/></svg>',
+ blender:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-2 10.5H9L7 3Z"/><path d="M8.5 13.5h7l.5 2.5v3a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3l.5-2.5Z"/><path d="M12 17.5h.01"/><path d="M17 5h2.5"/></svg>',
+ bowl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 7.5 0 0 1-18 0Z"/><path d="M8.5 20.5h7"/></svg>',
+ plate:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="9.5" ry="4.5"/><ellipse cx="12" cy="12.5" rx="5" ry="2"/></svg>',
+ box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M3 9h18l-1.5-3.5h-15L3 9Z"/><path d="M9.5 13h5"/></svg>',
+ jar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 3h7v3h-7z"/><path d="M7 6h10a1 1 0 0 1 1 1v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1Z"/><path d="M6 11h12"/></svg>',
+ ice:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="10" height="10" rx="2"/><path d="M6.5 6.5l2 2"/></svg>',
+ board:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="9" width="15" height="11" rx="2"/><circle cx="14.5" cy="12" r="1"/><path d="M11 6.5 19.5 2l1.5 2.5-8 4.5"/></svg>',
+ mold:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18l-2 11H5L3 8Z"/><path d="M2 8h20"/><path d="M8 12v4M12 12v4M16 12v4"/></svg>',
+ utensil:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 21V3c-2 1.5-3 4-3 7v3h3"/></svg>',
+ lid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16h18"/><path d="M5 16a7 6 0 0 1 14 0"/><path d="M12 7v3"/><path d="M10 7h4"/><path d="M5 19h14"/></svg>',
+ lidopen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M5 19v-2h14v2"/><path d="M6.5 12.5 16 6.5"/><path d="M6.5 12.5a6 6 0 0 1 9.5-6"/><path d="M11.8 5.8 13 4"/></svg>',
+ noflame:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c1 3.5 5 6 5 10.5a5 5 0 0 1-10 0c0-2.4 1.2-4 2.5-5.3.2 1.6 1 2.8 2.2 3.3C11 8.5 11.4 5 12 2.5Z"/><path d="M3 3l18 18"/></svg>',
+ power:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16 9.8"/></svg>',
+ alert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.5 20h19L12 3.5Z"/><path d="M12 10v4.5M12 17.5h.01"/></svg>',
+ gauge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V14M10 19v-8M15 19V7M20 19V4"/></svg>',
+ carrot:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10 4 20c-.6.6.2 1.4.8.8L15 11"/><path d="M14 10a3.5 3.5 0 0 1 5 5l-4 1"/><path d="M16 8l3-4M17.5 9.5 21 7M14.5 6.5 15 3"/></svg>',
+ salt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h8l1 12H7L8 8Z"/><path d="M8.5 8a3.5 3.5 0 0 1 7 0"/><path d="M11 5h.01M13 5h.01M12 3.5h.01"/></svg>',
  box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v12H3zM3 8l2-4h14l2 4M10 12h4"/></svg>'
 };
 const byId={};RECIPES.forEach(r=>{byId[r.id]=r;if(typeof STEPS!=="undefined"&&STEPS[r.id]){r.prep=STEPS[r.id].prep;r.steps2=STEPS[r.id].steps}});
@@ -2025,9 +2103,33 @@ function makeCanvas(r,w,h){const cv=document.createElement("canvas");cv.width=w;
 function makeVisual(r,w,h,eager){const p=photo(r.id);if(p){const im=document.createElement("img");im.src=p.src;im.alt=r.n;if(!eager)im.loading="lazy";im.decoding="async";return im}const cv=document.createElement("canvas");cv.width=w;cv.height=h;try{drawDish(cv,r.art,r.id+r.n)}catch(e){}cv.setAttribute("role","img");cv.setAttribute("aria-label",r.n+" 示意插圖");return cv}
 function fmt(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
 function heatLevel(h){h=String(h||"");if(/中大火/.test(h))return 3;if(/大火/.test(h))return 3;if(/中小火/.test(h))return 1;if(/中火/.test(h))return 2;if(/小火/.test(h))return 1;return 0}
-function heatPill(h){if(!h||h==="不開火")return"";const n=heatLevel(h);return '<span class="pill heat"><span class="f">'+(n?ICON.flame.repeat(n):'')+'</span>'+esc(h)+'</span>'}
+function heatPill(h){if(!h||h==="不開火")return '<span class="pill off">'+ICON.noflame+'不用開火</span>';if(h==="關火")return '<span class="pill off">'+ICON.noflame+'關火</span>';const n=heatLevel(h);return '<span class="pill heat"><span class="f">'+(n?ICON.flame.repeat(n):ICON.power)+'</span>'+esc(h)+'</span>'}
+function lidPill(d){d=String(d||"");if(/打開鍋蓋|開蓋|拿掉烘焙紙/.test(d))return '<span class="pill lid">'+ICON.lidopen+'打開鍋蓋</span>';if(/蓋上鍋蓋|蓋鍋蓋|鍋蓋夾|蓋上蓋子|蓋上鍋|蓋鍋/.test(d))return '<span class="pill lid">'+ICON.lid+'蓋鍋蓋</span>';return""}
 function normSteps(r){if(r.steps2)return r.steps2;return (r.steps||[]).map((s,i)=>typeof s==="string"?{t:"步驟 "+(i+1),d:s}:s)}
 const HEAT=/鍋|烤箱/;
+const POT_TYPES=[
+ [/玉子燒鍋/,"tamago","fry","玉子燒鍋","方形的小煎鍋，做玉子燒用；沒有就用小平底鍋。"],
+ [/炒鍋/,"wok","fry","炒鍋","圓底、有深度，適合翻炒。沒有就用大一點的平底鍋。"],
+ [/平底鍋|frypan/,"fry","fry","平底鍋","平平的煎鍋，煎蛋、煎肉最好用。"],
+ [/電子鍋/,"cooker","app","電子鍋","按一下就煮好飯的電器（Rice cooker）。"],
+ [/電鍋/,"tatung","app","電鍋","台灣大同電鍋，外鍋加水就能蒸、煮。"],
+ [/蒸鍋/,"steamer","app","蒸鍋","有蒸架的鍋子，用水蒸氣把食物蒸熟。"],
+ [/烤箱/,"oven","app","烤箱","Oven，分租房通常有。"],
+ [/果汁機|攪拌棒/,"blender","app","果汁機","把食物打成泥或湯。"],
+ [/砂鍋/,"clay","boil","砂鍋","陶土做的鍋，適合燉煮、直接端上桌。"],
+ [/小鍋子|小湯鍋|小鍋/,"sauce","boil","小鍋子","有一根長把手的小鍋，煮醬汁、煮蛋。"],
+ [/湯鍋/,"stock","boil","湯鍋","兩邊有耳朵把手的深鍋，煮湯、燙東西。"],
+ [/深鍋|厚底鍋|淺鍋|鑄鐵鍋/,"dutch","boil","深鍋／厚底鍋","厚重、有蓋子的鍋，適合燉煮和油炸。"],
+ [/碗|盆/,"bowl","prep","大碗","備料、拌餡、醃東西。"],
+ [/盤/,"plate","prep","盤子","擺盤或放進電鍋蒸。"],
+ [/保鮮盒|夾鏈袋|密封盒/,"box","prep","保鮮盒","裝起來放冰箱冷藏。"],
+ [/罐/,"jar","prep","玻璃罐","密封保存、發酵。"],
+ [/冰塊/,"ice","prep","冰塊水","一碗冷水加冰塊，讓食物馬上降溫。"],
+ [/砧板|菜刀|刀/,"board","prep","砧板","切菜、切肉。"],
+ [/模具/,"mold","prep","模具","把糊狀的食材倒進去定型。"]
+];
+function potType(label){const first=String(label||"").split(/或|／/)[0];for(const t of POT_TYPES){if(t[0].test(first))return{icon:ICON[t[1]],cat:t[2]}}for(const t of POT_TYPES){if(t[0].test(label))return{icon:ICON[t[1]],cat:t[2]}}return{icon:ICON.utensil,cat:"prep"}}
+function potTag(label){const t=potType(label);return '<span class="pill pot '+t.cat+'">'+t.icon+esc(label)+'</span>'}
 function potPlan(r){
   const P=typeof POTS!=="undefined"&&POTS[r.id];if(!P)return null;
   let last=null;const seen=[];
@@ -2037,13 +2139,20 @@ function potPlan(r){
   return{plan,pots:seen};
 }
 function potSummary(pp){if(!pp||!pp.pots.length)return"";const n=pp.pots.length;
-  return '<p class="potsum">'+ICON.pan+(n===1?'<span>全程只用一個 <span class="pn">'+esc(pp.pots[0])+'</span>，不用換鍋。</span>':'<span>這道菜會用到 '+n+' 個鍋具，照順序是：</span>'+pp.pots.map(x=>'<span class="pn">'+esc(x)+'</span>').join('<span class="ar">→</span>'))+'</p>'}
+  return '<p class="potsum">'+(n===1?'<span>全程只用一個</span>'+potTag(pp.pots[0])+'<span>，不用換鍋。</span>':'<span>會用到 '+n+' 個鍋具，照順序：</span>'+pp.pots.map(potTag).join('<span class="ar">→</span>'))+'</p>'}
 function potBits(o){if(!o||!o.p)return{pill:"",pre:"",post:""};
-  const pill='<span class="pill pot">'+ICON.pan+esc(o.p)+'</span>';
-  const pre=o.change?'<p class="swap">'+ICON.swap+'<span><b>'+(o.back?'回到':'換鍋')+'：</b>接下來'+(o.back?'回到':'改用')+'「'+esc(o.p)+'」。'+esc(o.note)+'</span></p>':'';
+  const pill=potTag(o.p);
+  const pre=o.change?'<p class="swap">'+ICON.swap+'<span><b>'+(o.back?'回到原本的鍋':'換鍋')+'：</b>接下來'+(o.back?'回到 ':'改用 ')+potTag(o.p)+' '+esc(o.note)+'</span></p>':'';
   const post=!o.change&&o.note?'<p class="potnote">'+esc(o.note)+'</p>':'';
   return{pill,pre,post};
 }
+function legendHTML(){
+  const pots=POT_TYPES.filter(t=>t[2]!=="prep"||/碗|冰塊|保鮮盒/.test(t[3])).map(t=>'<li><span class="pill pot '+t[2]+'">'+ICON[t[1]]+esc(t[3])+'</span><span>'+esc(t[4])+'</span></li>').join("");
+  const fl=n=>'<span class="pill heat"><span class="f">'+ICON.flame.repeat(n)+'</span>'+["","小火","中火","大火"][n]+'</span>';
+  const acts=[[fl(1),"火開小小的，火焰不碰到鍋底。慢慢煸、燉、保溫。"],[fl(2),"火焰剛好碰到鍋底。大部分的炒、煎。"],[fl(3),"火開到最大。快炒青菜、煮滾水。"],['<span class="pill off">'+ICON.noflame+'關火</span>',"把爐子關掉，用鍋子的餘溫完成。"],['<span class="pill off">'+ICON.noflame+'不用開火</span>',"切、拌、醃，不用爐子。"],['<span class="pill lid">'+ICON.lid+'蓋鍋蓋</span>',"這一步要把鍋蓋蓋上。"],['<span class="pill lid">'+ICON.lidopen+'打開鍋蓋</span>',"這一步要打開鍋蓋。"],['<span class="pill timer">'+ICON.clock+'5 分鐘・計時</span>',"按一下就開始倒數，時間到會響。"],['<span class="pill swapk">'+ICON.swap+'換鍋</span>',"這一步要換另一個鍋子。"],['<span class="cuek">'+ICON.check+'做到這樣就對了</span>',"看到這個樣子，就可以做下一步。"],['<span class="hintk">'+ICON.alert+'小提醒</span>',"容易出錯的地方。"],['<span class="tag S">一般超市</span>',"Woolworths、Coles、ALDI 買得到。"],['<span class="tag A">亞洲超市</span>',"要去亞洲超市（Asian grocery）買。"]].map(([a,b])=>'<li>'+a+'<span>'+b+'</span></li>').join("");
+  return '<div class="lg-grid"><div><h4>鍋具與電器</h4><p class="lg-cat"><span class="dot fry"></span>煎炒<span class="dot boil"></span>煮燉<span class="dot app"></span>電器<span class="dot prep"></span>備料</p><ul class="lg">'+pots+'</ul></div><div><h4>火力、動作與提示</h4><ul class="lg">'+acts+'</ul></div></div>';
+}
+function legendDetails(){return '<details class="lgd"><summary>'+ICON.bulb+'看不懂圖示？點這裡看說明</summary>'+legendHTML()+'</details>'}
 function shopFor(name){for(const [k,en,w] of SHOP){if(String(name).includes(k))return{en,w,k}}return null}
 
 /* ---------- 課程 ---------- */
@@ -2108,25 +2217,25 @@ function openDetail(r,back){
   const sh=$("#sheet");sh.innerHTML="";
   const ph=photo(r.id),steps=normSteps(r),pp=potPlan(r),li=lessonNo(r.id),L=li>=0?LESSONS[li]:null;
   const q=encodeURIComponent(r.n.replace(/（.*?）/g,""));
-  const item=(n,qt,pre,i,withShop)=>{const s=withShop&&shopFor(n);return '<li><label><input type="checkbox" id="'+pre+i+'"><span class="nm">'+esc(n)+'</span><span class="q">'+esc(qt)+'</span>'+(s?'<span class="en">'+esc(s.en)+'<span class="tag '+s.w+'">'+(s.w==="A"?"亞洲超市":"一般超市")+'</span></span>':'')+'</label></li>'};
+  const item=(n,qt,pre,i,withShop)=>{const s=withShop&&shopFor(n);return '<li><label><input type="checkbox" id="'+pre+i+'"><span class="nm">'+(pre==="t"?'<span class="ti '+potType(n).cat+'">'+potType(n).icon+'</span>':'')+esc(n)+'</span><span class="q">'+esc(qt)+'</span>'+(s?'<span class="en">'+esc(s.en)+'<span class="tag '+s.w+'">'+(s.w==="A"?"亞洲超市":"一般超市")+'</span></span>':'')+'</label></li>'};
   const list=(title,arr,pre,withShop)=>arr&&arr.length?'<h3>'+title+'</h3><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return item(n,qt,pre,i,withShop)}).join("")+'</ul>':"";
   const total=(r.ing||[]).length+(r.sea||[]).length+(r.tools||[]).length;
   sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(r.n)+'</span><button class="btn" type="button" id="startCook">'+ICON.steps+'步驟模式</button></div></div>'+
    '<div class="wrap"><div class="r-head"><div><span class="crumb">'+(L?'新手課程・第 '+(li+1)+' 課':'食譜')+'</span><h1 id="dTitle">'+esc(r.n)+'</h1><p class="desc">'+esc(r.d)+'</p>'+
-     '<div class="facts"><div><span>難度</span><b>'+esc(LEVEL_NAME[r.lv])+'</b></div><div><span>時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>份量</span><b>'+esc(r.s||2)+' 人份</b></div></div>'+
+     '<div class="facts"><div><span>'+ICON.gauge+'難度</span><b>'+esc(LEVEL_NAME[r.lv])+'</b></div><div><span>'+ICON.clock+'時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>'+ICON.user+'份量</span><b>'+esc(r.s||2)+' 人份</b></div></div>'+
      (r.wait?'<p class="note">另外需要：'+esc(r.wait.replace(/^＋/,""))+'</p>':'')+
      (L?'<div class="learnbox"><b>這一課學會：</b>'+esc(L.learn)+'。'+esc(L.why)+'</div>':'')+
    '</div><div class="r-img" id="rImg"></div></div>'+
    '<div class="r-body"><aside class="side"><div class="box"><div class="box-head"><h2>材料</h2><span class="count" id="prog">0 / '+total+'</span></div>'+
      '<div class="legend"><span><span class="tag S">一般超市</span>Woolworths、Coles、ALDI</span><span><span class="tag A">亞洲超市</span>Asian grocery</span></div>'+
-     list("主要材料",r.ing,"i",true)+list("調味料",r.sea,"s",true)+list("廚具",(r.tools||[]).map(t=>[t,""]),"t",false)+'</div>'+
+     list(ICON.carrot+"主要材料",r.ing,"i",true)+list(ICON.salt+"調味料",r.sea,"s",true)+list(ICON.pan+"廚具",(r.tools||[]).map(t=>[t,""]),"t",false)+'</div>'+
      (r.prep&&r.prep.length?'<div class="box"><h2 style="margin-bottom:12px">開火前的準備</h2><ol class="prep">'+r.prep.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol></div>':'')+'</aside>'+
    '<div class="main">'+
      (r.fail&&r.fail.length?'<section class="warn"><h2>'+ICON.bulb+'做之前先看：最容易失敗的地方</h2><ul>'+r.fail.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ul></section>':'')+
-     '<section><div class="steps-head"><div><h2>做法</h2><p>每一步都寫了用哪個鍋、火候、時間和「做到什麼樣子就對了」。有時間的步驟可以直接按下去計時。</p>'+potSummary(pp)+'</div></div><ol class="steps">'+
+     '<section><div class="steps-head"><div><h2>做法</h2><p>每一步都寫了用哪個鍋、火候、時間和「做到什麼樣子就對了」。有時間的步驟可以直接按下去計時。</p>'+potSummary(pp)+legendDetails()+'</div></div><ol class="steps">'+
       steps.map((s,i)=>{const pb=potBits(pp&&pp.plan[i]);return '<li class="step"><span class="no">'+(i+1)+'</span><div class="body">'+pb.pre+'<h3>'+esc(s.t||"步驟 "+(i+1))+'</h3>'+
-        ((s.h&&s.h!=="不開火")||s.time||pb.pill?'<div class="pills">'+pb.pill+heatPill(s.h)+(s.time?(s.sec?'<button class="pill timer" type="button" data-sec="'+s.sec+'" data-label="'+esc(s.t||"")+'">'+ICON.clock+esc(s.time)+'・計時</button>':'<span class="pill">'+ICON.clock+esc(s.time)+'</span>'):'')+'</div>':'')+pb.post+
-        '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>做到這樣就對了</b><span>'+esc(s.cue)+'</span></p>':'')+(s.tip?'<p class="hint"><b>小提醒</b><span>'+esc(s.tip)+'</span></p>':'')+
+        ('<div class="pills">'+pb.pill+heatPill(s.h)+lidPill(s.d+(s.t||""))+(s.time?(s.sec?'<button class="pill timer" type="button" data-sec="'+s.sec+'" data-label="'+esc(s.t||"")+'">'+ICON.clock+esc(s.time)+'・計時</button>':'<span class="pill">'+ICON.clock+esc(s.time)+'</span>'):'')+'</div>')+pb.post+
+        '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>'+ICON.check+'做到這樣就對了</b><span>'+esc(s.cue)+'</span></p>':'')+(s.tip?'<p class="hint"><b>'+ICON.alert+'小提醒</b><span>'+esc(s.tip)+'</span></p>':'')+
         '<button class="mark" type="button">做完這一步</button></div></li>'}).join("")+'</ol></section>'+
      (r.sk&&r.sk.length?'<section><h2 style="font-size:20px;margin-bottom:10px">這道菜練到的技巧</h2><div class="skills">'+r.sk.map(s=>'<span class="skill">'+esc(s)+'</span>').join("")+'</div></section>':'')+
      '<section><h2 style="font-size:20px;margin-bottom:10px">看影片學更快</h2><div class="refs">'+
@@ -2236,8 +2345,8 @@ function paintCook(){
   const c=$("#cook");
   c.innerHTML='<div><div class="cook-top"><span class="t">'+esc(r.n)+'</span><button class="iconbtn" type="button" id="cookX" aria-label="離開步驟模式">'+ICON.close+'</button></div><div class="cook-bar"><i style="width:'+((cookI+1)/n*100)+'%"></i></div></div>'+
    '<div class="cook-body"><span class="k">第 '+(cookI+1)+' 步，共 '+n+' 步</span>'+pb.pre+'<h2>'+esc(s.t||"")+'</h2>'+
-   ((s.h&&s.h!=="不開火")||s.time||pb.pill?'<div class="pills">'+pb.pill+heatPill(s.h)+(s.time?'<span class="pill">'+ICON.clock+esc(s.time)+'</span>':'')+'</div>':'')+pb.post+
-   '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>做到這樣就對了：</b>'+esc(s.cue)+'</p>':'')+(s.tip?'<p class="hint"><b>小提醒：</b>'+esc(s.tip)+'</p>':'')+
+   '<div class="pills">'+pb.pill+heatPill(s.h)+lidPill(s.d+(s.t||""))+(s.time?'<span class="pill">'+ICON.clock+esc(s.time)+'</span>':'')+'</div>'+pb.post+
+   '<p class="d">'+esc(s.d)+'</p>'+(s.cue?'<p class="cue"><b>'+ICON.check+'做到這樣就對了：</b>'+esc(s.cue)+'</p>':'')+(s.tip?'<p class="hint"><b>'+ICON.alert+'小提醒：</b>'+esc(s.tip)+'</p>':'')+
    (s.sec?'<div class="bigtimer" id="cookTimer"><span class="tt" data-label="'+esc(label)+'" data-def="'+fmt(s.sec)+'">'+fmt(s.sec)+'</span><button class="btn" type="button" id="cookTB" data-label="'+esc(label)+'"></button><button class="btn line" type="button" id="cookTR">重設</button></div>':'')+
    '</div><div class="cook-nav"><button class="btn line" type="button" id="cookP"'+(cookI===0?' disabled':'')+'>上一步</button><button class="btn" type="button" id="cookN">'+(cookI===n-1?'完成':'下一步')+'</button></div>';
   $("#cookX").onclick=closeCook;
@@ -2314,6 +2423,7 @@ $("#ings").innerHTML=CHIPS.map(k=>{const ip=typeof ING_PHOTOS!=="undefined"&&ING
 $("#ings").addEventListener("click",e=>{const b=e.target.closest(".ing");if(!b)return;$("#q").value=b.dataset.k;go(b.dataset.k,false);$("#results").scrollIntoView({block:"start",behavior:"smooth"})});
 const tipIcons=[ICON.spoon,ICON.cart,ICON.bowl,ICON.fire,ICON.pan,ICON.box];
 $("#auTips").innerHTML=AU_TIPS.map(([t,d],i)=>'<div class="tip"><div class="ic">'+tipIcons[i%tipIcons.length]+'</div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div>').join("");
+$("#legendAll").innerHTML=legendHTML();
 $("#basicsList").innerHTML=BASICS.map(([t,d],i)=>'<div class="basic"><span class="n">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div></div>').join("");
 $("#heroFacts").innerHTML='<span>'+ICON.bowl+LESSONS.length+' 堂白飯＋一道菜課程</span><span>'+ICON.cart+MENUS.length+' 組新手菜單</span><span>'+ICON.steps+RECIPES.length+' 道詳細食譜</span>';
 (function(){const h=typeof EXTRA!=="undefined"&&EXTRA.hero;if(h)$("#heroImg").innerHTML='<img src="'+h.src+'" alt="白飯與家常菜" fetchpriority="high"><div class="cap"><b>第 1 課：一鍋好吃的白飯</b><span>所有課程的起點，40 分鐘</span></div>';$("#heroImg .cap")&&($("#heroImg .cap").style.cursor="pointer",$("#heroImg .cap").onclick=()=>openDetail(byId.rice))})();
