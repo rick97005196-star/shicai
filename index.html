@@ -146,6 +146,50 @@ img{max-width:100%;display:block}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* 新手菜單 */
+.mtabs{display:flex;flex-wrap:wrap;gap:8px}
+.mtabs .fbtn{padding:7px 15px}
+.mdesc{color:var(--muted);font-size:14.5px;margin:14px 0 22px;min-height:1.75em}
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.mcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-align:left;padding:0;cursor:pointer;min-width:0;transition:box-shadow .2s,transform .2s}
+.mcard:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.collage{display:grid;gap:2px;aspect-ratio:16/10;background:var(--soft);overflow:hidden}
+.collage.c1{grid-template-columns:minmax(0,1fr)}
+.collage.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.collage.c3{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
+.collage.c3>:first-child{grid-row:1/3}
+.collage img,.collage canvas{width:100%;height:100%;object-fit:cover;min-height:0}
+.mcard .bd{padding:14px 16px 16px;display:grid;gap:6px;align-content:start;flex:1}
+.mcard .who{font-size:12.5px;color:var(--brand);font-weight:700}
+.mcard h3{font-family:var(--sans);font-size:17px;font-weight:700;line-height:1.45}
+.mcard .dl{font-size:13.5px;color:var(--muted);line-height:1.6}
+.mcard .meta{margin-top:4px}
+.m-dishes{display:grid;gap:10px}
+.m-dish{display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:8px;background:var(--card);text-align:left;cursor:pointer;width:100%}
+.m-dish:hover{border-color:var(--brand)}
+.m-dish .th{width:88px;height:66px;border-radius:8px;overflow:hidden;background:var(--soft)}
+.m-dish .th img,.m-dish .th canvas{width:100%;height:100%;object-fit:cover}
+.m-dish b{display:block;font-size:16px}
+.m-dish .meta{margin-top:2px}
+.m-dish .go{font-size:13.5px;color:var(--brand);font-weight:500;padding-right:8px;white-space:nowrap}
+.m-rice{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--muted);padding:4px 2px}
+.m-rice svg{width:20px;height:20px;flex:none;color:var(--brand)}
+.m-rice button{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:14.5px}
+.days{display:grid;gap:10px}
+.day{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:10px}
+.day:last-child{border-bottom:0}
+.day .dl{font-weight:700;color:var(--brand);padding-top:14px}
+.flow{list-style:none;margin:0;padding:0;counter-reset:f;display:grid;gap:0}
+.flow li{counter-increment:f;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.8}
+.flow li:last-child{border-bottom:0}
+.flow li::before{content:counter(f);width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:700;font-size:14px}
+.mtips{background:var(--brand-soft);border-radius:var(--r);padding:18px 20px}
+.mtips h2{font-family:var(--sans);font-size:17px;color:var(--brand);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.mtips h2 svg{width:19px;height:19px}
+.mtips ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
+.r-img .collage img,.r-img .collage canvas{aspect-ratio:auto;border-radius:0}
+.checklist .use{grid-column:2/4;font-size:12px;color:var(--muted);margin-top:-2px}
+
 /* 澳洲小知識、基本功 */
 .tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .tip{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;min-width:0}
@@ -167,6 +211,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .sheet-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
 .back{display:inline-flex;align-items:center;gap:6px;border:0;background:none;cursor:pointer;font-size:15px;padding:6px 4px;color:var(--ink)}
 .back svg{width:18px;height:18px}
+.sheet-bar .back,.sheet-bar .btn{white-space:nowrap;flex:none}
 .sheet-bar .t{font-weight:700;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .r-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(22px,4vw,52px);align-items:center;padding-block:clamp(22px,4vw,44px)}
 .crumb{font-size:13.5px;color:var(--brand);font-weight:700}
@@ -281,11 +326,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .toast b{display:block}
 
 /* 響應式 */
-@media (hover:none){.lesson:hover{transform:none;box-shadow:none}}
+@media (hover:none){.lesson:hover,.mcard:hover{transform:none;box-shadow:none}}
 @media (max-width:1060px){
   .lessons{grid-template-columns:repeat(3,minmax(0,1fr))}
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .menu a.opt{display:none}
 }
 @media (max-width:860px){
@@ -294,6 +340,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .r-img{order:-1}
   .r-body{grid-template-columns:minmax(0,1fr)}
   .side{position:static}
+  .m-body .side{order:2}
   .basics{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
@@ -314,6 +361,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .ing b{font-size:14px}
   .ing span{font-size:11px}
   .tips{grid-template-columns:minmax(0,1fr)}
+  .mtabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:2px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .mtabs::-webkit-scrollbar{display:none}
+  .mtabs .fbtn{flex:none}
+  .mgrid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .m-dish{grid-template-columns:72px minmax(0,1fr);gap:12px}
+  .m-dish .th{width:72px;height:56px}
+  .m-dish .go{display:none}
+  .day{grid-template-columns:minmax(0,1fr);gap:6px}
+  .day .dl{padding-top:0}
+  .flow li{font-size:15.5px;grid-template-columns:34px minmax(0,1fr);gap:12px}
+  .flow li::before{width:28px;height:28px;font-size:13px}
   .facts b{font-size:15px}
   .facts div{padding:10px 12px}
   .refs,.pager{grid-template-columns:minmax(0,1fr)}
@@ -331,6 +389,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <a class="logo" href="#home"><i>食</i>食材料理簿</a>
     <div class="menu">
       <a href="#course">新手課程</a>
+      <a href="#menus">新手菜單</a>
       <a href="#finder">用食材找料理</a>
       <a href="#australia" class="opt">澳洲廚房</a>
       <a href="#basics" class="opt">基本功</a>
@@ -359,7 +418,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec" id="finder">
+<section class="sec" id="menus">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2>今天吃什麼？照菜單做就好</h2><p>把網站裡的料理搭配成一餐一餐的菜單：快速晚餐、一菜一湯、一週計畫、便當備餐、請室友吃飯……每一組都附上合併好的買菜清單和做菜順序。</p></div></div>
+    <div class="mtabs" id="mtabs" role="group" aria-label="菜單分類"></div>
+    <p class="mdesc" id="mdesc"></p>
+    <div class="mgrid" id="mgrid"></div>
+  </div>
+</section>
+
+<section class="sec soft" id="finder">
   <div class="wrap finder">
     <div class="sec-head" style="margin-bottom:0">
       <div><span class="eyebrow">用食材找料理</span><h2>冰箱裡有什麼？</h2><p>輸入或點選手邊的食材，就會列出可以做的料理，由簡單排到困難。中文或英文都可以搜尋，例如 wombok、mince。</p></div>
@@ -381,14 +449,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </section>
 
-<section class="sec soft" id="australia">
+<section class="sec" id="australia">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">澳洲新手廚房</span><h2>在澳洲下廚前，先知道這些</h2><p>分租房的電爐、不一樣的量匙、買不到的調味料，這裡整理了最常遇到的狀況。</p></div></div>
     <div class="tips" id="auTips"></div>
   </div>
 </section>
 
-<section class="sec" id="basics">
+<section class="sec soft" id="basics">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">廚房基本功</span><h2>開火前讀一次</h2><p>火候、爆香、勾芡這些詞，食譜裡常常出現，這裡用白話說明。</p></div></div>
     <div class="basics" id="basicsList"></div>
@@ -1514,6 +1582,200 @@ const AU_TIPS=[
 ];
 ALIASES["白飯"]=["飯","米","白米","rice","steamed rice"];
 
+// ===== 新手菜單 =====
+// dishes：這一餐的料理（依上桌重要性排序），rice:true 代表配白飯
+// flow：做菜順序（一步一句，照著做就能同時上桌）
+const MENU_GROUPS=[
+ {id:"quick",n:"下班 30 分鐘",d:"一道配飯菜，白飯用冷凍的或先按下電子鍋，半小時內吃到晚餐。"},
+ {id:"soup",n:"一菜一湯",d:"一道主菜加一碗湯，營養比較均衡，兩個爐口剛好。"},
+ {id:"week",n:"一週晚餐計畫",d:"週末買一次菜，平日五天照表煮，食材剛好用完。"},
+ {id:"prep",n:"週末備餐・便當",d:"週末煮一次、分裝冷藏或冷凍，平日帶便當或回家微波。"},
+ {id:"oneing",n:"一種食材吃到完",d:"一顆大白菜、一盒雞蛋……同一種食材換不同做法，不浪費也省錢。"},
+ {id:"tired",n:"很累的日子",d:"工作了一整天？不太需要開火、只洗一個鍋的組合。"},
+ {id:"share",n:"請室友吃飯",d:"三菜一湯，份量給 3–4 人，附上怎麼讓每道菜同時上桌。"},
+ {id:"home",n:"想家的台灣味",d:"滷肉飯、三杯雞、熱炒店的味道，在澳洲也做得出來。"},
+ {id:"challenge",n:"週末挑戰",d:"前面的菜單都熟了，週末花多一點時間做大菜。"}
+];
+const MENUS=[
+ // ---------- 下班 30 分鐘 ----------
+ {id:"m-tomato-egg",g:"quick",n:"番茄炒蛋飯",who:"1–2 人・第一次做晚餐",rice:true,dishes:["tomato-egg"],t:15,
+  d:"最經典的新手配飯菜，兩樣材料、一個鍋，酸甜的湯汁拌飯剛剛好。",
+  flow:["白飯：用冷凍白飯微波 2 分鐘，或回家先按下電子鍋。","番茄切塊、蔥切段，雞蛋打散。","先炒蛋到半熟盛起，再炒番茄出汁。","蛋倒回鍋裡拌一下就起鍋，直接蓋在飯上。"],
+  tips:["番茄選紅一點、軟一點的，比較容易炒出湯汁。"]},
+ {id:"m-onion-beef",g:"quick",n:"洋蔥牛肉飯",who:"1–2 人・想吃肉",rice:true,dishes:["onion-beef"],t:20,
+  d:"超市買現成的 beef stir-fry strips，醃 10 分鐘、大火炒 3 分鐘，像日式牛丼。",
+  flow:["牛肉片先醃起來（醃的時候去做其他事）。","洋蔥切絲，白飯加熱。","先炒洋蔥到軟，再下牛肉大火快炒。","牛肉一變色就關火，連湯汁一起淋在飯上。"],
+  tips:["牛肉炒太久會變硬，看到沒有紅色就可以起鍋。"]},
+ {id:"m-teriyaki",g:"quick",n:"照燒雞腿便當",who:"1–2 人・有肉有菜",rice:true,dishes:["teriyaki","garlic-cabbage"],t:30,
+  d:"外皮香脆的照燒雞腿，配一盤蒜炒高麗菜，就是一份完整的便當。",
+  flow:["白飯先煮上（或準備冷凍飯）。","高麗菜洗好撕小片、蒜頭切片，放旁邊備用。","雞腿冷鍋下鍋煎，煎的 10 多分鐘不用顧太緊。","雞腿盛起來切塊，用同一個鍋直接炒高麗菜（不用洗鍋，雞油很香）。","雞肉、高麗菜、白飯一起裝盤。"],
+  tips:["用同一個平底鍋，先雞後菜，只要洗一個鍋。"]},
+ {id:"m-fly-head",g:"quick",n:"蒼蠅頭飯",who:"1–2 人・重口味很下飯",rice:true,dishes:["fly-head"],t:15,
+  d:"絞肉加韭菜花、豆豉，鹹香微辣，一小盤就能吃完一大碗飯。",
+  flow:["白飯加熱。","韭菜花切小丁、蒜頭辣椒切末。","先把絞肉炒到乾香，再下豆豉、蒜、辣椒。","最後下韭菜花炒 1 分鐘就起鍋。"],
+  tips:["韭菜花要去亞洲超市買；買不到可以用四季豆（green beans）代替。"]},
+ {id:"m-egg-two",g:"quick",n:"蛋炒雙色",who:"1–2 人・沒什麼錢的月底",rice:true,dishes:["carrot-egg","garlic-cabbage"],t:20,
+  d:"紅蘿蔔炒蛋加蒜炒高麗菜，材料便宜又耐放，冰箱常備就能做。",
+  flow:["白飯加熱。","紅蘿蔔刨絲、高麗菜撕片、蒜頭切片。","先做紅蘿蔔炒蛋，盛起來。","鍋子擦一下，接著炒高麗菜。"],
+  tips:["紅蘿蔔、高麗菜、雞蛋冰箱可以放一到兩週，很適合月底。"]},
+ {id:"m-onion-egg",g:"quick",n:"洋蔥炒蛋配梅粉番茄",who:"1 人・10 分鐘",rice:true,dishes:["onion-egg","plum-tomato"],t:12,
+  d:"洋蔥炒到甜、雞蛋滑嫩，旁邊一碟酸甜番茄解膩。",
+  flow:["先切好梅粉番茄放冰箱，讓它入味。","洋蔥切絲、雞蛋打散，白飯加熱。","炒洋蔥到半透明，倒入蛋液炒到剛凝固。","裝盤，番茄拿出來就能吃。"]},
+ {id:"m-napa-quick",g:"quick",n:"蒜炒大白菜配皮蛋豆腐",who:"1–2 人・清爽",rice:true,dishes:["garlic-napa","century-tofu"],t:15,
+  d:"一熱一冷，一道炒、一道只要切，一點都不累。",
+  flow:["皮蛋豆腐先做好放冰箱（5 分鐘）。","大白菜切段、梗和葉分開。","先炒梗、再下葉，炒軟調味。","白飯加熱，上桌。"]},
+
+ // ---------- 一菜一湯 ----------
+ {id:"m-beef-soup",g:"soup",n:"洋蔥牛肉＋番茄蛋花湯",who:"2 人",rice:true,dishes:["onion-beef","tomato-egg-soup"],t:30,
+  d:"一炒一湯，都是 20 分鐘內的菜，兩個爐口同時開。",
+  flow:["白飯先煮上。","牛肉醃起來，洋蔥、番茄、蔥切好。","湯先煮：番茄煮滾後轉小火放著。","另一個爐口炒洋蔥牛肉。","牛肉起鍋後，湯開大火淋入蛋液，就可以一起上桌。"],
+  tips:["湯先煮、炒菜最後做，兩道都是熱的。"]},
+ {id:"m-chicken-soup",g:"soup",n:"照燒雞腿＋白菜豆腐湯",who:"2 人",rice:true,dishes:["teriyaki","napa-tofu-soup"],t:35,
+  d:"香甜的照燒雞配一碗清爽的白菜湯，很像日式定食。",
+  flow:["白飯先煮上。","湯的白菜、豆腐、薑切好，先煮湯，滾了轉小火。","雞腿冷鍋下鍋開始煎。","雞腿煎好加醬收汁，湯調味試鹹淡。","雞腿切塊，和湯、白飯一起上桌。"]},
+ {id:"m-mapo-soup",g:"soup",n:"麻婆豆腐＋番茄蛋花湯",who:"2 人・下飯",rice:true,dishes:["mapo-tofu","tomato-egg-soup"],t:35,
+  d:"微辣的麻婆豆腐配酸甜的蛋花湯，一辣一清剛好平衡。",
+  flow:["白飯先煮上。","豆腐切塊泡鹽水，蒜薑蔥切末，番茄切塊。","湯先煮好放小火保溫。","炒麻婆豆腐，最後勾芡。","湯最後淋蛋花，一起上桌。"],
+  tips:["怕辣就把辣豆瓣醬減半。"]},
+ {id:"m-egg-radish-soup",g:"soup",n:"菜脯蛋＋白蘿蔔排骨湯",who:"2–3 人・週末",rice:true,dishes:["radish-omelette","radish-rib-soup"],t:65,
+  d:"湯燉一小時不用顧，最後 15 分鐘煎一個菜脯蛋就好。",
+  flow:["排骨汆燙後和白蘿蔔一起小火燉（這時可以去休息）。","湯燉到剩 20 分鐘時，開始煮白飯（或加熱冷凍飯）。","最後 15 分鐘煎菜脯蛋。","湯加鹽調味，一起上桌。"],
+  tips:["湯一次煮多一點，剩下的隔天更入味。"]},
+ {id:"m-eggplant-steamegg",g:"soup",n:"塔香茄子＋滑嫩蒸蛋",who:"2 人・不吃肉也可以",rice:true,dishes:["basil-eggplant","steamed-egg"],t:30,
+  d:"九層塔炒茄子很香，蒸蛋像湯一樣軟嫩，配飯剛好。",
+  flow:["白飯先煮上。","蛋液過篩倒進碗，放進電鍋或蒸鍋開始蒸。","蒸的時候切茄子、九層塔、蒜頭。","炒塔香茄子。","蒸蛋時間到，兩道一起上桌。"],
+  tips:["蒸蛋和炒菜可以同時進行，一個用電鍋、一個用爐子。"]},
+ {id:"m-nikujaga-soup",g:"soup",n:"馬鈴薯燉肉＋蒜炒大白菜",who:"2–3 人",rice:true,dishes:["nikujaga","garlic-napa"],t:50,
+  d:"燉菜放著慢慢煮，最後 10 分鐘炒一盤青菜。",
+  flow:["白飯先煮上。","馬鈴薯、紅蘿蔔、洋蔥切塊，開始燉肉。","燉的 20 分鐘裡，把大白菜切好。","燉肉收汁後關火燜著。","最後炒大白菜，一起上桌。"]},
+
+ // ---------- 一週晚餐計畫 ----------
+ {id:"w-1",g:"week",n:"第一週：從最簡單開始",who:"1 人・五天晚餐",rice:true,t:20,
+  days:[{l:"週一",dishes:["tomato-egg"]},{l:"週二",dishes:["garlic-cabbage","onion-egg"]},{l:"週三",dishes:["teriyaki"]},{l:"週四",dishes:["carrot-egg","napa-tofu-soup"]},{l:"週五",dishes:["onion-beef"]}],
+  d:"每天只做 1–2 道十幾分鐘的菜。週末一次買齊，食材到週五剛好用完。",
+  flow:["週日：買菜，煮一大鍋白飯分裝成 5 盒冷凍。","週一先用最容易壞的番茄；雞腿和牛肉放冷凍，前一晚移到冷藏退冰。","高麗菜、紅蘿蔔、洋蔥、大白菜比較耐放，排在後面。","每天回家：飯盒微波 2 分鐘，同時做菜。"],
+  tips:["肉類買回來當天就分裝冷凍，要吃的前一晚放冷藏退冰最安全。"]},
+ {id:"w-2",g:"week",n:"第二週：學會醬汁",who:"1–2 人・五天晚餐",rice:true,t:30,
+  days:[{l:"週一",dishes:["mapo-tofu"]},{l:"週二",dishes:["basil-eggplant","steamed-egg"]},{l:"週三",dishes:["three-cup"]},{l:"週四",dishes:["fly-head","garlic-napa"]},{l:"週五",dishes:["nikujaga"]}],
+  d:"開始練勾芡、燜煮，每天稍微多一點步驟。",
+  flow:["週日：買菜、煮飯分裝冷凍。","豬絞肉 500g 分兩包：一包週一麻婆豆腐、一包週四蒼蠅頭。","九層塔週二和週三都會用到，用濕紙巾包著放冰箱。","週五的馬鈴薯燉肉可以多煮一份，當週六午餐。"]},
+ {id:"w-3",g:"week",n:"第三週：主菜進階",who:"1–2 人・五天晚餐",rice:true,t:35,
+  days:[{l:"週一",dishes:["kungpao"]},{l:"週二",dishes:["homestyle-tofu"]},{l:"週三",dishes:["yuxiang-eggplant","tomato-egg-soup"]},{l:"週四",dishes:["shredded-cabbage","radish-omelette"]},{l:"週五",dishes:["salt-chicken"]}],
+  d:"前兩週都做過了，這週挑戰川菜和台式小吃。",
+  flow:["週日：買菜、煮飯分裝冷凍。","雞肉分兩份：雞胸週一宮保雞丁、帶骨雞腿週五鹽水雞。","週五鹽水雞可以做多一點，週末當便當。"]},
+ {id:"w-veg",g:"week",n:"省錢蔬菜週",who:"1 人・五天晚餐",rice:true,t:20,
+  days:[{l:"週一",dishes:["garlic-napa","century-tofu"]},{l:"週二",dishes:["sour-potato","tomato-egg"]},{l:"週三",dishes:["glazed-radish","steamed-egg"]},{l:"週四",dishes:["vinegar-napa","carrot-egg"]},{l:"週五",dishes:["cold-eggplant","napa-tofu-soup"]}],
+  d:"以蔬菜、雞蛋、豆腐為主，這週的菜錢大約是有肉的週的一半。",
+  flow:["週日：買菜、煮飯分裝冷凍。","一顆大白菜分三次用：週一炒葉子、週四醋溜梗、週五煮湯。","雞蛋一盒 12 顆，這週會用大約 8 顆。"]},
+
+ // ---------- 週末備餐・便當 ----------
+ {id:"p-braised",g:"prep",n:"一鍋肉燥吃一週",who:"1 人・5 餐",rice:true,dishes:["braised-pork","ramen-egg","garlic-cabbage"],t:90,
+  d:"週日滷一鍋肉燥、一盒溏心蛋，平日只要炒個青菜就是滷肉飯套餐。",
+  flow:["週日：開始滷肉燥（小火 1 小時，偶爾攪拌）。","滷肉燥的時候煮溏心蛋，泡進醬汁冷藏。","肉燥放涼，分裝 5 小盒：2 盒冷藏、3 盒冷凍。","平日：肉燥微波加熱，炒一盤高麗菜或大白菜，配一顆溏心蛋。"],
+  tips:["冷凍肉燥可以放一個月；冷藏的 3 天內吃完。"]},
+ {id:"p-bento",g:"prep",n:"三格便當",who:"1 人・3 天午餐",rice:true,dishes:["teriyaki","glazed-radish","carrot-egg"],t:60,
+  d:"一主菜、兩配菜，都是放涼也好吃的菜，適合帶去工作。",
+  flow:["先煮一鍋白飯。","醬燒白蘿蔔先做（要燜 20 分鐘）。","燜的時候煎照燒雞腿。","最後炒紅蘿蔔炒蛋。","全部放涼後才分裝便當盒，蓋子最後才蓋。"],
+  tips:["熱的時候蓋蓋子會有水氣，容易壞，一定要放涼。","便當冷藏最多 3 天。"]},
+ {id:"p-stew",g:"prep",n:"燉一鍋番茄牛肉",who:"1–2 人・4 餐",rice:true,dishes:["tomato-beef"],t:120,
+  d:"週末花兩小時燉一大鍋，越放越入味，冷凍後拿出來就是一餐。",
+  flow:["牛腩汆燙，和番茄、洋蔥、紅蘿蔔一起燉。","燉到最後 30 分鐘加馬鈴薯。","放涼分裝，每盒一餐份。","平日：前一晚移到冷藏退冰，回家加熱就好。"],
+  tips:["馬鈴薯冷凍後口感會變鬆，要冷凍的份可以把馬鈴薯先挑出來吃掉。"]},
+ {id:"p-soups",g:"prep",n:"兩種湯分裝冷凍",who:"1 人・6 餐",dishes:["carrot-soup","radish-rib-soup"],t:90,
+  d:"一西一中兩鍋湯，冷凍起來，搭配任何一道炒菜都可以。",
+  flow:["排骨湯先燉上（1 小時）。","燉的時候做紅蘿蔔濃湯，打成泥。","兩鍋湯都放涼，分裝成一碗份的保鮮盒。","平日：選一碗湯加熱，配一道 10 分鐘的炒菜。"],
+  tips:["湯裝盒子時留一點空間，冷凍會膨脹。"]},
+ {id:"p-pickle",g:"prep",n:"常備小菜",who:"放冰箱慢慢吃",dishes:["tw-pickle","ramen-egg","plum-tomato"],t:40,
+  d:"做好放冰箱，每一餐夾一點，飯桌馬上多兩道菜。",
+  flow:["先做台式泡菜（要醃 1 天才入味）。","接著煮溏心蛋，泡醬汁。","梅粉番茄最後做，2–3 天內吃完。"],
+  tips:["夾小菜要用乾淨的筷子，放得比較久。"]},
+
+ // ---------- 一種食材吃到完 ----------
+ {id:"o-napa",g:"oneing",n:"一顆大白菜吃四餐",who:"1–2 人",rice:true,dishes:["garlic-napa","vinegar-napa","napa-tofu-soup","kaiyang-napa"],t:20,
+  d:"澳洲的 wombok 一顆很大，換四種做法吃完一點都不膩。",
+  flow:["第一天：外層的葉子做蒜炒大白菜。","第二天：留下的白色梗做醋溜白菜。","第三天：中間的葉子煮白菜豆腐湯。","第四天：剩下的做開陽白菜。"],
+  tips:["吃不完的大白菜用報紙或廚房紙包起來，放冰箱蔬果室可以放一週以上。"]},
+ {id:"o-cabbage",g:"oneing",n:"一顆高麗菜三種吃法",who:"1–2 人",rice:true,dishes:["garlic-cabbage","shredded-cabbage","tw-pickle"],t:20,
+  d:"炒、辣炒、醃泡菜，一顆高麗菜從週一吃到週末。",
+  flow:["先把 1/3 顆做成台式泡菜（醃越久越好吃）。","第一天：蒜炒高麗菜。","第三天：手撕包菜。","泡菜每一餐都可以夾一點。"]},
+ {id:"o-egg",g:"oneing",n:"一盒雞蛋的五種做法",who:"1 人・12 顆",rice:true,dishes:["tomato-egg","steamed-egg","radish-omelette","carrot-egg","ramen-egg"],t:15,
+  d:"雞蛋是新手最好練習的食材，一盒 12 顆從炒、蒸、煎到溏心蛋。",
+  flow:["週末：先煮 4 顆溏心蛋泡著，平日每天加一顆。","週一番茄炒蛋（2–3 顆）。","週二滑嫩蒸蛋（2 顆）。","週三菜脯蛋（2–3 顆）。","週四紅蘿蔔炒蛋（2 顆）。"],
+  tips:["澳洲的雞蛋放在常溫貨架上賣，買回來放冰箱就好。"]},
+ {id:"o-potato",g:"oneing",n:"一袋馬鈴薯吃一週",who:"1–2 人",rice:true,dishes:["sour-potato","mash","nikujaga","carrot-soup"],t:30,
+  d:"超市馬鈴薯常常一袋 2 公斤，換四種做法慢慢吃。",
+  flow:["醋溜馬鈴薯絲：最快，10 多分鐘。","馬鈴薯泥：配雞腿或牛肉都可以。","馬鈴薯燉肉：一次煮兩餐份。","紅蘿蔔濃湯：加一顆馬鈴薯會更濃。"],
+  tips:["馬鈴薯放陰涼處、不要放冰箱，也不要和洋蔥放一起。"]},
+ {id:"o-mince",g:"oneing",n:"一盒豬絞肉三道菜",who:"1–2 人・500g",rice:true,dishes:["mapo-tofu","fly-head","ants-tree"],t:20,
+  d:"500g 的 pork mince 分三份，做麻婆豆腐、蒼蠅頭、螞蟻上樹。",
+  flow:["買回來就分成三包（約 170g），攤平冷凍。","要做的前一晚拿一包到冷藏退冰。","三道菜都是 15–20 分鐘就能做完。"],
+  tips:["攤平冷凍的絞肉退冰比較快，也比較好分。"]},
+
+ // ---------- 很累的日子 ----------
+ {id:"t-nocook",g:"tired",n:"幾乎不用開火",who:"1 人・5 分鐘",rice:true,dishes:["century-tofu","plum-tomato"],t:8,
+  d:"冷凍白飯微波，配兩道只要切的小菜。",
+  flow:["冷凍白飯微波 2 分鐘。","豆腐切塊、皮蛋切小塊，淋醬油膏。","番茄切塊撒梅粉。"],
+  tips:["皮蛋、柴魚片、梅粉都在亞洲超市，放很久不會壞，可以常備。"]},
+ {id:"t-onepot",g:"tired",n:"一個鍋煮到底",who:"2 人・冬天",dishes:["napa-pork-hotpot"],rice:true,t:35,
+  d:"大白菜和肉片一層一層排進鍋裡，蓋上蓋子煮，吃完只要洗一個鍋。",
+  flow:["白飯微波或先煮上。","大白菜和火鍋肉片一層一層疊，切段排進鍋。","加水或高湯，蓋上蓋子煮 15 分鐘。","沾醬油或柚子醋吃。"]},
+ {id:"t-cabbage-rice",g:"tired",n:"高麗菜飯＋蛋花湯",who:"2–3 人",dishes:["cabbage-rice","tomato-egg-soup"],t:45,
+  d:"飯和菜一起煮好，只要再煮一碗湯。",
+  flow:["炒好配料後，和米一起放進電子鍋煮。","煮飯的時候做番茄蛋花湯。","飯煮好翻鬆，和湯一起吃。"]},
+ {id:"t-frozen",g:"tired",n:"冷凍庫大救援",who:"1 人・10 分鐘",rice:true,dishes:["ramen-egg","garlic-napa"],t:12,
+  d:"如果上週有做肉燥或溏心蛋，今天只要炒一盤青菜。",
+  flow:["冷凍白飯和肉燥（如果有）微波加熱。","炒一盤蒜炒大白菜。","放一顆溏心蛋，就是一碗滷肉飯套餐。"],
+  tips:["平常做菜多做一份冷凍，就是給很累那天的自己。"]},
+
+ // ---------- 請室友吃飯 ----------
+ {id:"s-tw",g:"share",n:"台式家常三菜一湯",who:"3–4 人",rice:true,dishes:["three-cup","radish-omelette","garlic-cabbage","napa-tofu-soup"],t:60,
+  d:"三杯雞當主角，配菜脯蛋、炒青菜和一鍋湯，很有台灣家裡的感覺。",
+  flow:["白飯先煮上（煮 4–5 杯米）。","所有材料切好，分成一盤一盤放好。","先煮湯，滾了轉最小火保溫。","做三杯雞（最花時間），燜的時候煎菜脯蛋。","最後炒高麗菜，炒好馬上上桌。"],
+  tips:["請客最重要的是「先全部切好」，開火後就不會手忙腳亂。","青菜一定最後炒，放久會出水變黃。"]},
+ {id:"s-sichuan",g:"share",n:"川味下飯宴",who:"3–4 人・愛吃辣",rice:true,dishes:["mapo-tofu","kungpao","sour-potato","tomato-egg-soup"],t:60,
+  d:"麻婆豆腐、宮保雞丁、酸辣馬鈴薯絲，配一碗蛋花湯解辣。",
+  flow:["白飯先煮上。","馬鈴薯切絲泡水、雞肉醃好、豆腐切塊，全部準備好。","先煮蛋花湯的番茄底，小火保溫。","先做麻婆豆腐（勾芡後放著也不會變差）。","再炒宮保雞丁、醋溜馬鈴薯絲。","湯淋蛋花，全部上桌。"],
+  tips:["不太能吃辣的朋友，麻婆豆腐的辣豆瓣減半。"]},
+ {id:"s-hotpot",g:"share",n:"冬天火鍋夜",who:"3–4 人",rice:true,dishes:["napa-pork-hotpot","century-tofu","plum-tomato"],t:40,
+  d:"千層白菜豬肉鍋放在桌子中間，配兩道冷盤，大家一起吃。",
+  flow:["冷盤先做好放冰箱。","白飯煮上。","白菜肉片疊好排進鍋，開始煮。","鍋子直接端上桌。"],
+  tips:["人多就多買一盒火鍋肉片和一包菇類。"]},
+ {id:"s-japan",g:"share",n:"日式家庭定食",who:"3 人",rice:true,dishes:["nikujaga","teriyaki","steamed-egg","napa-tofu-soup"],t:60,
+  d:"馬鈴薯燉肉、照燒雞、茶碗蒸風的蒸蛋，味道溫和，大家都能接受。",
+  flow:["白飯先煮上。","先做馬鈴薯燉肉（最久，燉好可以放著）。","燉的時候把蒸蛋放進電鍋蒸。","湯煮上，小火保溫。","最後煎照燒雞腿，切塊上桌。"]},
+
+ // ---------- 想家的台灣味 ----------
+ {id:"h-lurou",g:"home",n:"滷肉飯套餐",who:"2–3 人",rice:true,dishes:["braised-pork","garlic-cabbage","napa-tofu-soup"],t:80,
+  d:"滷肉飯、燙青菜、一碗湯，台灣小吃店的標準組合。",
+  flow:["先滷肉燥（小火 1 小時）。","最後 40 分鐘開始煮飯。","最後 20 分鐘煮湯。","最後 5 分鐘炒高麗菜。","白飯淋上肉燥，一起上桌。"],
+  tips:["紅蔥頭是台灣味的關鍵；買不到就用亞洲超市的現成油蔥酥（fried shallots）。"]},
+ {id:"h-rechao",g:"home",n:"熱炒店之夜",who:"3–4 人",rice:true,dishes:["three-cup","fly-head","basil-eggplant","garlic-cabbage"],t:60,
+  d:"三杯雞、蒼蠅頭、塔香茄子、炒高麗菜，就是熱炒店的味道。",
+  flow:["白飯先煮上。","所有材料切好（這餐九層塔要多買一點）。","先做三杯雞，燜著。","接著快炒蒼蠅頭、塔香茄子。","最後炒高麗菜。"],
+  tips:["熱炒要大火快炒，一道炒完用廚房紙擦一下鍋就可以炒下一道。"]},
+ {id:"h-night",g:"home",n:"夜市小吃拼盤",who:"2–3 人",dishes:["salt-chicken","century-tofu","tw-pickle"],t:60,
+  d:"鹽水雞、皮蛋豆腐、台式泡菜，配一瓶飲料就是夜市的感覺。",
+  flow:["前一天：先做台式泡菜。","鹽水雞煮好泡冰水，冷藏 30 分鐘。","皮蛋豆腐最後做。"]},
+
+ // ---------- 週末挑戰 ----------
+ {id:"c-dumpling",g:"challenge",n:"包水餃派對",who:"3–4 人・一起包",dishes:["napa-dumpling","tomato-egg-soup"],t:100,
+  d:"找室友一起包水餃，一次包 60 顆，吃不完冷凍起來當宵夜。",
+  flow:["大白菜切碎、加鹽出水、擠乾。","和絞肉拌成內餡。","大家一起包（第一次包醜沒關係，不破就好）。","水滾煮水餃，旁邊煮一鍋蛋花湯。","多的水餃排在盤子上冷凍，硬了再裝袋。"],
+  tips:["水餃皮在一般超市的冷藏區就有（dumpling wrappers / gow gee）。"]},
+ {id:"c-lionhead",g:"challenge",n:"年菜風大餐",who:"4 人",rice:true,dishes:["lion-head","napa-braise","tomato-beef"],t:150,
+  d:"獅子頭、白菜滷、番茄燉牛肉，三道都是可以前一天做好的大菜。",
+  flow:["前一天：先燉番茄牛肉（隔天更好吃）。","當天：做白菜滷。","最後做紅燒獅子頭（燉 40 分鐘）。","白飯煮上，三道菜加熱上桌。"],
+  tips:["燉菜都可以提前做，當天就不會手忙腳亂。"]},
+ {id:"c-western",g:"challenge",n:"西式晚餐",who:"2 人",dishes:["onion-soup","croquette","mash"],t:120,
+  d:"焗烤洋蔥湯、可樂餅、奶油馬鈴薯泥，用烤箱和平底鍋完成。",
+  flow:["洋蔥湯先做（洋蔥要慢慢炒 40 分鐘）。","炒洋蔥的時候煮馬鈴薯。","一部分馬鈴薯做可樂餅，一部分做成馬鈴薯泥。","可樂餅下鍋炸，洋蔥湯進烤箱焗烤。"],
+  tips:["可樂餅可以做好後冷凍，要吃再炸。"]},
+ {id:"c-dimsum",g:"challenge",n:"港式早午餐",who:"4 人",dishes:["turnip-cake","steamed-egg"],t:130,
+  d:"自己做一整條蘿蔔糕，切片煎到金黃，配一碗蒸蛋。",
+  flow:["前一天：做蘿蔔糕，蒸好放涼冷藏一晚。","當天：蘿蔔糕切片，煎到兩面金黃。","電鍋蒸蛋。"],
+  tips:["蘿蔔糕一定要放涼才好切，前一天做最方便。"]}
+];
+
 const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}, "rice": {"credit": "攝影 Pille R. Priske／Unsplash", "url": "https://unsplash.com/photos/rice-in-bowl-xmuIgjuQG0M", "src": "photos/rice.webp"}};
 const ING_PHOTOS={"大白菜": {"src": "photos/ing-napa.webp", "credit": "攝影 Jason Leung／Unsplash", "url": "https://unsplash.com/photos/several-heads-of-fresh-napa-cabbage-lined-up-BCXgdJJ5nPY"}, "高麗菜": {"src": "photos/ing-cabbage.webp", "credit": "攝影 ibuki Tsubo／Unsplash", "url": "https://unsplash.com/photos/green-leaf-vegetable-on-white-surface-7iRMOXXxH7c"}, "雞蛋": {"src": "photos/ing-egg.webp", "credit": "攝影 Jakub Kapusnak／Unsplash", "url": "https://unsplash.com/photos/shallow-focus-photography-of-brown-eggs-Hj53USePB1E"}, "番茄": {"src": "photos/ing-tomato.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/red-tomatoes-on-brown-wooden-table-eb26eV-ys_k"}, "豆腐": {"src": "photos/ing-tofu.webp", "credit": "攝影 Rajesh Kavasseri／Unsplash", "url": "https://unsplash.com/photos/white-and-black-square-shape-on-brown-wooden-table-fPQCj3f3kRc"}, "馬鈴薯": {"src": "photos/ing-potato.webp", "credit": "攝影 Lars Blankers／Unsplash", "url": "https://unsplash.com/photos/brown-potato-lot-B0s3Xndk6tw"}, "茄子": {"src": "photos/ing-eggplant.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/a-pile-of-purple-eggplant-with-green-stems-d6I1ZNZJcNo"}, "白蘿蔔": {"src": "photos/ing-daikon.webp", "credit": "攝影 liam matthews／Unsplash", "url": "https://unsplash.com/photos/white-radishes-and-bitter-melons-in-a-crate-0BCwHPrs9hM"}, "洋蔥": {"src": "photos/ing-onion.webp", "credit": "攝影 mayu ken／Unsplash", "url": "https://unsplash.com/photos/white-garlic-on-brown-wooden-table-CNZ-9s5p2i8"}, "紅蘿蔔": {"src": "photos/ing-carrot.webp", "credit": "攝影 Maja Vujic／Unsplash", "url": "https://unsplash.com/photos/a-bunch-of-carrots-sitting-on-top-of-a-wooden-table-hoUlccGAhxY"}, "雞肉": {"src": "photos/ing-chicken.webp", "credit": "攝影 Satmar Meats／Unsplash", "url": "https://unsplash.com/photos/raw-chicken-pieces-with-vegetables-on-a-wooden-board-1pj56A6OQgA"}, "豬肉": {"src": "photos/ing-pork.webp", "credit": "攝影 Tomoyo S／Unsplash", "url": "https://unsplash.com/photos/brown-food-on-white-ceramic-bowl-TTuYs8aZlns"}, "牛肉": {"src": "photos/ing-beef.webp", "credit": "攝影 David Foodphototasty／Unsplash", "url": "https://unsplash.com/photos/two-steaks-on-a-plate-with-parsley-U5lLwx17rWs"}};
 const EXTRA={"hero": {"credit": "攝影 Chanhee Lee／Unsplash", "url": "https://unsplash.com/photos/white-and-blue-ceramic-bowl-with-rice-dBO0Crt4qC8", "src": "photos/hero.webp"}};
@@ -1700,7 +1962,7 @@ function fmt(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padS
 function heatLevel(h){h=String(h||"");if(/中大火/.test(h))return 3;if(/大火/.test(h))return 3;if(/中小火/.test(h))return 1;if(/中火/.test(h))return 2;if(/小火/.test(h))return 1;return 0}
 function heatPill(h){if(!h||h==="不開火")return"";const n=heatLevel(h);return '<span class="pill heat"><span class="f">'+(n?ICON.flame.repeat(n):'')+'</span>'+esc(h)+'</span>'}
 function normSteps(r){if(r.steps2)return r.steps2;return (r.steps||[]).map((s,i)=>typeof s==="string"?{t:"步驟 "+(i+1),d:s}:s)}
-function shopFor(name){for(const [k,en,w] of SHOP){if(String(name).includes(k))return{en,w}}return null}
+function shopFor(name){for(const [k,en,w] of SHOP){if(String(name).includes(k))return{en,w,k}}return null}
 
 /* ---------- 課程 ---------- */
 function renderLessons(){
@@ -1758,8 +2020,9 @@ function go(q,scroll){current=search(q);filterLv=current.list.some(r=>r.lv<=2)?"
 
 /* ---------- 食譜頁 ---------- */
 let lastFocus=null;
-function openDetail(r){
-  lastFocus=document.activeElement;
+function openDetail(r,back){
+  if($("#sheet").hidden)lastFocus=document.activeElement;
+  sheetBack=back||null;
   const sh=$("#sheet");sh.innerHTML="";
   const ph=photo(r.id),steps=normSteps(r),li=lessonNo(r.id),L=li>=0?LESSONS[li]:null;
   const q=encodeURIComponent(r.n.replace(/（.*?）/g,""));
@@ -1798,9 +2061,68 @@ function openDetail(r){
   sh.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>openDetail(byId[b.dataset.go]));
   $("#startCook").onclick=()=>openCook(r);
   $("#backBtn").onclick=closeDetail;
+  if(back)$("#backBtn").lastChild.textContent="回到菜單";
   sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";$("#backBtn").focus();
 }
-function closeDetail(){$("#sheet").hidden=true;document.body.style.overflow="";if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+let sheetBack=null;
+function closeDetail(){if(sheetBack){const f=sheetBack;sheetBack=null;f();return}$("#sheet").hidden=true;document.body.style.overflow="";if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+
+/* ---------- 新手菜單 ---------- */
+const menuDishes=m=>{const ids=m.days?m.days.flatMap(d=>d.dishes):m.dishes;return [...new Set(ids)].map(id=>byId[id]).filter(Boolean)};
+const menuLv=m=>Math.max(...menuDishes(m).map(r=>r.lv));
+function collage(m,w){const all=menuDishes(m);const ds=all.filter(r=>photo(r.id)).slice(0,3);const list=ds.length?ds:all.slice(0,3);const c=document.createElement("div");c.className="collage c"+Math.max(1,list.length);list.forEach((r,i)=>c.appendChild(makeVisual(r,i?Math.round(w/2):w,i?Math.round(w/3):Math.round(w*.62))));return c}
+let menuTab=MENU_GROUPS[0].id;
+function renderMenus(){
+  $("#mtabs").innerHTML=MENU_GROUPS.map(g=>'<button type="button" class="fbtn" data-g="'+g.id+'" aria-pressed="'+(menuTab===g.id)+'">'+esc(g.n)+'</button>').join("");
+  $("#mtabs").querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{menuTab=b.dataset.g;renderMenus()});
+  const g=MENU_GROUPS.find(x=>x.id===menuTab);const list=MENUS.filter(m=>m.g===menuTab);
+  $("#mdesc").textContent=g.d+"（共 "+list.length+" 組）";
+  const box=$("#mgrid");box.innerHTML="";
+  list.forEach(m=>{const ds=menuDishes(m);
+    const b=document.createElement("button");b.type="button";b.className="mcard";b.appendChild(collage(m,560));
+    b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who">'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(m.t)+' 分鐘</span><span>'+esc(LEVEL_NAME[menuLv(m)])+'</span></div></div>');
+    b.onclick=()=>openMenu(m);box.appendChild(b)});
+}
+function menuShop(m){
+  const ds=menuDishes(m);const src=m.rice&&!ds.some(r=>r.id==="rice")?[byId.rice,...ds]:ds;
+  const ing=new Map(),sea=new Map();
+  const add=(map,[n,q],r)=>{if(n==="水")return;const s=shopFor(n);const key=s?s.k:n;if(!map.has(key))map.set(key,{n,q,s,use:[]});const it=map.get(key);if(!it.use.includes(r.n))it.use.push(r.n)};
+  src.forEach(r=>{(r.ing||[]).forEach(x=>add(ing,x,r));(r.sea||[]).forEach(x=>add(sea,x,r))});
+  return{ing:[...ing.values()],sea:[...sea.entries()].filter(([k])=>!ing.has(k)).map(([,v])=>v)};
+}
+function openMenu(m){
+  if($("#sheet").hidden)lastFocus=document.activeElement;
+  sheetBack=null;
+  const sh=$("#sheet"),g=MENU_GROUPS.find(x=>x.id===m.g),ds=menuDishes(m),shop=menuShop(m);
+  const row=it=>{const s=it.s;return '<li><label><input type="checkbox"><span class="nm">'+esc(it.n)+'</span><span class="q">'+(it.use.length>1?it.use.length+' 道菜':esc(it.q))+'</span>'+(s?'<span class="en">'+esc(s.en)+'<span class="tag '+s.w+'">'+(s.w==="A"?"亞洲超市":"一般超市")+'</span></span>':'')+'<span class="use">用在：'+it.use.map(esc).join("、")+'</span></label></li>'};
+  const byW=w=>shop.ing.filter(x=>w==="A"?(x.s&&x.s.w==="A"):!(x.s&&x.s.w==="A"));
+  const grp=(t,arr)=>arr.length?'<h3>'+t+'</h3><ul class="checklist">'+arr.map(row).join("")+'</ul>':'';
+  const dishBtn=r=>'<button type="button" class="m-dish" data-r="'+r.id+'"><span class="th" data-th="'+r.id+'"></span><span><b>'+esc(r.n)+'</b><span class="meta"><span>'+ICON.clock+esc(r.t)+' 分鐘</span><span>'+esc(LEVEL_NAME[r.lv])+'</span></span></span><span class="go">看食譜 →</span></button>';
+  const riceLine=m.rice?'<p class="m-rice">'+ICON.bowl+'<span>每一餐配白飯（第一次煮？<button type="button" data-r="rice">看白飯做法</button>）</span></p>':'';
+  const total=shop.ing.length+shop.sea.length;
+  sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(m.n)+'</span><a class="btn line" href="#shopBox" id="toShop">'+ICON.cart+'買菜清單</a></div></div>'+
+   '<div class="wrap"><div class="r-head"><div><span class="crumb">新手菜單・'+esc(g.n)+'</span><h1 id="dTitle">'+esc(m.n)+'</h1><p class="desc">'+esc(m.d)+'</p>'+
+     '<div class="facts"><div><span>菜色</span><b>'+(m.rice?'白飯＋':'')+ds.length+' 道</b></div><div><span>'+(m.days?'每天大約':'大約')+'</span><b>'+esc(m.t)+' 分鐘</b></div><div><span>適合</span><b>'+esc(m.who.split("・")[0])+'</b></div></div>'+
+   '</div><div class="r-img" id="mImg"></div></div>'+
+   '<div class="r-body m-body"><aside class="side"><div class="box" id="shopBox"><div class="box-head"><h2>買菜清單</h2><span class="count" id="prog">0 / '+total+'</span></div>'+
+     '<div class="legend"><span><span class="tag S">一般超市</span>Woolworths、Coles、ALDI</span><span><span class="tag A">亞洲超市</span>Asian grocery</span></div>'+
+     grp("主要食材",byW("S"))+grp("要去亞洲超市買的",byW("A"))+grp("調味料（家裡沒有才買）",shop.sea)+
+     '<p class="note" style="margin-top:12px">標示「幾道菜」的材料，份量請看各道食譜再加起來。</p></div></aside>'+
+   '<div class="main">'+
+     (m.days?'<section><div class="steps-head"><div><h2>這週的菜</h2><p>每天配一碗白飯。點菜名看詳細做法。</p></div></div><div class="days">'+m.days.map(d=>'<div class="day"><span class="dl">'+esc(d.l)+'</span><div class="m-dishes">'+d.dishes.map(id=>dishBtn(byId[id])).join("")+'</div></div>').join("")+'</div>'+riceLine+'</section>'
+            :'<section><div class="steps-head"><div><h2>這一餐的菜</h2><p>點菜名看詳細做法和步驟。</p></div></div><div class="m-dishes">'+ds.map(dishBtn).join("")+'</div>'+riceLine+'</section>')+
+     '<section><div class="steps-head"><div><h2>'+(m.days?'怎麼安排這一週':'做菜順序')+'</h2><p>'+(m.days?'照這個順序，食材不會放到壞。':'照這個順序做，每道菜都能熱熱的一起上桌。')+'</p></div></div><ol class="flow">'+m.flow.map(x=>'<li><span>'+esc(x)+'</span></li>').join("")+'</ol></section>'+
+     (m.tips&&m.tips.length?'<section class="mtips"><h2>'+ICON.bulb+'小提醒</h2><ul>'+m.tips.map(t=>'<li>'+esc(t)+'</li>').join("")+'</ul></section>':'')+
+   '</div></div></div>';
+  const im=$("#mImg");const cg=collage(m,1200);cg.style.borderRadius="18px";cg.style.aspectRatio="4/3";im.appendChild(cg);
+  sh.querySelectorAll("[data-th]").forEach(el=>el.appendChild(makeVisual(byId[el.dataset.th],180,135)));
+  const upd=()=>{const all=sh.querySelectorAll(".checklist input"),n=[...all].filter(x=>x.checked).length;$("#prog").textContent=n+" / "+all.length};
+  sh.querySelectorAll(".checklist input").forEach(x=>x.addEventListener("change",upd));
+  sh.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>openDetail(byId[b.dataset.r],()=>openMenu(m)));
+  $("#toShop").onclick=e=>{e.preventDefault();const t=$("#shopBox");sh.scrollTo({top:t.getBoundingClientRect().top+sh.scrollTop-70,behavior:"smooth"})};
+  $("#backBtn").onclick=closeDetail;
+  sh.hidden=false;sh.scrollTop=0;document.body.style.overflow="hidden";$("#backBtn").focus();
+}
 
 /* ---------- 計時器 ---------- */
 let timer=null;
@@ -1911,9 +2233,10 @@ $("#ings").addEventListener("click",e=>{const b=e.target.closest(".ing");if(!b)r
 const tipIcons=[ICON.spoon,ICON.cart,ICON.bowl,ICON.fire,ICON.pan,ICON.box];
 $("#auTips").innerHTML=AU_TIPS.map(([t,d],i)=>'<div class="tip"><div class="ic">'+tipIcons[i%tipIcons.length]+'</div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div>').join("");
 $("#basicsList").innerHTML=BASICS.map(([t,d],i)=>'<div class="basic"><span class="n">'+String(i+1).padStart(2,"0")+'</span><div><h3>'+esc(t)+'</h3><p>'+esc(d)+'</p></div></div>').join("");
-$("#heroFacts").innerHTML='<span>'+ICON.bowl+LESSONS.length+' 堂白飯＋一道菜課程</span><span>'+ICON.steps+RECIPES.length+' 道詳細食譜</span><span>'+ICON.cart+'材料附英文與購買地點</span>';
+$("#heroFacts").innerHTML='<span>'+ICON.bowl+LESSONS.length+' 堂白飯＋一道菜課程</span><span>'+ICON.cart+MENUS.length+' 組新手菜單</span><span>'+ICON.steps+RECIPES.length+' 道詳細食譜</span>';
 (function(){const h=typeof EXTRA!=="undefined"&&EXTRA.hero;if(h)$("#heroImg").innerHTML='<img src="'+h.src+'" alt="白飯與家常菜" fetchpriority="high"><div class="cap"><b>第 1 課：一鍋好吃的白飯</b><span>所有課程的起點，40 分鐘</span></div>';$("#heroImg .cap")&&($("#heroImg .cap").style.cursor="pointer",$("#heroImg .cap").onclick=()=>openDetail(byId.rice))})();
 renderLessons();
+renderMenus();
 $("#searchForm").addEventListener("submit",e=>{e.preventDefault();go($("#q").value,false);$("#results").scrollIntoView({block:"start",behavior:"smooth"});if(!current.list.length&&sampleFn)askAI()});
 go($("#q").value,false);
 if(window.claude&&typeof window.claude.use==="function"){window.claude.use("sample").then(s=>{if(s){sampleFn=s;render()}}).catch(()=>{})}
