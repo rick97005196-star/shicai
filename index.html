@@ -420,7 +420,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .mtabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:2px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .mtabs::-webkit-scrollbar{display:none}
   .mtabs .fbtn{flex:none}
-  .mgrid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .mgrid{grid-template-columns:minmax(0,1fr);gap:10px}
+  .mcard{flex-direction:row;align-items:stretch}
+  .mcard .collage{flex:0 0 112px;aspect-ratio:auto;min-height:118px;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr)!important}
+  .mcard .collage>:first-child{grid-row:auto}
+  .mcard .collage>:not(:first-child){display:none}
+  .mcard .bd{padding:10px 12px;gap:3px}
+  .mcard h3{font-size:15.5px}
+  .mcard .dl{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .mcard .meta{gap:2px 10px;font-size:12.5px}
   .m-dish{grid-template-columns:72px minmax(0,1fr);gap:12px}
   .m-dish .th{width:72px;height:56px}
   .m-dish .go{display:none}
@@ -479,7 +487,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <section class="sec" id="menus">
   <div class="wrap">
-    <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2>今天吃什麼？照菜單做就好</h2><p>把網站裡的料理搭配成一餐一餐的菜單：快速晚餐、一菜一湯、一週計畫、便當備餐、請室友吃飯……每一組都附上合併好的買菜清單和做菜順序。</p></div></div>
+    <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2>今天吃什麼？照菜單做就好</h2><p>依人數挑一組照著做就好。每一組都附上合併好的買菜清單、做菜順序，從最簡單的排到比較難的。</p></div></div>
     <div class="mtabs" id="mtabs" role="group" aria-label="菜單分類"></div>
     <p class="mdesc" id="mdesc"></p>
     <div class="mgrid" id="mgrid"></div>
@@ -1836,6 +1844,87 @@ const MENUS=[
   tips:["蘿蔔糕一定要放涼才好切，前一天做最方便。"]}
 ];
 
+// ===== 追加菜單 =====
+MENUS.push(
+ // 一個人吃
+ {id:"a-kungpao",g:"one",n:"宮保雞丁飯",who:"1 人・香辣下飯",rice:true,dishes:["kungpao"],d:"雞丁、花生、乾辣椒大火快炒，醬汁甜甜辣辣，很適合配白飯。"},
+ {id:"a-mapo",g:"one",n:"麻婆豆腐飯",who:"1 人・一盤搞定",rice:true,dishes:["mapo-tofu"],d:"有肉有豆腐，淋在白飯上就是麻婆豆腐蓋飯，一個人一盤剛好。"},
+ {id:"a-homestyle",g:"one",n:"家常豆腐飯",who:"1 人・有肉有菜",rice:true,dishes:["homestyle-tofu"],d:"煎過的豆腐吸滿醬汁，加上肉片和青椒、紅蘿蔔，一道就很營養。"},
+ {id:"a-yuxiang",g:"one",n:"魚香茄子飯",who:"1 人・酸甜微辣",rice:true,dishes:["yuxiang-eggplant"],d:"軟嫩的茄子加絞肉，醬汁酸甜微辣，很下飯。"},
+ {id:"a-basil",g:"one",n:"塔香茄子＋洋蔥炒蛋",who:"1 人・不吃肉的日子",rice:true,dishes:["basil-eggplant","onion-egg"],d:"九層塔的香味配上甜甜的洋蔥炒蛋，不用肉也很滿足。"},
+ {id:"a-radish-egg",g:"one",n:"菜脯蛋＋蒜炒高麗菜",who:"1 人・台式家常",rice:true,dishes:["radish-omelette","garlic-cabbage"],d:"香香的菜脯蛋配一盤炒高麗菜，台灣家裡最常見的組合。"},
+ {id:"a-shredded",g:"one",n:"手撕包菜＋番茄炒蛋",who:"1–2 人・酸辣＋酸甜",rice:true,dishes:["shredded-cabbage","tomato-egg"],d:"一道醋香微辣、一道酸甜，兩道都 15 分鐘內完成。"},
+ {id:"a-teriyaki-egg",g:"one",n:"照燒雞腿丼",who:"1 人・日式蓋飯",rice:true,dishes:["teriyaki","ramen-egg"],d:"照燒雞腿切片鋪在飯上，加一顆溏心蛋，就是日式丼飯。",tips:["溏心蛋可以週末先做好，泡在醬汁裡能放 3 天。"]},
+ {id:"a-beef-tomato",g:"one",n:"洋蔥牛肉＋梅粉番茄",who:"1 人・一熱一冷",rice:true,dishes:["onion-beef","plum-tomato"],d:"熱炒的牛肉配冰涼的梅粉番茄，吃起來很清爽。"},
+ {id:"a-veg",g:"one",n:"醋溜馬鈴薯絲＋紅蘿蔔炒蛋",who:"1 人・便宜又有飽足感",rice:true,dishes:["sour-potato","carrot-egg"],d:"馬鈴薯、紅蘿蔔、雞蛋都很便宜，兩道菜加起來不到 5 澳幣。"},
+ {id:"a-kaiyang",g:"one",n:"開陽白菜＋滑嫩蒸蛋",who:"1–2 人・清淡",rice:true,dishes:["kaiyang-napa","steamed-egg"],d:"蝦米的鮮味煮進白菜裡，配一碗軟嫩的蒸蛋，胃口不好時也吃得下。"},
+ {id:"a-fly-soup",g:"one",n:"蒼蠅頭＋白菜豆腐湯",who:"1–2 人・重口味配清湯",rice:true,dishes:["fly-head","napa-tofu-soup"],d:"蒼蠅頭很鹹香，配一碗清淡的湯剛剛好。"},
+ {id:"a-radish-onion",g:"one",n:"醬燒白蘿蔔＋洋蔥炒蛋",who:"1 人・甜鹹口味",rice:true,dishes:["glazed-radish","onion-egg"],d:"醬燒蘿蔔燜的時候去炒蛋，兩道一起完成。"},
+ {id:"a-summer",g:"one",n:"蒜泥茄子＋番茄炒蛋",who:"1 人・夏天",rice:true,dishes:["cold-eggplant","tomato-egg"],d:"天氣熱不想在爐子前太久，茄子用電鍋蒸，只炒一道番茄炒蛋。"},
+ {id:"a-soup-egg",g:"one",n:"菜脯蛋＋番茄蛋花湯",who:"1 人・很多蛋的一餐",rice:true,dishes:["radish-omelette","tomato-egg-soup"],d:"冰箱只剩雞蛋和番茄的時候，一煎一湯也很豐盛。"},
+ {id:"a-ants",g:"one",n:"螞蟻上樹＋蒜炒大白菜",who:"1 人・不配飯也可以",dishes:["ants-tree","garlic-napa"],d:"冬粉吸滿肉末醬汁，本身就很有飽足感，再配一盤青菜。"},
+ {id:"a-cabbage-rice",g:"one",n:"高麗菜飯",who:"1–2 人・一鍋到底",dishes:["cabbage-rice"],d:"飯和菜、肉一起煮，不用另外做菜，吃不完可以帶便當。"},
+
+ // 兩三個人
+ {id:"b-teri-set",g:"two",n:"照燒雞＋蒜炒大白菜＋番茄蛋花湯",who:"2 人・兩菜一湯",rice:true,dishes:["teriyaki","garlic-napa","tomato-egg-soup"],d:"一肉、一菜、一湯，很完整的一餐。"},
+ {id:"b-threecup",g:"two",n:"三杯雞＋蒜炒高麗菜",who:"2 人・台灣味",rice:true,dishes:["three-cup","garlic-cabbage"],d:"三杯雞香到整間房子都聞得到，配一盤清爽的高麗菜。"},
+ {id:"b-kungpao-soup",g:"two",n:"宮保雞丁＋番茄蛋花湯",who:"2 人",rice:true,dishes:["kungpao","tomato-egg-soup"],d:"香辣的宮保雞丁，配一碗酸甜的湯解辣。"},
+ {id:"b-mapo-cabbage",g:"two",n:"麻婆豆腐＋蒜炒高麗菜",who:"2 人",rice:true,dishes:["mapo-tofu","garlic-cabbage"],d:"一道重口味、一道清爽的青菜，很好搭配。"},
+ {id:"b-fly-set",g:"two",n:"蒼蠅頭＋滑嫩蒸蛋＋白菜豆腐湯",who:"2–3 人",rice:true,dishes:["fly-head","steamed-egg","napa-tofu-soup"],d:"蒸蛋和湯都很溫和，平衡蒼蠅頭的鹹香。"},
+ {id:"b-homestyle",g:"two",n:"家常豆腐＋紅蘿蔔炒蛋",who:"2 人",rice:true,dishes:["homestyle-tofu","carrot-egg"],d:"豆腐和雞蛋都是便宜的蛋白質，兩個人吃很划算。"},
+ {id:"b-jp",g:"two",n:"馬鈴薯燉肉＋滑嫩蒸蛋",who:"2 人・日式",rice:true,dishes:["nikujaga","steamed-egg"],d:"日本家庭最常見的燉菜，配一碗蒸蛋，味道溫和。"},
+ {id:"b-beef-weekend",g:"two",n:"番茄燉牛肉＋蒜炒高麗菜",who:"2–3 人・週末慢慢燉",rice:true,dishes:["tomato-beef","garlic-cabbage"],d:"週末下午燉一鍋，晚上炒個青菜就能開飯，剩的隔天更好吃。"},
+ {id:"b-yuxiang-soup",g:"two",n:"魚香茄子＋白菜豆腐湯",who:"2 人",rice:true,dishes:["yuxiang-eggplant","napa-tofu-soup"],d:"一道酸甜微辣的茄子，一鍋清淡的湯。"},
+ {id:"b-cool",g:"two",n:"鹽水雞＋皮蛋豆腐",who:"2 人・夏天",rice:true,dishes:["salt-chicken","century-tofu"],d:"兩道都是冷盤，雞肉煮好泡冰水，天氣熱的時候最舒服。"},
+ {id:"b-western",g:"two",n:"照燒雞腿＋馬鈴薯泥＋紅蘿蔔濃湯",who:"2 人・西式",dishes:["teriyaki","mash","carrot-soup"],d:"不配白飯，改配馬鈴薯泥和濃湯，像餐廳的套餐。"},
+ {id:"b-cabbage-set",g:"two",n:"手撕包菜＋菜脯蛋＋番茄蛋花湯",who:"2–3 人・省錢",rice:true,dishes:["shredded-cabbage","radish-omelette","tomato-egg-soup"],d:"只用一點點五花肉，三道菜就很豐盛。"},
+ {id:"b-radish-teri",g:"two",n:"照燒雞腿＋醬燒白蘿蔔",who:"2 人・日式甜鹹",rice:true,dishes:["teriyaki","glazed-radish"],d:"兩道都是甜鹹的醬燒口味，配白飯剛好。"},
+ {id:"b-kaiyang-beef",g:"two",n:"洋蔥炒牛肉＋開陽白菜",who:"2 人",rice:true,dishes:["onion-beef","kaiyang-napa"],d:"一肉一菜，都是 20 分鐘的菜。"},
+ {id:"b-basil",g:"two",n:"三杯雞＋塔香茄子",who:"2–3 人・一把九層塔用完",rice:true,dishes:["three-cup","basil-eggplant"],d:"九層塔一把通常用不完，兩道菜剛好用光。"},
+
+ // 一週計畫
+ {id:"w-chicken",g:"week",n:"雞肉週",who:"1–2 人・五天晚餐",rice:true,t:30,
+  days:[{l:"週一",dishes:["teriyaki","garlic-cabbage"]},{l:"週二",dishes:["onion-egg","napa-tofu-soup"]},{l:"週三",dishes:["kungpao"]},{l:"週四",dishes:["carrot-egg","garlic-napa"]},{l:"週五",dishes:["three-cup"]}],
+  d:"雞肉是澳洲超市最便宜的肉之一，這週用雞腿和雞胸做三種不同口味。",
+  flow:["週日：買菜、煮飯分裝冷凍。","雞肉買回來分成三包冷凍：去骨雞腿（週一）、雞胸（週三）、帶骨雞腿（週五）。","前一晚把隔天要用的雞肉移到冷藏退冰。","沒有肉的週二、週四做蛋和青菜，讓腸胃休息。"]},
+ {id:"o-chicken",g:"week",n:"一盒雞腿吃三餐",who:"1–2 人",rice:true,dishes:["teriyaki","three-cup","salt-chicken"],d:"超市的大盒雞腿比較便宜，分三次做照燒、三杯、鹽水雞。",
+  flow:["買回來把去骨和帶骨的分開，每一餐一包冷凍。","照燒雞腿最簡單，先做。","三杯雞和鹽水雞用帶骨雞腿。"]},
+ {id:"o-onion",g:"week",n:"一袋洋蔥吃一週",who:"1–2 人",rice:true,dishes:["onion-egg","onion-beef","nikujaga","onion-soup"],d:"洋蔥一袋很便宜又耐放，炒蛋、炒牛肉、燉肉、做湯都可以。",
+  flow:["洋蔥炒蛋：最快，10 分鐘。","洋蔥炒牛肉：想吃肉的時候。","馬鈴薯燉肉：一次煮兩餐份。","法式洋蔥湯：週末有空再挑戰。"],tips:["洋蔥放陰涼通風處，不要跟馬鈴薯放在一起。"]},
+ {id:"o-tofu",g:"week",n:"兩盒豆腐四種做法",who:"1–2 人",rice:true,dishes:["century-tofu","napa-tofu-soup","mapo-tofu","homestyle-tofu"],d:"嫩豆腐做皮蛋豆腐、麻婆豆腐；板豆腐做湯和家常豆腐。",
+  flow:["買一盒嫩豆腐（silken）、一盒板豆腐（firm）。","嫩豆腐一半做皮蛋豆腐、一半做麻婆豆腐。","板豆腐一半煮湯、一半做家常豆腐。","開過的豆腐泡在清水裡冷藏，2 天內用完。"]},
+ {id:"o-radish",g:"week",n:"一根白蘿蔔兩種吃法",who:"1–2 人",rice:true,dishes:["radish-rib-soup","glazed-radish"],d:"亞洲超市的白蘿蔔一根很大，上半段比較甜適合醬燒，下半段煮湯。",
+  flow:["上半段（靠葉子那端）切厚片做醬燒白蘿蔔。","下半段切塊燉排骨湯。","沒用完的蘿蔔用保鮮膜包好冷藏。"]},
+ {id:"o-carrot",g:"week",n:"一袋紅蘿蔔用到完",who:"1–2 人",rice:true,dishes:["carrot-egg","carrot-soup","kaiyang-napa","tw-pickle"],d:"紅蘿蔔一袋很多根，炒蛋、濃湯、配菜、泡菜都用得到。"},
+ {id:"o-eggplant",g:"week",n:"茄子三種做法",who:"1–2 人",rice:true,dishes:["cold-eggplant","basil-eggplant","yuxiang-eggplant"],d:"澳洲常見的是圓胖的茄子，切長條一樣可以做這三道。",tips:["買不到細長的日本茄子也沒關係，一般 eggplant 切成長條就好。"]},
+ {id:"o-tomato",g:"week",n:"一盒番茄四種做法",who:"1–2 人",rice:true,dishes:["plum-tomato","tomato-egg","tomato-egg-soup","tomato-beef"],d:"番茄炒蛋、蛋花湯、梅粉番茄、燉牛肉，從最簡單做到最難。",tips:["太硬的番茄放常溫 1–2 天會變紅變軟，比較好煮。"]},
+ {id:"p-stews",g:"week",n:"週日燉兩鍋",who:"1–2 人・6 餐",rice:true,dishes:["nikujaga","braised-pork"],d:"兩個爐口同時燉，一鍋日式、一鍋台式，平日輪流吃不會膩。",
+  flow:["先開始滷肉燥（最久，1 小時）。","另一個爐口做馬鈴薯燉肉。","兩鍋都放涼後分裝，每盒一餐份。","平日回家：選一盒加熱，炒個青菜就好。"]},
+
+ // 請客聚餐
+ {id:"s-birthday",g:"party",n:"室友生日晚餐",who:"4 人",rice:true,dishes:["tomato-beef","teriyaki","kaiyang-napa","carrot-soup"],d:"燉牛肉和濃湯可以提早做好，客人來了只要煎雞腿、炒青菜。"},
+ {id:"s-korean",g:"party",n:"韓式鍋物夜",who:"3–4 人",rice:true,dishes:["napa-pork-hotpot","kimchi","steamed-egg"],d:"前幾天先做好泡菜，當天煮一大鍋千層白菜豬肉鍋。",tips:["泡菜要提前 2–3 天做，發酵才夠味；來不及就在亞洲超市買現成的。"]},
+ {id:"s-veg",g:"party",n:"朋友吃素（蛋奶素）",who:"3–4 人",rice:true,dishes:["tomato-egg","basil-eggplant","sour-potato","garlic-cabbage","napa-tofu-soup"],d:"四菜一湯都沒有肉，照樣很豐盛。",tips:["如果朋友不吃蔥蒜（五辛素），做的時候把蔥、蒜、洋蔥拿掉，改用薑爆香。"]},
+ {id:"s-budget",g:"party",n:"省錢四人餐",who:"4 人・一人不到 5 澳幣",rice:true,dishes:["braised-pork","radish-omelette","garlic-napa","tomato-egg-soup"],d:"滷肉飯最省錢又最受歡迎，配上蛋和青菜，四個人吃得很飽。"},
+ {id:"s-late",g:"party",n:"宵夜下酒菜",who:"3–4 人",dishes:["kungpao","century-tofu","cold-eggplant","ramen-egg"],d:"一道熱炒配三道冷盤，冷盤可以先做好放冰箱，朋友來了只要炒一道。"},
+ {id:"s-big",g:"party",n:"六人大圓桌",who:"6 人",rice:true,dishes:["three-cup","braised-pork","mapo-tofu","kaiyang-napa","garlic-cabbage","radish-rib-soup"],d:"五菜一湯，給一大群人吃的台式家常菜。",tips:["人多一定要用大鍋煮飯，6 人大約要 6 杯米。","湯和肉燥提前一天做好，當天只剩三道熱炒。"]},
+ {id:"s-summer",g:"party",n:"夏天清爽聚餐",who:"4 人",rice:true,dishes:["salt-chicken","cold-eggplant","plum-tomato","tw-pickle","tomato-egg-soup"],d:"澳洲夏天很熱，這組幾乎都是冷盤，前一天就能做好大部分。"}
+);
+
+// ===== 分類簡化：四類 =====
+MENU_GROUPS.length=0;
+MENU_GROUPS.push(
+ {id:"one",n:"一個人吃",d:"白飯配 1–2 道菜，大多 30 分鐘內就能吃到晚餐。"},
+ {id:"two",n:"兩三個人",d:"一菜一湯或兩菜一湯，和室友、另一半一起吃。"},
+ {id:"week",n:"一週計畫",d:"週末買一次菜、煮一次，平日照著吃，食材剛好用完不浪費。"},
+ {id:"party",n:"請客聚餐",d:"3–6 人的三菜一湯、火鍋和大菜，附上怎麼讓每道菜同時上桌。"}
+);
+(function(){
+ const GMAP={quick:"one",tired:"one",soup:"two",week:"week",prep:"week",oneing:"week",share:"party",home:"two",challenge:"party"};
+ const OVR={"t-onepot":"two","t-cabbage-rice":"two","h-rechao":"party","c-western":"two"};
+ MENUS.forEach(m=>{if(OVR[m.id])m.g=OVR[m.id];else if(GMAP[m.g])m.g=GMAP[m.g]});
+})();
+
 // ===== 每一步用的鍋具 =====
 // 每一步一個值："" 代表不用鍋具；字串＝鍋具名稱；[名稱, 換鍋時的說明, "alt"(另一種做法，不計入換鍋)]
 const POTS={
@@ -2263,15 +2352,34 @@ const menuDishes=m=>{const ids=m.days?m.days.flatMap(d=>d.dishes):m.dishes;retur
 const menuLv=m=>Math.max(...menuDishes(m).map(r=>r.lv));
 function collage(m,w){const all=menuDishes(m);const ds=all.filter(r=>photo(r.id)).slice(0,3);const list=ds.length?ds:all.slice(0,3);const c=document.createElement("div");c.className="collage c"+Math.max(1,list.length);list.forEach((r,i)=>c.appendChild(makeVisual(r,i?Math.round(w/2):w,i?Math.round(w/3):Math.round(w*.62))));return c}
 let menuTab=MENU_GROUPS[0].id;
+const KIND={cold:["plum-tomato","century-tofu","cold-eggplant","tw-pickle","kimchi","ramen-egg"],soup:["napa-tofu-soup","tomato-egg-soup","radish-rib-soup","carrot-soup","onion-soup"],steam:["steamed-egg"],stew:["tomato-beef","nikujaga","braised-pork","lion-head","napa-braise","napa-pork-hotpot","three-cup","cabbage-rolls","glazed-radish","salt-chicken","cabbage-rice","mash","croquette","turnip-cake","napa-dumpling"]};
+const kindOf=id=>Object.keys(KIND).find(k=>KIND[k].includes(id))||"fry";
+function mTime(m){if(m.t)return m.t;const ts=menuDishes(m).map(r=>r.t);let t=Math.round(Math.max(Math.max(...ts)+5*(ts.length-1),ts.reduce((a,b)=>a+b,0)*.45)/5)*5;if(m.rice&&menuDishes(m).length>1)t=Math.max(t,40);return t}
+function mFlow(m){
+  if(m.flow)return m.flow;
+  const ds=menuDishes(m),by=k=>ds.filter(r=>kindOf(r.id)===k),q=a=>a.map(r=>"「"+r.n+"」").join("、"),out=[];
+  const hasCooked=ds.some(r=>kindOf(r.id)!=="cold");
+  if(m.rice)out.push(mTime(m)<=25?"白飯：用冷凍白飯微波 2 分鐘；想吃現煮的，回家先按下電子鍋。":"先洗米、按下電子鍋煮飯，煮飯的 40 分鐘裡做其他菜。");
+  if(ds.length>1)out.push("把每道菜的材料先切好、醬汁先調好，一道菜放一個盤子，開火後才不會手忙腳亂。");
+  if(by("cold").length)out.push("先做"+q(by("cold"))+"，做好放冰箱冰著。");
+  ds.filter(r=>["stew","soup","steam"].includes(kindOf(r.id))).sort((x,y)=>y.t-x.t).forEach(r=>{const k=kindOf(r.id);
+    out.push(k==="steam"?"「"+r.n+"」放進電鍋蒸，蒸的時候繼續做其他菜。":k==="soup"?"煮「"+r.n+"」，煮好轉最小火保溫。":"開始做「"+r.n+"」（約 "+r.t+" 分鐘），燉煮的時候不用一直顧，可以準備下一道。")});
+  const f=by("fry");
+  if(f.length===1)out.push((ds.length>1?"最後炒":"炒")+"「"+f[0].n+"」，起鍋馬上上桌。");
+  else if(f.length>1)out.push("最後依序炒"+q(f)+"。一道炒完用廚房紙擦一下鍋，就能接著炒下一道。");
+  if(!hasCooked)out.push("全部裝盤就可以吃了。");
+  else if(ds.length>1)out.push("全部上桌，開動！");
+  return out;
+}
 function renderMenus(){
   $("#mtabs").innerHTML=MENU_GROUPS.map(g=>'<button type="button" class="fbtn" data-g="'+g.id+'" aria-pressed="'+(menuTab===g.id)+'">'+esc(g.n)+'</button>').join("");
   $("#mtabs").querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{menuTab=b.dataset.g;renderMenus()});
-  const g=MENU_GROUPS.find(x=>x.id===menuTab);const list=MENUS.filter(m=>m.g===menuTab);
+  const g=MENU_GROUPS.find(x=>x.id===menuTab);const list=MENUS.filter(m=>m.g===menuTab).sort((a,b)=>menuLv(a)-menuLv(b)||mTime(a)-mTime(b));
   $("#mdesc").textContent=g.d+"（共 "+list.length+" 組）";
   const box=$("#mgrid");box.innerHTML="";
   list.forEach(m=>{const ds=menuDishes(m);
     const b=document.createElement("button");b.type="button";b.className="mcard";b.appendChild(collage(m,560));
-    b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who">'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(m.t)+' 分鐘</span><span>'+esc(LEVEL_NAME[menuLv(m)])+'</span></div></div>');
+    b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who">'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(mTime(m))+' 分鐘</span><span>'+esc(LEVEL_NAME[menuLv(m)])+'</span></div></div>');
     b.onclick=()=>openMenu(m);box.appendChild(b)});
 }
 function menuShop(m){
@@ -2293,7 +2401,7 @@ function openMenu(m){
   const total=shop.ing.length+shop.sea.length;
   sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(m.n)+'</span><a class="btn line" href="#shopBox" id="toShop">'+ICON.cart+'買菜清單</a></div></div>'+
    '<div class="wrap"><div class="r-head"><div><span class="crumb">新手菜單・'+esc(g.n)+'</span><h1 id="dTitle">'+esc(m.n)+'</h1><p class="desc">'+esc(m.d)+'</p>'+
-     '<div class="facts"><div><span>菜色</span><b>'+(m.rice?'白飯＋':'')+ds.length+' 道</b></div><div><span>'+(m.days?'每天大約':'大約')+'</span><b>'+esc(m.t)+' 分鐘</b></div><div><span>適合</span><b>'+esc(m.who.split("・")[0])+'</b></div></div>'+
+     '<div class="facts"><div><span>菜色</span><b>'+(m.rice?'白飯＋':'')+ds.length+' 道</b></div><div><span>'+(m.days?'每天大約':'大約')+'</span><b>'+esc(mTime(m))+' 分鐘</b></div><div><span>適合</span><b>'+esc(m.who.split("・")[0])+'</b></div></div>'+
    '</div><div class="r-img" id="mImg"></div></div>'+
    '<div class="r-body m-body"><aside class="side"><div class="box" id="shopBox"><div class="box-head"><h2>買菜清單</h2><span class="count" id="prog">0 / '+total+'</span></div>'+
      '<div class="legend"><span><span class="tag S">一般超市</span>Woolworths、Coles、ALDI</span><span><span class="tag A">亞洲超市</span>Asian grocery</span></div>'+
@@ -2302,7 +2410,7 @@ function openMenu(m){
    '<div class="main">'+
      (m.days?'<section><div class="steps-head"><div><h2>這週的菜</h2><p>每天配一碗白飯。點菜名看詳細做法。</p></div></div><div class="days">'+m.days.map(d=>'<div class="day"><span class="dl">'+esc(d.l)+'</span><div class="m-dishes">'+d.dishes.map(id=>dishBtn(byId[id])).join("")+'</div></div>').join("")+'</div>'+riceLine+'</section>'
             :'<section><div class="steps-head"><div><h2>這一餐的菜</h2><p>點菜名看詳細做法和步驟。</p></div></div><div class="m-dishes">'+ds.map(dishBtn).join("")+'</div>'+riceLine+'</section>')+
-     '<section><div class="steps-head"><div><h2>'+(m.days?'怎麼安排這一週':'做菜順序')+'</h2><p>'+(m.days?'照這個順序，食材不會放到壞。':'照這個順序做，每道菜都能熱熱的一起上桌。')+'</p></div></div><ol class="flow">'+m.flow.map(x=>'<li><span>'+esc(x)+'</span></li>').join("")+'</ol></section>'+
+     '<section><div class="steps-head"><div><h2>'+(m.days?'怎麼安排這一週':'做菜順序')+'</h2><p>'+(m.days?'照這個順序，食材不會放到壞。':'照這個順序做，每道菜都能熱熱的一起上桌。')+'</p></div></div><ol class="flow">'+mFlow(m).map(x=>'<li><span>'+esc(x)+'</span></li>').join("")+'</ol></section>'+
      (m.tips&&m.tips.length?'<section class="mtips"><h2>'+ICON.bulb+'小提醒</h2><ul>'+m.tips.map(t=>'<li>'+esc(t)+'</li>').join("")+'</ul></section>':'')+
    '</div></div></div>';
   const im=$("#mImg");const cg=collage(m,1200);cg.style.borderRadius="18px";cg.style.aspectRatio="4/3";im.appendChild(cg);
