@@ -1,5 +1,5 @@
 // 食材料理簿：離線快取（網頁先用網路、沒網路用快取；照片與字型用快取）
-const V="shicai-v1790781221";
+const V="shicai-v1790781321";
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(["./","./index.html","./photos/hero.webp","./icon-192.png"])).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{
