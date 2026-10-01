@@ -197,6 +197,21 @@ img{max-width:100%;display:block}
 .r-img .collage img,.r-img .collage canvas{aspect-ratio:auto;border-radius:0}
 .checklist .use{grid-column:2/4;font-size:12px;color:var(--muted);margin-top:-2px}
 
+/* 料理類型 */
+:root{--c-tw:#2f6b4f;--c-cn:#b8452e;--c-jp:#7a4b8f;--c-kr:#c0602b;--c-west:#2c6390;--c-sea:#5f8a1f}
+:root[data-theme="dark"]{--c-tw:#7fbf9c;--c-cn:#ec8f78;--c-jp:#c6a0dc;--c-kr:#efa070;--c-west:#8ebde6;--c-sea:#b2d46e}
+.c-tw{--cc:var(--c-tw)}.c-cn{--cc:var(--c-cn)}.c-jp{--cc:var(--c-jp)}.c-kr{--cc:var(--c-kr)}.c-west{--cc:var(--c-west)}.c-sea{--cc:var(--c-sea)}
+.ctabs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.cbtn{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 6px;font-size:15.5px;font-weight:700;cursor:pointer;color:var(--ink);position:relative}
+.cbtn i{width:10px;height:10px;border-radius:50%;background:var(--cc);display:block;margin-bottom:2px}
+.cbtn span{font-size:12px;font-weight:500;color:var(--muted)}
+.cbtn:hover{border-color:var(--cc,var(--brand))}
+.cbtn[aria-pressed="true"]{border-color:var(--cc,var(--ink));box-shadow:inset 0 0 0 1px var(--cc,var(--ink));background:color-mix(in srgb,var(--cc,var(--ink)) 8%,var(--card))}
+.cdesc{color:var(--muted);font-size:14.5px;margin:12px 0 14px}
+.ctag{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--cc);border-radius:6px;padding:0 7px;margin-right:6px;line-height:1.7;vertical-align:1px}
+:root[data-theme="dark"] .ctag{color:#111}
+.ctag.onph{position:absolute;right:10px;top:10px;margin:0;box-shadow:var(--shadow)}
+
 /* 菜單依難度 */
 .mtabs .lvb{display:inline-flex;align-items:center;gap:6px}
 .lvn{width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:grid;place-items:center;color:#fff}
@@ -480,6 +495,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .lessons{grid-template-columns:repeat(3,minmax(0,1fr))}
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctabs{grid-template-columns:repeat(4,minmax(0,1fr))}
   .ssteps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .au-tools{grid-template-columns:minmax(0,1fr)}
   .favs .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -530,6 +546,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .ing b{font-size:14px}
   .ing span{font-size:11px}
   .tips{grid-template-columns:minmax(0,1fr)}
+  .ctabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .cbtn{padding:9px 4px;font-size:14px}
   .mtabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:2px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .mtabs::-webkit-scrollbar{display:none}
   .mtabs .fbtn{flex:none}
@@ -601,6 +619,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 <section class="sec soft" id="menus">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">新手菜單</span><h2 id="mTitle">新手菜單，從簡單排到困難</h2><p>從只要十分鐘的炒蛋開始，一步步做到三菜一湯。挑一組照著做就好，每一組都有合併好的買菜清單和做菜順序。</p></div></div>
+    <div class="ctabs" id="ctabs" role="group" aria-label="依料理類型篩選"></div>
+    <p class="cdesc" id="cdesc"></p>
     <div class="mtabs" id="mtabs" role="group" aria-label="依難度篩選"></div>
     <div id="mgroups"></div>
   </div>
@@ -2265,7 +2285,426 @@ const START_GUIDES=[
  ]]
 ];
 
-const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}, "rice": {"credit": "攝影 Pille R. Priske／Unsplash", "url": "https://unsplash.com/photos/rice-in-bowl-xmuIgjuQG0M", "src": "photos/rice.webp"}};
+// ===== 新增料理：韓式、西式、泰式・東南亞 =====
+RECIPES.push(
+// ---------- 韓式 ----------
+{id:"kr-spinach",n:"韓式涼拌菠菜",k:["菠菜"],lv:1,t:10,s:2,
+ d:"燙一下、拌一拌，韓國餐桌上最常見的小菜。",
+ ing:[["嫩菠菜（baby spinach）","1 袋（約 280g）"],["蒜頭","1 瓣"]],
+ sea:[["鹽","1/4 小匙"],["醬油","1 小匙"],["香油","1 小匙"],["白芝麻","1 小匙"]],
+ tools:["湯鍋","濾網","大碗"],
+ steps:["水煮滾，菠菜燙 30 秒。","撈起泡冷水。","擠乾水分。","加蒜泥、鹽、醬油、香油、芝麻拌勻。"],
+ fail:["燙太久會爛、變黑，30 秒就夠。","一定要擠乾，不然調味會被水沖淡。"],
+ sk:["汆燙","涼拌"],art:{v:"plate",st:"glazed",c:["#2f6b2a","#4f8f3a","#e8e0c8"]}},
+{id:"kr-steamed-egg",n:"韓式蒸蛋（鍋子版）",k:["雞蛋"],lv:2,t:15,s:2,
+ d:"在小鍋裡蒸到膨起來，軟綿綿像雲一樣，韓式烤肉店的招牌小菜。",
+ ing:[["雞蛋","3 顆"],["蔥","1 根"]],
+ sea:[["水","150 ml"],["鹽","1/4 小匙"],["魚露或醬油","1/2 小匙"],["香油","幾滴"]],
+ tools:["有蓋小湯鍋","打蛋用的碗"],
+ steps:["蛋加鹽打散。","小鍋煮水滾，倒入蛋液。","小火一直攪拌到半凝固。","蓋上鍋蓋，最小火燜 3 分鐘。"],
+ fail:["倒蛋液後要一直攪拌，底部才不會燒焦。","最後蓋鍋蓋用最小火，蛋才會膨起來。"],
+ sk:["控制火候","燜"],art:{v:"bowl",st:"rice",c:["#f2d36b","#e8c450","#6ea34a"]}},
+{id:"kr-pancake",n:"韓式蔬菜煎餅",k:["櫛瓜","紅蘿蔔","洋蔥"],lv:2,t:20,s:2,
+ d:"把冰箱剩下的蔬菜切絲，加麵糊煎成一大片，外脆內軟。",
+ ing:[["櫛瓜","1/2 條"],["紅蘿蔔","1/3 根"],["洋蔥","1/4 顆"],["蔥","2 根"],["麵粉","100g（約 3/4 杯）"],["雞蛋","1 顆"]],
+ sea:[["冰水","150 ml"],["鹽","1/4 小匙"],["食用油","3 大匙"],["沾醬：醬油","1 大匙"],["沾醬：白醋","1 小匙"]],
+ tools:["平底鍋","大碗","鍋鏟"],
+ steps:["蔬菜切絲。","麵粉、蛋、冰水、鹽拌成麵糊。","拌入蔬菜。","平底鍋多放點油，倒入攤平。","兩面煎到金黃。","切塊沾醬吃。"],
+ fail:["用冰水調麵糊，煎出來比較脆。","油要多一點，邊緣才會酥。","第一面煎到底部金黃再翻，太早翻會散掉。"],
+ sk:["調麵糊","煎"],art:{v:"plate",st:"glazed",c:["#d9a441","#6ea34a","#c8782a"]}},
+{id:"kr-potato",n:"韓式醬燒馬鈴薯",k:["馬鈴薯"],lv:2,t:25,s:3,
+ d:"甜甜鹹鹹、亮亮的小馬鈴薯，冷了也好吃，很適合帶便當。",
+ ing:[["馬鈴薯","2 顆（約 400g）"],["蒜頭","2 瓣"]],
+ sea:[["醬油","3 大匙"],["糖","1.5 大匙"],["水","250 ml"],["食用油","1 大匙"],["香油","1 小匙"],["白芝麻","少許"]],
+ tools:["平底鍋（有鍋蓋）","碗"],
+ steps:["馬鈴薯切丁泡水。","下油炒到表面微透明。","加醬油、糖、水煮滾。","蓋鍋中小火燜 10 分鐘。","開蓋收汁。","淋香油撒芝麻。"],
+ fail:["切好的馬鈴薯泡水洗掉澱粉，比較不會黏鍋。","收汁時要一直翻動，糖很容易焦。"],
+ sk:["燜煮","收汁"],art:{v:"plate",st:"glazed",c:["#b8792a","#d9a441","#5a3a1a"]}},
+{id:"kr-spicy-pork",n:"韓式辣炒豬肉",k:["豬肉","洋蔥"],lv:2,t:25,s:2,
+ d:"韓國家常的「제육볶음」，甜辣的醬汁配白飯一下就吃完。",
+ ing:[["豬肉片（梅花或五花）","300g"],["洋蔥","1/2 顆"],["蔥","2 根"],["蒜頭","3 瓣"]],
+ sea:[["韓式辣椒醬","1.5 大匙"],["韓國辣椒粉","1 小匙（可省）"],["醬油","1 大匙"],["糖","1 大匙"],["米酒","1 大匙"],["香油","1 小匙"],["食用油","1 大匙"]],
+ tools:["炒鍋","大碗"],
+ steps:["醬料調好，和豬肉抓勻醃 10 分鐘。","熱鍋炒洋蔥。","下豬肉大火炒到熟。","加蔥段炒勻。"],
+ fail:["醬裡有糖，火太大容易焦，豬肉下鍋後中大火就好。","豬肉一定要炒到完全沒有粉紅色。"],
+ sk:["醃肉","快炒"],art:{v:"plate",st:"glazed",c:["#b8452e","#e06a3a","#6ea34a"]}},
+{id:"kr-kimchi-stew",n:"泡菜豆腐鍋",k:["豆腐","豬肉"],lv:2,t:30,s:2,
+ d:"用超市買的現成泡菜就能做，酸辣暖胃，冬天最適合。",
+ ing:[["韓式泡菜（kimchi）","200g"],["五花肉片","150g"],["嫩豆腐","1 盒"],["洋蔥","1/4 顆"],["蔥","1 根"]],
+ sea:[["韓國辣椒粉","1 小匙"],["醬油","1 小匙"],["糖","1/2 小匙"],["水","500 ml"],["香油","1 小匙"]],
+ tools:["湯鍋","湯勺"],
+ steps:["香油炒五花肉。","加泡菜炒 3 分鐘。","加水和調味煮滾。","放豆腐、洋蔥煮 10 分鐘。","撒蔥花。"],
+ fail:["泡菜先炒過再加水，湯才會香。","放越久的酸泡菜越好吃，剛買的可以多加一點糖平衡。"],
+ sk:["炒香","燉煮"],art:{v:"bowl",st:"rice",c:["#c8452e","#f2e6d0","#6ea34a"]}},
+{id:"kr-bibimbap",n:"韓式拌飯",k:["菠菜","紅蘿蔔","櫛瓜","雞蛋","牛肉"],lv:3,t:40,s:2,
+ d:"白飯上排滿各種蔬菜、肉末和荷包蛋，加辣醬拌一拌，一碗就很營養。",
+ ing:[["白飯","2 碗"],["牛絞肉","150g"],["嫩菠菜","1 把"],["紅蘿蔔","1/2 根"],["櫛瓜","1/2 條"],["豆芽菜","1 把"],["雞蛋","2 顆"]],
+ sea:[["韓式辣椒醬","2 大匙"],["醬油","1.5 大匙"],["糖","1 小匙"],["香油","2 大匙"],["蒜頭","2 瓣"],["鹽","少許"],["白芝麻","少許"]],
+ tools:["平底鍋","湯鍋","碗數個"],
+ steps:["燙菠菜和豆芽，各自調味。","炒紅蘿蔔絲、櫛瓜絲。","炒牛絞肉。","煎荷包蛋。","白飯鋪上所有配料，加辣醬拌勻。"],
+ fail:["配料可以一樣一樣用同一個鍋炒，順序從顏色淺的開始，不用洗鍋。","辣醬加一點香油和糖調開，比較好拌。"],
+ sk:["汆燙","分次炒","擺盤"],art:{v:"bowl",st:"rice",c:["#c8452e","#2f6b2a","#f2d36b"]}},
+// ---------- 西式 ----------
+{id:"toast-egg",n:"炒蛋吐司（澳式早餐）",k:["雞蛋"],lv:1,t:10,s:1,
+ d:"澳洲咖啡廳最常見的早餐，滑嫩的奶油炒蛋放在烤吐司上。",
+ ing:[["雞蛋","3 顆"],["吐司或酸種麵包","2 片"],["奶油","15g"]],
+ sea:[["牛奶","2 大匙"],["鹽","少許"],["黑胡椒","少許"]],
+ tools:["平底鍋（不沾）","矽膠鍋鏟","烤麵包機或平底鍋"],
+ steps:["蛋加牛奶、鹽打散。","烤吐司。","小火融奶油，倒蛋液慢慢推。","半熟就關火，用餘溫炒到滑嫩。"],
+ fail:["一定要小火，大火會炒成一粒一粒乾乾的。","看起來還有點濕就關火，餘溫會繼續把蛋煮熟。"],
+ sk:["小火慢炒","餘溫"],art:{v:"plate",st:"glazed",c:["#f2d36b","#c8902a","#e8e0c8"]}},
+{id:"aglio",n:"蒜香橄欖油義大利麵",k:["義大利麵"],lv:1,t:15,s:2,
+ d:"只要義大利麵、蒜頭和橄欖油，十五分鐘就能完成的經典義大利麵。",
+ ing:[["義大利麵（spaghetti）","200g"],["蒜頭","5 瓣"],["乾辣椒或辣椒片","少許"],["巴西里（可省）","少許"]],
+ sea:[["橄欖油","4 大匙"],["鹽（煮麵用）","1 大匙"],["帕瑪森起司（可省）","少許"]],
+ tools:["湯鍋","平底鍋","夾子"],
+ steps:["大鍋水加鹽煮麵。","小火用橄欖油煎蒜片。","麵撈進平底鍋，加一勺煮麵水。","快速拌勻讓醬汁變濃。"],
+ fail:["煮麵水要夠鹹（像淡海水），麵才有味道。","蒜片用小火慢慢煎，變金黃就好，焦了會苦。","煮麵水裡的澱粉會讓油和水融合，不要全倒掉。"],
+ sk:["煮義大利麵","乳化醬汁"],art:{v:"plate",st:"glazed",c:["#e8d08a","#c8a050","#6ea34a"]}},
+{id:"bolognese",n:"義大利肉醬麵",k:["牛肉","洋蔥","紅蘿蔔","番茄","義大利麵"],lv:2,t:45,s:4,
+ d:"牛絞肉加番茄慢慢燉成肉醬，一次做一大鍋，可以冷凍好幾餐。",
+ ing:[["牛絞肉（beef mince）","500g"],["洋蔥","1 顆"],["紅蘿蔔","1 根"],["蒜頭","3 瓣"],["番茄罐頭（切丁或 passata）","1 罐（400g）"],["義大利麵","400g"]],
+ sea:[["番茄糊（tomato paste）","2 大匙"],["橄欖油","2 大匙"],["鹽","1 小匙"],["黑胡椒","少許"],["糖","1 小匙"],["水","200 ml"],["帕瑪森起司（可省）","少許"]],
+ tools:["深鍋或厚底鍋","湯鍋","木鏟"],
+ steps:["洋蔥、紅蘿蔔、蒜切碎炒軟。","下牛絞肉炒到變色。","加番茄糊炒 1 分鐘。","加番茄罐頭和水，小火燉 25 分鐘。","煮麵，淋上肉醬。"],
+ fail:["絞肉要炒到水分收乾、有點焦香，肉醬才香。","燉的時候要偶爾攪拌鍋底，避免黏鍋。"],
+ sk:["炒香蔬菜","慢燉"],art:{v:"plate",st:"glazed",c:["#a83a22","#d06a3a","#e8d08a"]}},
+{id:"roast-chicken",n:"烤雞腿配蔬菜",k:["雞肉","馬鈴薯","紅蘿蔔","洋蔥"],lv:2,t:55,s:3,
+ d:"雞腿和蔬菜放在同一個烤盤，丟進烤箱就不用管，澳洲家庭的週末晚餐。",
+ ing:[["帶骨雞腿（thigh cutlets 或 drumsticks）","6 支"],["馬鈴薯","3 顆"],["紅蘿蔔","2 根"],["洋蔥","1 顆"],["蒜頭","4 瓣"]],
+ sea:[["橄欖油","3 大匙"],["鹽","1.5 小匙"],["黑胡椒","1 小匙"],["乾燥香草（mixed herbs）","1 小匙"],["檸檬（可省）","1/2 顆"]],
+ tools:["烤箱","烤盤","烘焙紙"],
+ steps:["烤箱預熱 200°C。","蔬菜切塊鋪烤盤。","雞腿抹油和調味放上面。","烤 40–45 分鐘。","檢查熟度。"],
+ fail:["雞皮朝上、蔬菜不要疊太厚，才會烤得金黃。","旋風烤箱（fan-forced）溫度設 180°C 就好。","用刀戳最厚的地方，流出清澈的汁才算熟。"],
+ sk:["烤箱料理","判斷熟度"],art:{v:"plate",st:"glazed",c:["#b8792a","#d9a441","#6ea34a"]}},
+{id:"mushroom-chicken",n:"奶油蘑菇雞",k:["雞肉"],lv:3,t:30,s:2,
+ d:"煎得金黃的雞腿排，淋上濃濃的奶油蘑菇醬，配飯配麵都好吃。",
+ ing:[["去骨雞腿","2 片"],["蘑菇","200g"],["洋蔥","1/4 顆"],["蒜頭","2 瓣"]],
+ sea:[["鮮奶油（thickened cream）","150 ml"],["奶油","15g"],["雞高湯或水","100 ml"],["鹽","1 小匙"],["黑胡椒","少許"],["食用油","1 大匙"]],
+ tools:["平底鍋","鍋鏟"],
+ steps:["雞腿調味，皮朝下煎到金黃翻面煎熟，盛起。","同鍋炒蘑菇、洋蔥、蒜。","加高湯和鮮奶油煮濃。","雞肉放回去裹醬。"],
+ fail:["雞肉先煎熟再盛起，不然放回醬汁裡煮太久會變柴。","鮮奶油用中小火煮，大火容易油水分離。"],
+ sk:["煎雞皮","做奶油醬"],art:{v:"plate",st:"glazed",c:["#e8dcc0","#b8792a","#6ea34a"]}},
+// ---------- 泰式・東南亞 ----------
+{id:"krapow",n:"打拋豬飯",k:["豬肉"],lv:2,t:15,s:2,
+ d:"泰國街頭最常見的快餐，豬絞肉炒九層塔，加一顆荷包蛋蓋在飯上。",
+ ing:[["豬絞肉","300g"],["九層塔（泰國羅勒）","1 大把"],["蒜頭","4 瓣"],["辣椒","1–2 根"],["雞蛋","2 顆"]],
+ sea:[["魚露","1 大匙"],["蠔油","1 大匙"],["醬油","1 小匙"],["糖","1 小匙"],["水","2 大匙"],["食用油","3 大匙"]],
+ tools:["炒鍋","平底鍋"],
+ steps:["先煎荷包蛋盛起。","爆香蒜和辣椒。","大火炒絞肉到乾。","加調味料炒勻。","關火放九層塔。"],
+ fail:["絞肉要炒到乾乾的、有點焦香，才是泰式的味道。","九層塔最後關火才放，用餘溫炒軟就好。"],
+ sk:["快炒","煎荷包蛋"],art:{v:"plate",st:"glazed",c:["#8a4a1f","#2f6b2a","#f2d36b"]}},
+{id:"thai-fried-rice",n:"泰式炒飯",k:["雞蛋","洋蔥"],lv:2,t:15,s:2,
+ d:"用冷凍白飯最好炒，加魚露和萊姆汁，就有泰國的味道。",
+ ing:[["隔夜白飯或冷凍飯","2 碗"],["雞蛋","2 顆"],["洋蔥","1/2 顆"],["蒜頭","2 瓣"],["蔥","2 根"],["萊姆或檸檬","1/2 顆"],["小黃瓜（配菜）","少許"]],
+ sea:[["魚露","1.5 大匙"],["醬油","1 小匙"],["糖","1 小匙"],["食用油","2 大匙"],["白胡椒","少許"]],
+ tools:["炒鍋","鍋鏟"],
+ steps:["蛋炒到半熟盛起。","炒洋蔥和蒜。","下白飯炒散。","加調味料和蛋炒勻。","撒蔥花，擠萊姆汁。"],
+ fail:["剛煮好的飯太濕會黏成一團，用隔夜飯或冷凍飯最好炒。","冷凍飯先微波 1 分鐘退冰再下鍋。"],
+ sk:["炒飯","大火快炒"],art:{v:"plate",st:"rice",c:["#e8c450","#6ea34a","#f2e6d0"]}},
+{id:"green-curry",n:"泰式綠咖哩雞",k:["雞肉","茄子"],lv:2,t:30,s:3,
+ d:"用超市的綠咖哩醬和椰奶，二十分鐘就能煮出餐廳的味道。",
+ ing:[["去骨雞腿","400g"],["茄子或櫛瓜","1 條"],["紅椒（capsicum）","1/2 顆"],["九層塔","1 把"]],
+ sea:[["綠咖哩醬（green curry paste）","2–3 大匙"],["椰奶（coconut milk）","1 罐（400 ml）"],["魚露","1 大匙"],["糖","1 小匙"],["食用油","1 大匙"]],
+ tools:["湯鍋或深平底鍋","湯勺"],
+ steps:["咖哩醬加一點椰奶炒香。","下雞肉炒到變色。","倒入剩下的椰奶煮滾。","加蔬菜煮 10 分鐘。","調味，放九層塔。"],
+ fail:["咖哩醬要先用油和少量椰奶炒到香味出來，味道才夠。","每個牌子的咖哩醬辣度不同，第一次先放 2 大匙。"],
+ sk:["炒香咖哩醬","燉煮"],art:{v:"bowl",st:"rice",c:["#8aa83a","#f2e6d0","#c8452e"]}},
+{id:"tom-yum",n:"泰式酸辣湯",k:["蝦"],lv:2,t:25,s:3,
+ d:"酸、辣、香的冬陰功湯，用現成的湯醬做，新手也很容易成功。",
+ ing:[["鮮蝦或蝦仁","300g"],["蘑菇","150g"],["番茄","1 顆"],["洋蔥","1/4 顆"],["萊姆或檸檬","1 顆"],["香菜（可省）","少許"]],
+ sea:[["冬陰功醬（tom yum paste）","2 大匙"],["魚露","1 大匙"],["糖","1 小匙"],["水","1 公升"],["椰奶（可省）","100 ml"]],
+ tools:["湯鍋","湯勺"],
+ steps:["水煮滾加冬陰功醬。","放洋蔥、蘑菇、番茄煮 5 分鐘。","放蝦子煮到變紅。","關火擠萊姆汁調味。"],
+ fail:["蝦子變紅彎曲就熟了，煮太久會變硬。","萊姆汁關火後再擠，香味才不會跑掉。"],
+ sk:["煮湯","調酸辣"],art:{v:"bowl",st:"rice",c:["#d0602a","#f2a050","#6ea34a"]}},
+{id:"summer-rolls",n:"越南生春捲",k:["蝦","小黃瓜","紅蘿蔔"],lv:2,t:30,s:2,
+ d:"米紙包住蝦子和生菜，不用開大火，夏天吃很清爽。",
+ ing:[["米紙（rice paper）","8 張"],["米線（rice vermicelli）","50g"],["熟蝦仁","12 隻"],["生菜","4 片"],["小黃瓜","1/2 條"],["紅蘿蔔","1/2 根"],["薄荷或九層塔","少許"]],
+ sea:[["沾醬：海鮮醬（hoisin）","2 大匙"],["沾醬：花生醬","1 大匙"],["沾醬：熱水","2 大匙"]],
+ tools:["湯鍋","大盤子（泡米紙）","砧板"],
+ steps:["米線煮熟泡冷水。","蔬菜切細絲，蝦對半切。","米紙泡溫水 5 秒。","鋪料、捲起來。","調沾醬。"],
+ fail:["米紙泡水 5 秒就好，放到盤子上還會繼續變軟。","料不要放太多，捲緊一點才不會破。"],
+ sk:["備料","包捲"],art:{v:"plate",st:"glazed",c:["#f2e6d0","#e88a6a","#6ea34a"]}}
+);
+
+STEPS["kr-spinach"]={
+ prep:["菠菜用清水洗乾淨（baby spinach 可以直接用）。","蒜頭 1 瓣磨成泥或切到很碎。","準備一大碗冷水。"],
+ steps:[
+  {t:"煮滾水",d:"湯鍋裝半鍋水，加一小撮鹽，開大火煮到大滾。",h:"大火",cue:"水面冒大泡泡。"},
+  {t:"燙菠菜",d:"放入菠菜，用筷子壓進水裡。",h:"大火",time:"30 秒",sec:30,cue:"菠菜變軟、顏色變成深綠色。",tip:"燙太久會爛而且變黑。"},
+  {t:"泡冷水",d:"用濾網撈起菠菜，馬上放進冷水裡。",h:"關火",cue:"菠菜摸起來不燙。",tip:"泡冷水可以保持漂亮的綠色。"},
+  {t:"擠乾",d:"雙手捧起菠菜，用力把水擠乾，切成 4 公分長段。",h:"不開火",cue:"捏起來不會滴水。"},
+  {t:"調味拌勻",d:"菠菜放大碗，加蒜泥、鹽 1/4 小匙、醬油 1 小匙、香油 1 小匙，用手或筷子抓散拌勻，撒芝麻。",h:"不開火",cue:"每一段菠菜都沾到調味。",tip:"可以冷藏 2 天，當便當配菜。"}
+ ]};
+STEPS["kr-steamed-egg"]={
+ prep:["雞蛋 3 顆打進碗裡，加鹽 1/4 小匙、魚露（或醬油）1/2 小匙，打散。","蔥切成蔥花。","準備 150 ml 的水。"],
+ steps:[
+  {t:"煮水",d:"小湯鍋放 150 ml 水，開中火煮到滾。",h:"中火",cue:"水冒大泡泡。"},
+  {t:"倒入蛋液",d:"轉小火，把蛋液倒進滾水裡。",h:"小火",cue:"蛋液接觸熱水開始變白。"},
+  {t:"一直攪拌",d:"用湯匙或筷子不停攪拌，記得刮鍋底。",h:"小火",time:"1–2 分鐘",sec:90,cue:"蛋變成像稀稀的炒蛋，大約一半凝固。",tip:"不攪拌底部會燒焦。"},
+  {t:"撒蔥花、蓋鍋蓋",d:"撒上一半的蔥花，蓋上鍋蓋，轉到最小火。",h:"小火",time:"3 分鐘",sec:180,cue:"打開鍋蓋，蛋膨起來、表面凝固。",tip:"中途不要打開鍋蓋，蒸氣跑掉就不會膨。"},
+  {t:"完成",d:"關火，滴幾滴香油、撒剩下的蔥花，連鍋端上桌。",h:"關火",cue:"蛋軟綿綿的，用湯匙挖會有彈性。",tip:"蛋膨起來後很快會塌下去，趁熱吃。"}
+ ]};
+STEPS["kr-pancake"]={
+ prep:["櫛瓜、紅蘿蔔、洋蔥切細絲，蔥切 4 公分長段。","大碗放麵粉 100g、雞蛋 1 顆、鹽 1/4 小匙，倒入冰水 150 ml 攪拌到沒有粉粒。","沾醬：醬油 1 大匙＋白醋 1 小匙，可以加一點辣椒粉。"],
+ steps:[
+  {t:"拌入蔬菜",d:"把所有蔬菜放進麵糊裡拌勻。",h:"不開火",cue:"每條蔬菜都沾到薄薄的麵糊，麵糊不會太稀。"},
+  {t:"熱油",d:"平底鍋放 2 大匙油，中火加熱 1 分鐘。",h:"中火",cue:"油面出現波紋。"},
+  {t:"倒入攤平",d:"倒入一半的蔬菜麵糊，用鍋鏟攤平成一個大圓餅，越薄越脆。",h:"中火",cue:"邊緣開始冒泡、變得有點透明。"},
+  {t:"煎第一面",d:"不要動它，讓底部煎到金黃。",h:"中火",time:"3–4 分鐘",sec:210,cue:"搖一搖鍋子，煎餅會整片滑動，邊緣金黃。",tip:"太早翻會散掉。"},
+  {t:"翻面",d:"用鍋鏟翻面，沿鍋邊再加 1 大匙油，壓一壓繼續煎。",h:"中火",time:"3 分鐘",sec:180,cue:"兩面都金黃、按壓中間有彈性。"},
+  {t:"切塊上桌",d:"盛到砧板上切成小塊，沾醬吃。剩下的麵糊用一樣的方法煎第二片。",h:"關火",cue:"外皮酥脆，裡面軟。"}
+ ]};
+STEPS["kr-potato"]={
+ prep:["馬鈴薯削皮，切成 2 公分小丁，泡冷水 5 分鐘後瀝乾。","蒜頭切片。","醬汁：醬油 3 大匙＋糖 1.5 大匙＋水 250 ml 攪勻。"],
+ steps:[
+  {t:"炒馬鈴薯",d:"平底鍋放 1 大匙油，中火炒馬鈴薯丁和蒜片。",h:"中火",time:"3 分鐘",sec:180,cue:"馬鈴薯表面變得有點透明。"},
+  {t:"加醬汁煮滾",d:"倒入醬汁，轉大火煮滾。",h:"大火",cue:"醬汁冒大泡泡。"},
+  {t:"蓋鍋燜煮",d:"蓋上鍋蓋，轉中小火燜。",h:"中小火",time:"10 分鐘",sec:600,cue:"筷子可以輕鬆戳進馬鈴薯。",tip:"中間打開翻一次。"},
+  {t:"開蓋收汁",d:"打開鍋蓋，轉中火，一邊翻動一邊讓醬汁收乾。",h:"中火",time:"3–5 分鐘",sec:240,cue:"醬汁變得濃稠，馬鈴薯表面亮亮的。",tip:"糖很容易焦，最後一定要一直翻。"},
+  {t:"完成",d:"關火，淋香油 1 小匙、撒白芝麻拌勻。",h:"關火",cue:"每塊馬鈴薯都裹著醬汁、亮亮的。"}
+ ]};
+STEPS["kr-spicy-pork"]={
+ prep:["豬肉片切成一口大小。","洋蔥切粗絲，蔥切段，蒜頭切末。","醃醬：韓式辣椒醬 1.5 大匙、辣椒粉 1 小匙、醬油 1 大匙、糖 1 大匙、米酒 1 大匙、蒜末，攪勻。"],
+ steps:[
+  {t:"醃豬肉",d:"豬肉放進醬料裡，用手抓勻。",h:"不開火",time:"10 分鐘",sec:600,cue:"每片肉都沾滿紅色的醬。"},
+  {t:"炒洋蔥",d:"炒鍋放 1 大匙油，中火炒洋蔥。",h:"中火",time:"2 分鐘",sec:120,cue:"洋蔥邊緣變透明。"},
+  {t:"下豬肉",d:"放入醃好的豬肉（連醬一起），轉中大火翻炒。",h:"中大火",time:"5 分鐘",sec:300,cue:"豬肉完全變色，沒有粉紅色。",tip:"醬有糖容易焦，一直翻動。"},
+  {t:"加蔥段",d:"放入蔥段，淋香油 1 小匙，再炒 30 秒。",h:"中大火",cue:"蔥變軟、香味出來。"},
+  {t:"盛盤",d:"關火盛盤，配白飯或生菜包著吃。",h:"關火",cue:"醬汁濃稠、包在肉上。"}
+ ]};
+STEPS["kr-kimchi-stew"]={
+ prep:["泡菜切小段（連泡菜汁一起留著）。","五花肉片切成 3 公分。","豆腐切厚片，洋蔥切絲，蔥切蔥花。"],
+ steps:[
+  {t:"炒五花肉",d:"湯鍋放香油 1 小匙，中火炒五花肉。",h:"中火",time:"2 分鐘",sec:120,cue:"肉變色、出一點油。"},
+  {t:"炒泡菜",d:"放入泡菜，和肉一起炒。",h:"中火",time:"3 分鐘",sec:180,cue:"泡菜變軟，有酸香味。",tip:"泡菜先炒過湯才會香。"},
+  {t:"加水煮滾",d:"倒入水 500 ml、泡菜汁、辣椒粉 1 小匙、醬油 1 小匙、糖 1/2 小匙，蓋上鍋蓋大火煮滾。",h:"大火",cue:"湯變紅色、冒大泡泡。"},
+  {t:"放豆腐和洋蔥",d:"放入洋蔥和豆腐，轉中小火煮。",h:"中小火",time:"10 分鐘",sec:600,cue:"豆腐吸了湯變成淡紅色。",tip:"豆腐用湯勺輕輕推，不要攪拌，比較不會碎。"},
+  {t:"試味道",d:"舀一口湯試試看，太酸加一點糖，太淡加一點醬油。",h:"中小火",cue:"酸、辣、鹹平衡。"},
+  {t:"上桌",d:"撒蔥花，連鍋端上桌，配白飯。",h:"關火",cue:"熱騰騰的紅色湯。"}
+ ]};
+STEPS["kr-bibimbap"]={
+ prep:["紅蘿蔔、櫛瓜切細絲，蒜頭磨泥。","牛絞肉加醬油 1 大匙、糖 1 小匙、蒜泥一半、香油 1 小匙拌勻。","拌飯醬：韓式辣椒醬 2 大匙＋香油 1 大匙＋糖 1 小匙＋水 1 大匙，攪勻。","白飯 2 碗準備好（熱的或微波冷凍飯）。"],
+ steps:[
+  {t:"燙菠菜和豆芽",d:"湯鍋水煮滾，豆芽菜燙 1 分鐘撈起，再放菠菜燙 30 秒撈起，都泡冷水擠乾。",h:"大火",time:"2 分鐘",sec:90,cue:"豆芽變軟一點，菠菜變深綠色。"},
+  {t:"調味蔬菜",d:"菠菜和豆芽分開，各加一點鹽、香油、剩下的蒜泥拌勻。",h:"不開火",cue:"兩盤蔬菜都有淡淡的鹹味。"},
+  {t:"炒紅蘿蔔和櫛瓜",d:"平底鍋放一點油，中火先炒紅蘿蔔絲 1 分鐘、撒一點鹽盛起；再炒櫛瓜絲 1 分鐘盛起。",h:"中火",time:"2 分鐘",sec:120,cue:"蔬菜變軟但還有一點脆。",tip:"同一個鍋子不用洗，顏色淺的先炒。"},
+  {t:"炒牛絞肉",d:"同一個鍋子放入醃好的牛絞肉，中大火炒散炒熟。",h:"中大火",time:"3 分鐘",sec:180,cue:"肉完全變色、水分收乾。"},
+  {t:"煎荷包蛋",d:"鍋子擦一下，加一點油，中火打入雞蛋，煎到蛋白凝固、蛋黃還軟。",h:"中火",time:"2–3 分鐘",sec:150,cue:"蛋白邊緣微焦、蛋黃會晃動。"},
+  {t:"擺碗拌勻",d:"白飯放碗裡，上面一區一區排好菠菜、豆芽、紅蘿蔔、櫛瓜、牛肉，中間放荷包蛋，撒芝麻。吃之前加拌飯醬，全部拌勻。",h:"不開火",cue:"每一口都有菜、有肉、有醬。"}
+ ]};
+STEPS["toast-egg"]={
+ prep:["雞蛋 3 顆打進碗裡，加牛奶 2 大匙和一小撮鹽，打到蛋白蛋黃完全混合。","吐司準備好。"],
+ steps:[
+  {t:"烤吐司",d:"吐司放進烤麵包機烤到金黃，或用乾的平底鍋兩面各烤 1 分鐘，抹一點奶油。",h:"中火",time:"2 分鐘",sec:120,cue:"吐司表面金黃酥脆。"},
+  {t:"融化奶油",d:"不沾平底鍋轉小火，放奶油 15g，讓它慢慢融化。",h:"小火",cue:"奶油融化冒小泡泡，但沒有變黃。"},
+  {t:"倒入蛋液",d:"倒入蛋液，等 10 秒，用矽膠鍋鏟從鍋邊往中間慢慢推。",h:"小火",cue:"推過的地方出現大片柔軟的蛋。"},
+  {t:"慢慢推",d:"每隔幾秒推一次，一直重複。",h:"小火",time:"2–3 分鐘",sec:150,cue:"蛋大部分凝固，看起來還有點濕濕亮亮的。",tip:"火不要開大，炒蛋才會滑嫩。"},
+  {t:"關火用餘溫",d:"關火，再推兩三下，讓鍋子的餘溫把蛋炒熟。",h:"關火",cue:"蛋軟軟的、像奶油一樣，沒有一粒一粒。"},
+  {t:"放上吐司",d:"把炒蛋放在吐司上，撒黑胡椒，可以加番茄或酪梨。",h:"關火",cue:"澳洲咖啡廳的早餐完成。"}
+ ]};
+STEPS["aglio"]={
+ prep:["蒜頭切薄片，辣椒切碎（不吃辣可省）。","湯鍋裝 2 公升水準備煮麵。"],
+ steps:[
+  {t:"煮麵水",d:"湯鍋的水煮滾，加鹽 1 大匙。",h:"大火",cue:"水大滾，嚐起來像淡淡的海水。"},
+  {t:"煮麵",d:"放入義大利麵，用夾子攪一下避免黏在一起。依包裝時間少 1 分鐘。",h:"大火",time:"約 8 分鐘",sec:480,cue:"咬開中間還有一點點白色的芯。",tip:"還要在平底鍋裡拌，所以少煮 1 分鐘。"},
+  {t:"煎蒜片",d:"煮麵的同時，平底鍋放橄欖油 4 大匙和蒜片，開小火慢慢煎。",h:"小火",time:"3–4 分鐘",sec:210,cue:"蒜片邊緣變淡金黃、很香。",tip:"蒜片焦了會苦，看到變色就關火。"},
+  {t:"留煮麵水",d:"撈麵之前，先舀一碗煮麵水留著。",h:"大火",cue:"煮麵水看起來有點混濁（有澱粉）。"},
+  {t:"麵進平底鍋",d:"用夾子把麵直接夾進平底鍋，加辣椒和半碗煮麵水，開中火。",h:"中火",cue:"鍋裡滋滋作響。"},
+  {t:"快速拌勻",d:"用夾子快速翻拌，讓油和煮麵水混在一起變成淡淡的醬汁。太乾就再加一點煮麵水。",h:"中火",time:"1 分鐘",sec:60,cue:"麵條表面亮亮的，盤底不會有一攤油。"},
+  {t:"盛盤",d:"關火，試味道，不夠鹹加一點鹽。撒巴西里或起司。",h:"關火",cue:"蒜香濃、麵條滑順。"}
+ ]};
+STEPS["bolognese"]={
+ prep:["洋蔥、紅蘿蔔切小丁，蒜頭切末。","番茄罐頭打開備用。"],
+ steps:[
+  {t:"炒香蔬菜",d:"深鍋放橄欖油 2 大匙，中火炒洋蔥、紅蘿蔔、蒜末。",h:"中火",time:"5 分鐘",sec:300,cue:"洋蔥變透明、紅蘿蔔變軟。"},
+  {t:"炒牛絞肉",d:"放入牛絞肉，轉中大火，用木鏟壓散，一直炒。",h:"中大火",time:"6–8 分鐘",sec:420,cue:"肉完全變色，鍋裡的水分收乾，開始有焦香味。",tip:"這一步炒得越乾越香。"},
+  {t:"炒番茄糊",d:"加番茄糊 2 大匙，和肉一起炒。",h:"中火",time:"1 分鐘",sec:60,cue:"番茄糊顏色變深、黏在肉上。"},
+  {t:"加番茄罐頭燉煮",d:"倒入番茄罐頭、水 200 ml、鹽 1 小匙、糖 1 小匙，煮滾後轉小火，蓋上鍋蓋留一點縫。",h:"小火",time:"25 分鐘",sec:1500,cue:"醬汁變濃、顏色變深紅。",tip:"每 5 分鐘攪拌一次，刮一下鍋底。"},
+  {t:"煮義大利麵",d:"燉肉醬的最後 10 分鐘，另一個湯鍋煮水加鹽，依包裝時間煮麵。",h:"大火",time:"約 9 分鐘",sec:540,cue:"麵咬起來有一點彈性。"},
+  {t:"調味上桌",d:"肉醬試味道，加鹽和黑胡椒調整。麵瀝乾裝盤，淋上肉醬，撒起司。",h:"關火",cue:"肉醬濃稠，會掛在麵上。",tip:"吃不完的肉醬分裝冷凍，可以放一個月。"}
+ ]};
+STEPS["roast-chicken"]={
+ prep:["烤箱預熱 200°C（旋風烤箱 180°C）。","馬鈴薯、紅蘿蔔切大塊，洋蔥切 8 瓣，蒜頭拍扁。","雞腿用紙巾擦乾。","烤盤鋪烘焙紙。"],
+ steps:[
+  {t:"蔬菜調味",d:"蔬菜放烤盤，淋橄欖油 2 大匙、鹽 1/2 小匙、黑胡椒，用手拌勻後攤平。",h:"不開火",cue:"每塊蔬菜都亮亮的沾到油。"},
+  {t:"雞腿調味",d:"雞腿抹橄欖油 1 大匙、鹽 1 小匙、黑胡椒、香草，雞皮朝上放在蔬菜上。",h:"不開火",cue:"雞皮表面都有抹到調味。",tip:"雞皮朝上才會烤得酥。"},
+  {t:"進烤箱",d:"放進烤箱中層。",h:"烤箱 200°C",time:"40–45 分鐘",sec:2520,cue:"雞皮金黃、邊緣微焦，蔬菜邊緣有焦色。",tip:"烤到一半可以把蔬菜翻一下。"},
+  {t:"檢查熟度",d:"用刀子戳雞腿最厚、靠近骨頭的地方。",h:"關火",cue:"流出來的汁是清澈的，沒有粉紅色。",tip:"還有粉紅色就再烤 5–10 分鐘。"},
+  {t:"上桌",d:"擠一點檸檬汁，連烤盤端上桌。",h:"關火",cue:"雞皮酥、蔬菜吸滿雞油。"}
+ ]};
+STEPS["mushroom-chicken"]={
+ prep:["雞腿用紙巾擦乾，兩面撒鹽 1/2 小匙和黑胡椒。","蘑菇切片，洋蔥、蒜頭切末。"],
+ steps:[
+  {t:"煎雞皮",d:"平底鍋放 1 大匙油，中火，雞腿皮朝下放入，不要移動。",h:"中火",time:"7 分鐘",sec:420,cue:"雞皮金黃酥脆。"},
+  {t:"翻面煎熟",d:"翻面再煎。",h:"中火",time:"5 分鐘",sec:300,cue:"切開最厚的地方，沒有粉紅色。",tip:"雞肉先煎熟再盛起，放回醬汁時才不用煮太久。"},
+  {t:"盛起雞肉",d:"雞肉盛到盤子上。鍋裡留約 1 大匙油，其他倒掉。",h:"關火",cue:"鍋底有一些焦香的雞汁，不要洗掉。"},
+  {t:"炒蘑菇",d:"同一個鍋放奶油 15g，中火炒洋蔥、蒜末和蘑菇。",h:"中火",time:"4 分鐘",sec:240,cue:"蘑菇變軟、顏色變深、出水後又收乾。"},
+  {t:"加高湯和鮮奶油",d:"倒入雞高湯 100 ml，刮起鍋底的焦香，再倒入鮮奶油 150 ml，加鹽 1/2 小匙。",h:"中小火",time:"3 分鐘",sec:180,cue:"醬汁變濃，可以掛在湯匙背面。",tip:"鮮奶油用中小火，大火會油水分離。"},
+  {t:"雞肉回鍋",d:"雞肉放回鍋中，舀醬汁淋在上面，煮 1 分鐘。",h:"中小火",cue:"雞肉熱透、裹滿醬汁。"},
+  {t:"上桌",d:"切塊，配白飯、麵包或義大利麵。",h:"關火",cue:"雞皮還有一點脆，醬很濃。"}
+ ]};
+STEPS["krapow"]={
+ prep:["蒜頭和辣椒一起切碎（或用刀背拍碎）。","九層塔摘葉子。","醬汁：魚露 1 大匙、蠔油 1 大匙、醬油 1 小匙、糖 1 小匙、水 2 大匙，攪勻。"],
+ steps:[
+  {t:"煎荷包蛋",d:"平底鍋放 2 大匙油，中大火燒熱，打入雞蛋，邊緣會起泡。",h:"中大火",time:"2 分鐘",sec:120,cue:"蛋白邊緣金黃酥脆、蛋黃還是軟的。",tip:"泰式荷包蛋油多一點、火大一點，邊緣脆脆的。"},
+  {t:"爆香",d:"炒鍋放 1 大匙油，中火炒蒜和辣椒。",h:"中火",time:"30 秒",sec:30,cue:"聞到很香的蒜味，蒜沒有變黑。"},
+  {t:"炒絞肉",d:"放入豬絞肉，轉大火，壓散炒。",h:"大火",time:"4 分鐘",sec:240,cue:"肉完全變色、水分收乾、有點焦香。"},
+  {t:"加醬汁",d:"倒入醬汁，快速翻炒。",h:"大火",time:"1 分鐘",sec:60,cue:"醬汁被肉吸收，鍋底幾乎沒有湯。"},
+  {t:"放九層塔",d:"關火，放入九層塔翻炒幾下。",h:"關火",cue:"九層塔變軟、香味出來。",tip:"用餘溫炒就好，九層塔才不會變黑。"},
+  {t:"盛飯上桌",d:"白飯盛盤，旁邊放打拋豬，上面放荷包蛋。",h:"關火",cue:"戳破蛋黃拌著吃。"}
+ ]};
+STEPS["thai-fried-rice"]={
+ prep:["冷凍白飯微波 1 分鐘退冰，用手把結塊的飯撥散。","洋蔥切丁，蒜頭切末，蔥切蔥花。","調味：魚露 1.5 大匙、醬油 1 小匙、糖 1 小匙，攪勻。","雞蛋打散。"],
+ steps:[
+  {t:"炒蛋",d:"炒鍋放 1 大匙油，中大火倒入蛋液，炒到半熟盛起。",h:"中大火",time:"30 秒",sec:30,cue:"蛋凝固成大塊、還有點濕。"},
+  {t:"炒洋蔥和蒜",d:"鍋裡再加 1 大匙油，炒洋蔥丁和蒜末。",h:"中火",time:"2 分鐘",sec:120,cue:"洋蔥變透明、蒜變香。"},
+  {t:"下白飯",d:"放入白飯，轉大火，用鍋鏟壓散、翻炒。",h:"大火",time:"3 分鐘",sec:180,cue:"飯粒一粒一粒分開，開始在鍋裡跳。"},
+  {t:"調味",d:"調味料沿著鍋邊倒下去，快速翻炒。",h:"大火",cue:"每粒飯都變成淡淡的醬色。"},
+  {t:"蛋回鍋",d:"放回炒蛋、撒白胡椒，用鍋鏟切碎炒勻。",h:"大火",time:"1 分鐘",sec:60,cue:"蛋分布均勻。"},
+  {t:"盛盤",d:"關火撒蔥花，盛盤，旁邊放小黃瓜片和一塊萊姆，吃之前擠汁。",h:"關火",cue:"粒粒分明、有魚露的香味。"}
+ ]};
+STEPS["green-curry"]={
+ prep:["雞腿切一口大小。","茄子（或櫛瓜）切滾刀塊，紅椒切條。","椰奶罐頭先搖一搖再打開。"],
+ steps:[
+  {t:"炒咖哩醬",d:"湯鍋放 1 大匙油，中火炒綠咖哩醬，再加 3 大匙椰奶一起炒。",h:"中火",time:"2 分鐘",sec:120,cue:"很香，油開始從醬裡分離出來。",tip:"這一步香味最重要。"},
+  {t:"炒雞肉",d:"放入雞肉翻炒，讓每塊都沾到咖哩醬。",h:"中火",time:"3 分鐘",sec:180,cue:"雞肉表面變色。"},
+  {t:"加椰奶煮滾",d:"倒入剩下的椰奶，再加半罐水，煮滾。",h:"中大火",cue:"湯變成淡綠色、冒泡。"},
+  {t:"加蔬菜燉煮",d:"放入茄子和紅椒，轉中小火煮。",h:"中小火",time:"10 分鐘",sec:600,cue:"茄子變軟、雞肉熟透。"},
+  {t:"調味",d:"加魚露 1 大匙、糖 1 小匙，試味道。",h:"中小火",cue:"鹹、甜、辣平衡。",tip:"太辣可以多加一點椰奶。"},
+  {t:"放九層塔",d:"關火，放入九層塔攪一下，配白飯吃。",h:"關火",cue:"九層塔變軟、很香。"}
+ ]};
+STEPS["tom-yum"]={
+ prep:["蝦子剝殼、挑掉背上的黑線（買現成蝦仁更快）。","蘑菇切片，番茄切塊，洋蔥切絲。","萊姆切半。"],
+ steps:[
+  {t:"煮湯底",d:"湯鍋放水 1 公升煮滾，加入冬陰功醬攪散。",h:"大火",cue:"湯變成橘紅色、有酸辣香味。"},
+  {t:"煮蔬菜",d:"放入洋蔥、蘑菇、番茄。",h:"中火",time:"5 分鐘",sec:300,cue:"蘑菇變軟、番茄邊緣開始散開。"},
+  {t:"調味",d:"加魚露 1 大匙、糖 1 小匙。想要濃一點可以加椰奶。",h:"中火",cue:"湯有鹹味和一點甜。"},
+  {t:"放蝦子",d:"放入蝦子。",h:"中火",time:"2 分鐘",sec:120,cue:"蝦子變紅、彎成 C 字形。",tip:"彎成 O 字形就是煮太久了。"},
+  {t:"擠萊姆汁",d:"關火，擠入萊姆汁，試味道，撒香菜。",h:"關火",cue:"酸、辣、鹹都很明顯。",tip:"萊姆汁關火後再加，香味才不會跑掉。"}
+ ]};
+STEPS["summer-rolls"]={
+ prep:["小黃瓜、紅蘿蔔切細絲，生菜撕小片，薄荷摘葉子。","熟蝦仁橫切成兩半。","沾醬：海鮮醬 2 大匙＋花生醬 1 大匙＋熱水 2 大匙攪勻。","大盤子裝溫水，準備泡米紙。"],
+ steps:[
+  {t:"煮米線",d:"湯鍋水煮滾，放入米線煮熟，撈起泡冷水瀝乾。",h:"大火",time:"3 分鐘",sec:180,cue:"米線變白、變軟。"},
+  {t:"泡米紙",d:"一張米紙放進溫水裡，整張泡濕。",h:"不開火",time:"5 秒",sec:5,cue:"米紙開始變軟但還有一點硬。",tip:"放到砧板上還會繼續變軟，不要泡太久。"},
+  {t:"鋪料",d:"米紙攤在濕的砧板上，靠近自己的地方放生菜、米線、小黃瓜、紅蘿蔔、薄荷；中間放 3 片蝦（紅色那面朝下）。",h:"不開火",cue:"料排成一條，左右留 3 公分空白。",tip:"料不要放太多，比較好捲。"},
+  {t:"捲起來",d:"從靠近自己那邊捲一圈，左右往內折，再繼續往前捲緊。",h:"不開火",cue:"捲得緊緊的，從外面看得到蝦子。"},
+  {t:"重複",d:"用同樣方法捲完全部，排在盤子上，不要互相黏在一起。",h:"不開火",cue:"一個個透明的春捲。"},
+  {t:"沾醬吃",d:"配沾醬吃，最好當天吃完。",h:"不開火",cue:"清爽、有嚼勁。"}
+ ]};
+
+Object.assign(POTS,{
+ "kr-spinach":["湯鍋","湯鍋","冰塊水","",["大碗","",""]],
+ "kr-steamed-egg":["小鍋子","小鍋子","小鍋子","小鍋子","小鍋子"],
+ "kr-pancake":["大碗","平底鍋","平底鍋","平底鍋","平底鍋","砧板"],
+ "kr-potato":["平底鍋","平底鍋","平底鍋","平底鍋","平底鍋"],
+ "kr-spicy-pork":["大碗","炒鍋","炒鍋","炒鍋","炒鍋"],
+ "kr-kimchi-stew":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "kr-bibimbap":["湯鍋","大碗",["平底鍋","燙青菜的湯鍋先放著，改用平底鍋炒配料。"],["平底鍋","同一個平底鍋直接炒肉，不用洗。"],"平底鍋","大碗"],
+ "toast-egg":["平底鍋","平底鍋","平底鍋","平底鍋","平底鍋","盤子"],
+ "aglio":["湯鍋","湯鍋",["平底鍋","麵還在湯鍋裡煮，同時用平底鍋煎蒜片。"],["湯鍋","回到湯鍋舀一碗煮麵水。"],["平底鍋","麵直接夾進平底鍋裡拌。"],"平底鍋","平底鍋"],
+ "bolognese":["深鍋","深鍋","深鍋","深鍋",["湯鍋","肉醬留在深鍋小火燉，另外用湯鍋煮麵。"],"盤子"],
+ "roast-chicken":["烤盤","烤盤","烤箱","烤箱","烤盤"],
+ "mushroom-chicken":["平底鍋","平底鍋","平底鍋",["平底鍋","同一個鍋子繼續用，鍋底的焦香是醬汁的精華。"],"平底鍋","平底鍋","砧板"],
+ "krapow":["平底鍋",["炒鍋","荷包蛋先盛起來，改用炒鍋炒肉（只有一個鍋就擦一擦繼續用）。"],"炒鍋","炒鍋","炒鍋","盤子"],
+ "thai-fried-rice":["炒鍋","炒鍋","炒鍋","炒鍋","炒鍋","盤子"],
+ "green-curry":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "tom-yum":["湯鍋","湯鍋","湯鍋","湯鍋","湯鍋"],
+ "summer-rolls":["湯鍋","大盤子","砧板","砧板","盤子",""]
+});
+
+// 新材料的英文名稱和購買地點
+SHOP.push(
+ ["韓式辣椒醬","Gochujang（Korean chilli paste）","A"],["韓式泡菜","Kimchi","S"],["泡菜","Kimchi","S"],
+ ["嫩菠菜","Baby spinach","S"],["菠菜","Spinach","S"],["豆芽菜","Bean sprouts","S"],["櫛瓜","Zucchini","S"],
+ ["牛絞肉","Beef mince","S"],["義大利麵","Spaghetti","S"],["番茄罐頭","Canned diced tomatoes / passata","S"],["番茄糊","Tomato paste","S"],
+ ["橄欖油","Olive oil","S"],["帕瑪森起司","Parmesan","S"],["吐司","Sliced bread / sourdough","S"],["蘑菇","Mushrooms","S"],
+ ["乾燥香草","Mixed herbs","S"],["巴西里","Parsley","S"],["檸檬","Lemon","S"],["萊姆","Lime","S"],["紅椒","Red capsicum","S"],
+ ["蠔油","Oyster sauce","S"],["綠咖哩醬","Green curry paste","S"],["椰奶","Coconut milk","S"],["冬陰功醬","Tom yum paste","S"],
+ ["蝦仁","Prawns（peeled）","S"],["鮮蝦","Prawns","S"],["米紙","Rice paper","S"],["米線","Rice vermicelli","S"],["生菜","Lettuce","S"],
+ ["薄荷","Mint","S"],["海鮮醬","Hoisin sauce","S"],["花生醬","Peanut butter","S"],["香菜","Coriander","S"],["雞高湯","Chicken stock","S"],
+ ["豬肉片（梅花","Pork shoulder / belly slices","A"],["帶骨雞腿（thigh","Chicken thigh cutlets / drumsticks","S"],["魚露或醬油","Fish sauce / soy sauce","S"],["白飯","Cooked rice（用 Calrose 白米煮）","S"]
+);
+SHOP.sort((a,b)=>b[0].length-a[0].length);
+Object.assign(ALIASES,{
+ "菠菜":["spinach","baby spinach","波菜"],
+ "櫛瓜":["zucchini","節瓜","西葫蘆"],
+ "義大利麵":["pasta","spaghetti","意大利麵","義麵"],
+ "蝦":["蝦子","蝦仁","prawn","prawns","shrimp"]
+});
+
+// ===== 料理類型 =====
+const CUISINES=[
+ {id:"tw",n:"台式",d:"台灣家常菜、小吃店的味道，配白飯最對味。"},
+ {id:"cn",n:"中式",d:"川菜、江浙菜和北方麵點，香辣下飯。"},
+ {id:"jp",n:"日式",d:"照燒、燉菜、玉子燒，味道溫和、甜鹹。"},
+ {id:"kr",n:"韓式",d:"辣椒醬、泡菜和拌飯，甜辣過癮。"},
+ {id:"west",n:"西式",d:"義大利麵、烤雞、濃湯，和澳洲咖啡廳的早餐。"},
+ {id:"sea",n:"泰式・東南亞",d:"魚露、椰奶、九層塔，酸辣香很開胃。"}
+];
+const CUISINE_OF={
+ // 台式
+ "rice":"tw","garlic-napa":"tw","napa-tofu-soup":"tw","kaiyang-napa":"tw","napa-braise":"tw","garlic-cabbage":"tw","tw-pickle":"tw","cabbage-rice":"tw",
+ "tomato-egg":"tw","tomato-egg-soup":"tw","plum-tomato":"tw","steamed-egg":"tw","radish-omelette":"tw","century-tofu":"tw","homestyle-tofu":"tw",
+ "cold-eggplant":"tw","basil-eggplant":"tw","radish-rib-soup":"tw","onion-egg":"tw","onion-beef":"tw","three-cup":"tw","salt-chicken":"tw",
+ "fly-head":"tw","braised-pork":"tw","carrot-egg":"tw","tomato-beef":"tw",
+ // 中式
+ "vinegar-napa":"cn","shredded-cabbage":"cn","mapo-tofu":"cn","sour-potato":"cn","yuxiang-eggplant":"cn","kungpao":"cn","ants-tree":"cn",
+ "lion-head":"cn","napa-dumpling":"cn","turnip-cake":"cn",
+ // 日式
+ "teriyaki":"jp","ramen-egg":"jp","tamagoyaki":"jp","nikujaga":"jp","croquette":"jp","glazed-radish":"jp","napa-pork-hotpot":"jp",
+ // 韓式
+ "kimchi":"kr","kr-spinach":"kr","kr-steamed-egg":"kr","kr-pancake":"kr","kr-potato":"kr","kr-spicy-pork":"kr","kr-kimchi-stew":"kr","kr-bibimbap":"kr",
+ // 西式
+ "mash":"west","carrot-soup":"west","onion-soup":"west","cabbage-rolls":"west","toast-egg":"west","aglio":"west","bolognese":"west","roast-chicken":"west","mushroom-chicken":"west",
+ // 泰式・東南亞
+ "krapow":"sea","thai-fried-rice":"sea","green-curry":"sea","tom-yum":"sea","summer-rolls":"sea"
+};
+
+// ===== 新料理的菜單 =====
+MENUS.push(
+ // 韓式
+ {id:"k1",g:"one",c:"kr",n:"韓式蒸蛋＋涼拌菠菜",who:"1–2 人",rice:true,dishes:["kr-steamed-egg","kr-spinach"],d:"兩道韓式小菜配白飯，清淡又快速。"},
+ {id:"k2",g:"one",c:"kr",n:"韓式辣炒豬肉飯",who:"1–2 人・甜辣下飯",rice:true,dishes:["kr-spicy-pork"],d:"甜辣的豬肉蓋在白飯上，一盤就很滿足。"},
+ {id:"k3",g:"two",c:"kr",n:"辣炒豬肉＋涼拌菠菜",who:"2 人",rice:true,dishes:["kr-spicy-pork","kr-spinach"],d:"一道辣的主菜，一道清爽的小菜。"},
+ {id:"k4",g:"one",c:"kr",n:"泡菜豆腐鍋定食",who:"1–2 人・冬天",rice:true,dishes:["kr-kimchi-stew","kr-spinach"],d:"用超市買的泡菜煮一鍋，配菠菜和白飯。"},
+ {id:"k5",g:"two",c:"kr",n:"泡菜鍋＋韓式蒸蛋",who:"2 人",rice:true,dishes:["kr-kimchi-stew","kr-steamed-egg"],d:"辣辣的泡菜鍋，配一碗軟綿綿的蒸蛋解辣。"},
+ {id:"k6",g:"two",c:"kr",n:"韓式煎餅＋泡菜鍋",who:"2 人・下雨天",dishes:["kr-pancake","kr-kimchi-stew"],d:"韓國人下雨天最愛的組合：煎餅配熱湯。"},
+ {id:"k7",g:"one",c:"kr",n:"醬燒馬鈴薯便當",who:"1–2 人・帶便當",rice:true,dishes:["kr-potato","kr-spinach","kr-steamed-egg"],d:"三道韓式小菜，放涼也好吃，適合帶便當。"},
+ {id:"k8",g:"two",c:"kr",n:"韓式拌飯",who:"2 人・一碗吃飽",dishes:["kr-bibimbap"],d:"菜、肉、蛋一碗搞定，加辣醬拌一拌。"},
+ {id:"k9",g:"two",c:"kr",n:"拌飯＋泡菜豆腐鍋",who:"2 人・韓式套餐",dishes:["kr-bibimbap","kr-kimchi-stew"],d:"韓國餐廳最常見的套餐。"},
+ {id:"k10",g:"party",c:"kr",n:"韓式家庭餐桌",who:"3–4 人",rice:true,dishes:["kr-spicy-pork","kr-pancake","kr-potato","kr-spinach","kr-kimchi-stew"],d:"一道主菜、一道煎餅、兩道小菜和一鍋湯，像韓劇裡的餐桌。"},
+ {id:"k11",g:"two",c:"kr",n:"辣炒豬肉＋醬燒馬鈴薯",who:"2 人",rice:true,dishes:["kr-spicy-pork","kr-potato"],d:"甜辣和甜鹹，兩道都超下飯。"},
+ {id:"k12",g:"party",c:"kr",n:"自製泡菜＋辣炒豬肉",who:"3 人・進階",rice:true,dishes:["kimchi","kr-spicy-pork","kr-steamed-egg"],d:"自己做泡菜，配辣炒豬肉和蒸蛋。"},
+ // 西式
+ {id:"w1",g:"one",c:"west",n:"澳式炒蛋早餐",who:"1 人・早餐",dishes:["toast-egg"],d:"澳洲咖啡廳的經典早餐，在家十分鐘就能做。"},
+ {id:"w2",g:"one",c:"west",n:"蒜香義大利麵",who:"1–2 人・十五分鐘",dishes:["aglio"],d:"只要麵、蒜頭和橄欖油，最簡單的義大利麵。"},
+ {id:"w3",g:"two",c:"west",n:"蒜香義大利麵＋紅蘿蔔濃湯",who:"2 人",dishes:["aglio","carrot-soup"],d:"一盤麵配一碗濃湯，像義大利小餐館。"},
+ {id:"w4",g:"two",c:"west",n:"義大利肉醬麵",who:"2–4 人・可冷凍",dishes:["bolognese"],d:"一次煮一大鍋肉醬，吃不完分裝冷凍。"},
+ {id:"w5",g:"two",c:"west",n:"肉醬麵＋紅蘿蔔濃湯",who:"2–3 人",dishes:["bolognese","carrot-soup"],d:"肉醬燉的時候，另一個爐口煮濃湯。"},
+ {id:"w6",g:"two",c:"west",n:"烤雞腿配蔬菜",who:"2–3 人・丟進烤箱",dishes:["roast-chicken"],d:"雞腿和蔬菜放同一個烤盤，烤箱幫你煮。"},
+ {id:"w7",g:"party",c:"west",n:"週日烤雞晚餐",who:"3–4 人",dishes:["roast-chicken","mash","carrot-soup"],d:"烤雞、馬鈴薯泥、濃湯，澳洲家庭的週日晚餐。"},
+ {id:"w8",g:"two",c:"west",n:"奶油蘑菇雞＋白飯",who:"2 人",rice:true,dishes:["mushroom-chicken"],d:"濃濃的奶油醬淋在白飯上，很適合不吃辣的人。"},
+ {id:"w9",g:"two",c:"west",n:"奶油蘑菇雞＋馬鈴薯泥",who:"2 人・西餐廳風",dishes:["mushroom-chicken","mash"],d:"像西餐廳的主餐，醬汁和馬鈴薯泥很搭。"},
+ {id:"w10",g:"party",c:"west",n:"義式晚餐派對",who:"4 人",dishes:["bolognese","aglio","carrot-soup"],d:"兩種義大利麵加一鍋濃湯，請朋友吃也很簡單。"},
+ // 泰式・東南亞
+ {id:"s1",g:"one",c:"sea",n:"打拋豬飯",who:"1–2 人・十五分鐘",rice:true,dishes:["krapow"],d:"泰國最受歡迎的快餐，荷包蛋蓋在飯上。"},
+ {id:"s2",g:"one",c:"sea",n:"泰式炒飯",who:"1–2 人・用冷凍飯",dishes:["thai-fried-rice"],d:"冷凍白飯最好炒，十五分鐘就能吃。"},
+ {id:"s3",g:"two",c:"sea",n:"泰式綠咖哩雞",who:"2–3 人",rice:true,dishes:["green-curry"],d:"用現成咖哩醬和椰奶，二十分鐘煮出餐廳的味道。"},
+ {id:"s4",g:"two",c:"sea",n:"泰式酸辣湯＋打拋豬",who:"2 人",rice:true,dishes:["krapow","tom-yum"],d:"一道炒、一碗湯，泰國餐廳的經典組合。"},
+ {id:"s5",g:"two",c:"sea",n:"綠咖哩＋越南生春捲",who:"2 人",rice:true,dishes:["green-curry","summer-rolls"],d:"熱的咖哩配冰涼的春捲。"},
+ {id:"s6",g:"two",c:"sea",n:"越南生春捲",who:"2 人・夏天不開火",dishes:["summer-rolls"],d:"只要煮一下米線，其他都不用開火。"},
+ {id:"s7",g:"two",c:"sea",n:"泰式炒飯＋酸辣湯",who:"2 人",dishes:["thai-fried-rice","tom-yum"],d:"炒飯配一碗酸辣湯，在家吃泰國菜。"},
+ {id:"s8",g:"party",c:"sea",n:"泰式餐桌",who:"3–4 人",rice:true,dishes:["krapow","green-curry","tom-yum","summer-rolls"],d:"打拋豬、綠咖哩、酸辣湯、生春捲，在家開泰國餐廳。"},
+ {id:"s9",g:"two",c:"sea",n:"打拋豬＋涼拌茄子",who:"2 人",rice:true,dishes:["krapow","cold-eggplant"],d:"九層塔炒肉配一道清爽的冷盤。"},
+ // 混搭新菜色
+ {id:"x5",g:"one",n:"炒蛋吐司＋紅蘿蔔濃湯",who:"1 人・早午餐",c:"west",dishes:["toast-egg","carrot-soup"],d:"週末睡飽起來，做一頓咖啡廳風的早午餐。"},
+ {id:"x6",g:"two",n:"照燒雞腿＋涼拌菠菜",who:"2 人",c:"jp",rice:true,dishes:["teriyaki","kr-spinach"],d:"甜鹹的雞腿配一道清爽的菠菜。"}
+);
+
+const PHOTOS={"garlic-napa": {"credit": "愛料理 iCook 網友食譜「蒜炒白菜」", "url": "https://icook.tw/recipes/434302", "src": "photos/garlic-napa.webp"}, "vinegar-napa": {"credit": "愛料理 iCook 網友食譜「醋溜白菜」", "url": "https://icook.tw/recipes/420269", "src": "photos/vinegar-napa.webp"}, "napa-tofu-soup": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Napa_Cabbage_%26_Tofu_soup_(%E7%99%BD%E8%8F%9C%E8%B1%86%E8%85%90%E6%B9%AF).jpg", "src": "photos/napa-tofu-soup.webp"}, "kaiyang-napa": {"credit": "愛料理 iCook 網友食譜「開陽白菜」", "url": "https://icook.tw/recipes/489414", "src": "photos/kaiyang-napa.webp"}, "napa-pork-hotpot": {"credit": "愛料理 iCook 網友食譜「千層白菜豬肉鍋」", "url": "https://icook.tw/recipes/431828", "src": "photos/napa-pork-hotpot.webp"}, "napa-braise": {"credit": "bryan... from Taipei, Taiwan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Food_%E7%99%BD%E8%8F%9C%E6%BB%B7,_%E9%B5%9D%E8%82%89%E5%B7%9D,_%E5%8F%B0%E5%8C%97_(25195019195).jpg", "src": "photos/napa-braise.webp"}, "napa-dumpling": {"credit": "攝影 jessica lock／Unsplash", "url": "https://unsplash.com/photos/brown-dough-on-white-textile-dv7SaXNJ3rc", "src": "photos/napa-dumpling.webp"}, "lion-head": {"credit": "Jpatokal／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Lions_head_meatballs_in_brown_sauce.jpg", "src": "photos/lion-head.webp"}, "kimchi": {"credit": "攝影 Portuguese Gravity／Unsplash", "url": "https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-M_mDgb8guhA", "src": "photos/kimchi.webp"}, "garlic-cabbage": {"credit": "Tianmu peter／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E7%82%92%E9%AB%98%E9%BA%97%E8%8F%9C_-_panoramio.jpg", "src": "photos/garlic-cabbage.webp"}, "shredded-cabbage": {"credit": "Christopher／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg", "src": "photos/shredded-cabbage.webp"}, "tw-pickle": {"credit": "愛料理 iCook 網友食譜「台式泡菜」", "url": "https://icook.tw/recipes/479716", "src": "photos/tw-pickle.webp"}, "cabbage-rice": {"credit": "愛料理 iCook 網友食譜「高麗菜飯」", "url": "https://icook.tw/recipes/475638", "src": "photos/cabbage-rice.webp"}, "cabbage-rolls": {"credit": "Marsilar／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:020251214_0008_cabbage_rolls.jpg", "src": "photos/cabbage-rolls.webp"}, "tomato-egg": {"credit": "Huangdan2060／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Hunan_cuisine,_stir-fried_tomato_with_eggs.jpg", "src": "photos/tomato-egg.webp"}, "tomato-egg-soup": {"credit": "NNU-10-HanRongrong／Wikimedia Commons（CC BY 3.0）", "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg", "src": "photos/tomato-egg-soup.webp"}, "plum-tomato": {"credit": "攝影 Nik／Unsplash", "url": "https://unsplash.com/photos/sliced-tomatoes-on-a-cutting-board-with-a-knife-BB09R7g4k68", "src": "photos/plum-tomato.webp"}, "tomato-beef": {"credit": "攝影 Nathan Dumlao／Unsplash", "url": "https://unsplash.com/photos/cooked-food-in-white-ceramic-bowl-1lAIRAsv3C4", "src": "photos/tomato-beef.webp"}, "steamed-egg": {"credit": "Tam3415 from (optional)／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:ChineseSteamedEgg.jpg", "src": "photos/steamed-egg.webp"}, "radish-omelette": {"credit": "JeanneChang／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Preserved_radish_omelet-omelette.jpg", "src": "photos/radish-omelette.webp"}, "ramen-egg": {"credit": "攝影 Jakub Dziubak／Unsplash", "url": "https://unsplash.com/photos/a-close-up-of-a-bowl-of-food-with-eggs-xZXGgrRppaA", "src": "photos/ramen-egg.webp"}, "tamagoyaki": {"credit": "攝影 note thanun／Unsplash", "url": "https://unsplash.com/photos/tamagoyaki-and-pickled-ginger-on-a-plate-X0pULv2Vyeg", "src": "photos/tamagoyaki.webp"}, "century-tofu": {"credit": "Tbatb／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Tofu_with_Century_Egg_01.jpg", "src": "photos/century-tofu.webp"}, "homestyle-tofu": {"credit": "愛料理 iCook 網友食譜「家常紅燒豆腐」", "url": "https://icook.tw/recipes/494309", "src": "photos/homestyle-tofu.webp"}, "mapo-tofu": {"credit": "Sichuanfoodlover／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Authentic_Mapo_Tofu.jpg", "src": "photos/mapo-tofu.webp"}, "sour-potato": {"credit": "Ewan Munro from London, UK／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taste_of_Beijing,_Soho,_London_(4363975792).jpg", "src": "photos/sour-potato.webp"}, "mash": {"credit": "攝影 Anna Stampfli／Unsplash", "url": "https://unsplash.com/photos/brown-wooden-spoon-on-blue-ceramic-bowl-zEBe2beserI", "src": "photos/mash.webp"}, "nikujaga": {"credit": "Yumi Kimura from Yokohama, JAPAN／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Braised_pork_and_potatoes_(3089327692).jpg", "src": "photos/nikujaga.webp"}, "croquette": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-fried-croquettes-on-a-white-plate-__S2PQuHUjE", "src": "photos/croquette.webp"}, "cold-eggplant": {"credit": "愛料理 iCook 網友食譜「涼拌茄子」", "url": "https://icook.tw/recipes/474067", "src": "photos/cold-eggplant.webp"}, "basil-eggplant": {"credit": "pelican from Tokyo, Japan／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Fried_egg_plant_with_Japanese_basil_(9291002707).jpg", "src": "photos/basil-eggplant.webp"}, "yuxiang-eggplant": {"credit": "Ewan-M of Flickr／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Yuxiangqiezi.jpg", "src": "photos/yuxiang-eggplant.webp"}, "radish-rib-soup": {"credit": "愛料理 iCook 網友食譜「紅白蘿蔔排骨湯」", "url": "https://icook.tw/recipes/486985", "src": "photos/radish-rib-soup.webp"}, "glazed-radish": {"credit": "Babi Hijau／Wikimedia Commons（Public domain）", "url": "https://commons.wikimedia.org/wiki/File:Furofukidaikon001.jpg", "src": "photos/glazed-radish.webp"}, "turnip-cake": {"credit": "jasonlam／Wikimedia Commons（CC BY-SA 2.0）", "url": "https://commons.wikimedia.org/wiki/File:11_Lo_Bak_Go_turnip_cake_-_East_Harbor_Seafood_Palace.jpg", "src": "photos/turnip-cake.webp"}, "onion-egg": {"credit": "愛料理 iCook 網友食譜「洋蔥炒蛋」", "url": "https://icook.tw/recipes/481736", "src": "photos/onion-egg.webp"}, "onion-beef": {"credit": "NeoBatfreak／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Ginger_and_Onion_Beef_%E8%96%91%E8%94%A5%E7%89%9B%E8%82%89_(Golden_Dynasty_Chinese_Restaurant).jpg", "src": "photos/onion-beef.webp"}, "onion-soup": {"credit": "jeffreyw／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Mmm...onion_soup_(5344349906).jpg", "src": "photos/onion-soup.webp"}, "teriyaki": {"credit": "Flickr.com user \"Blue Lotus\"／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Chicken_teriyaki.jpg", "src": "photos/teriyaki.webp"}, "three-cup": {"credit": "Ceeseven／Wikimedia Commons（CC BY-SA 4.0）", "url": "https://commons.wikimedia.org/wiki/File:Three_Cup_Chicken_in_Clay_Pot.jpg", "src": "photos/three-cup.webp"}, "kungpao": {"credit": "攝影 tommao wang／Unsplash", "url": "https://unsplash.com/photos/two-dishes-of-asian-food-on-a-table-ijx5tcp2lIg", "src": "photos/kungpao.webp"}, "salt-chicken": {"credit": "愛料理 iCook 網友食譜「自製鹽水雞」", "url": "https://icook.tw/recipes/493494", "src": "photos/salt-chicken.webp"}, "fly-head": {"credit": "Blowing Puffer Fish／Wikimedia Commons（CC BY 2.0）", "url": "https://commons.wikimedia.org/wiki/File:Taiwanese_stir-fry_Tsang_Ying_Tou.jpg", "src": "photos/fly-head.webp"}, "ants-tree": {"credit": "Дмитрий Журавлев (dejur)／Wikimedia Commons（CC BY-SA 3.0）", "url": "https://commons.wikimedia.org/wiki/File:%E8%9A%82%E8%9A%81%E4%B8%8A%E6%A0%9101.jpg", "src": "photos/ants-tree.webp"}, "braised-pork": {"credit": "Jzest／Wikimedia Commons（CC BY-SA 2.5）", "url": "https://commons.wikimedia.org/wiki/File:Lurou_fan(Taiwanese_cuisine).jpg", "src": "photos/braised-pork.webp"}, "carrot-egg": {"credit": "愛料理 iCook 網友食譜「紅蘿蔔炒蛋」", "url": "https://icook.tw/recipes/485436", "src": "photos/carrot-egg.webp"}, "carrot-soup": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/soup-with-green-leaf-on-black-ceramic-bowl-cToNEm70cvE", "src": "photos/carrot-soup.webp"}, "rice": {"credit": "攝影 Pille R. Priske／Unsplash", "url": "https://unsplash.com/photos/rice-in-bowl-xmuIgjuQG0M", "src": "photos/rice.webp"}, "kr-spinach": {"credit": "攝影 R Eris／Unsplash", "url": "https://unsplash.com/photos/YTw7O_IY4l0", "src": "photos/kr-spinach.webp"}, "kr-potato": {"credit": "攝影 Abdul Raheem Kannath／Unsplash", "url": "https://unsplash.com/photos/qbx6gDUfJKo", "src": "photos/kr-potato.webp"}, "kr-kimchi-stew": {"credit": "攝影 rawkkim／Unsplash", "url": "https://unsplash.com/photos/1_SenAyTAXg", "src": "photos/kr-kimchi-stew.webp"}, "kr-bibimbap": {"credit": "攝影 Dmitry Pavlovsky／Unsplash", "url": "https://unsplash.com/photos/SbHulgzS_eo", "src": "photos/kr-bibimbap.webp"}, "toast-egg": {"credit": "攝影 amirali mirhashemian／Unsplash", "url": "https://unsplash.com/photos/4gmBIFraSuE", "src": "photos/toast-egg.webp"}, "aglio": {"credit": "攝影 Maria Klichik／Unsplash", "url": "https://unsplash.com/photos/1wK-sWIcRRU", "src": "photos/aglio.webp"}, "bolognese": {"credit": "攝影 Homescreenify／Unsplash", "url": "https://unsplash.com/photos/sA3wymYqyaI", "src": "photos/bolognese.webp"}, "roast-chicken": {"credit": "攝影 Branimir Petakov／Unsplash", "url": "https://unsplash.com/photos/HB0IbmJyyI8", "src": "photos/roast-chicken.webp"}, "mushroom-chicken": {"credit": "攝影 ALLAN LAINEZ／Unsplash", "url": "https://unsplash.com/photos/QvgHLCOpdJQ", "src": "photos/mushroom-chicken.webp"}, "thai-fried-rice": {"credit": "攝影 Iosi Pratama／Unsplash", "url": "https://unsplash.com/photos/g0dBbrGmMe0", "src": "photos/thai-fried-rice.webp"}, "green-curry": {"credit": "攝影 Andrew Relf／Unsplash", "url": "https://unsplash.com/photos/qEzLiabQe8M", "src": "photos/green-curry.webp"}, "tom-yum": {"credit": "攝影 Jamie Trinh／Unsplash", "url": "https://unsplash.com/photos/_lgT5W2QBG4", "src": "photos/tom-yum.webp"}, "summer-rolls": {"credit": "攝影 Max Griss／Unsplash", "url": "https://unsplash.com/photos/njR3HrcLLjU", "src": "photos/summer-rolls.webp"}, "krapow": {"credit": "攝影 Vicky Ng／Unsplash", "url": "https://unsplash.com/photos/NT5oqzp-050", "src": "photos/krapow.webp"}, "kr-pancake": {"credit": "攝影 C Cai／Unsplash", "url": "https://unsplash.com/photos/FUkPhZDLn9k", "src": "photos/kr-pancake.webp"}, "kr-steamed-egg": {"credit": "攝影 Mahmoud Fawzy／Unsplash", "url": "https://unsplash.com/photos/fRqh9saMOGE", "src": "photos/kr-steamed-egg.webp"}, "kr-spicy-pork": {"credit": "攝影 Junel Mujar／Unsplash", "url": "https://unsplash.com/photos/CwhrGhuQJEY", "src": "photos/kr-spicy-pork.webp"}};
 const ING_PHOTOS={"大白菜": {"src": "photos/ing-napa.webp", "credit": "攝影 Jason Leung／Unsplash", "url": "https://unsplash.com/photos/several-heads-of-fresh-napa-cabbage-lined-up-BCXgdJJ5nPY"}, "高麗菜": {"src": "photos/ing-cabbage.webp", "credit": "攝影 ibuki Tsubo／Unsplash", "url": "https://unsplash.com/photos/green-leaf-vegetable-on-white-surface-7iRMOXXxH7c"}, "雞蛋": {"src": "photos/ing-egg.webp", "credit": "攝影 Jakub Kapusnak／Unsplash", "url": "https://unsplash.com/photos/shallow-focus-photography-of-brown-eggs-Hj53USePB1E"}, "番茄": {"src": "photos/ing-tomato.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/red-tomatoes-on-brown-wooden-table-eb26eV-ys_k"}, "豆腐": {"src": "photos/ing-tofu.webp", "credit": "攝影 Rajesh Kavasseri／Unsplash", "url": "https://unsplash.com/photos/white-and-black-square-shape-on-brown-wooden-table-fPQCj3f3kRc"}, "馬鈴薯": {"src": "photos/ing-potato.webp", "credit": "攝影 Lars Blankers／Unsplash", "url": "https://unsplash.com/photos/brown-potato-lot-B0s3Xndk6tw"}, "茄子": {"src": "photos/ing-eggplant.webp", "credit": "攝影 engin akyurt／Unsplash", "url": "https://unsplash.com/photos/a-pile-of-purple-eggplant-with-green-stems-d6I1ZNZJcNo"}, "白蘿蔔": {"src": "photos/ing-daikon.webp", "credit": "攝影 liam matthews／Unsplash", "url": "https://unsplash.com/photos/white-radishes-and-bitter-melons-in-a-crate-0BCwHPrs9hM"}, "洋蔥": {"src": "photos/ing-onion.webp", "credit": "攝影 mayu ken／Unsplash", "url": "https://unsplash.com/photos/white-garlic-on-brown-wooden-table-CNZ-9s5p2i8"}, "紅蘿蔔": {"src": "photos/ing-carrot.webp", "credit": "攝影 Maja Vujic／Unsplash", "url": "https://unsplash.com/photos/a-bunch-of-carrots-sitting-on-top-of-a-wooden-table-hoUlccGAhxY"}, "雞肉": {"src": "photos/ing-chicken.webp", "credit": "攝影 Satmar Meats／Unsplash", "url": "https://unsplash.com/photos/raw-chicken-pieces-with-vegetables-on-a-wooden-board-1pj56A6OQgA"}, "豬肉": {"src": "photos/ing-pork.webp", "credit": "攝影 Tomoyo S／Unsplash", "url": "https://unsplash.com/photos/brown-food-on-white-ceramic-bowl-TTuYs8aZlns"}, "牛肉": {"src": "photos/ing-beef.webp", "credit": "攝影 David Foodphototasty／Unsplash", "url": "https://unsplash.com/photos/two-steaks-on-a-plate-with-parsley-U5lLwx17rWs"}};
 const EXTRA={"hero": {"credit": "攝影 Chanhee Lee／Unsplash", "url": "https://unsplash.com/photos/white-and-blue-ceramic-bowl-with-rice-dBO0Crt4qC8", "src": "photos/hero.webp"}};
 </script>
@@ -2566,7 +3005,7 @@ function search(q){
 function cardEl(r){
   const b=document.createElement("button");b.type="button";b.className="card";
   const ph=document.createElement("div");ph.className="ph";ph.appendChild(makeVisual(r,560,420));
-  ph.insertAdjacentHTML("beforeend",'<span class="lv l'+r.lv+'">'+esc(LEVEL_NAME[r.lv])+'</span>'+(r.ai?'<span class="ai-tag">Claude 建議</span>':''));
+  ph.insertAdjacentHTML("beforeend",'<span class="lv l'+r.lv+'">'+esc(LEVEL_NAME[r.lv])+'</span>'+(r.ai?'':'<span class="ctag onph c-'+cuiOf(r.id)+'">'+esc(cuiName(cuiOf(r.id)))+'</span>')+(r.ai?'<span class="ai-tag">Claude 建議</span>':''));
   b.appendChild(ph);
   b.insertAdjacentHTML("beforeend",'<h3>'+esc(r.n)+'</h3><p>'+esc(r.d)+'</p><div class="meta"><span>'+ICON.clock+esc(r.t)+' 分鐘</span><span>'+ICON.user+esc(r.s||2)+' 人份</span></div>');
   b.onclick=()=>openDetail(r);return b;
@@ -2603,7 +3042,7 @@ function openDetail(r,back){
   const list=(title,arr,pre,withShop)=>arr&&arr.length?'<h3>'+title+'</h3><ul class="checklist">'+arr.map((it,i)=>{const [n,qt]=Array.isArray(it)?it:[it,""];return item(n,qt,pre,i,withShop)}).join("")+'</ul>':"";
   const total=(r.ing||[]).length+(r.sea||[]).length+(r.tools||[]).length;
   sh.innerHTML='<div class="sheet-bar"><div class="wrap"><button class="back" type="button" id="backBtn">'+ICON.back+'返回</button><span class="t">'+esc(r.n)+'</span><span class="bar-r">'+(r.ai?'':'<button class="iconbtn fav" type="button" id="favBtn" aria-pressed="'+isFav(r.id)+'" aria-label="收藏">'+ICON.heart+'</button>')+'<button class="btn" type="button" id="startCook">'+ICON.steps+'步驟模式</button></span></div></div>'+
-   '<div class="wrap"><div class="r-head"><div><span class="crumb">'+(L?'新手課程・第 '+(li+1)+' 課':'食譜')+'</span><h1 id="dTitle">'+esc(r.n)+'</h1><p class="desc">'+esc(r.d)+'</p>'+
+   '<div class="wrap"><div class="r-head"><div><span class="crumb">'+(r.ai?'Claude 建議':cuiName(cuiOf(r.id))+'料理')+'</span><h1 id="dTitle">'+esc(r.n)+'</h1><p class="desc">'+esc(r.d)+'</p>'+
      '<div class="facts"><div><span>'+ICON.gauge+'難度</span><b>'+esc(LEVEL_NAME[r.lv])+'</b></div><div><span>'+ICON.clock+'時間</span><b>'+esc(r.t)+' 分鐘</b></div><div><span>'+ICON.user+'份量</span><b>'+esc(r.s||2)+' 人份</b></div></div>'+
      (r.wait?'<p class="note">另外需要：'+esc(r.wait.replace(/^＋/,""))+'</p>':'')+
      (L?'<div class="learnbox"><b>這一課學會：</b>'+esc(L.learn)+'。'+esc(L.why)+'</div>':'')+
@@ -2673,31 +3112,39 @@ const LV_INFO=[null,
  ["普通","練習勾芡、燉煮，味道更有層次。"],
  ["有點挑戰","步驟比較多、時間比較長的大菜，週末有空再做。"],
  ["進階","需要前一天準備，或一次做很多。"]];
-let menuLvF=0;const menuMore={};
+let menuLvF=0,menuCF="all";const menuMore={};
+const cuiOf=id=>CUISINE_OF[id]||"tw";const cuiName=c=>(CUISINES.find(x=>x.id===c)||{}).n||"";
+function menuCui(m){if(m.c)return m.c;const ds=menuDishes(m).filter(r=>r.id!=="rice");const cnt={};ds.forEach(r=>{const c=cuiOf(r.id);cnt[c]=(cnt[c]||0)+1});const best=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0];return best&&best[1]>ds.length/2?best[0]:cuiOf(ds[0].id)}
 function menuCard(m){const ds=menuDishes(m);
   const b=document.createElement("button");b.type="button";b.className="mcard";b.appendChild(collage(m,560));
-  b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who">'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(mTime(m))+' 分鐘</span></div></div>');
+  b.insertAdjacentHTML("beforeend",'<div class="bd"><span class="who"><span class="ctag c-'+menuCui(m)+'">'+esc(cuiName(menuCui(m)))+'</span>'+esc(m.who)+'</span><h3>'+esc(m.n)+'</h3><p class="dl">'+(m.rice?'白飯＋':'')+ds.map(r=>esc(r.n)).join("、")+'</p><div class="meta"><span>'+ICON.bowl+ds.length+' 道菜</span><span>'+ICON.clock+(m.days?'每天約 ':'約 ')+esc(mTime(m))+' 分鐘</span></div></div>');
   b.onclick=()=>openMenu(m);return b}
 function renderMenus(){
-  const plan=m=>m.g==="week"?1:0;const all=MENUS.slice().sort((a,b)=>menuLv(a)-menuLv(b)||plan(a)-plan(b)||mTime(a)-mTime(b)||menuDishes(a).length-menuDishes(b).length);
+  const plan=m=>m.g==="week"?1:0;let all=MENUS.slice().sort((a,b)=>menuLv(a)-menuLv(b)||plan(a)-plan(b)||mTime(a)-mTime(b)||menuDishes(a).length-menuDishes(b).length);
+  const every=all;
+  $("#mTitle").textContent=every.length+" 組新手菜單，從簡單排到困難";
+  $("#ctabs").innerHTML='<button type="button" class="cbtn" data-c="all" aria-pressed="'+(menuCF==="all")+'">全部料理<span>'+every.length+'</span></button>'+CUISINES.map(c=>'<button type="button" class="cbtn c-'+c.id+'" data-c="'+c.id+'" aria-pressed="'+(menuCF===c.id)+'"><i></i>'+c.n+'<span>'+every.filter(m=>menuCui(m)===c.id).length+'</span></button>').join("");
+  $("#ctabs").querySelectorAll(".cbtn").forEach(b=>b.onclick=()=>{menuCF=b.dataset.c;menuLvF=0;renderMenus()});
+  const cc=CUISINES.find(x=>x.id===menuCF);$("#cdesc").textContent=cc?cc.d:"台式、中式、日式、韓式、西式、泰式，先選想吃的類型，再從簡單的開始做。";
+  if(menuCF!=="all")all=all.filter(m=>menuCui(m)===menuCF);
   const cnt=l=>all.filter(m=>menuLv(m)===l).length;
-  $("#mTitle").textContent=all.length+" 組新手菜單，從簡單排到困難";
-  $("#mtabs").innerHTML='<button type="button" class="fbtn" data-l="0" aria-pressed="'+(menuLvF===0)+'">全部 '+all.length+'</button>'+[1,2,3,4,5].map(l=>'<button type="button" class="fbtn lvb l'+l+'" data-l="'+l+'" aria-pressed="'+(menuLvF===l)+'"><span class="lvn">'+l+'</span>'+LV_INFO[l][0]+' '+cnt(l)+'</button>').join("");
+  $("#mtabs").innerHTML='<button type="button" class="fbtn" data-l="0" aria-pressed="'+(menuLvF===0)+'">全部 '+all.length+'</button>'+[1,2,3,4,5].filter(l=>cnt(l)).map(l=>'<button type="button" class="fbtn lvb l'+l+'" data-l="'+l+'" aria-pressed="'+(menuLvF===l)+'"><span class="lvn">'+l+'</span>'+LV_INFO[l][0]+' '+cnt(l)+'</button>').join("");
+  if(menuLvF&&!cnt(menuLvF))menuLvF=0;
   $("#mtabs").querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{menuLvF=+b.dataset.l;renderMenus();const t=document.getElementById("mgroups");if(t.getBoundingClientRect().top<0)t.scrollIntoView({block:"start"})});
   const box=$("#mgroups");box.innerHTML="";
   (menuLvF?[menuLvF]:[1,2,3,4,5]).forEach(l=>{
     const list=all.filter(m=>menuLv(m)===l);if(!list.length)return;
-    const lim=menuLvF||menuMore[l]?list.length:6;
+    const lim=menuLvF||menuMore[menuCF+l]||menuCF!=="all"?list.length:6;
     const g=document.createElement("section");g.className="mgroup";
     g.innerHTML='<div class="mg-head"><span class="lvbadge l'+l+'">'+l+'</span><div><h3>'+LV_INFO[l][0]+'<span>'+list.length+' 組</span></h3><p>'+LV_INFO[l][1]+'</p></div></div>';
     const grid=document.createElement("div");grid.className="mgrid";list.slice(0,lim).forEach(m=>grid.appendChild(menuCard(m)));g.appendChild(grid);
-    if(lim<list.length){const mb=document.createElement("button");mb.type="button";mb.className="btn line more-btn";mb.textContent="顯示全部「"+LV_INFO[l][0]+"」"+list.length+" 組";mb.onclick=()=>{menuMore[l]=1;renderMenus()};g.appendChild(mb)}
+    if(lim<list.length){const mb=document.createElement("button");mb.type="button";mb.className="btn line more-btn";mb.textContent="顯示全部「"+LV_INFO[l][0]+"」"+list.length+" 組";mb.onclick=()=>{menuMore[menuCF+l]=1;renderMenus()};g.appendChild(mb)}
     box.appendChild(g)});
 }
 function menuShop(m){
   const ds=menuDishes(m);const src=m.rice&&!ds.some(r=>r.id==="rice")?[byId.rice,...ds]:ds;
   const ing=new Map(),sea=new Map();
-  const add=(map,[n,q],r)=>{if(n==="水")return;const s=shopFor(n);const key=s?s.k:n;if(!map.has(key))map.set(key,{n,q,s,use:[]});const it=map.get(key);if(!it.use.includes(r.n))it.use.push(r.n)};
+  const add=(map,[n,q],r)=>{if(/^(沾醬：)?(冰|熱|溫|冷)?水$/.test(n))return;const s=shopFor(n);const key=s?s.k:n;if(!map.has(key))map.set(key,{n,q,s,use:[]});const it=map.get(key);if(!it.use.includes(r.n))it.use.push(r.n)};
   src.forEach(r=>{(r.ing||[]).forEach(x=>add(ing,x,r));(r.sea||[]).forEach(x=>add(sea,x,r))});
   return{ing:[...ing.values()],sea:[...sea.entries()].filter(([k])=>!ing.has(k)).map(([,v])=>v)};
 }
@@ -2860,7 +3307,7 @@ function updateBadge(){const n=LIST.filter(x=>!x.done).length;document.querySele
 function addItems(items){
   let added=0;
   items.forEach(it=>{
-    if(!it.n||it.n==="水")return;
+    if(!it.n||/^(沾醬：)?(冰|熱|溫|冷)?水$/.test(it.n))return;
     const s=it.c==="T"?null:shopFor(it.n);
     const k=it.c==="T"?"T:"+it.n:(s?s.k:it.n);
     const c=it.c||(s?s.w:"O");
